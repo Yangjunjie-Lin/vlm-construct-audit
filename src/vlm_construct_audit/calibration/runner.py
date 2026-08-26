@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from ..measurement.contracts import option_map, parse_constrained
+from ..measurement.open_diagnostic import open_generation_diagnostic
 from ..measurement.probes import run_measurement_probes
 from ..models.adapters import CalibrationVLMAdapter, FakeSmokeAdapter
 from ..models.tiny_blip_smoke import run_tiny_random_blip_forward
@@ -136,6 +137,7 @@ def run_smoke() -> dict[str, Any]:
         "fake_adapter_metadata": adapter.get_revision_metadata(),
         "conditional_likelihood_parsed": likelihood["parsed_response"],
         "constrained_generation": strict,
+        "open_generation_secondary": open_generation_diagnostic(scene["answer"]),
         "offline_tiny_random_vlm_forward": tiny_blip,
         "open_weight_checkpoint_smoke": "NOT_EXECUTED",
         "scientific_evidence": False,

@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 from vlm_construct_audit.statistics.calibration import holm_adjust
-from vlm_construct_audit.statistics.core import clopper_pearson_lower, cluster_paired_effect
+from vlm_construct_audit.statistics.core import (
+    clopper_pearson_lower,
+    cluster_paired_effect,
+    format_interaction_tost,
+)
 
 
 def test_scene_cluster_effect_and_ci() -> None:
@@ -24,3 +28,15 @@ def test_300_success_probe_lower_bound_exceeds_point_98() -> None:
 def test_holm_adjustment_preserves_ordered_step_down_logic() -> None:
     adjusted = holm_adjust([0.01, 0.04, 0.03])
     assert adjusted == [0.03, 0.06, 0.06]
+
+
+def test_tost_requires_full_interval_inside_margin() -> None:
+    rows = []
+    for scene in range(12):
+        for fmt in ("natural_language", "triples"):
+            rows.append({"scene_id": str(scene), "split": "reasoning_test", "contract": "conditional_likelihood", "serialization": fmt, "condition": "correct_evidence", "score": 1})
+            for condition in ("relation_flip", "entity_swap", "attribute_swap"):
+                rows.append({"scene_id": str(scene), "split": "reasoning_test", "contract": "conditional_likelihood", "serialization": fmt, "condition": condition, "score": 0})
+    result = format_interaction_tost(rows, "conditional_likelihood", 0.05, bootstrap_replicates=100)
+    assert result["estimate"] == 0.0
+    assert result["tost_equivalent"] is True

@@ -1,0 +1,40 @@
+schema_version: 1
+config_hash: ef50eab80bedc40c23248ddbaf88896438b444baeb1a7d9b2609e3f8f51a598c
+project_decision: TIER0_INCONCLUSIVE_TIER1_NOT_AUTHORIZED
+claims:
+- id: T0C001
+  claim: The two serializers round-trip to identical proposition multisets.
+  status: verified_programmatically_human_review_pending
+  artifacts:
+  - artifacts/metrics/equivalence_report.yaml
+  - data/annotations/serialization_manual_review.csv
+  boundary: Programmatic equivalence is not an independent human audit or semantic
+    validity proof.
+- id: T0C002
+  claim: The audit recovers the preregistered claim class of all six known-state systems.
+  status: verified
+  artifacts:
+  - artifacts/metrics/audit_decisions.yaml
+  - artifacts/predictions/calibration_predictions.jsonl
+  boundary: Trusted stage diagnostics exist only for calibration systems.
+- id: T0C003
+  claim: B5 reduces known-DGP false mechanistic claims relative to B1.
+  status: verified_in_simulation
+  estimate: 0.6
+  artifacts:
+  - artifacts/metrics/statistical_calibration.yaml
+  boundary: Repeated known-DGP calibration, not a real-VLM scientific result.
+- id: T0C004
+  claim: Sensitivity to known valid effects meets the 80 percent GO gate.
+  status: inconclusive
+  estimate: 0.735
+  artifacts:
+  - artifacts/metrics/statistical_calibration.yaml
+  boundary: 73.5 percent lies in the preregistered 70–80 percent inconclusive band.
+- id: T0C005
+  claim: A three-family real-VLM result exists.
+  status: not_executed
+  artifacts:
+  - configs/models.yaml
+  - artifacts/metrics/smoke_report.yaml
+  boundary: The tiny random BLIP forward is engineering smoke only.

@@ -63,7 +63,9 @@ def audit_claim(
 
     interactions = [value for value in replication_results["format_interactions"].values() if value is not None]
     format_dependent = equivalence_pass and any(abs(value) > policy["format_materiality"] for value in interactions)
-    format_stable = equivalence_pass and not format_dependent
+    tost_results = replication_results.get("format_tost", {})
+    tost_pass = bool(tost_results) and all(result["tost_equivalent"] for result in tost_results.values())
+    format_stable = equivalence_pass and not format_dependent and tost_pass
     (passed if format_stable else failed).append("format_stability")
 
     scope_flags = []
@@ -145,6 +147,7 @@ def build_audit_decisions() -> dict[str, Any]:
             {
                 "equivalence": equivalence,
                 "format_interactions": result["format_interaction"],
+                "format_tost": result["format_interaction_tost"],
                 "diagnostic_subtype": result["diagnostic_subtype"],
             },
             policy,

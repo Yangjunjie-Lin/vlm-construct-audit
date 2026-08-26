@@ -20,6 +20,10 @@ def _fixtures():
     replication = {
         "equivalence": {"programmatic_fact_equivalence": True},
         "format_interactions": {"conditional_likelihood": 0.0, "constrained_generation": 0.0},
+        "format_tost": {
+            "conditional_likelihood": {"tost_equivalent": True},
+            "constrained_generation": {"tost_equivalent": True},
+        },
         "diagnostic_subtype": "fixture",
     }
     policy = {

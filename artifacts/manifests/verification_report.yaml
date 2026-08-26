@@ -1,0 +1,10 @@
+schema_version: 1
+verified_at: '2026-08-26T23:45:46.340349+00:00'
+manifest_artifacts: 28
+hash_failures: []
+prediction_count: 6912
+incomplete_prediction_rows: []
+config_hash_recomputed: ef50eab80bedc40c23248ddbaf88896438b444baeb1a7d9b2609e3f8f51a598c
+config_hash_matches_all_predictions: true
+claim_language_violations: {}
+status: PASS

@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.jsonl text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.svg text eol=lf
+
+# Generated evidence is hashed byte-for-byte; preserve the committed bytes on checkout.
+data/** -text
+artifacts/** -text
+reports/** -text

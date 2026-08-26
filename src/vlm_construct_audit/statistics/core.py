@@ -111,6 +111,44 @@ def contract_agreement(rows: list[dict[str, Any]], bootstrap_replicates: int = 1
     }
 
 
+def format_interaction_tost(
+    rows: list[dict[str, Any]],
+    contract: str,
+    margin: float,
+    bootstrap_replicates: int = 2000,
+) -> dict[str, Any]:
+    by_scene: dict[str, dict[str, dict[str, list[float]]]] = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(list))
+    )
+    for row in rows:
+        if row["split"] == "reasoning_test" and row["contract"] == contract:
+            by_scene[row["scene_id"]][row["serialization"]][row["condition"]].append(float(row["score"]))
+    interactions = []
+    for scene, formats in sorted(by_scene.items()):
+        effects = {}
+        for fmt in ("natural_language", "triples"):
+            conditions = formats[fmt]
+            if "correct_evidence" not in conditions or any(c not in conditions for c in PRIMARY_CORRUPTIONS):
+                break
+            effects[fmt] = mean(conditions["correct_evidence"]) - mean(
+                mean(conditions[c]) for c in PRIMARY_CORRUPTIONS
+            )
+        if len(effects) == 2:
+            interactions.append(effects["natural_language"] - effects["triples"])
+    rng = random.Random(20260826)
+    boot = [mean(rng.choices(interactions, k=len(interactions))) for _ in range(bootstrap_replicates)]
+    ci90 = [percentile(boot, 0.05), percentile(boot, 0.95)]
+    return {
+        "estimate": mean(interactions),
+        "ci90": ci90,
+        "equivalence_margin": margin,
+        "lower_test_pass": ci90[0] > -margin,
+        "upper_test_pass": ci90[1] < margin,
+        "tost_equivalent": ci90[0] > -margin and ci90[1] < margin,
+        "scene_clusters": len(interactions),
+    }
+
+
 def _effect_grid(rows: list[dict[str, Any]], split: str, corruptions: tuple[str, ...]) -> dict[str, Any]:
     grid = {}
     for serialization in ("natural_language", "triples"):
@@ -143,10 +181,14 @@ def analyze_predictions() -> dict[str, Any]:
             [row for row in rows if row["split"] == "reasoning_test"], PRIMARY_CORRUPTIONS
         )
         format_interactions = {}
+        format_tost = {}
         for contract in ("conditional_likelihood", "constrained_generation"):
             nl = downstream_grid[f"natural_language__{contract}"]["estimate"]
             triples = downstream_grid[f"triples__{contract}"]["estimate"]
             format_interactions[contract] = None if nl is None or triples is None else nl - triples
+            format_tost[contract] = format_interaction_tost(
+                rows, contract, float(policy["equivalence_margin"])
+            )
         parser_valid = sum(row["parser_status"] in {"ok", "not_applicable_likelihood"} for row in rows) / len(rows)
         subtypes = Counter(row["diagnostic_subtype"] for row in rows)
         analysis["systems"][system] = {
@@ -162,6 +204,7 @@ def analyze_predictions() -> dict[str, Any]:
             "uptake": {"aggregate": aggregate_uptake, "cells": uptake_grid},
             "downstream": {"aggregate": aggregate_downstream, "cells": downstream_grid},
             "format_interaction": format_interactions,
+            "format_interaction_tost": format_tost,
             "diagnostic_subtype": subtypes.most_common(1)[0][0],
             "policy_snapshot": policy,
         }

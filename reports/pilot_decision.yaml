@@ -1,0 +1,55 @@
+schema_version: 1
+tier0_decision: INCONCLUSIVE
+scientific_pilot_status: NOT_AUTHORIZED
+next_action: REPAIR_ENGINEERING_ONLY
+reason: Known-effect sensitivity is 0.735, inside the preregistered inconclusive band;
+  human serialization review, model freeze, real-image licensing, and real VLM execution
+  are incomplete.
+config_hash: ef50eab80bedc40c23248ddbaf88896438b444baeb1a7d9b2609e3f8f51a598c
+go_gate_table:
+- gate: FMCR absolute reduction >= 0.10
+  value: 0.6
+  status: PASS
+- gate: FMCR relative reduction >= 0.40
+  value: 1.0
+  status: PASS
+- gate: FMCR improvement CI excludes zero
+  value:
+  - 0.6
+  - 0.6
+  status: PASS
+- gate: Known valid sensitivity >= 0.80
+  value: 0.735
+  status: INCONCLUSIVE
+- gate: Empirical CI coverage >= 0.90
+  value: 0.96375
+  status: PASS
+- gate: Abstention <= 0.40
+  value: 0.2288888888888889
+  status: PASS
+- gate: Measurement lower bound >= 0.98
+  value: 0.9900639180555423
+  status: PASS
+- gate: Response-contract kappa >= .90 and lower >= .85
+  value:
+    kappa: 1.0
+    lower: 1.0
+  status: PASS
+- gate: B5 outperforms B2/B3/B4
+  value:
+    B1: 0.6
+    B2: 0.6
+    B3: 0.6
+    B4: 0.4
+    B5: 0.0
+  status: PASS
+- gate: Real VLM material audit-change case
+  value: NOT_EXECUTED
+  status: NOT_EVALUABLE
+- gate: Threshold advantage does not reverse
+  value: 0.2
+  status: PASS
+- gate: Not driven by one real model/family/template/operator
+  value: NO_REAL_MODELS
+  status: NOT_EVALUABLE
+real_vlm_result: NOT_EXECUTED

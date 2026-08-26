@@ -148,7 +148,12 @@ def run_threshold_sensitivity() -> dict[str, Any]:
         for system, result in analysis["systems"].items():
             decision = audit_claim(
                 result["measurement"], result["uptake"], result["downstream"],
-                {"equivalence": equivalence, "format_interactions": result["format_interaction"], "diagnostic_subtype": result["diagnostic_subtype"]},
+                {
+                    "equivalence": equivalence,
+                    "format_interactions": result["format_interaction"],
+                    "format_tost": result["format_interaction_tost"],
+                    "diagnostic_subtype": result["diagnostic_subtype"],
+                },
                 policy,
             )
             decisions[system] = decision.decision
@@ -229,4 +234,3 @@ def holm_adjust(p_values: list[float]) -> list[float]:
         running = max(running, min(1.0, (total - rank) * p_values[index]))
         adjusted[index] = running
     return adjusted
-

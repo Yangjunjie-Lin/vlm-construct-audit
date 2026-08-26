@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from ..utils import canonical_hash, dump_yaml, load_yaml, read_jsonl, sha256_file, utc_timestamp
+from .claims import lint_claim_language
 
 
 def _config_hash() -> str:
@@ -283,6 +284,11 @@ def verify_artifacts() -> dict[str, Any]:
     }
     incomplete = [index for index, row in enumerate(predictions) if not required <= set(row)]
     config_hash_matches = all(row["config_hash"] == _config_hash() for row in predictions)
+    claim_violations = {
+        path.as_posix(): lint_claim_language(path.read_text(encoding="utf-8"))
+        for path in Path("reports").glob("*.md")
+    }
+    claim_violations = {path: violations for path, violations in claim_violations.items() if violations}
     result = {
         "schema_version": 1,
         "verified_at": utc_timestamp(),
@@ -292,7 +298,8 @@ def verify_artifacts() -> dict[str, Any]:
         "incomplete_prediction_rows": incomplete,
         "config_hash_recomputed": _config_hash(),
         "config_hash_matches_all_predictions": config_hash_matches,
-        "status": "PASS" if not failures and not incomplete and config_hash_matches else "FAIL",
+        "claim_language_violations": claim_violations,
+        "status": "PASS" if not failures and not incomplete and config_hash_matches and not claim_violations else "FAIL",
     }
     dump_yaml("artifacts/manifests/verification_report.yaml", result)
     if result["status"] != "PASS":

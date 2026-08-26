@@ -21,6 +21,12 @@ conditional_likelihood_parsed: purple
 constrained_generation:
   parsed_response: purple
   parser_status: ok
+open_generation_secondary:
+  raw_response: The answer is purple.
+  primary_result: false
+  used_by_go_no_go: false
+  parser: null
+  role: secondary_diagnostic_only
 offline_tiny_random_vlm_forward:
   status: PASS
   architecture: BlipForQuestionAnswering

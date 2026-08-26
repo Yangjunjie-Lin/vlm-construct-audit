@@ -104,6 +104,27 @@ systems:
     format_interaction:
       conditional_likelihood: 0.0
       constrained_generation: 0.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
     diagnostic_subtype: evidence_blind
     policy_snapshot: &id001
       schema_version: 1
@@ -239,6 +260,27 @@ systems:
     format_interaction:
       conditional_likelihood: 1.0
       constrained_generation: 1.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 1.0
+        ci90:
+        - 1.0
+        - 1.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: false
+        tost_equivalent: false
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 1.0
+        ci90:
+        - 1.0
+        - 1.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: false
+        tost_equivalent: false
+        scene_clusters: 16
     diagnostic_subtype: format_position_shortcut
     policy_snapshot: *id001
   OracleEvidenceReasoner:
@@ -345,6 +387,27 @@ systems:
     format_interaction:
       conditional_likelihood: 0.0
       constrained_generation: 0.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
     diagnostic_subtype: valid_reasoning
     policy_snapshot: *id001
   ParserCorruptedSystem:
@@ -451,6 +514,27 @@ systems:
     format_interaction:
       conditional_likelihood: 0.0
       constrained_generation: 0.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
     diagnostic_subtype: parser_option_mapping
     policy_snapshot: *id001
   ReasonerWithOutputCorruption:
@@ -557,6 +641,27 @@ systems:
     format_interaction:
       conditional_likelihood: 0.0
       constrained_generation: 0.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
     diagnostic_subtype: final_output_mapping
     policy_snapshot: *id001
   UptakeOnlySystem:
@@ -663,5 +768,26 @@ systems:
     format_interaction:
       conditional_likelihood: 0.0
       constrained_generation: 0.0
+    format_interaction_tost:
+      conditional_likelihood:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
+      constrained_generation:
+        estimate: 0.0
+        ci90:
+        - 0.0
+        - 0.0
+        equivalence_margin: 0.05
+        lower_test_pass: true
+        upper_test_pass: true
+        tost_equivalent: true
+        scene_clusters: 16
     diagnostic_subtype: direct_uptake_only
     policy_snapshot: *id001
