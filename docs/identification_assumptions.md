@@ -3,14 +3,15 @@
 ## E1
 
 Scene-paired intervention assignment is deterministic from a recorded seed; all conditions are
-generated for every scene. Consistency requires that each serialized evidence package matches
-its recorded condition. No interference is assumed across independent inference calls. The
-estimand remains conditional on the frozen models, prompts, contracts, and scene generator.
+generated for every scene. The multi-version treatment is indexed by `K`; the standardized
+corrupted contrast uses frozen equal operator weights. Consistency requires that each serialized
+package matches `(A,K)`. No interference is assumed across calls. The estimand remains conditional
+on frozen models, prompts, contracts, and generator.
 
 ## E2
 
-A pure measurement-contract effect requires the same frozen `O`. If contracts change `E` or
-decoding, the contrast is not identified as measurement alone and is explicitly relabelled.
+A pure measurement effect requires the same frozen `O`. Conditional likelihood versus constrained
+generation changes `E`/decoding and is explicitly labelled response-contract robustness.
 Candidate tokenization, option-to-semantic mapping, parser failures, and raw scores must be kept.
 
 ## E3
@@ -27,7 +28,7 @@ does not license an overall ATE.
 
 ## E5
 
-Observed uptake is post-treatment. Direct conditioning creates selection bias. Point
+`U_tilde` is an imperfect post-treatment proxy for `U*`. Direct conditioning creates selection bias. Point
 identification would require strong assumptions about proxy error, monotonicity, exclusion, and
 principal-stratum membership that Tier 0 does not assert. Bounds and sensitivity analyses keep
 the uncertainty visible.
@@ -35,4 +36,3 @@ the uncertainty visible.
 General internal-mechanism claims additionally require interventions on internal variables,
 faithful localization, alternative-mechanism controls, and cross-setting invariance. Those
 requirements are outside this behavioral input-output design.
-

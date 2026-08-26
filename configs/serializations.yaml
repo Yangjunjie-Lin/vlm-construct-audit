@@ -2,8 +2,13 @@ schema_version: 1
 primary: [natural_language, triples]
 reserved: [json]
 round_trip_required: true
-statistics: [token_length, entity_position, lexical_overlap]
+statistics: [token_length, entity_position_by_role, lexical_overlap, lexical_frequency, sentence_count, entity_count, relation_count, answer_option_overlap]
+matching_tolerances:
+  within_format_token_delta: 2
+  entity_count_delta: 0
+  relation_count_delta: 0
+  sentence_count_delta: 0
+  answer_option_overlap_delta: 0
 manual_review:
   sample_size: 12
   status: PENDING_INDEPENDENT_HUMAN_REVIEW
-

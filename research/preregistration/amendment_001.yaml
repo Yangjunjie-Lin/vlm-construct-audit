@@ -1,0 +1,18 @@
+schema_version: 1
+amendment_id: 001_pre_result_identification_and_sampling_repair
+amended_at: 2026-08-27
+before_any_calibration_predictions: true
+original_freeze_commit: ac7755d
+original_preregistration_sha256: 566d94a5b375065438365da8e69b070a0602c379f0c27910bc977cf0c5cd9980
+reason:
+  - independent review found latent uptake conflated with its observed proxy
+  - constrained generation was not adequately separated from pure measurement effects
+  - multi-version corruption weights and repeated-sampling units were undefined
+  - E5 principal stratum and bounds were underspecified
+changes:
+  - split U_star from U_tilde and split uptake/downstream response channels
+  - add intervention operator K and nuisance cue Z
+  - relabel cross-contract kappa as elicitation-plus-measurement robustness
+  - freeze 300 measurement probes and 200 known-DGP repeated datasets
+  - define standardized operator weights, metric denominators, confidence intervals and E5 bounds
+result_feedback_used: false

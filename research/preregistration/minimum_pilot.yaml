@@ -8,14 +8,24 @@ seed: 20260826
 splits: [development, uptake_validation, reasoning_test]
 primary_estimand: E1_behavioral_itt
 secondary_estimands: [E2_measurement_contract_effect, E3_format_effect, E4_validated_cell_effect, E5_latent_uptake_capable_bounds]
+primary_corruption_standardization:
+  operators: [relation_flip, entity_swap, attribute_swap]
+  weights: [0.3333333333, 0.3333333333, 0.3333333334]
+  operator_specific_results_required: true
 sesoi: 0.10
 alpha: 0.05
 equivalence_margin: 0.05
 gate_cutoff: 0.80
+uptake_gate_rule: one_sided_95pct_lower_bound_at_or_above_gate_cutoff
 measurement_validity_cutoff: 0.98
+measurement_probe_cases: 300
+measurement_probe_unit: unique_answer_tokenization_option_mapping_case
+measurement_probe_independence_assumption_must_be_reported: true
 contract_kappa_cutoff: 0.90
 contract_kappa_lower_bound_cutoff: 0.85
 replication_rule: both_serializations_and_both_contracts
+contract_comparison_label: elicitation_plus_measurement_response_contract_robustness
+pure_E2_requires_frozen_response: true
 intersection_union: true
 post_treatment_sample_filtering: forbidden
 reasoning_test_feedback_to_policy: forbidden
@@ -25,6 +35,60 @@ threshold_sensitivity:
   alpha: [0.01, 0.05, 0.10]
   equivalence_margin: [0.025, 0.05, 0.10]
   replication_rule: [both_formats, both_contracts, all_four_cells]
+known_dgp_repeated_sampling:
+  replications: 200
+  scenes_per_replication: 48
+  purpose: empirical_ci_coverage_and_decision_error_calibration
+  distinct_from_main_tier0_scene_inventory: true
+  independent_system_instance_seeds: 50
+  valid_effect_sizes: [0.15, 0.25, 0.50, 1.00]
+  invalid_archetypes: [evidence_blind, parser_corrupted, format_shortcut, uptake_only, output_corruption]
+metric_definitions:
+  false_mechanistic_claim_rate:
+    numerator: known_invalid_DGP_units_labelled_VALID_BEHAVIORAL_EFFECT
+    denominator: all_known_invalid_DGP_units
+    clustering: system_instance_seed
+  sensitivity:
+    numerator: known_valid_DGP_units_above_SESOI_labelled_VALID_BEHAVIORAL_EFFECT
+    denominator: all_known_valid_DGP_units_above_SESOI
+  false_discovery_proportion: false_valid_labels_over_all_valid_labels
+  abstention_rate: INCONCLUSIVE_over_all_truth_labelled_units
+  empirical_coverage: repeated_datasets_whose_cluster_CI_contains_known_effect_over_all_repeated_datasets
+  type_s_error: significant_estimates_with_wrong_sign_over_significant_estimates
+  type_m_error: mean_absolute_estimate_over_true_effect_among_significant_nonzero_effect_units
+baseline_claim_rules:
+  B1_standard_single_contract_accuracy: claims_valid_when_primary_accuracy_difference_is_positive_and_p_below_alpha
+  B2_prompt_format_sensitivity: B1_and_report_format_heterogeneity_without_invalidating_claim
+  B3_manipulation_filter: B1_after_sample_level_observed_uptake_filtering
+  B4_contract_agreement_filter: B1_only_when_response_contract_answers_agree
+  B5_full_validity_aware_audit: intersection_union_policy
+confidence_intervals:
+  paired_effect: percentile_cluster_bootstrap_by_scene
+  baseline_improvement: paired_bootstrap_by_system_instance_seed
+  proportion_lower_bound: clopper_pearson_one_sided_95
+  kappa: cluster_bootstrap_by_scene
+  kappa_parser_failure: disagreement
+  kappa_basis: semantic_answer
+  empirical_coverage_unit: independently_generated_dataset
+multiple_testing:
+  method: Holm
+  family: operator_specific_E1_and_format_interactions
+equivalence:
+  method: TOST
+  confidence_level: 0.90
+  target: E3_format_by_intervention_interaction
+mixed_model:
+  tier1_primary: model_and_family_fixed_effects_with_scene_random_intercept
+  evidence_random_slope: only_if_identifiable_and_converged
+  three_families_not_random_population: true
+  tier0: descriptive_system_fixed_effects_plus_scene_cluster_bootstrap
+threshold_stability_rule:
+  grid: one_at_a_time_primary_plus_full_cartesian_diagnostic
+  fragile: B5_false_claim_advantage_changes_sign_or_falls_below_0.05_in_more_than_10pct_of_reasonable_grid
+inconclusive_bands:
+  false_claim_absolute_reduction: [0.05, 0.10]
+  sensitivity: [0.70, 0.80]
+  abstention: [0.40, 0.50]
 tier0_go:
   false_claim_absolute_reduction_min: 0.10
   false_claim_relative_reduction_min: 0.40
@@ -35,7 +99,7 @@ tier0_go:
   measurement_validity_one_sided_lower_bound_min: 0.98
   contract_kappa_min: 0.90
   contract_kappa_lower_bound_min: 0.85
-  must_outperform: [B2_prompt_format_sensitivity, B3_manipulation_filter, B4_contract_agreement_filter]
+  must_outperform: [B1_standard_single_contract_accuracy, B2_prompt_format_sensitivity, B3_manipulation_filter, B4_contract_agreement_filter]
   threshold_advantage_must_not_reverse: true
 tier0_no_go:
   - false_claim_absolute_reduction_below_0.05
@@ -55,4 +119,15 @@ tier1:
   pooling_real_with_synthetic: forbidden
   model_revisions_must_be_frozen: true
   current_status: NOT_AUTHORIZED
-
+unresolved_external_gates:
+  serialization_human_review: PENDING_INDEPENDENT_HUMAN_REVIEW
+  tier1_model_revisions: UNFROZEN
+  real_image_license: UNESTABLISHED
+E5_partial_identification:
+  target_stratum: always_uptake_U1_equals_1_U0_equals_1
+  outcome_support: [0, 1]
+  primary_bounds: [-1, 1]
+  proxy_sensitivity_grid: [0.80, 0.90, 0.95, 1.00]
+  proxy_specificity_grid: [0.80, 0.90, 0.95, 1.00]
+  monotonicity: not_assumed
+  point_estimation_by_observed_uptake_filtering: forbidden
