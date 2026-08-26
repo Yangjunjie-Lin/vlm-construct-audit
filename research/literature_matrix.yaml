@@ -1,0 +1,120 @@
+schema_version: 1
+cutoff: 2026-08-26
+source_policy: primary_paper_formal_venue_or_official_project_only
+novelty_status: PASS_WITH_CAUTION
+absence_is_not_proven: true
+conjunction_test:
+  required:
+    - known_mechanism_calibration
+    - intervention_validity
+    - measurement_validity
+    - false_mechanistic_claim_control
+    - multi_model_vlm_evaluation
+  work_covering_all_required_axes: null
+works:
+  - id: jacobs_wallach_2021
+    title: Measurement and Fairness
+    venue: ACM FAccT 2021
+    url: https://doi.org/10.1145/3442188.3445901
+    areas: [construct_validity, measurement]
+    axes: {known_mechanism_calibration: no, intervention_validity: no, measurement_validity: partial, false_mechanistic_claim_control: partial, multi_model_vlm_evaluation: no}
+    boundary: Separates latent constructs from operationalization but provides no VLM intervention audit.
+  - id: frangakis_rubin_2002
+    title: Principal Stratification in Causal Inference
+    venue: Biometrics 58(1)
+    url: https://doi.org/10.1111/j.0006-341X.2002.00021.x
+    areas: [principal_stratification]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: no}
+    boundary: Defines effects by joint potential post-treatment states; it is not a VLM measurement framework.
+  - id: richardson_etal_2014
+    title: Nonparametric Bounds and Sensitivity Analysis of Treatment Effects
+    venue: Statistical Science 29(4)
+    url: https://doi.org/10.1214/14-STS499
+    areas: [partial_identification, sensitivity_bounds]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: no}
+    boundary: Supplies bounds and sensitivity logic, not multimodal constructs or audit calibration.
+  - id: montgomery_etal_2018
+    title: How Conditioning on Posttreatment Variables Can Ruin Your Experiment and What to Do about It
+    venue: American Journal of Political Science 62(3)
+    url: https://doi.org/10.1111/ajps.12357
+    areas: [post_treatment_selection, manipulation_checks]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: partial, multi_model_vlm_evaluation: no}
+    boundary: Motivates ITT and rejects sample filtering on uptake; no VLM audit engine.
+  - id: holtzman_etal_2021
+    title: "Surface Form Competition: Why the Highest Probability Answer Isn't Always Right"
+    venue: EMNLP 2021
+    url: https://aclanthology.org/2021.emnlp-main.564/
+    areas: [answer_contract_artifacts]
+    axes: {known_mechanism_calibration: no, intervention_validity: no, measurement_validity: yes, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: no}
+    boundary: Diagnoses string-probability scoring artifacts in language models, not VLM uptake or interventions.
+  - id: pezeshkpour_hruschka_2024
+    title: Large Language Models Sensitivity to The Order of Options in Multiple-Choice Questions
+    venue: Findings of NAACL 2024
+    url: https://aclanthology.org/2024.findings-naacl.130/
+    areas: [mcqa_option_bias, elicitation_effect]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: partial, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: no}
+    boundary: Quantifies option-order sensitivity but does not identify uptake or internal mechanisms.
+  - id: johnson_etal_2017
+    title: "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+    venue: CVPR 2017
+    url: https://openaccess.thecvf.com/content_cvpr_2017/html/Johnson_CLEVR_A_Diagnostic_CVPR_2017_paper.html
+    areas: [controlled_synthetic_world, compositional_reasoning]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: partial}
+    boundary: Knows scene and program truth, not the evaluated models' internal states.
+  - id: parcalabescu_etal_2022
+    title: "VALSE: A Task-Independent Benchmark for Vision and Language Models Centered on Linguistic Phenomena"
+    venue: ACL 2022
+    url: https://aclanthology.org/2022.acl-long.567/
+    areas: [evidence_centered_benchmark, valid_foils]
+    axes: {known_mechanism_calibration: no, intervention_validity: yes, measurement_validity: partial, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: yes}
+    boundary: Validates foils across models but has no uptake estimand or false-claim calibration.
+  - id: thrush_etal_2022
+    title: "Winoground: Probing Vision and Language Models for Visio-Linguistic Compositionality"
+    venue: CVPR 2022
+    url: https://arxiv.org/abs/2204.03162
+    areas: [lexically_matched_counterfactuals, compositionality]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: partial, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: yes}
+    boundary: Controls word multisets while intentionally changing meaning; it is not equivalent-fact serialization.
+  - id: zhao_etal_2022
+    title: "VL-CheckList: Evaluating Pre-trained Vision-Language Models with Objects, Attributes and Relations"
+    venue: arXiv original paper
+    url: https://arxiv.org/abs/2207.00221
+    areas: [attribute_binding, relations, benchmark_diagnostics]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: yes}
+    boundary: Taxonomizes failures but does not validate answer contracts or calibrate mechanism claims.
+  - id: hsieh_etal_2023
+    title: "SugarCrepe: Fixing Hackable Benchmarks for Vision-Language Compositionality"
+    venue: NeurIPS 2023 Datasets and Benchmarks
+    url: https://proceedings.neurips.cc/paper_files/paper/2023/hash/63461de0b4cb760fc498e85b18a7fe81-Abstract-Datasets_and_Benchmarks.html
+    areas: [matched_counterfactuals, blind_baselines, shortcut_detection]
+    axes: {known_mechanism_calibration: partial, intervention_validity: yes, measurement_validity: partial, false_mechanistic_claim_control: partial, multi_model_vlm_evaluation: yes}
+    boundary: Closest VLM benchmark analogue; no known-state suite, uptake layer, dual contracts, or audit error rates.
+  - id: ismithdeen_etal_2025
+    title: "Promptception: How Sensitive Are Large Multimodal Models to Prompts?"
+    venue: Findings of EMNLP 2025
+    url: https://aclanthology.org/2025.findings-emnlp.1302/
+    areas: [prompt_sensitivity, format_sensitivity]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: partial, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: yes}
+    boundary: Establishes broad LMM prompt sensitivity; the successor must exceed sensitivity reporting.
+  - id: sutter_etal_2025
+    title: "The Non-Linear Representation Dilemma: Is Causal Abstraction Enough for Mechanistic Interpretability?"
+    venue: NeurIPS 2025
+    url: https://proceedings.neurips.cc/paper_files/paper/2025/hash/dbb98528c9870377f3f0d133aae6050b-Abstract-Conference.html
+    areas: [counterfactual_mechanistic_benchmarks, false_mechanistic_success]
+    axes: {known_mechanism_calibration: partial, intervention_validity: yes, measurement_validity: partial, false_mechanistic_claim_control: yes, multi_model_vlm_evaluation: no}
+    boundary: Strongest false-mechanistic-success neighbour; no VLM behavioral uptake or contract audit.
+  - id: mukherjee_etal_2026
+    title: "C3PO: Evaluating Cross-Modal Composition and Counterfactual Performance in Omnimodal Models"
+    venue: arXiv original paper
+    url: https://arxiv.org/abs/2608.05381
+    areas: [cross_modal_conflict, counterfactual_benchmark]
+    axes: {known_mechanism_calibration: no, intervention_validity: partial, measurement_validity: no, false_mechanistic_claim_control: no, multi_model_vlm_evaluation: yes}
+    boundary: Evaluates paired cross-modal conflict but not audit validity or known-state calibration.
+  - id: aldweikat_etal_2026
+    title: "MMIB: A Mechanistic Interpretability Benchmark for Vision-Language Models"
+    venue: Sci-FM Workshop at COLM 2026
+    url: https://openreview.net/forum?id=SuE9SS4HEx
+    areas: [counterfactual_mechanistic_benchmark, internal_localization]
+    axes: {known_mechanism_calibration: partial, intervention_validity: yes, measurement_validity: partial, false_mechanistic_claim_control: partial, multi_model_vlm_evaluation: yes}
+    boundary: Closest mechanistic benchmark; two models and counterfactuals, but no six-state behavioral calibration, independent uptake, dual answer contracts, or false-claim-rate engine.
+
