@@ -1,0 +1,3 @@
+system: UptakeOnlySystem
+known_state: {uptake: valid_direct, reasoning: invalid_compositional, measurement: valid, format_shortcut: false}
+trusted_diagnostic_subtype: direct_uptake_only

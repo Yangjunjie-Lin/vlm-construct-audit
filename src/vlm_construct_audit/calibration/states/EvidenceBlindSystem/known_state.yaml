@@ -1,0 +1,3 @@
+system: EvidenceBlindSystem
+known_state: {uptake: invalid, reasoning: absent, measurement: valid, format_shortcut: false}
+trusted_diagnostic_subtype: evidence_blind

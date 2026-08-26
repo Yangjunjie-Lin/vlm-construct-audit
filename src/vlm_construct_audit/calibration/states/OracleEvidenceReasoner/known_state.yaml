@@ -1,0 +1,3 @@
+system: OracleEvidenceReasoner
+known_state: {uptake: valid, reasoning: valid, measurement: valid, format_shortcut: false}
+trusted_diagnostic_subtype: valid_reasoning

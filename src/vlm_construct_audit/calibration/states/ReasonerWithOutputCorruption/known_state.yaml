@@ -1,0 +1,3 @@
+system: ReasonerWithOutputCorruption
+known_state: {uptake: valid, reasoning: valid, measurement: invalid_observed_output, format_shortcut: false}
+trusted_diagnostic_subtype: final_output_mapping

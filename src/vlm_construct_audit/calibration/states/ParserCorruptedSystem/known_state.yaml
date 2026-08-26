@@ -1,0 +1,3 @@
+system: ParserCorruptedSystem
+known_state: {uptake: valid, reasoning: valid, measurement: invalid, format_shortcut: false}
+trusted_diagnostic_subtype: parser_option_mapping

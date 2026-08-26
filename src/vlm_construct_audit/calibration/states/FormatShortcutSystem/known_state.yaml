@@ -1,0 +1,3 @@
+system: FormatShortcutSystem
+known_state: {uptake: invalid_target_mechanism, reasoning: shortcut, measurement: valid, format_shortcut: true}
+trusted_diagnostic_subtype: format_position_shortcut
