@@ -1,0 +1,22 @@
+schema_version: 1
+frozen_at: 2026-08-26
+risks:
+  - id: R1
+    risk: tuning gates after reasoning-test results
+    control: config hashes and immutable preregistration commit
+  - id: R2
+    risk: conditioning downstream estimates on observed uptake
+    control: ITT plus split-level cell gating only
+  - id: R3
+    risk: silent parser repair
+    control: explicit parser_status and no fallback
+  - id: R4
+    risk: calling significance loss an effect reversal
+    control: typed conclusion-change taxonomy
+  - id: R5
+    risk: branding ordinary prompt sensitivity
+    control: novelty stop rule and baseline B2 comparison
+  - id: R6
+    risk: abstention inflates apparent accuracy
+    control: report sensitivity and abstention jointly
+

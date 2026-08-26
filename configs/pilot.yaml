@@ -1,0 +1,21 @@
+schema_version: 1
+seed: 20260826
+tier: 0
+scene_count: 48
+entities: {min: 3, max: 5}
+shapes: [circle, square, triangle, star]
+colors: [red, blue, green, yellow, purple, orange]
+relations: [left_of, right_of, above, below, in_front_of, behind]
+depths: [1, 2]
+splits:
+  development: 16
+  uptake_validation: 16
+  reasoning_test: 16
+interventions: [correct_evidence, relation_flip, entity_swap, attribute_swap, matched_irrelevant, plausible_contradictory]
+serializations: [natural_language, triples]
+contracts: [conditional_likelihood, constrained_generation]
+calibration_systems: [OracleEvidenceReasoner, EvidenceBlindSystem, ParserCorruptedSystem, FormatShortcutSystem, UptakeOnlySystem, ReasonerWithOutputCorruption]
+bootstrap_replicates: 2000
+preregistration: research/preregistration/minimum_pilot.yaml
+audit_policy: configs/audit_policy.yaml
+

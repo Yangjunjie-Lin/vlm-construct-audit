@@ -1,0 +1,6 @@
+schema_version: 1
+tier1_status: UNFROZEN_NOT_AUTHORIZED
+selection_rule: architecture_license_local_feasibility_release_date_not_pilot_performance
+required_families: 3
+required_metadata: [repository, revision, checkpoint_hash, processor_revision, tokenizer_revision, dtype, quantization, device_mapping, generation_parameters, software_versions]
+models: []

@@ -1,0 +1,9 @@
+schema_version: 1
+primary: [natural_language, triples]
+reserved: [json]
+round_trip_required: true
+statistics: [token_length, entity_position, lexical_overlap]
+manual_review:
+  sample_size: 12
+  status: PENDING_INDEPENDENT_HUMAN_REVIEW
+

@@ -1,0 +1,21 @@
+schema_version: 1
+frozen_at: 2026-08-26
+hypotheses:
+  H1:
+    claim: The full audit reduces false behavioral-mechanism claims on known-state systems versus standard accuracy.
+    primary_metric: false_mechanistic_claim_rate
+    status: preregistered_tier0
+  H2:
+    claim: The audit retains sensitivity to known valid behavioral effects above SESOI.
+    primary_metric: sensitivity
+    status: preregistered_tier0
+  H3:
+    claim: Proposition-equivalent formats can be audited without treating format effects as internal mechanisms.
+    primary_metric: format_classification_accuracy
+    status: preregistered_tier0
+prohibited:
+  - internal_scene_graph
+  - structured_interface_superiority
+  - semantic_sufficiency
+  - input_output_identifies_internal_mechanism
+

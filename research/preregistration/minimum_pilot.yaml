@@ -1,0 +1,58 @@
+schema_version: 1
+frozen_at: 2026-08-26
+title: Intervene Before You Infer - Minimum Pilot
+status:
+  tier0: authorized
+  tier1: not_authorized_until_tier0_go
+seed: 20260826
+splits: [development, uptake_validation, reasoning_test]
+primary_estimand: E1_behavioral_itt
+secondary_estimands: [E2_measurement_contract_effect, E3_format_effect, E4_validated_cell_effect, E5_latent_uptake_capable_bounds]
+sesoi: 0.10
+alpha: 0.05
+equivalence_margin: 0.05
+gate_cutoff: 0.80
+measurement_validity_cutoff: 0.98
+contract_kappa_cutoff: 0.90
+contract_kappa_lower_bound_cutoff: 0.85
+replication_rule: both_serializations_and_both_contracts
+intersection_union: true
+post_treatment_sample_filtering: forbidden
+reasoning_test_feedback_to_policy: forbidden
+threshold_sensitivity:
+  gate_cutoff: [0.70, 0.75, 0.80, 0.85, 0.90]
+  sesoi: [0.05, 0.10, 0.15]
+  alpha: [0.01, 0.05, 0.10]
+  equivalence_margin: [0.025, 0.05, 0.10]
+  replication_rule: [both_formats, both_contracts, all_four_cells]
+tier0_go:
+  false_claim_absolute_reduction_min: 0.10
+  false_claim_relative_reduction_min: 0.40
+  false_claim_improvement_ci_excludes_zero: true
+  sensitivity_min: 0.80
+  empirical_coverage_min: 0.90
+  abstention_max: 0.40
+  measurement_validity_one_sided_lower_bound_min: 0.98
+  contract_kappa_min: 0.90
+  contract_kappa_lower_bound_min: 0.85
+  must_outperform: [B2_prompt_format_sensitivity, B3_manipulation_filter, B4_contract_agreement_filter]
+  threshold_advantage_must_not_reverse: true
+tier0_no_go:
+  - false_claim_absolute_reduction_below_0.05
+  - false_claim_improvement_ci_includes_zero
+  - sensitivity_below_0.70
+  - inconclusive_above_0.50
+  - known_invalid_frequently_called_valid
+  - no_material_gain_over_simple_manipulation_check
+  - fragile_to_gate_cutoff
+  - novelty_collision
+tier1:
+  synthetic_scenes: 600
+  real_image_transport_samples: 120
+  open_weight_model_families: 3
+  model_selection_by_pretest_performance: forbidden
+  real_image_requirements: [two_independent_annotators, adjudication, relation_correctness, answer_uniqueness, entity_identity, distractor_validity, license_provenance]
+  pooling_real_with_synthetic: forbidden
+  model_revisions_must_be_frozen: true
+  current_status: NOT_AUTHORIZED
+

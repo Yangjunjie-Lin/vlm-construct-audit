@@ -1,0 +1,14 @@
+schema_version: 1
+policy_id: tier0_frozen_v1
+sesoi: 0.10
+alpha: 0.05
+equivalence_margin: 0.05
+gate_cutoff: 0.80
+measurement_validity_cutoff: 0.98
+contract_kappa_cutoff: 0.90
+contract_kappa_lower_bound_cutoff: 0.85
+format_materiality: 0.10
+intersection_union: true
+allow_sample_uptake_filtering: false
+decision_precedence: [INVALID_MEASUREMENT, FORMAT_DEPENDENT, INVALID_INTERVENTION, MODEL_SPECIFIC, VALID_BEHAVIORAL_EFFECT, PARTIALLY_IDENTIFIED, INCONCLUSIVE]
+
