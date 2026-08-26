@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 authors = [{name = "Yangjunjie Lin"}]
-dependencies = ["PyYAML>=6.0"]
+dependencies = ["PyYAML>=6.0", "numpy>=1.26", "scipy>=1.11"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
@@ -28,4 +28,3 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 target-version = "py310"
-

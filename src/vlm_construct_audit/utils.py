@@ -56,10 +56,9 @@ def sha256_file(path: str | Path) -> str:
 
 
 def canonical_hash(value: Any) -> str:
-    payload = json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
 
 
 def utc_timestamp() -> str:
     return datetime.now(timezone.utc).isoformat()
-
