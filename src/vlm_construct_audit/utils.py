@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Iterable
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import yaml
-
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -18,7 +18,7 @@ def load_yaml(path: str | Path) -> dict[str, Any]:
     with Path(path).open(encoding="utf-8") as handle:
         value = yaml.safe_load(handle)
     if not isinstance(value, dict):
-        raise ValueError(f"Expected mapping in {path}")
+        raise TypeError(f"Expected mapping in {path}")
     return value
 
 

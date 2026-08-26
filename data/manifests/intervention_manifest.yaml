@@ -1,0 +1,15 @@
+schema_version: 1
+row_count: 288
+conditions:
+- correct_evidence
+- relation_flip
+- entity_swap
+- attribute_swap
+- matched_irrelevant
+- plausible_contradictory
+all_fact_counts_matched: true
+all_entity_counts_matched_within_scene: true
+all_relation_counts_matched_within_scene: true
+all_noncorrect_conditions_change_facts: true
+all_interventions_preserve_world_answer: true
+sha256: 08a7c9e785de678f4fc2f72c9b09486a70ee69d1b42419a2eb169307ba86ba7b

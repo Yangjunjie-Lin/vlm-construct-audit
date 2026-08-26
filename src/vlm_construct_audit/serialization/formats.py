@@ -11,7 +11,6 @@ from typing import Any
 
 from ..utils import dump_yaml, read_jsonl, sha256_file, write_jsonl
 
-
 TOKEN_RE = re.compile(r"[A-Za-z0-9_]+|[^\w\s]")
 
 

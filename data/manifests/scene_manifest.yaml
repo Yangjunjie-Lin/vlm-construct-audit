@@ -1,0 +1,19 @@
+schema_version: 1
+seed: 20260826
+scene_count: 48
+split_counts:
+  development: 16
+  uptake_validation: 16
+  reasoning_test: 16
+depth_counts:
+  '1': 32
+  '2': 16
+relation_types_present:
+- above
+- behind
+- below
+- in_front_of
+- left_of
+- right_of
+scene_hash: 44e4cd5cb1094cb23356f1f34258ef12d4a2d44cc793cbcd156c1acb92a1aca2
+config_hash: 9883ab7828f62accb224bf57fe2df4177251ef03727b03bf2fa33e1566262e16

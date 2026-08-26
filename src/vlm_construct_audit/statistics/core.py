@@ -12,7 +12,6 @@ from scipy.stats import beta
 
 from ..utils import dump_yaml, load_yaml, read_jsonl
 
-
 PRIMARY_CORRUPTIONS = ("relation_flip", "entity_swap", "attribute_swap")
 
 

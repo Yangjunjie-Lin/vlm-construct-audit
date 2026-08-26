@@ -1,0 +1,470 @@
+schema_version: 1
+decisions:
+  EvidenceBlindSystem:
+    decision: INVALID_INTERVENTION
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - measurement_mapping
+    - deterministic_parser
+    - response_contract_robustness
+    - programmatic_fact_equivalence
+    - format_stability
+    failed_gates:
+    - independent_uptake
+    - intersection_downstream_effect
+    effect_size: 0.0
+    confidence_interval:
+    - 0.0
+    - 0.0
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: FAILED_OR_INCOMPLETE
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags: []
+    diagnostic_subtype: evidence_blind
+  FormatShortcutSystem:
+    decision: FORMAT_DEPENDENT
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - measurement_mapping
+    - deterministic_parser
+    - response_contract_robustness
+    - programmatic_fact_equivalence
+    failed_gates:
+    - independent_uptake
+    - intersection_downstream_effect
+    - format_stability
+    effect_size: 0.5
+    confidence_interval:
+    - 0.5
+    - 0.5
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: FAILED_OR_INCOMPLETE
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags:
+    - FORMAT_DEPENDENT
+    diagnostic_subtype: format_position_shortcut
+  OracleEvidenceReasoner:
+    decision: VALID_BEHAVIORAL_EFFECT
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - measurement_mapping
+    - deterministic_parser
+    - response_contract_robustness
+    - programmatic_fact_equivalence
+    - independent_uptake
+    - intersection_downstream_effect
+    - format_stability
+    failed_gates: []
+    effect_size: 1.0
+    confidence_interval:
+    - 1.0
+    - 1.0
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: ALL_FOUR_CELLS_PASS
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags: []
+    diagnostic_subtype: valid_reasoning
+  ParserCorruptedSystem:
+    decision: INVALID_MEASUREMENT
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - programmatic_fact_equivalence
+    - format_stability
+    failed_gates:
+    - measurement_mapping
+    - deterministic_parser
+    - response_contract_robustness
+    - independent_uptake
+    - intersection_downstream_effect
+    effect_size: 0.0
+    confidence_interval:
+    - 0.0
+    - 0.0
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: FAILED_OR_INCOMPLETE
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags:
+    - RESPONSE_CONTRACT_UNSTABLE
+    diagnostic_subtype: parser_option_mapping
+  ReasonerWithOutputCorruption:
+    decision: INVALID_MEASUREMENT
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - deterministic_parser
+    - response_contract_robustness
+    - programmatic_fact_equivalence
+    - format_stability
+    failed_gates:
+    - measurement_mapping
+    - independent_uptake
+    - intersection_downstream_effect
+    effect_size: 0.0
+    confidence_interval:
+    - 0.0
+    - 0.0
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: FAILED_OR_INCOMPLETE
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags: []
+    diagnostic_subtype: final_output_mapping
+  UptakeOnlySystem:
+    decision: INCONCLUSIVE
+    estimand: E1_scene_paired_behavioral_ITT_standardized_over_target_corruptions
+    eligible_population: frozen_Tier0_system_x_scene_generator_x_NL_triples_x_two_response_contracts
+    passed_gates:
+    - measurement_mapping
+    - deterministic_parser
+    - response_contract_robustness
+    - programmatic_fact_equivalence
+    - independent_uptake
+    - format_stability
+    failed_gates:
+    - intersection_downstream_effect
+    effect_size: 0.0
+    confidence_interval:
+    - 0.0
+    - 0.0
+    equivalence_result:
+      schema_version: 1
+      programmatic_fact_equivalence: true
+      equivalence_failures: []
+      pair_count: 288
+      token_length:
+        natural_language:
+          mean: 19.333333333333332
+          min: 19
+          max: 20
+        triples:
+          mean: 21
+          min: 21
+          max: 21
+      entity_position:
+        natural_language:
+          mean: 7.816666666666666
+        triples:
+          mean: 8.15
+      lexical_overlap_mean: 0.4893162393162393
+      matching_tolerances:
+        within_format_token_delta: 2
+        entity_count_delta: 0
+        relation_count_delta: 0
+        sentence_count_delta: 0
+        answer_option_overlap_delta: 0
+      matched_intervention_validation: true
+      matching_failures: []
+      lexical_frequency_recorded_per_prediction: true
+      manual_sample_review:
+        sample_size: 12
+        status: PENDING_INDEPENDENT_HUMAN_REVIEW
+        path: data/annotations/serialization_manual_review.csv
+    replication_status: FAILED_OR_INCOMPLETE
+    identification_status: BEHAVIORAL_ONLY_INTERNAL_MECHANISM_NOT_IDENTIFIED
+    claim_boundary: Known-system behavioral calibration only; no real-VLM or internal-mechanism
+      inference.
+    supporting_artifacts:
+    - artifacts/metrics/analysis_results.yaml
+    - artifacts/metrics/equivalence_report.yaml
+    - artifacts/predictions/calibration_predictions.jsonl
+    scope_flags: []
+    diagnostic_subtype: direct_uptake_only
+expected_claim_classes:
+  EvidenceBlindSystem: INVALID_INTERVENTION
+  FormatShortcutSystem: FORMAT_DEPENDENT
+  OracleEvidenceReasoner: VALID_BEHAVIORAL_EFFECT
+  ParserCorruptedSystem: INVALID_MEASUREMENT
+  ReasonerWithOutputCorruption: INVALID_MEASUREMENT
+  UptakeOnlySystem: INCONCLUSIVE
+calibration_confusion_matrix:
+  INVALID_INTERVENTION:
+    INVALID_INTERVENTION: 1
+  FORMAT_DEPENDENT:
+    FORMAT_DEPENDENT: 1
+  VALID_BEHAVIORAL_EFFECT:
+    VALID_BEHAVIORAL_EFFECT: 1
+  INVALID_MEASUREMENT:
+    INVALID_MEASUREMENT: 2
+  INCONCLUSIVE:
+    INCONCLUSIVE: 1
+expected_class_matches: 6
+system_count: 6
+baselines:
+  EvidenceBlindSystem:
+    B1_standard_single_contract_accuracy: false
+    B2_prompt_format_sensitivity_reporting: false
+    B3_simple_manipulation_check_filtering: false
+    B4_contract_agreement_filtering: false
+    B5_full_validity_aware_audit: false
+  FormatShortcutSystem:
+    B1_standard_single_contract_accuracy: true
+    B2_prompt_format_sensitivity_reporting: true
+    B3_simple_manipulation_check_filtering: true
+    B4_contract_agreement_filtering: true
+    B5_full_validity_aware_audit: false
+  OracleEvidenceReasoner:
+    B1_standard_single_contract_accuracy: true
+    B2_prompt_format_sensitivity_reporting: true
+    B3_simple_manipulation_check_filtering: true
+    B4_contract_agreement_filtering: true
+    B5_full_validity_aware_audit: true
+  ParserCorruptedSystem:
+    B1_standard_single_contract_accuracy: false
+    B2_prompt_format_sensitivity_reporting: false
+    B3_simple_manipulation_check_filtering: false
+    B4_contract_agreement_filtering: false
+    B5_full_validity_aware_audit: false
+  ReasonerWithOutputCorruption:
+    B1_standard_single_contract_accuracy: false
+    B2_prompt_format_sensitivity_reporting: false
+    B3_simple_manipulation_check_filtering: false
+    B4_contract_agreement_filtering: false
+    B5_full_validity_aware_audit: false
+  UptakeOnlySystem:
+    B1_standard_single_contract_accuracy: false
+    B2_prompt_format_sensitivity_reporting: false
+    B3_simple_manipulation_check_filtering: false
+    B4_contract_agreement_filtering: false
+    B5_full_validity_aware_audit: false
+baseline_metrics:
+  B1_standard_single_contract_accuracy:
+    false_mechanistic_claim_rate: 0.2
+    false_claims: 1
+    known_invalid_denominator: 5
+    sensitivity: 1
+    known_valid_denominator: 1
+    sensitivity_precision_warning: one archetype is not a population estimate
+  B2_prompt_format_sensitivity_reporting:
+    false_mechanistic_claim_rate: 0.2
+    false_claims: 1
+    known_invalid_denominator: 5
+    sensitivity: 1
+    known_valid_denominator: 1
+    sensitivity_precision_warning: one archetype is not a population estimate
+  B3_simple_manipulation_check_filtering:
+    false_mechanistic_claim_rate: 0.2
+    false_claims: 1
+    known_invalid_denominator: 5
+    sensitivity: 1
+    known_valid_denominator: 1
+    sensitivity_precision_warning: one archetype is not a population estimate
+  B4_contract_agreement_filtering:
+    false_mechanistic_claim_rate: 0.2
+    false_claims: 1
+    known_invalid_denominator: 5
+    sensitivity: 1
+    known_valid_denominator: 1
+    sensitivity_precision_warning: one archetype is not a population estimate
+  B5_full_validity_aware_audit:
+    false_mechanistic_claim_rate: 0.0
+    false_claims: 0
+    known_invalid_denominator: 5
+    sensitivity: 1
+    known_valid_denominator: 1
+    sensitivity_precision_warning: one archetype is not a population estimate
+E5:
+  estimand: E5_always_uptake_principal_stratum_effect
+  principal_stratum: U_star_1_equals_1_and_U_star_0_equals_1
+  bounds:
+  - -1.0
+  - 1.0
+  outcome_support:
+  - 0
+  - 1
+  identification_status: PARTIALLY_IDENTIFIED
+  monotonicity: not_assumed
+  observed_uptake_filtering: false
+claim_boundary: Calibration classifications do not identify real VLM internal mechanisms.

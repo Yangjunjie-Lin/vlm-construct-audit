@@ -1,0 +1,61 @@
+scene_id,condition,nl,triples,review_status,reviewer
+dev_0000,attribute_swap,"Entity e000_0 is left_of entity e000_1.
+Entity e000_0 has color orange.
+Entity e000_1 has shape square.","(e000_0, left_of, e000_1)
+(e000_0, color, orange)
+(e000_1, shape, square)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0000,correct_evidence,"Entity e000_0 is left_of entity e000_1.
+Entity e000_0 has color purple.
+Entity e000_1 has shape square.","(e000_0, left_of, e000_1)
+(e000_0, color, purple)
+(e000_1, shape, square)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0000,entity_swap,"Entity e000_1 is left_of entity e000_0.
+Entity e000_0 has color purple.
+Entity e000_1 has shape square.","(e000_1, left_of, e000_0)
+(e000_0, color, purple)
+(e000_1, shape, square)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0000,matched_irrelevant,"Entity e000_1 is left_of entity e000_2.
+Entity e000_1 has color orange.
+Entity e000_2 has shape triangle.","(e000_1, left_of, e000_2)
+(e000_1, color, orange)
+(e000_2, shape, triangle)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0000,plausible_contradictory,"Entity e000_0 is left_of entity e000_1.
+Entity e000_0 has color orange.
+Entity e000_1 has shape square.","(e000_0, left_of, e000_1)
+(e000_0, color, orange)
+(e000_1, shape, square)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0000,relation_flip,"Entity e000_0 is right_of entity e000_1.
+Entity e000_0 has color purple.
+Entity e000_1 has shape square.","(e000_0, right_of, e000_1)
+(e000_0, color, purple)
+(e000_1, shape, square)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,attribute_swap,"Entity e001_0 is right_of entity e001_1.
+Entity e001_1 is right_of entity e001_2.
+Entity e001_0 has color yellow.","(e001_0, right_of, e001_1)
+(e001_1, right_of, e001_2)
+(e001_0, color, yellow)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,correct_evidence,"Entity e001_0 is right_of entity e001_1.
+Entity e001_1 is right_of entity e001_2.
+Entity e001_0 has color green.","(e001_0, right_of, e001_1)
+(e001_1, right_of, e001_2)
+(e001_0, color, green)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,entity_swap,"Entity e001_1 is right_of entity e001_0.
+Entity e001_1 is right_of entity e001_2.
+Entity e001_0 has color green.","(e001_1, right_of, e001_0)
+(e001_1, right_of, e001_2)
+(e001_0, color, green)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,matched_irrelevant,"Entity e001_1 is right_of entity e001_2.
+Entity e001_2 is right_of entity e001_3.
+Entity e001_1 has color blue.","(e001_1, right_of, e001_2)
+(e001_2, right_of, e001_3)
+(e001_1, color, blue)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,plausible_contradictory,"Entity e001_0 is right_of entity e001_1.
+Entity e001_1 is right_of entity e001_2.
+Entity e001_0 has color yellow.","(e001_0, right_of, e001_1)
+(e001_1, right_of, e001_2)
+(e001_0, color, yellow)",PENDING_INDEPENDENT_HUMAN_REVIEW,
+dev_0001,relation_flip,"Entity e001_0 is left_of entity e001_1.
+Entity e001_1 is right_of entity e001_2.
+Entity e001_0 has color green.","(e001_0, left_of, e001_1)
+(e001_1, right_of, e001_2)
+(e001_0, color, green)",PENDING_INDEPENDENT_HUMAN_REVIEW,

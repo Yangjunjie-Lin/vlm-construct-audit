@@ -1,0 +1,40 @@
+schema_version: 1
+fake_adapter_status: PASS
+fake_adapter_metadata:
+  model_repository: builtin://fake-smoke-adapter
+  model_revision: known-state-v1
+  checkpoint_hash: d82f731d7a312bc41c181c76315b1ddb6af72ef2ad7c07a322dc3e04299f23a0
+  processor_revision: deterministic-fact-parser-v1
+  tokenizer_revision: explicit-regex-tokenizer-v1
+  dtype: symbolic
+  quantization: none
+  device_mapping: cpu
+  generation_parameters:
+    temperature: 0
+    do_sample: false
+  software_versions:
+    python: 3.12.6
+    platform: Windows-11-10.0.26200-SP0
+  scientific_vlm: false
+  engineering_smoke_only: true
+conditional_likelihood_parsed: purple
+constrained_generation:
+  parsed_response: purple
+  parser_status: ok
+offline_tiny_random_vlm_forward:
+  status: PASS
+  architecture: BlipForQuestionAnswering
+  weights: random_seeded_not_a_checkpoint
+  scientific_evidence: false
+  device: cpu
+  output_shape:
+  - 1
+  - 5
+  - 16
+  output_sha256: 54c9f59d8ff37626a1eaaa41f22c54792013dc70e987a5873bc6b70d780e449c
+  parameter_count: 33104
+  torch_version: 2.11.0+cpu
+  transformers_version: 5.14.1
+  cuda_available_to_torch: false
+open_weight_checkpoint_smoke: NOT_EXECUTED
+scientific_evidence: false

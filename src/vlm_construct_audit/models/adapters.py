@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import platform
 import sys
-from typing import Any
 
 from ..calibration.systems import CalibrationSystem, get_system
 from ..measurement.contracts import generate_constrained_raw, score_conditional_likelihood

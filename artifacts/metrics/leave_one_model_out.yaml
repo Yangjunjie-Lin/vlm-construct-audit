@@ -1,0 +1,14 @@
+tier1_status: NOT_APPLICABLE_NO_REAL_MODELS
+tier0_leave_one_system_out:
+- omitted_system: OracleEvidenceReasoner
+  remaining_expected_class_accuracy: 1.0
+- omitted_system: EvidenceBlindSystem
+  remaining_expected_class_accuracy: 1.0
+- omitted_system: ParserCorruptedSystem
+  remaining_expected_class_accuracy: 1.0
+- omitted_system: FormatShortcutSystem
+  remaining_expected_class_accuracy: 1.0
+- omitted_system: UptakeOnlySystem
+  remaining_expected_class_accuracy: 1.0
+- omitted_system: ReasonerWithOutputCorruption
+  remaining_expected_class_accuracy: 1.0

@@ -1,0 +1,667 @@
+schema_version: 1
+systems:
+  EvidenceBlindSystem:
+    measurement:
+      probe_successes: 300
+      probe_total: 300
+      probe_rate: 1.0
+      one_sided_95_lower: 0.9900639180555423
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 1.0
+      contract_agreement:
+        kappa: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 0.0
+      constrained_generation: 0.0
+    diagnostic_subtype: evidence_blind
+    policy_snapshot: &id001
+      schema_version: 1
+      policy_id: tier0_frozen_v1
+      sesoi: 0.1
+      alpha: 0.05
+      equivalence_margin: 0.05
+      gate_cutoff: 0.8
+      measurement_validity_cutoff: 0.98
+      contract_kappa_cutoff: 0.9
+      contract_kappa_lower_bound_cutoff: 0.85
+      format_materiality: 0.1
+      format_equivalence_required: true
+      primary_corruption_operators:
+      - relation_flip
+      - entity_swap
+      - attribute_swap
+      primary_corruption_weights:
+      - 0.3333333333
+      - 0.3333333333
+      - 0.3333333334
+      intersection_union: true
+      allow_sample_uptake_filtering: false
+      decision_precedence:
+      - INVALID_MEASUREMENT
+      - FORMAT_DEPENDENT
+      - INVALID_INTERVENTION
+      - MODEL_SPECIFIC
+      - VALID_BEHAVIORAL_EFFECT
+      - PARTIALLY_IDENTIFIED
+      - INCONCLUSIVE
+  FormatShortcutSystem:
+    measurement:
+      probe_successes: 300
+      probe_total: 300
+      probe_rate: 1.0
+      one_sided_95_lower: 0.9900639180555423
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 1.0
+      contract_agreement:
+        kappa: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 0.5
+        ci95:
+        - 0.5
+        - 0.5
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 0.5
+        ci95:
+        - 0.5
+        - 0.5
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 1.0
+      constrained_generation: 1.0
+    diagnostic_subtype: format_position_shortcut
+    policy_snapshot: *id001
+  OracleEvidenceReasoner:
+    measurement:
+      probe_successes: 300
+      probe_total: 300
+      probe_rate: 1.0
+      one_sided_95_lower: 0.9900639180555423
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 1.0
+      contract_agreement:
+        kappa: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 0.0
+      constrained_generation: 0.0
+    diagnostic_subtype: valid_reasoning
+    policy_snapshot: *id001
+  ParserCorruptedSystem:
+    measurement:
+      probe_successes: 0
+      probe_total: 300
+      probe_rate: 0.0
+      one_sided_95_lower: 0.0
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 0.5
+      contract_agreement:
+        kappa: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 0.0
+      constrained_generation: 0.0
+    diagnostic_subtype: parser_option_mapping
+    policy_snapshot: *id001
+  ReasonerWithOutputCorruption:
+    measurement:
+      probe_successes: 0
+      probe_total: 300
+      probe_rate: 0.0
+      one_sided_95_lower: 0.0
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 1.0
+      contract_agreement:
+        kappa: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 0.0
+      constrained_generation: 0.0
+    diagnostic_subtype: final_output_mapping
+    policy_snapshot: *id001
+  UptakeOnlySystem:
+    measurement:
+      probe_successes: 300
+      probe_total: 300
+      probe_rate: 1.0
+      one_sided_95_lower: 0.9900639180555423
+      independence_assumption: unique probe cases treated as Bernoulli units; deterministic
+        dependence remains a limitation
+      parser_valid_rate: 1.0
+      contract_agreement:
+        kappa: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        pair_count: 576
+        basis: semantic_answer_parser_failures_as_disagreement
+        interpretation: elicitation_plus_measurement_response_contract_robustness
+    uptake:
+      aggregate:
+        estimate: 1.0
+        ci95:
+        - 1.0
+        - 1.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 1.0
+          ci95:
+          - 1.0
+          - 1.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    downstream:
+      aggregate:
+        estimate: 0.0
+        ci95:
+        - 0.0
+        - 0.0
+        scene_clusters: 16
+        bootstrap_replicates: 2000
+        resampling_unit: scene_id
+      cells:
+        natural_language__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        natural_language__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__conditional_likelihood:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+        triples__constrained_generation:
+          estimate: 0.0
+          ci95:
+          - 0.0
+          - 0.0
+          scene_clusters: 16
+          bootstrap_replicates: 2000
+          resampling_unit: scene_id
+    format_interaction:
+      conditional_likelihood: 0.0
+      constrained_generation: 0.0
+    diagnostic_subtype: direct_uptake_only
+    policy_snapshot: *id001

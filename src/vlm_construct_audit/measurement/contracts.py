@@ -6,7 +6,6 @@ import json
 import re
 from typing import Any
 
-
 TOKEN_RE = re.compile(r"[A-Za-z0-9_]+|[^\w\s]")
 
 

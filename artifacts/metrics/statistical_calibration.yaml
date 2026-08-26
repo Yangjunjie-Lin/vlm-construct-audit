@@ -1,0 +1,28 @@
+schema_version: 1
+replications: 200
+scenes_per_replication: 48
+valid_effect_sizes:
+- 0.15
+- 0.25
+- 0.5
+- 1.0
+valid_unit_count: 800
+invalid_unit_count: 1000
+baseline_false_mechanistic_claim_rate:
+  B1: 0.6
+  B2: 0.6
+  B3: 0.6
+  B4: 0.4
+  B5: 0.0
+B5_vs_B1_absolute_reduction: 0.6
+B5_vs_B1_relative_reduction: 1.0
+B5_vs_B1_improvement_ci95:
+- 0.6
+- 0.6
+sensitivity_to_known_valid_effects: 0.735
+empirical_ci_coverage: 0.96375
+type_s_error: 0.0
+type_m_error_ratio: 1.009423347398031
+abstention_rate: 0.2288888888888889
+resampling_boundary: known-DGP repeated datasets; separate from the fixed six-system
+  inventory

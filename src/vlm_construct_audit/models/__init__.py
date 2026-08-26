@@ -3,5 +3,5 @@
 from .adapters import CalibrationVLMAdapter, FakeSmokeAdapter
 from .base import VLMAdapter
 
-__all__ = ["VLMAdapter", "CalibrationVLMAdapter", "FakeSmokeAdapter"]
+__all__ = ["CalibrationVLMAdapter", "FakeSmokeAdapter", "VLMAdapter"]
 

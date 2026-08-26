@@ -1,0 +1,32 @@
+schema_version: 1
+programmatic_fact_equivalence: true
+equivalence_failures: []
+pair_count: 288
+token_length:
+  natural_language:
+    mean: 19.333333333333332
+    min: 19
+    max: 20
+  triples:
+    mean: 21
+    min: 21
+    max: 21
+entity_position:
+  natural_language:
+    mean: 7.816666666666666
+  triples:
+    mean: 8.15
+lexical_overlap_mean: 0.4893162393162393
+matching_tolerances:
+  within_format_token_delta: 2
+  entity_count_delta: 0
+  relation_count_delta: 0
+  sentence_count_delta: 0
+  answer_option_overlap_delta: 0
+matched_intervention_validation: true
+matching_failures: []
+lexical_frequency_recorded_per_prediction: true
+manual_sample_review:
+  sample_size: 12
+  status: PENDING_INDEPENDENT_HUMAN_REVIEW
+  path: data/annotations/serialization_manual_review.csv

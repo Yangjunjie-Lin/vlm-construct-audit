@@ -9,7 +9,6 @@ from typing import Any
 
 from ..utils import canonical_hash, dump_yaml, load_yaml, sha256_file, write_jsonl
 
-
 INVERSE = {
     "left_of": "right_of",
     "right_of": "left_of",
