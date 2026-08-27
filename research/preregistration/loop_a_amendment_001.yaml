@@ -1,0 +1,46 @@
+schema_version: 1
+amendment_id: loop_a_pre_result_rng_and_holdout_sequencing
+amended_at: 2026-08-27
+before_any_loop_a_development_result: true
+registry_commit: fae4530
+reason:
+  - independent pre-result review required domain-separated random streams
+  - sample-size rows within a repetition must be nested rather than independent
+  - holdout selection and N192-fail/N384-pass handling required explicit rules
+  - historical 405-row threshold table has unapplied dimensions and remains historical only
+rules:
+  family_count: 12
+  repetitions_per_family_split: 100
+  repetitions_are_monte_carlo_repetitions_not_new_families: true
+  family_weighting: equal_macro_weight
+  primary_n_for_final_gate: 384
+  sample_size_nesting: generate_384_once_and_use_prefixes
+  seed_derivation:
+    algorithm: sha256_first_64_bits
+    message: protocol_id|split|root_seed|family_id|stream
+    streams: [parameters, potential_outcomes, uptake, measurement, contract, template, shortcut, parser_corruption, entity_permutation, bootstrap]
+  development_root_seeds: [51000, 51099]
+  holdout_root_seeds: [91000, 91099]
+  system_parameter_roots:
+    development: [510000, 510099]
+    holdout: [910000, 910099]
+  method_selection:
+    A0_N_le_192_all_gates_pass: retain_A0_and_mark_POWER_RESOLVED
+    A0_N192_fails_N384_passes: retain_A0_no_repair_and_mark_POWER_INCONCLUSIVE
+    A0_N384_sensitivity_below_0_80: one_AuditV2_development_repair_allowed
+  holdout:
+    selected_method_commit_required: true
+    execution: one_sealed_batch_for_all_predeclared_sample_sizes
+    intermediate_family_output_during_execution: forbidden
+    rerun: forbidden
+  non_strong_diagnostic:
+    families: [ValidModerateEffect, ValidBoundaryEffect, ValidStochasticUptake, ValidNoisyButMeasured, ValidHeterogeneousScenes]
+    macro_sensitivity_min: 0.80
+    minimum_families_individually_at_or_above_0_80: 3
+    boundary_family_separate_go_gate: false
+    boundary_family_reporting: mandatory
+  threshold_stability:
+    uses_historical_405_table: false
+    recompute_each_applied_dimension: true
+    SESOI_remains: 0.10
+result_feedback_used: false

@@ -1,0 +1,24 @@
+schema_version: 1
+frozen_at: 2026-08-27
+role: actual_template_inventory_for_domain_separation
+development:
+  - template_id: loop_a_dev_template_01
+    text: "Using only the supplied propositions, select the semantic answer for {question}."
+  - template_id: loop_a_dev_template_02
+    text: "Facts are supplied below. Determine {question} and return one allowed answer."
+  - template_id: loop_a_dev_template_03
+    text: "Read the evidence block before answering: {question}."
+  - template_id: loop_a_dev_template_04
+    text: "Which allowed semantic answer follows from these facts for {question}?"
+holdout:
+  - template_id: loop_a_holdout_template_01
+    text: "From the listed statements alone, resolve {question} with one candidate."
+  - template_id: loop_a_holdout_template_02
+    text: "Choose the answer licensed by the evidence for {question}."
+  - template_id: loop_a_holdout_template_03
+    text: "Consult every relevant proposition, then answer {question}."
+  - template_id: loop_a_holdout_template_04
+    text: "Return exactly one permitted semantic response to {question} from the facts."
+template_contents_are_not_model_prompts: true
+note: These strings index DGP nuisance families only; Loop A runs no VLM.
+
