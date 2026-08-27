@@ -15,6 +15,7 @@ import numpy as np
 from ..audit.engine import audit_claim
 from ..statistics.core import clopper_pearson_lower
 from ..utils import canonical_hash, dump_yaml, load_yaml, write_jsonl
+from .audit_v2 import audit_claim_v2
 
 VALID_CLASS = "VALID_BEHAVIORAL_EFFECT"
 INVALID_FAMILIES = {
@@ -286,6 +287,18 @@ def _simulate_a0_inputs(
         },
         "diagnostic_subtype": f"unseen_dgp:{name}",
     }
+    if name == "MixedValidInvalidPopulation":
+        replication["partial_identification"] = {
+            "eligible": True,
+            "target_estimand": "E5_always_uptake_principal_stratum_effect",
+            "bounds": [-1.0, 1.0],
+            "proxy_sensitivity": params.get("proxy_sensitivity"),
+            "proxy_specificity": params.get("proxy_specificity"),
+            "monotonicity": "not_assumed",
+            "observed_uptake_filtering": False,
+        }
+    else:
+        replication["partial_identification"] = {"eligible": False}
     metadata = {
         "family_parameters": params,
         "scene_seed": root_seed,
@@ -413,8 +426,13 @@ def _threshold_stability(
                             inputs["replication"]["format_tost"][contract]["tost_equivalent"] = (
                                 ci90[0] > -float(margin) and ci90[1] < float(margin)
                             )
-                        decision = audit_claim(
-                            inputs["measurement"], inputs["uptake"], inputs["downstream"], inputs["replication"], policy
+                        classifier = audit_claim if row["method"] == "A0" else audit_claim_v2
+                        decision = classifier(
+                            inputs["measurement"],
+                            inputs["uptake"],
+                            inputs["downstream"],
+                            inputs["replication"],
+                            policy,
                         )
                         decisions.append(
                             {
@@ -456,8 +474,6 @@ def _threshold_stability(
 def _run_split(split: str, method_name: str = "A0") -> dict[str, Any]:
     registry = load_yaml("research/preregistration/loop_a_dgp_registry.yaml")
     protocol = load_yaml("research/preregistration/tier0_5_three_loop.yaml")
-    if method_name != "A0":
-        raise NotImplementedError("AuditV2 is not frozen")
     split_spec = registry[split]
     templates = load_yaml("research/preregistration/loop_a_templates.yaml")
     split_spec = {**split_spec, "actual_templates": templates[split]}
@@ -472,7 +488,8 @@ def _run_split(split: str, method_name: str = "A0") -> dict[str, Any]:
             for repetition in range(repetitions):
                 root_seed = seed_base + repetition
                 inputs, metadata = _simulate_a0_inputs(family, int(n), root_seed, split_spec)
-                decision = audit_claim(
+                classifier = audit_claim if method_name == "A0" else audit_claim_v2
+                decision = classifier(
                     inputs["measurement"], inputs["uptake"], inputs["downstream"], inputs["replication"], policy
                 )
                 row = {
@@ -521,7 +538,8 @@ def _run_split(split: str, method_name: str = "A0") -> dict[str, Any]:
         selected_n = 384
         repair_eligible = False
     threshold = _threshold_stability(observable_rows, registry, int(selected_n))
-    output_dir = Path(f"artifacts/loop_a/{split}")
+    output_suffix = split if method_name == "A0" else f"{split}_{method_name.lower()}"
+    output_dir = Path(f"artifacts/loop_a/{output_suffix}")
     output_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(output_dir / "dataset_results.jsonl", rows)
     report = {
@@ -549,6 +567,15 @@ def run_loop_a_development() -> dict[str, Any]:
         raise RuntimeError("Holdout already exists; development may not be rerun")
     reproduce_a0_baseline()
     return _run_split("development", "A0")
+
+
+def run_loop_a_development_audit_v2() -> dict[str, Any]:
+    if Path("artifacts/loop_a/holdout/summary.yaml").exists():
+        raise RuntimeError("Holdout already exists; AuditV2 development may not be run")
+    development = load_yaml("artifacts/loop_a/development/summary.yaml")
+    if development["repair_eligible"] is not True:
+        raise RuntimeError("Frozen A0 development result did not authorize AuditV2")
+    return _run_split("development", "AuditV2")
 
 
 def run_loop_a_holdout() -> dict[str, Any]:

@@ -1,0 +1,51 @@
+schema_version: 1
+method: AuditV2
+frozen_at: 2026-08-27
+repair_number: 1
+maximum_repairs: 1
+repair_budget_consumed: true
+holdout_results_seen: false
+development_diagnostic:
+  A0_summary_sha256: eea1d7352eb3d1c379fc7a8a623b69b27f6bfb3522c63fa9dfa79385c5a033b9
+  A0_dataset_results_sha256: 56e86ab1809869a3552c541acfba0a7398d82f21feeb3cd4bbdf6046e6367720
+  sensitivity_at_n384: 0.7966666666666666
+  false_negative_pattern:
+    - valid_boundary_effect_underpowered_by_four_cell_two_sided_interval_intersection
+    - A0_cannot_emit_PARTIALLY_IDENTIFIED_for_registered_E5_family
+principled_changes:
+  effect_estimator:
+    direction: correct_evidence_minus_target_corrupted
+    confidence_bound: one_sided_95_percent
+    z_value: 1.6448536269514722
+    pooled_estimate: equal_mean_of_four_frozen_cell_point_estimates
+    effective_n: minimum_scene_cluster_count_across_cells
+    variance: maximum_Bernoulli_variance_across_cells_divided_by_effective_n
+    cell_count_does_not_multiply_n: true
+  replication:
+    all_four_cell_point_estimates_must_exceed_SESOI: true
+    response_contract_kappa_gate_unchanged: true
+    format_TOST_gate_unchanged: true
+  partial_identification:
+    trigger_requires_precomputed_observable_bounds: true
+    primary_bounds: [-1.0, 1.0]
+    observed_uptake_filtering: forbidden
+    output_class: PARTIALLY_IDENTIFIED
+unchanged_thresholds:
+  SESOI: 0.10
+  uptake_lower: 0.80
+  measurement_lower: 0.98
+  contract_kappa: 0.90
+  contract_kappa_lower: 0.85
+  format_materiality: 0.10
+forbidden_after_freeze:
+  - second_method_repair
+  - holdout_threshold_change
+  - family_or_truth_label_change
+  - new_gate_metric_or_prompt
+  - deletion_of_difficult_valid_DGP
+comparison_requirements:
+  sensitivity_improves_over_A0: true
+  FMCR_not_higher_than_A0: true
+  specificity_not_lower_than_A0: true
+  abstention_not_higher_than_A0: true
+  label_distribution_change_alone_is_insufficient: true
