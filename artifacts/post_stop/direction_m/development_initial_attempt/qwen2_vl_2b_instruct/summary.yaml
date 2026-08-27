@@ -1,0 +1,22 @@
+model_id: qwen2_vl_2b_instruct
+family: Qwen2-VL
+revision: 895c3a49bc3fa70a340399125c650a463535e71c
+status: COMPLETE
+primary_evaluations: 240
+rerun_evaluations: 240
+artifact_completeness: 1.0
+grammar_constrained_syntactic_validity: 1
+prompt_only_JSON_syntactic_validity: 0.25
+independent_scorer_ranking_agreement: 1
+maximum_independent_token_logprob_difference: 7.652673801317178e-07
+deterministic_rerun_agreement: 1
+task_correctness:
+  M-C1: 0.8666666666666667
+  M-C2: 0.9
+  M-C3: 0.25
+  M-C4: 0.8666666666666667
+semantic_validity:
+  M-C1: 1
+  M-C2: 1
+  M-C3: 0.25
+  M-C4: 0.9833333333333333

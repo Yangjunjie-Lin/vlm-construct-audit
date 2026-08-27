@@ -1,0 +1,27 @@
+schema_version: 1
+amendment_id: direction_m_development_amendment_001
+recorded_at: 2026-08-27
+recorded_before_holdout: true
+holdout_seen: false
+revision_number: 1
+maximum_development_only_revisions: 1
+revision_budget_consumed: true
+trigger: InternVL wrapper duplicated the use_cache keyword during token-mask generation
+change:
+  old_behavior: generic constrained-generation call explicitly passed use_cache=true to every worker
+  new_behavior: omit the explicit use_cache keyword for InternVL because the pinned remote wrapper supplies it; retain use_cache=true for StandardWorker
+unchanged:
+  - scenes and image hashes
+  - development and holdout seeds
+  - model repositories and exact revisions
+  - prompts and candidates
+  - four contract definitions
+  - finite-language token-prefix automaton
+  - strict parser and deterministic canonicalizer
+  - metrics and bootstrap procedure
+  - engineering and scientific gates
+  - no model selection by observed outcome
+full_development_rerun_required: true
+further_development_revision: forbidden
+scientific_reason: compatibility repair only; it cannot select or improve a semantic answer
+launcher_failure_before_import_also_preserved: artifacts/post_stop/direction_m_development_console.log

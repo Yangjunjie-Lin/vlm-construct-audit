@@ -1,0 +1,23 @@
+model_id: internvl2_5_2b
+family: InternVL2.5-InternLM2
+revision: 573169ee54df216786bb9a189e9a32a060a008cf
+status: FAILED
+error_type: TypeError
+error: transformers.generation.utils.GenerationMixin.generate() got multiple values
+  for keyword argument 'use_cache'
+traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  src\\vlm_construct_audit\\post_stop\\direction_m.py\", line 317, in run_model\n\
+  \    first = _run_once(worker, scene, serialization, contract)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\post_stop\\\
+  direction_m.py\", line 273, in _run_once\n    raw, automaton = _constrained_generate(worker,\
+  \ prompt, image, scene[\"candidates\"])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\post_stop\\\
+  direction_m.py\", line 245, in _constrained_generate\n    output = worker.model.generate(\n\
+  \             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\torch\\utils\\_contextlib.py\", line 116, in\
+  \ decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"C:\\Users\\Yangjunjie Lin\\.cache\\huggingface\\modules\\transformers_modules\\\
+  OpenGVLab\\InternVL2_5-2B\\573169ee54df216786bb9a189e9a32a060a008cf\\modeling_internvl_chat.py\"\
+  , line 341, in generate\n    outputs = self.language_model.generate(\n         \
+  \     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: transformers.generation.utils.GenerationMixin.generate()\
+  \ got multiple values for keyword argument 'use_cache'\n"

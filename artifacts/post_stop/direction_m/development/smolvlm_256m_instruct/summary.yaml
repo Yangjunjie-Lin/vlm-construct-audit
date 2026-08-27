@@ -1,0 +1,22 @@
+model_id: smolvlm_256m_instruct
+family: SmolVLM-Idefics3
+revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+status: COMPLETE
+primary_evaluations: 240
+rerun_evaluations: 240
+artifact_completeness: 1.0
+grammar_constrained_syntactic_validity: 1
+prompt_only_JSON_syntactic_validity: 0
+independent_scorer_ranking_agreement: 1
+maximum_independent_token_logprob_difference: 7.459785287267096e-07
+deterministic_rerun_agreement: 1
+task_correctness:
+  M-C1: 0.4166666666666667
+  M-C2: 0.18333333333333332
+  M-C3: 0
+  M-C4: 0.36666666666666664
+semantic_validity:
+  M-C1: 1
+  M-C2: 1
+  M-C3: 0
+  M-C4: 0.9333333333333333

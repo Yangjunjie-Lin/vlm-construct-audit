@@ -1,0 +1,21 @@
+schema_version: 1
+direction: M
+observed_at: 2026-08-27
+split: development
+status: DEVELOPMENT_ENGINEERING_GATE_FAILED
+config_hash: bbe12bb858906fc241bd9159466903495ab28d2a5abfa9a2eea6dae471846400
+model_status:
+  smolvlm_256m_instruct: COMPLETE
+  internvl2_5_2b: FAILED_BEFORE_ANY_COMPLETE_CONTRACT_UNIT
+  qwen2_vl_2b_instruct: COMPLETE
+failure:
+  model: internvl2_5_2b
+  error_type: TypeError
+  message: GenerationMixin.generate got multiple values for keyword argument use_cache
+  location: true grammar-constrained generation wrapper
+  cause: InternVL remote generate wrapper already supplies use_cache to its language model
+scientific_threshold_or_prompt_change_indicated: false
+initial_attempt_preserved_at: artifacts/post_stop/direction_m/development_initial_attempt
+summary_sha256: 2ca649b807c3dd4ff854dbf9090d91ce41e9f32f1e91917f282dd3c85f0f8916
+execution_marker_sha256: d9fa0755997f7d6173204724bfc3d65eb7ebe6c85bf4a35998b0bbfa22a240b6
+internvl_failure_sha256: 66054cc37697311b28d65c276aea83e1fbd0003c5100d6d75a98241e511a1aa4

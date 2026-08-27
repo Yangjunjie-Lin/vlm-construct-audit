@@ -1,0 +1,177 @@
+D:\UoM_CS\GitHub\vlm-construct-audit\.venv-vlm-smoke\Lib\site-packages\timm\models\layers\__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+The `load_in_4bit` and `load_in_8bit` arguments are deprecated and will be removed in the future versions. Please, pass a `BitsAndBytesConfig` object in `quantization_config` argument instead.
+InternLM2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From \U0001f449v4.50\U0001f448 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.48, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+FlashAttention2 is not installed.
+Warning: Flash attention is not available, using eager attention instead.
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|#####     | 1/2 [00:03<00:03,  3.83s/it]
+Loading checkpoint shards: 100%|##########| 2/2 [00:04<00:00,  2.14s/it]
+Loading checkpoint shards: 100%|##########| 2/2 [00:04<00:00,  2.40s/it]
+D:\UoM_CS\GitHub\vlm-construct-audit\.venv-vlm-smoke\Lib\site-packages\transformers\generation\configuration_utils.py:629: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.01` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+D:\UoM_CS\GitHub\vlm-construct-audit\.venv-vlm-smoke\Lib\site-packages\transformers\generation\configuration_utils.py:634: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.001` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+D:\UoM_CS\GitHub\vlm-construct-audit\.venv-vlm-smoke\Lib\site-packages\transformers\generation\configuration_utils.py:651: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `1` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+schema_version: 1
+direction: M
+split: development
+config_hash: bbe12bb858906fc241bd9159466903495ab28d2a5abfa9a2eea6dae471846400
+model_summaries:
+- model_id: smolvlm_256m_instruct
+  family: SmolVLM-Idefics3
+  revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+  status: COMPLETE
+  primary_evaluations: 240
+  rerun_evaluations: 240
+  artifact_completeness: 1.0
+  grammar_constrained_syntactic_validity: 1
+  prompt_only_JSON_syntactic_validity: 0
+  independent_scorer_ranking_agreement: 1
+  maximum_independent_token_logprob_difference: 7.459785287267096e-07
+  deterministic_rerun_agreement: 1
+  task_correctness:
+    M-C1: 0.4166666666666667
+    M-C2: 0.18333333333333332
+    M-C3: 0
+    M-C4: 0.36666666666666664
+  semantic_validity:
+    M-C1: 1
+    M-C2: 1
+    M-C3: 0
+    M-C4: 0.9333333333333333
+- model_id: internvl2_5_2b
+  family: InternVL2.5-InternLM2
+  revision: 573169ee54df216786bb9a189e9a32a060a008cf
+  status: FAILED
+  error_type: TypeError
+  error: transformers.generation.utils.GenerationMixin.generate() got multiple values
+    for keyword argument 'use_cache'
+  traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+    src\\vlm_construct_audit\\post_stop\\direction_m.py\", line 317, in run_model\n\
+    \    first = _run_once(worker, scene, serialization, contract)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\\
+    post_stop\\direction_m.py\", line 273, in _run_once\n    raw, automaton = _constrained_generate(worker,\
+    \ prompt, image, scene[\"candidates\"])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\\
+    post_stop\\direction_m.py\", line 245, in _constrained_generate\n    output =\
+    \ worker.model.generate(\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\\
+    GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\torch\\utils\\\
+    _contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n\
+    \           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yangjunjie Lin\\.cache\\\
+    huggingface\\modules\\transformers_modules\\OpenGVLab\\InternVL2_5-2B\\573169ee54df216786bb9a189e9a32a060a008cf\\\
+    modeling_internvl_chat.py\", line 341, in generate\n    outputs = self.language_model.generate(\n\
+    \              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: transformers.generation.utils.GenerationMixin.generate()\
+    \ got multiple values for keyword argument 'use_cache'\n"
+- model_id: qwen2_vl_2b_instruct
+  family: Qwen2-VL
+  revision: 895c3a49bc3fa70a340399125c650a463535e71c
+  status: COMPLETE
+  primary_evaluations: 240
+  rerun_evaluations: 240
+  artifact_completeness: 1.0
+  grammar_constrained_syntactic_validity: 1
+  prompt_only_JSON_syntactic_validity: 0.25
+  independent_scorer_ranking_agreement: 1
+  maximum_independent_token_logprob_difference: 7.652673801317178e-07
+  deterministic_rerun_agreement: 1
+  task_correctness:
+    M-C1: 0.8666666666666667
+    M-C2: 0.9
+    M-C3: 0.25
+    M-C4: 0.8666666666666667
+  semantic_validity:
+    M-C1: 1
+    M-C2: 1
+    M-C3: 0.25
+    M-C4: 0.9833333333333333
+canonicalizer_validation:
+  valid_form_recall: 1.0
+  invalid_ambiguous_rejection: 1.0
+  valid_cases: 5
+  invalid_cases: 5
+comparisons:
+- model_id: smolvlm_256m_instruct
+  units: 60
+  cll_vs_true_constrained_semantic_agreement: 0.25
+  cll_vs_true_constrained_kappa: 0.2105263157894737
+  kappa_bootstrap_ci95:
+  - 0.12067827889574274
+  - 0.3016551211286612
+  paired_correctness_difference_M_C2_minus_M_C1: -0.23333333333333334
+  paired_correctness_difference_ci95:
+  - -0.38333333333333336
+  - -0.06666666666666667
+  semantic_change_rate: 0.75
+  changed_tasks:
+  - color
+  - direct_relation_direction
+  - entity_attribute_binding
+  - multi_token_answer
+  - object_identity
+  - shape
+  changed_serializations:
+  - functional_query
+  - natural_language
+  parser_rejection_defines_change: false
+  by_contract_correctness:
+    M-C1: 0.4166666666666667
+    M-C2: 0.18333333333333332
+    M-C3: 0
+    M-C4: 0.36666666666666664
+  by_contract_semantic_validity:
+    M-C1: 1
+    M-C2: 1
+    M-C3: 0
+    M-C4: 0.9333333333333333
+- model_id: qwen2_vl_2b_instruct
+  units: 60
+  cll_vs_true_constrained_semantic_agreement: 0.9333333333333333
+  cll_vs_true_constrained_kappa: 0.927710843373494
+  kappa_bootstrap_ci95:
+  - 0.8533399450494589
+  - 0.9818185946660061
+  paired_correctness_difference_M_C2_minus_M_C1: 0.03333333333333333
+  paired_correctness_difference_ci95:
+  - -0.03333333333333333
+  - 0.1
+  semantic_change_rate: 0.06666666666666667
+  changed_tasks:
+  - direct_relation_direction
+  - entity_attribute_binding
+  - option_mapping
+  changed_serializations:
+  - functional_query
+  - natural_language
+  parser_rejection_defines_change: false
+  by_contract_correctness:
+    M-C1: 0.8666666666666667
+    M-C2: 0.9
+    M-C3: 0.25
+    M-C4: 0.8666666666666667
+  by_contract_semantic_validity:
+    M-C1: 1
+    M-C2: 1
+    M-C3: 0.25
+    M-C4: 0.9833333333333333
+engineering_gates:
+  three_models_complete: false
+  grammar_syntax: false
+  artifact_completeness: false
+  independent_scorer: false
+  determinism: false
+  canonicalizer_valid_recall: true
+  canonicalizer_invalid_rejection: true
+equivalence_models: []
+material_effect_models:
+- smolvlm_256m_instruct
+material_effect_same_direction_count: 1
+decision: DEVELOPMENT_ENGINEERING_GATE_FAILED
+claim_boundary: Real-checkpoint measurement-contract evidence only; syntactic compliance
+  is not capability and no internal mechanism is identified.
