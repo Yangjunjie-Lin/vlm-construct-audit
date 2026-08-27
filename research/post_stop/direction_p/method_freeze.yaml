@@ -1,0 +1,29 @@
+schema_version: 1
+direction: P
+status: METHOD_FROZEN
+frozen_at: 2026-08-27
+freeze_parent_commit: 0d3d96449bac279975e6e2ec4186b775a149e9e8
+freeze_commit_message: "feat: freeze direction-p method"
+effective_after_commit: true
+development_revision_count: 1
+further_development_revision: forbidden
+selected_method: P3
+selected_before_holdout: true
+frozen_parameters:
+  delta0: 0.10
+  delta1: 0.15
+  certification_critical_z: 1.959963984540054
+  below_critical_z: 1.6448536269514722
+  measurement_cutoff: 0.98
+  uptake_cutoff: 0.80
+  contract_kappa_cutoff: 0.90
+  format_materiality: 0.10
+  primary_sample_size: 768
+  repetitions_per_family_size: 100
+frozen_sha256:
+  preregistration.yaml: d0e4cc1275f4abdff8d87b1fb77c9e195a2cd03799f598aa56ff020e844aefe3
+  power_table.yaml: 201ed208e5a43984576174fdc4915899f762829c255d690fd42dd8c803de0364
+  direction_p.py: 02f90b85f96a27edef5d6daf17eb835fc8edad1191043eedfdff8877050dbae3
+holdout_parameter_or_code_change: forbidden
+holdout_execution_limit: 1
+claim_boundary: Known-DGP methodological evidence only; real-VLM and internal-mechanism claims remain forbidden.

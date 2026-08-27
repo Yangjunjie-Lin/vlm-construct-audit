@@ -1,0 +1,26 @@
+schema_version: 1
+direction: P
+split: development
+status: DEVELOPMENT_COMPLETE_NOT_A_HOLDOUT_DECISION
+completed_at: 2026-08-27
+config_hash: 57f963d7c4ca117d4846c8d6dc12eab7cebbdd6a1944b65b38c42b9bdcd5d404
+dataset_count: 5600
+primary_sample_size: 768
+development_revision_count: 1
+development_revision_budget_consumed: true
+holdout_seen: false
+P3_development_diagnostics:
+  fmcr: 0.0
+  specificity_effect_le_delta0: 1.0
+  sensitivity_effect_ge_delta1: 1.0
+  gray_zone_overclaim_rate: 0.0
+  coverage: 1.0
+  type_s: 0.0
+  abstention_rate: 0.0
+  paired_sensitivity_improvement_over_P0: 0.322
+  paired_improvement_ci95: [0.2810040833965915, 0.3629959166034085]
+development_artifact_sha256:
+  dataset_results.jsonl: 60a76f3a75363521d6fbcda5a0004fae2ee0e280314155888665a74d8dba7567
+  summary.yaml: a66969fa5cbe16ce3dc03dc1eed8a16aafbf43db95449b57a5337ea6d87e5423
+  execution_marker.yaml: 7e97d4aedb1d07f65e8e623e39d2c6e36a3d3bac26d60e1e75fbe8a7d47864b1
+result_use: method_freeze_diagnostic_only

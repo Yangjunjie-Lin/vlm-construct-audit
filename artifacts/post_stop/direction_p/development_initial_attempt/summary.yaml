@@ -1194,6 +1194,6 @@ gate_table:
   threshold_stability: true
   sensitivity_improvement_over_frozen_AuditV2: true
   fmcr_not_worse_than_frozen_AuditV2: true
-decision: DEVELOPMENT_COMPLETE_NOT_A_HOLDOUT_DECISION
+decision: DIRECTION_P_GO
 claim_boundary: Known-DGP methodological evidence only; no real-VLM effect or internal
   mechanism is identified.

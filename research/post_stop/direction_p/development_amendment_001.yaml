@@ -1,0 +1,29 @@
+schema_version: 1
+amendment_id: direction_p_development_amendment_001
+recorded_at: 2026-08-27
+recorded_before_holdout: true
+holdout_seen: false
+revision_number: 1
+maximum_development_only_revisions: 1
+revision_budget_consumed: true
+trigger: development summary reporting control-flow defect
+change:
+  old_behavior: all passing development gates emitted DIRECTION_P_GO
+  new_behavior: every development run emits DEVELOPMENT_COMPLETE_NOT_A_HOLDOUT_DECISION; GO/NO_GO is restricted to split=holdout
+unchanged:
+  - delta0
+  - delta1
+  - certification alpha and critical value
+  - DGP families and parameter ranges
+  - development and holdout seeds
+  - expected decisions
+  - estimators
+  - metric definitions
+  - GO gates
+  - generated numeric outcomes
+initial_attempt_preserved_at: artifacts/post_stop/direction_p/development_initial_attempt
+initial_attempt_sha256:
+  dataset_results.jsonl: 60a76f3a75363521d6fbcda5a0004fae2ee0e280314155888665a74d8dba7567
+  execution_marker.yaml: 59e6e866ec4e72cb3feaad6aa09a66c831591c8f18ec59d6a7d67afe103f5ece
+  summary.yaml: 5669f948648dd6e930fc16e2f7cc24584c46729b5248bbbc7221370d253aa154
+scientific_reason: development cannot authorize a direction; the repair narrows output authority and cannot improve any metric

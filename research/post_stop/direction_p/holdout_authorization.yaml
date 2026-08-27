@@ -1,0 +1,18 @@
+schema_version: 1
+direction: P
+status: AUTHORIZED_FOR_ONE_SEALED_EXECUTION
+authorized_at: 2026-08-27
+effective_only_after_method_freeze_commit: true
+requirements:
+  frozen_preregistration: PASS
+  analytic_power_feasible: PASS
+  development_completion_record: PASS
+  method_freeze_record: PASS
+  novelty_gate: NOVELTY_PASS_WITH_CAUTION
+  old_loop_a_holdout_closed: PASS
+holdout_namespace: post_stop_p_holdout_contract_v1
+holdout_seed_formula: 271000000 + sample_size * 10000 + family_index * 100 + repetition
+holdout_seed_range: [271000, 271099]
+maximum_executions: 1
+intermediate_result_emission: forbidden
+authorization_does_not_authorize_real_vlm_pilot: true

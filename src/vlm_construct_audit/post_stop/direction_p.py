@@ -330,12 +330,12 @@ def _build_summary(rows: list[dict[str, Any]], config: dict[str, Any], split: st
         "sensitivity_improvement_over_frozen_AuditV2": improvement["ci95"][0] > 0,
         "fmcr_not_worse_than_frozen_AuditV2": p3["fmcr"] <= primary["P0"]["fmcr"],
     }
-    if all(gate_table.values()):
-        decision = "DIRECTION_P_GO"
-    elif split == "holdout":
-        decision = "DIRECTION_P_NO_GO"
-    else:
+    if split != "holdout":
         decision = "DEVELOPMENT_COMPLETE_NOT_A_HOLDOUT_DECISION"
+    elif all(gate_table.values()):
+        decision = "DIRECTION_P_GO"
+    else:
+        decision = "DIRECTION_P_NO_GO"
     return {
         "schema_version": 1,
         "direction": "P",

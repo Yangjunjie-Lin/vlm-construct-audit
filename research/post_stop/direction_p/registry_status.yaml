@@ -1,8 +1,11 @@
 schema_version: 1
 direction: P
 hypothesis: power_calibrated_claim_certification
-status: AWAITING_NOVELTY_GATE_AND_PREREGISTRATION
+status: METHOD_FROZEN_HOLDOUT_AUTHORIZED_ONCE
 old_loop_a_outcomes_for_selection_or_tuning: forbidden
 development_seed_namespace: post_stop_p_dev_pending_freeze
 holdout_seed_namespace: post_stop_p_holdout_pending_seal
 holdout_execution_count: 0
+development_revision_count: 1
+development_revision_budget_remaining: 0
+selected_method: P3
