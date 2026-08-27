@@ -1,0 +1,8 @@
+schema_version: 1
+direction: U
+hypothesis: post_treatment_safe_uptake_identification
+status: AWAITING_NOVELTY_GATE_AND_PREREGISTRATION
+old_loop_a_or_loop_c_outcomes_for_selection_or_tuning: forbidden
+development_seed_namespace: post_stop_u_dev_pending_freeze
+holdout_seed_namespace: post_stop_u_holdout_pending_seal
+holdout_execution_count: 0

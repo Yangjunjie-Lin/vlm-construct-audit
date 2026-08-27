@@ -1,0 +1,24 @@
+schema_version: 1
+cutoff: 2026-08-27
+status: NOT_YET_EXECUTED
+new_results_authorized: false
+required_topics:
+  - minimum-effect testing
+  - SESOI-aware decision rules
+  - equivalence and non-inferiority testing
+  - selective prediction
+  - risk-coverage analysis
+  - conformal risk control
+  - grammar-constrained decoding
+  - JSON-schema constrained decoding
+  - structured-output benchmarks
+  - LLM/VLM answer-contract effects
+  - principal stratification
+  - instrumental variables
+  - post-treatment selection
+  - partial identification
+  - multimodal intervention uptake
+directions:
+  P: PENDING_PRIMARY_SOURCE_SEARCH
+  M: PENDING_PRIMARY_SOURCE_SEARCH
+  U: PENDING_PRIMARY_SOURCE_SEARCH

@@ -1,0 +1,74 @@
+schema_version: 1
+protocol_id: post_stop_three_direction_screen_v1
+frozen_at: 2026-08-27
+historical_anchor:
+  repository: https://github.com/Yangjunjie-Lin/vlm-construct-audit
+  branch: codex/tier0-5-three-loop-triage
+  commit: ce0e797a4926ab5d2309915c2eef14fd9c5be44d
+  immutable_tag: vlm-construct-audit-tier0-5-stop
+  exact_prior_decision: STOP_FOR_METHOD_FAILURE
+  audit_v2: LOOP_A_NO_GO
+  loop_b_automated: GO
+  loop_b_human: PENDING
+  loop_c: LOOP_C_NO_GO
+  three_model_scientific_pilot: NOT_AUTHORIZED
+historical_freeze:
+  audit_v2_changes: forbidden
+  audit_v3_creation: forbidden
+  old_sesoi_changes: forbidden
+  old_measurement_cutoff_changes: forbidden
+  old_truth_or_claim_class_changes: forbidden
+  old_loop_a_holdout_execution_limit: exhausted
+  old_loop_c_outcomes_for_tuning: forbidden
+  old_reports_or_artifacts_overwrite: forbidden
+  stop_decision_reinterpretation: forbidden
+recoalign_boundary:
+  repository: https://github.com/Yangjunjie-Lin/recoalign
+  state: archived_read_only
+  modifications: forbidden
+  post_stop_commits: forbidden
+  structured_reasoning_interface_gap_revival: forbidden
+  exp002_generalization_to_vlm_mechanism: forbidden
+novelty_gate:
+  required_before_new_results: true
+  allowed_decisions: [NOVELTY_PASS, NOVELTY_PASS_WITH_CAUTION, NOVELTY_FAIL]
+  near_duplicate_action: NOVELTY_NO_GO_NO_FORMAL_HOLDOUT
+direction_isolation:
+  directions: [P, M, U]
+  new_hypothesis_registry: required
+  new_development_seeds: required
+  new_sealed_holdout_seeds: required
+  new_config_hash: required
+  new_execution_marker: required
+  new_evidence_map: required
+  maximum_development_only_revisions_per_direction: 1
+  maximum_sealed_holdout_executions_per_direction: 1
+  cross_direction_holdout_tuning: forbidden
+  post_hoc_method_merging: forbidden
+  joint_paper_packaging: forbidden
+holdout_authorization_requires:
+  - frozen_preregistration
+  - development_completion_record
+  - method_freeze_commit
+  - holdout_authorization_record
+human_review:
+  required_reviewers: 2
+  reviewer_type: independent_human
+  model_or_agent_as_reviewer: forbidden
+  packet_mutation_after_first_return: forbidden
+  hidden_key_disclosure: forbidden
+  disagreement_deletion: forbidden
+  gates:
+    critical_semantic_mismatch: 0
+    fact_equivalence_agreement_min: 0.95
+    cohen_kappa_min: 0.80
+    decoy_detection_min: 0.90
+selection:
+  maximum_directions: 1
+  frozen_priority: [P, U, M]
+  direction_m_engineering_only_is_scientific_direction: false
+  no_scientific_go_action: TERMINATE_SUCCESSOR_PROGRAM
+claim_boundary:
+  internal_vlm_mechanism_identification: forbidden
+  known_dgp_evidence_is_real_vlm_evidence: false
+  engineering_smoke_is_scientific_vlm_evidence: false
