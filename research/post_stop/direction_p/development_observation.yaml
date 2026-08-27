@@ -1,0 +1,14 @@
+schema_version: 1
+observed_at: 2026-08-27
+split: development
+status: DEVELOPMENT_RESULT_RECORDED_WITH_REPORTING_DEFECT
+config_hash: 57f963d7c4ca117d4846c8d6dc12eab7cebbdd6a1944b65b38c42b9bdcd5d404
+defect: summary control flow emitted DIRECTION_P_GO when all development gates passed
+scientific_effect: none; development is not authorized to emit a holdout decision
+numeric_results_affected: false
+DGP_seeds_affected: false
+thresholds_affected: false
+families_or_expected_decisions_affected: false
+planned_revision: change development decision to DEVELOPMENT_COMPLETE_NOT_A_HOLDOUT_DECISION and preserve the original artifacts
+development_revision_budget_after_fix: 0
+holdout_seen: false

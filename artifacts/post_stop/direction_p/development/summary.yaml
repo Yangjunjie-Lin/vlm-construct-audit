@@ -1,0 +1,1199 @@
+schema_version: 1
+direction: P
+split: development
+config_hash: 57f963d7c4ca117d4846c8d6dc12eab7cebbdd6a1944b65b38c42b9bdcd5d404
+delta0: 0.1
+delta1: 0.15
+primary_sample_size: 768
+curves:
+  P0:
+  - method: P0
+    sample_size: 128
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.658
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0260942128294221
+    abstention_rate: 0.47928571428571426
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.235
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.26
+        exact_expected_decision_rate: 0.26
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.68
+        exact_expected_decision_rate: 0.68
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.59
+        exact_expected_decision_rate: 0.59
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.76
+        exact_expected_decision_rate: 0.76
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - method: P0
+    sample_size: 256
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.662
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0068360316177056
+    abstention_rate: 0.47785714285714287
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.23642857142857143
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.18
+        exact_expected_decision_rate: 0.18
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.68
+        exact_expected_decision_rate: 0.68
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.64
+        exact_expected_decision_rate: 0.64
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.81
+        exact_expected_decision_rate: 0.81
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - method: P0
+    sample_size: 384
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.666
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0124285224372322
+    abstention_rate: 0.4764285714285714
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.23785714285714285
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.2
+        exact_expected_decision_rate: 0.2
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.62
+        exact_expected_decision_rate: 0.62
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.66
+        exact_expected_decision_rate: 0.66
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.85
+        exact_expected_decision_rate: 0.85
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - &id001
+    method: P0
+    sample_size: 768
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.678
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0038972031441427
+    abstention_rate: 0.47214285714285714
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.24214285714285713
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.15
+        exact_expected_decision_rate: 0.15
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.74
+        exact_expected_decision_rate: 0.74
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.64
+        exact_expected_decision_rate: 0.64
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.86
+        exact_expected_decision_rate: 0.86
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  P1:
+  - method: P1
+    sample_size: 128
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.858
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0172546479229385
+    abstention_rate: 0.3364285714285714
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.30642857142857144
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.44
+        exact_expected_decision_rate: 0.44
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.9
+        exact_expected_decision_rate: 0.9
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.99
+        exact_expected_decision_rate: 0.99
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.96
+        exact_expected_decision_rate: 0.96
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - method: P1
+    sample_size: 256
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.972
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.996817906143334
+    abstention_rate: 0.2957142857142857
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.34714285714285714
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.86
+        exact_expected_decision_rate: 0.86
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - method: P1
+    sample_size: 384
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.996
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0020072987987017
+    abstention_rate: 0.28714285714285714
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.3557142857142857
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.98
+        exact_expected_decision_rate: 0.98
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  - &id002
+    method: P1
+    sample_size: 768
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 1.0
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.999078234892938
+    abstention_rate: 0.2857142857142857
+    explicit_gray_zone_rate: 0.0
+    claim_coverage: 0.35714285714285715
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+  P2:
+  - method: P2
+    sample_size: 128
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.858
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0172546479229385
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.25214285714285717
+    claim_coverage: 0.30642857142857144
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.44
+        exact_expected_decision_rate: 0.44
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.9
+        exact_expected_decision_rate: 0.9
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.99
+        exact_expected_decision_rate: 0.99
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.98
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.96
+        exact_expected_decision_rate: 0.96
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.2
+  - method: P2
+    sample_size: 256
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.972
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.996817906143334
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.18571428571428572
+    claim_coverage: 0.34714285714285714
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.86
+        exact_expected_decision_rate: 0.86
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.54
+  - method: P2
+    sample_size: 384
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.996
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0020072987987017
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.1657142857142857
+    claim_coverage: 0.3557142857142857
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.98
+        exact_expected_decision_rate: 0.98
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.7
+  - &id003
+    method: P2
+    sample_size: 768
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 1.0
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.999078234892938
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.1457142857142857
+    claim_coverage: 0.35714285714285715
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.96
+  P3:
+  - method: P3
+    sample_size: 128
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.76
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0205904248662414
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.28714285714285714
+    claim_coverage: 0.2714285714285714
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.17
+        exact_expected_decision_rate: 0.17
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 0.82
+        exact_expected_decision_rate: 0.82
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 0.94
+        exact_expected_decision_rate: 0.94
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.98
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 0.87
+        exact_expected_decision_rate: 0.87
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.2
+  - method: P3
+    sample_size: 256
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.934
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.9998731492037221
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.1992857142857143
+    claim_coverage: 0.3335714285714286
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.67
+        exact_expected_decision_rate: 0.67
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.54
+  - method: P3
+    sample_size: 384
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 0.996
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 1.0020072987987017
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.1657142857142857
+    claim_coverage: 0.3557142857142857
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 0.98
+        exact_expected_decision_rate: 0.98
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.7
+  - &id004
+    method: P3
+    sample_size: 768
+    dataset_count: 1400
+    fmcr: 0.0
+    specificity_effect_le_delta0: 1.0
+    sensitivity_effect_ge_delta1: 1.0
+    gray_zone_overclaim_rate: 0.0
+    coverage: 1.0
+    type_s: 0.0
+    type_m_ratio: 0.999078234892938
+    abstention_rate: 0.0
+    explicit_gray_zone_rate: 0.1457142857142857
+    claim_coverage: 0.35714285714285715
+    by_family:
+      CertificationBoundaryEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      ContractPseudoEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ExactSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.0
+      FormatShortcut:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      HeterogeneousEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      InvalidUptake:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MeasurementCorruption:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      MixedPrincipalStrata:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      ModerateEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      NearBoundaryEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      NullEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 1.0
+      StochasticUptakeITT:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      StrongEffect:
+        count: 100
+        positive_rate: 1.0
+        exact_expected_decision_rate: 1.0
+      SubSESOIEffect:
+        count: 100
+        positive_rate: 0.0
+        exact_expected_decision_rate: 0.96
+primary_metrics:
+  P0: *id001
+  P1: *id002
+  P2: *id003
+  P3: *id004
+risk_coverage_curve: &id005
+- critical_z: 1.81
+  fmcr: 0.0
+  sensitivity_effect_ge_delta1: 1.0
+  specificity_effect_le_delta0: 1.0
+  gray_zone_overclaim_rate: 0.0
+  abstention_rate: 0.0
+  claim_coverage: 0.35714285714285715
+- critical_z: 1.96
+  fmcr: 0.0
+  sensitivity_effect_ge_delta1: 1.0
+  specificity_effect_le_delta0: 1.0
+  gray_zone_overclaim_rate: 0.0
+  abstention_rate: 0.0
+  claim_coverage: 0.35714285714285715
+- critical_z: 2.05
+  fmcr: 0.0
+  sensitivity_effect_ge_delta1: 1.0
+  specificity_effect_le_delta0: 1.0
+  gray_zone_overclaim_rate: 0.0
+  abstention_rate: 0.0
+  claim_coverage: 0.35714285714285715
+- critical_z: 2.17
+  fmcr: 0.0
+  sensitivity_effect_ge_delta1: 1.0
+  specificity_effect_le_delta0: 1.0
+  gray_zone_overclaim_rate: 0.0
+  abstention_rate: 0.0
+  claim_coverage: 0.35714285714285715
+threshold_stability:
+  stable: true
+  rows: *id005
+non_strong_families_at_or_above_0_80:
+- CertificationBoundaryEffect
+- ModerateEffect
+- HeterogeneousEffect
+- StochasticUptakeITT
+paired_sensitivity_improvement_P3_minus_P0:
+  mean: 0.322
+  ci95:
+  - 0.2810040833965915
+  - 0.3629959166034085
+  paired_datasets: 500
+gate_table:
+  fmcr: true
+  specificity: true
+  sensitivity: true
+  gray_zone_overclaim: true
+  coverage: true
+  type_s: true
+  abstention: true
+  two_non_strong_families: true
+  threshold_stability: true
+  sensitivity_improvement_over_frozen_AuditV2: true
+  fmcr_not_worse_than_frozen_AuditV2: true
+decision: DIRECTION_P_GO
+claim_boundary: Known-DGP methodological evidence only; no real-VLM effect or internal
+  mechanism is identified.
