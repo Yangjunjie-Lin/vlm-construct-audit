@@ -200,7 +200,7 @@ def _summarize(rows: list[dict[str, Any]], config: dict[str, Any], split: str) -
     null_point = [row for row in point if row["true_CACE"] == 0]
     false_positive = mean(row["policy"]["positive_claim"] for row in null_point)
     significant_point = [row for row in point if row["policy"]["ci95"][0] > 0 or row["policy"]["ci95"][1] < 0]
-    policy_type_s = mean(np.sign(row["policy"]["estimate"]) != np.sign(row["true_CACE"]) for row in significant_point if row["true_CACE"] != 0) if any(row["true_CACE"] != 0 for row in significant_point) else 0.0
+    policy_type_s = mean(bool(np.sign(row["policy"]["estimate"]) != np.sign(row["true_CACE"])) for row in significant_point if row["true_CACE"] != 0) if any(row["true_CACE"] != 0 for row in significant_point) else 0.0
     informative = [name for name, value in by_regime.items() if value["bound_coverage"] is not None and value["bound_coverage"] >= 0.90 and value["median_bound_width"] <= 0.20]
     metrics = {
         "primary_sample_size": primary_n,
