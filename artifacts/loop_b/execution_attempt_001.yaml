@@ -1,0 +1,17 @@
+schema_version: 1
+attempt: 1
+status: ABORTED_BEFORE_DECISION
+stage: beta_binomial_sensitivity_summary
+error: scipy_brentq_endpoints_did_not_bracket_root
+decision_artifact_created: false
+gate_summary_observed: false
+partial_artifacts_preserved:
+  - artifacts/loop_b/measurement_probe_results.jsonl
+  - artifacts/loop_b/parser_adversarial_results.jsonl
+  - artifacts/loop_b/serialization_equality_results.jsonl
+  - artifacts/loop_b/serialization_mutation_controls.jsonl
+repair_scope:
+  - support nonboundary beta-binomial maximum-likelihood estimates
+  - apply the preregistered 1e-10 tie policy to candidate ranking comparison
+threshold_or_gate_changed: false
+holdout_data_or_labels_changed: false

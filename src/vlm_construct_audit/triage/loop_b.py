@@ -375,13 +375,31 @@ def _compare_scorers(fixture: dict[str, Any]) -> dict[str, Any]:
         normalized_differences.append(
             abs(l_record["length_normalized_score"] - r_record["length_normalized_score"])
         )
+    tolerance = 1e-10
+
+    def tie_aware_pairs(result: dict[str, Any]) -> dict[tuple[str, str], int]:
+        candidates = fixture["candidate_order"]
+        relations = {}
+        for left_index, left_candidate in enumerate(candidates):
+            for right_candidate in candidates[left_index + 1 :]:
+                difference = (
+                    result["scores"][left_candidate]["length_normalized_score"]
+                    - result["scores"][right_candidate]["length_normalized_score"]
+                )
+                relations[(left_candidate, right_candidate)] = (
+                    0 if abs(difference) <= tolerance else (1 if difference > 0 else -1)
+                )
+        return relations
+
     return {
         "implementation_a": left,
         "implementation_b": right,
         "max_token_logprob_difference": max(token_differences, default=0.0),
         "max_raw_difference": max(raw_differences, default=0.0),
         "max_normalized_difference": max(normalized_differences, default=0.0),
-        "ranking_agreement": left["ranking"] == right["ranking"],
+        "ranking_exact_order_agreement": left["ranking"] == right["ranking"],
+        "ranking_agreement": tie_aware_pairs(left) == tie_aware_pairs(right),
+        "ranking_tolerance": tolerance,
         "semantic_answer_agreement": left["predicted_semantic_answer"] == right["predicted_semantic_answer"],
         "option_mapping_agreement": left["option_id_mapping"] == right["option_id_mapping"],
     }

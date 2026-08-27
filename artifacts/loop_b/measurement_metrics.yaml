@@ -1,0 +1,105 @@
+schema_version: 1
+execution_head: 1f8eda41ea6e8af8bb7d60beae4491ae5d1ee555
+config_hash: e7ccfd385b83b97b26567462996f9a0e8dcbbfa2bb0a44087b8ac6cb0e96b3c4
+probe_count: 600
+scene_clusters: 200
+template_clusters: 200
+probe_level_rate: 1.0
+probe_level_one_sided_95_lower: 0.9950195566196387
+scene_level_rate: 1
+scene_complete_successes: 200
+scene_complete_one_sided_95_lower: 0.9851329607687279
+template_level_rate: 1
+template_complete_successes: 200
+template_complete_one_sided_95_lower: 0.9851329607687279
+two_way_cluster:
+  method: Bonferroni_two_marginal_exact_complete_cluster_bounds
+  scene_lower: 0.9817246596448638
+  template_lower: 0.9817246596448638
+  two_way_lower: 0.9817246596448638
+  simultaneous_confidence: 0.95
+scene_cluster_bootstrap:
+  cluster_field: scene_id
+  cluster_count: 200
+  equal_cluster_mean: 1
+  percentile_one_sided_lower: 1.0
+  degenerate_all_success: true
+  used_as_boundary_safe_gate: false
+template_cluster_bootstrap:
+  cluster_field: template_id
+  cluster_count: 200
+  equal_cluster_mean: 1
+  percentile_one_sided_lower: 1.0
+  degenerate_all_success: true
+  used_as_boundary_safe_gate: false
+cluster_dependence_sensitivity:
+  scene:
+    beta_binomial_profile_lower:
+      '0.0': 0.9950195566196387
+      '0.05': 0.997633370343909
+      '0.1': 0.9975144696578155
+      '0.2': 0.997261097687512
+    icc_design_effect:
+    - rho: 0.0
+      m_star: 3.0
+      design_effect: 1.0
+      effective_n: 600.0
+      lower: 0.9950195566196387
+    - rho: 0.05
+      m_star: 3.0
+      design_effect: 1.1
+      effective_n: 545.4545454545454
+      lower: 0.9945228785897265
+    - rho: 0.1
+      m_star: 3.0
+      design_effect: 1.2
+      effective_n: 500.0
+      lower: 0.9940264484836504
+    - rho: 0.2
+      m_star: 3.0
+      design_effect: 1.4
+      effective_n: 428.5714285714286
+      lower: 0.9930343315480494
+  template:
+    beta_binomial_profile_lower:
+      '0.0': 0.9950195566196387
+      '0.05': 0.997633370343909
+      '0.1': 0.9975144696578155
+      '0.2': 0.997261097687512
+    icc_design_effect:
+    - rho: 0.0
+      m_star: 3.0
+      design_effect: 1.0
+      effective_n: 600.0
+      lower: 0.9950195566196387
+    - rho: 0.05
+      m_star: 3.0
+      design_effect: 1.1
+      effective_n: 545.4545454545454
+      lower: 0.9945228785897265
+    - rho: 0.1
+      m_star: 3.0
+      design_effect: 1.2
+      effective_n: 500.0
+      lower: 0.9940264484836504
+    - rho: 0.2
+      m_star: 3.0
+      design_effect: 1.4
+      effective_n: 428.5714285714286
+      lower: 0.9930343315480494
+cross_scorer_ranking_agreement: 1.0
+cross_scorer_semantic_answer_agreement: 1.0
+cross_scorer_option_mapping_agreement: 1.0
+maximum_token_logprob_difference: 6.245004513516506e-16
+valid_parser_recall: 1.0
+invalid_parser_rejection: 1.0
+parser_case_count: 240
+canonical_serialization_fact_equality: 1.0
+canonical_pair_count: 1200
+mutation_control_detection: 1.0
+mutation_control_count: 6000
+full_scene_entity_set_recoverable_from_evidence: false
+required_fact_role_recovered_from_text: false
+human_review_status: HUMAN_EQUIVALENCE_REVIEW_PENDING
+human_reviewers_completed: 0
+agent_or_model_review_used: false

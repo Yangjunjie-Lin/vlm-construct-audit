@@ -1,0 +1,15 @@
+schema_version: 1
+loop_b_automated: GO
+loop_b_human: PENDING
+decision: LOOP_B_AUTOMATED_GO_HUMAN_PENDING
+gates:
+  scene_cluster_lower: true
+  two_way_cluster_lower: true
+  cross_scorer_ranking: true
+  cross_scorer_semantic_answer: true
+  parser_recall: true
+  parser_rejection: true
+  serialization_equality: true
+  mutation_controls: true
+config_hash: e7ccfd385b83b97b26567462996f9a0e8dcbbfa2bb0a44087b8ac6cb0e96b3c4
+scientific_vlm_result: NOT_EXECUTED

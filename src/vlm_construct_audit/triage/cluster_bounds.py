@@ -5,7 +5,7 @@ from __future__ import annotations
 import math
 from typing import Any
 
-from scipy.optimize import brentq
+from scipy.optimize import brentq, minimize_scalar
 from scipy.special import betaln
 
 from ..statistics.core import clopper_pearson_lower
@@ -52,13 +52,24 @@ def beta_binomial_profile_lower(
             for successes, trials in zip(successes_by_cluster, trials_by_cluster, strict=True)
         )
 
-    upper = 1 - 1e-12
-    max_log_likelihood = log_likelihood(upper)
+    epsilon = 1e-9
+    fit = minimize_scalar(
+        lambda probability: -log_likelihood(float(probability)),
+        bounds=(epsilon, 1 - epsilon),
+        method="bounded",
+        options={"xatol": 1e-12},
+    )
+    if not fit.success:
+        raise RuntimeError("Beta-binomial profile maximum could not be located")
+    maximum_likelihood_probability = float(fit.x)
+    max_log_likelihood = log_likelihood(maximum_likelihood_probability)
 
     def root(probability: float) -> float:
         return 2 * (max_log_likelihood - log_likelihood(probability)) - 2.7055
 
-    return float(brentq(root, 1e-9, upper - 1e-9))
+    if root(epsilon) <= 0:
+        return 0.0
+    return float(brentq(root, epsilon, maximum_likelihood_probability))
 
 
 def icc_design_effect_lower(total_successes: int, total_probes: int, cluster_sizes: list[int], rho: float) -> dict[str, float]:
@@ -72,4 +83,3 @@ def icc_design_effect_lower(total_successes: int, total_probes: int, cluster_siz
         standard_error = math.sqrt(max(1e-12, rate * (1 - rate) / effective_n))
         lower = max(0.0, rate - 1.6448536269514722 * standard_error)
     return {"rho": rho, "m_star": m_star, "design_effect": design_effect, "effective_n": effective_n, "lower": lower}
-
