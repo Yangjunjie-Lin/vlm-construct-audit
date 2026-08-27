@@ -1,0 +1,20 @@
+schema_version: 1
+scope: engineering_dependencies_only
+prompt_changed: false
+parser_changed: false
+gate_changed: false
+model_registry_changed: false
+repairs:
+  - attempt: 1
+    issue: protobuf_missing_and_sentencepiece_0_2_2_incompatible_with_pinned_tokenizer
+    action: install protobuf 5.29.5
+  - attempt: 2
+    issue: 4.4GB_weight_download_interrupted
+    action: install hf_xet 1.1.9 and resume pinned snapshot download
+  - attempt: 3
+    issue: sentencepiece_0_2_2_returned_invalid_tokenizer_for_official_tokenizer_model
+    action: pin sentencepiece 0.2.0 after direct tokenizer construction check
+final_attempt: 4
+final_checkpoint_load_success: true
+final_actual_visual_forward_success: true
+final_parser_gate_repaired: false

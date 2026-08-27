@@ -4,48 +4,39 @@ family: InternVL2.5-InternLM2
 repository: OpenGVLab/InternVL2_5-2B
 revision: 573169ee54df216786bb9a189e9a32a060a008cf
 config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
-checkpoint_load_success: false
-actual_visual_forward_success: false
-status: FAILED
+checkpoint_load_success: true
+actual_visual_forward_success: true
+status: GATE_FAILED
 scientific_vlm_result: NOT_EXECUTED
-error_type: ImportError
-error: "\n requires the protobuf library but it was not found in your environment.\
-  \ Checkout the instructions on the\ninstallation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation\
-  \ and follow the ones\nthat match your environment. Please note that you may need\
-  \ to restart your runtime after installation.\n"
-traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
-  .venv-vlm-smoke\\Lib\\site-packages\\transformers\\tokenization_utils_base.py\"\
-  , line 2292, in _from_pretrained\n    tokenizer = cls(*init_inputs, **init_kwargs)\n\
-  \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yangjunjie\
-  \ Lin\\.cache\\huggingface\\modules\\transformers_modules\\OpenGVLab\\InternVL2_5-2B\\\
-  573169ee54df216786bb9a189e9a32a060a008cf\\tokenization_internlm2.py\", line 68,\
-  \ in __init__\n    self.sp_model.Load(vocab_file)\n  File \"D:\\UoM_CS\\GitHub\\\
-  vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\sentencepiece\\__init__.py\"\
-  , line 209, in Load\n    return self.LoadFromFile(model_file)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
-  sentencepiece\\__init__.py\", line 213, in LoadFromFile\n    return self._processor.LoadFromFile(filename)\n\
-  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: INTERNAL: piece\
-  \ must not include null character.\n\nDuring handling of the above exception, another\
-  \ exception occurred:\n\nTraceback (most recent call last):\n  File \"D:\\UoM_CS\\\
-  GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\vlm_smoke_worker.py\"\
-  , line 457, in run_model\n    worker = InternVLWorker(registry) if registry[\"family\"\
-  ].startswith(\"InternVL\") else StandardWorker(registry)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n\
-  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\\
-  vlm_smoke_worker.py\", line 284, in __init__\n    self.tokenizer = AutoTokenizer.from_pretrained(\n\
-  \                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\\
-  vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\transformers\\models\\\
-  auto\\tokenization_auto.py\", line 929, in from_pretrained\n    return tokenizer_class.from_pretrained(\n\
-  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
-  .venv-vlm-smoke\\Lib\\site-packages\\transformers\\tokenization_utils_base.py\"\
-  , line 2052, in from_pretrained\n    return cls._from_pretrained(\n           ^^^^^^^^^^^^^^^^^^^^^\n\
-  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
-  transformers\\tokenization_utils_base.py\", line 2293, in _from_pretrained\n   \
-  \ except import_protobuf_decode_error():\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
-  transformers\\tokenization_utils_base.py\", line 87, in import_protobuf_decode_error\n\
-  \    raise ImportError(PROTOBUF_IMPORT_ERROR.format(error_message))\nImportError:\
-  \ \n requires the protobuf library but it was not found in your environment. Checkout\
-  \ the instructions on the\ninstallation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation\
-  \ and follow the ones\nthat match your environment. Please note that you may need\
-  \ to restart your runtime after installation.\n\n"
-peak_vram_bytes: 0
+checkpoint_load_seconds: 5.368137099983869
+checkpoint_integrity:
+  snapshot_path_suffix: 573169ee54df216786bb9a189e9a32a060a008cf
+  snapshot_revision_matches: true
+  weight_files:
+  - filename: model.safetensors
+    size_bytes: 4411571040
+    sha256: 2135909ed23cb6c934a57a9f7e194c6ab128042a76f8934cdedfa0194181f50d
+  weight_bytes: 4411571040
+  not_tiny_random: true
+case_count: 40
+model_evaluation_count_including_reruns: 80
+artifact_completeness: 1.0
+parser_valid_rate: 0.0
+independent_scorer_ranking_agreement: 1.0
+maximum_independent_token_logprob_difference: 5.412839172436179e-07
+deterministic_rerun_agreement: 1.0
+peak_vram_bytes: 3362795008
+peak_ram_bytes: 6065672192
+latency_seconds_mean: 0.8778337499999906
+latency_seconds_total_primary: 35.11334999999963
+no_silent_fallback: true
+mock_or_tiny_random_substitution: false
+gates:
+  checkpoint_load: true
+  visual_forward: true
+  artifact_completeness: true
+  parser_valid_rate: false
+  independent_scorer: true
+  determinism: true
+  no_silent_fallback: true
+  not_mock_or_tiny_random: true

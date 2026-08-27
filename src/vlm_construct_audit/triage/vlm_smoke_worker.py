@@ -63,6 +63,9 @@ def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
 def environment_snapshot() -> dict[str, Any]:
     import accelerate
     import bitsandbytes
+    import google.protobuf
+    import hf_xet
+    import sentencepiece
     import transformers
 
     gpu = None
@@ -77,16 +80,19 @@ def environment_snapshot() -> dict[str, Any]:
         "operating_system": platform.platform(),
         "python": sys.version,
         "python_executable": sys.executable,
-        "torch": torch.__version__,
-        "torch_cuda_build": torch.version.cuda,
+        "torch": str(torch.__version__),
+        "torch_cuda_build": str(torch.version.cuda),
         "cuda_available": torch.cuda.is_available(),
         "cuda_device_count": torch.cuda.device_count(),
         "gpu": gpu,
         "ram_bytes": psutil.virtual_memory().total,
         "disk_free_bytes": psutil.disk_usage(str(ROOT.drive + "\\")).free,
-        "transformers": transformers.__version__,
-        "accelerate": accelerate.__version__,
-        "bitsandbytes": bitsandbytes.__version__,
+        "transformers": str(transformers.__version__),
+        "accelerate": str(accelerate.__version__),
+        "bitsandbytes": str(bitsandbytes.__version__),
+        "protobuf": str(google.protobuf.__version__),
+        "sentencepiece": str(sentencepiece.__version__),
+        "hf_xet": str(hf_xet.__version__) if hasattr(hf_xet, "__version__") else "1.1.9",
     }
 
 

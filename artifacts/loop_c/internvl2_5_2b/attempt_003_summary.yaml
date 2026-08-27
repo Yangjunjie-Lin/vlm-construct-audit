@@ -1,0 +1,37 @@
+schema_version: 1
+model_id: internvl2_5_2b
+family: InternVL2.5-InternLM2
+repository: OpenGVLab/InternVL2_5-2B
+revision: 573169ee54df216786bb9a189e9a32a060a008cf
+config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
+checkpoint_load_success: true
+actual_visual_forward_success: false
+status: FAILED
+scientific_vlm_result: NOT_EXECUTED
+checkpoint_load_seconds: 1115.0171219000185
+checkpoint_integrity:
+  snapshot_path_suffix: 573169ee54df216786bb9a189e9a32a060a008cf
+  snapshot_revision_matches: true
+  weight_files:
+  - filename: model.safetensors
+    size_bytes: 4411571040
+    sha256: 2135909ed23cb6c934a57a9f7e194c6ab128042a76f8934cdedfa0194181f50d
+  weight_bytes: 4411571040
+  not_tiny_random: true
+error_type: AttributeError
+error: '''bool'' object has no attribute ''convert_tokens_to_ids'''
+traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  src\\vlm_construct_audit\\triage\\vlm_smoke_worker.py\", line 470, in run_model\n\
+  \    row = _run_case(worker, registry, scene, index, contract, serialization, config_hash)\n\
+  \          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\\
+  vlm_smoke_worker.py\", line 392, in _run_case\n    candidate_scores = worker.score(prompt,\
+  \ image)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\\
+  GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\vlm_smoke_worker.py\"\
+  , line 337, in score\n    base = self._base_query(prompt)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\\
+  vlm_smoke_worker.py\", line 331, in _base_query\n    self.model.img_context_token_id\
+  \ = self.tokenizer.convert_tokens_to_ids(\"<IMG_CONTEXT>\")\n                  \
+  \                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'bool'\
+  \ object has no attribute 'convert_tokens_to_ids'\n"
+peak_vram_bytes: 3003166720
