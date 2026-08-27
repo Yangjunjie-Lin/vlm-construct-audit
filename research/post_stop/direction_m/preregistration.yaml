@@ -1,0 +1,97 @@
+schema_version: 1
+registry_id: post_stop_direction_m_v1
+direction: M
+title: Answer-Contract Decomposition
+frozen_at: 2026-08-27
+novelty_decision: NOVELTY_PASS_WITH_CAUTION
+historical_prompt_only_name: historical_prompt_only_exact_json
+old_loop_c_outcomes_used_for_selection_or_tuning: false
+scientific_factorial_forbidden: true
+internal_mechanism_claims_forbidden: true
+scenes:
+  development:
+    count: 30
+    seed: 38231
+    namespace: post_stop_m_dev_scene_v1
+  sealed_holdout:
+    count: 60
+    seed: 48233
+    namespace: post_stop_m_holdout_scene_v1
+    execution_limit: 1
+  serializations: [natural_language, functional_query]
+  tasks: [object_identity, color, shape, direct_relation_direction, entity_attribute_binding, option_mapping, multi_token_answer]
+  forbidden_tasks: [correct_vs_corrupted_downstream_factorial, claim_reversal, multihop_mechanism, internal_mechanism]
+contracts:
+  M-C1:
+    name: conditional_likelihood
+    implementation: length_normalized_candidate_likelihood
+    independent_scorer: float64_logsumexp_replication
+  M-C2:
+    name: true_grammar_constrained_JSON
+    implementation: finite_language_token_prefix_automaton
+    allowed_surface: '{"answer":"<allowed-value>"}'
+    token_level_mask_required: true
+    prompt_only_is_insufficient: true
+  M-C3:
+    name: prompt_only_exact_JSON
+    implementation: ordinary_greedy_generation_plus_strict_JSON_parser
+    decoding_constraint: none
+    purpose: instruction_compliance_only
+  M-C4:
+    name: deterministic_semantic_canonicalization
+    implementation: ordinary_greedy_generation_plus_frozen_canonicalizer
+    allowed_forms: [exact_semantic_token, capitalization, terminal_punctuation, Markdown_JSON_fence, single_unambiguous_embedded_JSON_object]
+    forbidden: [LLM_as_judge, fuzzy_guessing, multiple_answer_selection, silent_repair, post_holdout_rule_addition]
+generation:
+  greedy: true
+  do_sample: false
+  beams: 1
+  maximum_new_tokens: 28
+  deterministic_rerun_fraction: 1.0
+models:
+  - model_id: smolvlm_256m_instruct
+    family: SmolVLM-Idefics3
+    repository: HuggingFaceTB/SmolVLM-256M-Instruct
+    revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+  - model_id: internvl2_5_2b
+    family: InternVL2.5-InternLM2
+    repository: OpenGVLab/InternVL2_5-2B
+    revision: 573169ee54df216786bb9a189e9a32a060a008cf
+  - model_id: qwen2_vl_2b_instruct
+    family: Qwen2-VL
+    repository: Qwen/Qwen2-VL-2B-Instruct
+    revision: 895c3a49bc3fa70a340399125c650a463535e71c
+primary_comparison: [M-C1, M-C2]
+metrics:
+  - syntactic_validity
+  - semantic_validity
+  - task_correctness
+  - contract_induced_content_change
+  - canonicalization_recovery
+  - cohen_kappa
+  - paired_correctness_difference
+engineering_gates:
+  grammar_constrained_syntactic_validity: 1.00
+  artifact_completeness: 1.00
+  independent_scorer_ranking_agreement: 1.00
+  deterministic_rerun_agreement_min: 0.99
+  canonicalizer_valid_form_recall_min: 0.99
+  canonicalizer_invalid_ambiguous_rejection_min: 0.99
+scientific_paths:
+  equivalence:
+    kappa_min: 0.90
+    kappa_lower_min: 0.85
+    task_correctness_difference_margin: 0.03
+    families_required: 2
+    status_if_only_path: DIRECTION_M_ENGINEERING_ONLY
+  material_contract_effect:
+    comparison: M-C2_minus_M-C1
+    absolute_paired_task_correctness_difference_min: 0.05
+    bootstrap_ci_excludes_zero: true
+    families_same_direction_required: 2
+    changed_answers_multiple_tasks_min: 2
+    changed_answers_both_serializations: true
+    parser_rejection_cannot_define_change: true
+    status: DIRECTION_M_SCIENTIFIC_GO
+maximum_development_only_revisions: 1
+claim_boundary: Real-checkpoint measurement-contract evidence only; syntactic compliance is not capability and no internal mechanism is identified.
