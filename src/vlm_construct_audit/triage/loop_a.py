@@ -419,6 +419,7 @@ def _threshold_stability(
                         decisions.append(
                             {
                                 "family": row["family"],
+                                "sample_size": row["sample_size"],
                                 "expected_claim_class": row["expected_claim_class"],
                                 "decision": decision.decision,
                                 "true_effect": row["true_effect"],
