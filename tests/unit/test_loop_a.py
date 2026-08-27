@@ -39,7 +39,7 @@ def test_loop_a_gate_does_not_trade_specificity_for_sensitivity() -> None:
         "abstention": 0.40,
     }
     assert _passes_loop_a(passing)
-    for key in passing:
+    for key, value in passing.items():
         failed = dict(passing)
-        failed[key] = passing[key] - 0.01 if key not in {"fmcr", "type_s", "abstention"} else passing[key] + 0.01
+        failed[key] = value - 0.01 if key not in {"fmcr", "type_s", "abstention"} else value + 0.01
         assert not _passes_loop_a(failed)
