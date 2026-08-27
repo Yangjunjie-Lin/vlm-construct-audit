@@ -1,7 +1,7 @@
 schema_version: 1
-created_at: '2026-08-27T09:42:19.270284+00:00'
+created_at: '2026-08-27T09:55:34.065850+00:00'
 config_hash: ef50eab80bedc40c23248ddbaf88896438b444baeb1a7d9b2609e3f8f51a598c
-artifact_count: 87
+artifact_count: 96
 artifacts:
 - path: data/generated/interventions.jsonl
   sha256: 08a7c9e785de678f4fc2f72c9b09486a70ee69d1b42419a2eb169307ba86ba7b
@@ -211,7 +211,7 @@ artifacts:
   sha256: ee160474c0a0d27d8be696707507ba29665387eb2f87081a3580e3c44d0427d1
   bytes: 1462
 - path: artifacts/manifests/prediction_manifest.yaml
-  sha256: 66ae5c76d14a7f3f06dc03e41b677eb1243f40362f45efa94a2ae3a6c8e0a5b4
+  sha256: eb5f8def07180a1abe17d0d4bb9296149a4abc731ad30cbc778f10e7d8e6e40f
   bytes: 684
 - path: artifacts/metrics/analysis_results.yaml
   sha256: d1cd39ca77bfa434477c18e64cf234d35f9b06eed1d349c11189395c3fee21fc
@@ -241,7 +241,7 @@ artifacts:
   sha256: 4ee5935ae942f951c683c6cf399b7b767321cedaa8648d450dd8d32bc783c03d
   bytes: 108711
 - path: artifacts/predictions/calibration_predictions.jsonl
-  sha256: 0bc87527fdc19dfa895ea0185dee103f5a62db795fe12b3314c0e9dd4de730d6
+  sha256: 45c96ada11f70e3b3d3e7ca41ce3b0fc84f68489738b173deb4aeb1b881e6696
   bytes: 12100079
 - path: reports/calibration_report.md
   sha256: 474939efdf83f9d9cd00713f1a38014561a4aff340f8c97b10c54b570a352fd1
@@ -252,6 +252,24 @@ artifacts:
 - path: reports/evidence_map.yaml
   sha256: d6a1bc9c083385bdf7013920eb05f5f3f20c6b1c0005797eb6ffea87542e9549
   bytes: 1653
+- path: reports/loop_a_calibration_generalization.md
+  sha256: 630ec1a76aba1c8d1faab0c3f1ae6d24ce1099ae1004e93456c10325f6f837a6
+  bytes: 1277
+- path: reports/loop_a_decision.yaml
+  sha256: a89dc67b3152c1f2f50428d3ef8ca19cb73a8dbaf7aff38c8450fa6b5f1cc52d
+  bytes: 197
+- path: reports/loop_b_decision.yaml
+  sha256: 65ddc43b0e4077e61233c8d3d1eeb1a6f475e713dae2fffe76cd31a6dae1ca36
+  bytes: 469
+- path: reports/loop_b_measurement_robustness.md
+  sha256: 1e2b052f78c94e3f89117ae0082278313f34165334255e616562d097daa202cd
+  bytes: 1300
+- path: reports/loop_c_decision.yaml
+  sha256: 870dca7060b3350c240b4507d42d6cef821eba9c0b159e3f1cb0a0189d72c38b
+  bytes: 2144
+- path: reports/loop_c_vlm_engineering_preflight.md
+  sha256: 9d84ca67b241fa867877b096a82b451fde97bc00fb74c3174e2ff5c88c413244
+  bytes: 1609
 - path: reports/minimum_closed_loop_report.md
   sha256: 4498a0fe9718014e337132ab2acde2d27e3be4103621177ec4176592037d97af
   bytes: 5255
@@ -261,6 +279,15 @@ artifacts:
 - path: reports/resource_requirements.md
   sha256: 4bb3694711446da1142c2b03d39de81fb7b4b7fde8cafb959e67ec74acea1786
   bytes: 570
+- path: reports/tier0_5_evidence_map.yaml
+  sha256: 283e809fcdfa92167cbb218cf7081cf81644a70738fcc28847d24692fe63d090
+  bytes: 1303
+- path: reports/tier0_5_final_decision.yaml
+  sha256: 9691a574cadc85e87a1f0fb1882fbe9db3580b5b8c181386882f59f16ace0294
+  bytes: 2379
+- path: reports/tier0_5_three_loop_report.md
+  sha256: 16b3976e0a670d904d4d469683f61043452c4da048ddb4c83e1f6d254607b0e6
+  bytes: 3306
 - path: reports/tier0_closed_loop_report.md
   sha256: 4498a0fe9718014e337132ab2acde2d27e3be4103621177ec4176592037d97af
   bytes: 5255

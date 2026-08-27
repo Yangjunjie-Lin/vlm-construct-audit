@@ -245,12 +245,20 @@ def build_artifact_manifest() -> dict[str, Any]:
     roots = [Path("data/generated"), Path("data/manifests"), Path("data/annotations"), Path("artifacts"), Path("reports")]
     manifest_path = Path("artifacts/manifests/artifact_manifest.yaml")
     verification_path = Path("artifacts/manifests/verification_report.yaml")
+    tier0_5_manifest_path = Path("artifacts/manifests/tier0_5_artifact_manifest.yaml")
+    tier0_5_verification_path = Path("artifacts/manifests/tier0_5_verification_report.yaml")
+    excluded_manifests = {
+        manifest_path,
+        verification_path,
+        tier0_5_manifest_path,
+        tier0_5_verification_path,
+    }
     files = []
     for root in roots:
         if not root.exists():
             continue
         for path in sorted(p for p in root.rglob("*") if p.is_file()):
-            if path in {manifest_path, verification_path}:
+            if path in excluded_manifests:
                 continue
             files.append({"path": path.as_posix(), "sha256": sha256_file(path), "bytes": path.stat().st_size})
     manifest = {
