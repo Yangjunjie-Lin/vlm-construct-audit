@@ -1,0 +1,37 @@
+schema_version: 1
+decision: LOOP_C_PARTIAL_ENGINEERING
+config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
+families_registered: 3
+families_attempted: 3
+checkpoint_load_successes: 2
+full_engineering_gate_passes: 0
+environment_cuda_available: true
+full_pilot_runtime_projection: null
+full_pilot_resource_feasible: false
+scientific_vlm_result: NOT_EXECUTED
+mock_or_tiny_random_substitution: false
+model_summaries:
+- model_id: smolvlm_256m_instruct
+  family: SmolVLM-Idefics3
+  status: GATE_FAILED
+  checkpoint_load_success: true
+  actual_visual_forward_success: true
+  error_type: null
+  error: null
+- model_id: internvl2_5_2b
+  family: InternVL2.5-InternLM2
+  status: FAILED
+  checkpoint_load_success: false
+  actual_visual_forward_success: false
+  error_type: ImportError
+  error: "\n requires the protobuf library but it was not found in your environment.\
+    \ Checkout the instructions on the\ninstallation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation\
+    \ and follow the ones\nthat match your environment. Please note that you may need\
+    \ to restart your runtime after installation.\n"
+- model_id: qwen2_vl_2b_instruct
+  family: Qwen2-VL
+  status: GATE_FAILED
+  checkpoint_load_success: true
+  actual_visual_forward_success: true
+  error_type: null
+  error: null

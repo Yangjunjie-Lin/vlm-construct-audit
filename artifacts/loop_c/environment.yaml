@@ -1,0 +1,16 @@
+accelerate: 1.4.0
+bitsandbytes: 0.45.3
+cuda_available: true
+cuda_device_count: 1
+disk_free_bytes: 448182398976
+gpu:
+  architecture: NVIDIA GeForce RTX 3060 Laptop GPU
+  name: NVIDIA GeForce RTX 3060 Laptop GPU
+  total_vram_bytes: 6441926656
+operating_system: Windows-11-10.0.26200-SP0
+python: 3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]
+python_executable: D:\UoM_CS\GitHub\vlm-construct-audit\.venv-vlm-smoke\Scripts\python.exe
+ram_bytes: 34003582976
+torch: 2.7.1+cu126
+torch_cuda_build: '12.6'
+transformers: 4.49.0

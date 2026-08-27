@@ -1,0 +1,42 @@
+schema_version: 1
+model_id: smolvlm_256m_instruct
+family: SmolVLM-Idefics3
+repository: HuggingFaceTB/SmolVLM-256M-Instruct
+revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
+checkpoint_load_success: true
+actual_visual_forward_success: true
+status: GATE_FAILED
+scientific_vlm_result: NOT_EXECUTED
+checkpoint_load_seconds: 145.29174980000244
+checkpoint_integrity:
+  snapshot_path_suffix: 7e3e67edbbed1bf9888184d9df282b700a323964
+  snapshot_revision_matches: true
+  weight_files:
+  - filename: model.safetensors
+    size_bytes: 513028808
+    sha256: 74dea5904032e5ae99a2e0eef5179e6ac0f1dedc3ab0c7c2a5d4d387c843203e
+  weight_bytes: 513028808
+  not_tiny_random: true
+case_count: 40
+model_evaluation_count_including_reruns: 80
+artifact_completeness: 1.0
+parser_valid_rate: 0.0
+independent_scorer_ranking_agreement: 1.0
+maximum_independent_token_logprob_difference: 7.695471175850344e-07
+deterministic_rerun_agreement: 1.0
+peak_vram_bytes: 2651030016
+peak_ram_bytes: 1948663808
+latency_seconds_mean: 2.2303732924985527
+latency_seconds_total_primary: 89.2149316999421
+no_silent_fallback: true
+mock_or_tiny_random_substitution: false
+gates:
+  checkpoint_load: true
+  visual_forward: true
+  artifact_completeness: true
+  parser_valid_rate: false
+  independent_scorer: true
+  determinism: true
+  no_silent_fallback: true
+  not_mock_or_tiny_random: true
