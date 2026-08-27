@@ -1,0 +1,58 @@
+schema_version: 1
+freeze_id: loop_a_selected_method_before_holdout
+frozen_at: 2026-08-27
+method: AuditV2
+method_source_commit: f39b145
+repair_budget_consumed: true
+additional_method_repairs_allowed: false
+holdout_results_seen: false
+development_artifacts:
+  A0_summary: artifacts/loop_a/development/summary.yaml
+  AuditV2_summary: artifacts/loop_a/development_auditv2/summary.yaml
+  AuditV2_summary_sha256: 9266fe6edbb19df14abe508272204bb62606047c7a6a163fb79b1e4e68e3f65d
+  AuditV2_dataset_results_sha256: 6c1dcb9cce3fc62c36b23b6786ae5b879712ba33d51a48e07d48ab7914c570d0
+primary_sample_size: 384
+development_comparison_at_n384:
+  A0:
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    coverage: 0.9433333333333334
+    type_s: 0.0
+    abstention: 0.2325
+    partial_identification_accuracy: 0.0
+    exact_class_accuracy: 0.7966666666666666
+  AuditV2:
+    sensitivity: 0.8216666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    coverage: 0.95
+    type_s: 0.0
+    abstention: 0.22
+    partial_identification_accuracy: 1.0
+    exact_class_accuracy: 0.8925
+  sensitivity_change: 0.025
+  abstention_change: -0.0125
+  exact_class_accuracy_change: 0.09583333333333333
+  method_improvement_not_only_label_redistribution: true
+development_primary_gate_status: PASS
+development_threshold_stability:
+  grid_count: 36
+  go_fraction: 0.50
+  all_grid_cells_retain_go: false
+  minimum_sensitivity: 0.53
+  note: This failure is frozen and cannot be repaired after holdout.
+holdout_authorized: true
+holdout_execution:
+  count_allowed: 1
+  runs_A0_and_AuditV2_on_same_generated_batch: true
+  intermediate_results_forbidden: true
+  selected_method_for_primary_decision: AuditV2
+post_holdout_changes_forbidden:
+  - threshold
+  - SESOI
+  - family_truth
+  - gate
+  - classification_label
+  - estimator
+  - prompt
