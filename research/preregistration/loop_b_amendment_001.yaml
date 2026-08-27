@@ -1,0 +1,17 @@
+schema_version: 1
+amendment_id: loop_b_pre_result_cluster_resolution_repair
+amended_at: 2026-08-27
+before_any_loop_b_result: true
+parent_protocol_commit: 23d1ac7
+changes:
+  scene_count: {from: 160, to: 200}
+  probe_count: {from: 480, to: 600}
+  template_clusters: {from: 16, to: 200}
+  human_review: {genuine_pairs: 42, mismatch_decoys: 12}
+reason:
+  - with simultaneous Bonferroni alpha 0.025 marginal bounds, 160 all-success clusters cannot reach a 0.98 lower bound
+  - two crossed dimensions require enough independently enumerated scene and finite-template clusters
+  - mismatch decoys are required to identify human-review kappa
+threshold_changes: none
+outcome_feedback_used: false
+

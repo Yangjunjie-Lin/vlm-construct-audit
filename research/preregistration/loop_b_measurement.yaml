@@ -1,0 +1,126 @@
+schema_version: 1
+registry_id: loop_b_new_measurement_holdout_v1
+frozen_at: 2026-08-27
+before_any_loop_b_result: true
+historical_probe_role: regression_only_not_gate_evidence
+holdout:
+  scene_count: 200
+  probes_per_scene: 3
+  total_probes: 600
+  scene_seed_range: [62000, 62199]
+  entity_permutation_seed: 62017
+  template_clusters: 200
+  observations_per_template: 3
+  crossed_assignment: template_index_equals_scene_plus_probe_times_67_mod_200
+  every_scene_appears_under_three_templates: true
+  every_template_appears_on_three_scenes: true
+template_frame:
+  openers:
+    - "Using the recorded response trace"
+    - "From the frozen candidate trace"
+    - "Given the measurement fixture"
+    - "Under the declared answer contract"
+    - "With the option mapping fixed"
+    - "From the stored token scores"
+    - "Using the supplied entity mapping"
+    - "For this directed-relation case"
+    - "For this attribute-binding case"
+    - "Under the exact output schema"
+  actions:
+    - "score the semantic candidates"
+    - "verify the candidate ordering"
+    - "map the option identifier"
+    - "check the entity identifier"
+    - "evaluate the multi-token answer"
+    - "validate the directed relation"
+    - "validate the bound attribute"
+    - "parse the constrained response"
+    - "reject the out-of-set response"
+    - "compare the independent scorer"
+  closers:
+    - "without repair."
+    - "using the frozen rules only."
+  generation_order: opener_major_then_action_then_closer
+  frame_size: 200
+  interpretation: finite_template_inventory_robustness_not_unbounded_template_transfer
+probe_strata:
+  scorer_cases: [single_token_answer, multi_token_answer, entity_id, option_id, relation_direction, attribute_binding, answer_alias]
+  parser_cases: [valid_semantic_json, valid_option_json, invalid_grammar, out_of_set_output]
+  each_scene_contains: [primary_scorer_case, mapping_or_alias_case, parser_case]
+conditional_likelihood:
+  implementation_A: production_logit_scorer
+  implementation_B: independent_numpy_logsumexp_scorer
+  B_may_import_A: false
+  raw_fixture_fields: [prompt_token_ids, candidate_text, candidate_token_ids, step_logits, attention_mask, BOS_policy, EOS_policy, candidate_boundary, dtype]
+  scoring_formula: sum_log_softmax_shifted_candidate_tokens_divided_by_scored_token_count
+  include_EOS: false
+  BOS_policy: context_contains_BOS_candidate_does_not
+  tie_policy: compare_tie_set_when_margin_at_or_below_tolerance
+  float64_trace_tolerance: 1.0e-10
+  model_trace_tolerance_reserved_for_loop_c: 1.0e-6
+  required_agreement: {raw_token_log_probability: 1.0, normalized_score: 1.0, ranking: 1.0, semantic_answer: 1.0, option_mapping: 1.0}
+parser_suite:
+  total: 240
+  valid: 120
+  invalid: 120
+  valid_balance: {semantic_json: 30, option_id_json: 30, whitespace_json: 20, registered_alias_json: 20, legal_unicode_string_json: 20}
+  invalid_classes_each_12: [entity_id_as_option, multiple_answers, duplicate_json_key, prefix_suffix, malformed_json, unicode_curly_punctuation, out_of_vocabulary, empty, contradictory_dual_answer, cross_schema]
+  schemas: [semantic_answer, option_id]
+  schema_must_be_declared_before_parse: true
+  duplicate_keys_rejected: true
+  silent_repair: forbidden
+  LLM_judge: forbidden
+cluster_estimands:
+  probe_level: mean_correct_over_600_declared_probes
+  scene_level: equal_mean_of_200_scene_specific_probe_rates
+  scene_complete: indicator_all_three_scene_probes_pass
+  template_level: equal_mean_of_200_template_specific_probe_rates
+  template_complete: indicator_all_three_template_probes_pass
+  scene_bootstrap: {replicates: 20000, seed: 62031, block: scene, all_success_degeneracy_reported_not_used_as_bound: true}
+  template_bootstrap: {replicates: 20000, seed: 62037, block: template, all_success_degeneracy_reported_not_used_as_bound: true}
+  two_way_pigeonhole_bootstrap: {replicates: 20000, seed: 62039, scene_and_template_multinomial_weights: true, all_success_degeneracy_reported: true}
+  boundary_safe_simultaneous_lower:
+    method: Bonferroni_two_marginal_exact_complete_cluster_bounds
+    alpha_per_dimension: 0.025
+    lower: min(scene_complete_97_5pct_one_sided_CP, template_complete_97_5pct_one_sided_CP)
+    gate_name: two_way_scene_x_template_cluster_lower
+  bootstrap_BCa_if_non_degenerate: true
+beta_binomial:
+  fixed_rho: [0.00, 0.05, 0.10, 0.20]
+  cluster_dimensions_reported_separately: [scene, template]
+  profile_likelihood_cutoff_2_delta_loglik: 2.7055
+  choose_best_rho_after_results: forbidden
+ICC_sensitivity:
+  rho: [0.00, 0.05, 0.10, 0.20]
+  design_effect: 1 + rho * (m_star - 1)
+  m_star: sum_m_squared_over_sum_m
+  role: sensitivity_only_not_two_way_primary_gate
+serialization:
+  scene_count: 200
+  canonical_objects: [evidence_mentioned_entity_set, attribute_multiset, directed_relation_multiset, fact_multiset, externally_registered_required_fact_set]
+  full_scene_entity_set_recoverable_from_evidence: false
+  mutation_controls: [omission, subject_object_swap, inverse_relation, attribute_change, duplicate_fact]
+  mutation_detection_required: 1.0
+  canonical_equality_required: 1.0
+human_review:
+  genuine_pairs: 42
+  mismatch_decoys: 12
+  packet_rows: 54
+  reviewers_required: 2
+  agent_or_model_as_reviewer: forbidden
+  blinded_fields: [scene_id, condition, gold_answer, source_facts, format_label]
+  reviewer_fields: [fact_equivalent, same_entities, same_attributes, same_relations, same_answer, naturalness_issue, ambiguity_issue, critical_error, reviewer_id]
+  genuine_critical_mismatch_required: 0
+  genuine_fact_equivalence_agreement_min: 0.95
+  combined_genuine_and_decoy_kappa_min: 0.80
+  raw_inter_rater_agreement_min: 0.95
+automated_go:
+  scene_cluster_one_sided_lower_min: 0.98
+  two_way_cluster_one_sided_lower_min: 0.98
+  cross_scorer_candidate_ranking_agreement: 1.0
+  cross_scorer_semantic_answer_agreement: 1.0
+  valid_parser_recall_min: 0.99
+  invalid_parser_rejection_min: 0.99
+  canonical_serialization_fact_equality: 1.0
+human_pending_decision: LOOP_B_AUTOMATED_GO_HUMAN_PENDING
+
