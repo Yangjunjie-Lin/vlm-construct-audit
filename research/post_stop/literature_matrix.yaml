@@ -1,24 +1,270 @@
-schema_version: 1
+schema_version: 2
+audit_id: post_stop_primary_source_search_2026_08_27
 cutoff: 2026-08-27
-status: NOT_YET_EXECUTED
-new_results_authorized: false
-required_topics:
-  - minimum-effect testing
-  - SESOI-aware decision rules
-  - equivalence and non-inferiority testing
-  - selective prediction
-  - risk-coverage analysis
+executed_at: 2026-08-27
+status: COMPLETE_WITH_NONEXHAUSTIVENESS_CAVEAT
+new_results_authorized: true
+search_sources:
+  - OpenAlex works API
+  - arXiv Atom API and primary abstract pages
+  - Crossref works API
+search_policy:
+  primary_sources_only_for_collision_adjudication: true
+  sort_modes: [relevance, newest_first]
+  latest_search_window_end: 2026-08-27
+  absence_is_not_proof: true
+  near_duplicate_conjunction:
+    - VLM setting
+    - known-state calibration
+    - false mechanistic-claim control
+    - same estimand
+    - same decision policy
+queries:
+  - minimum effect test SESOI equivalence
+  - selective classification risk coverage
   - conformal risk control
-  - grammar-constrained decoding
-  - JSON-schema constrained decoding
-  - structured-output benchmarks
-  - LLM/VLM answer-contract effects
-  - principal stratification
-  - instrumental variables
-  - post-treatment selection
-  - partial identification
-  - multimodal intervention uptake
+  - vision language model selective prediction risk coverage
+  - vision language model conformal risk control
+  - grammar constrained decoding structured outputs language models
+  - JSON schema constrained decoding benchmark
+  - vision language model structured output answer format
+  - principal stratification causal effects
+  - instrumental variables complier average causal effect
+  - post treatment selection bias causal inference
+  - partial identification bounds treatment effects
+  - randomized encouragement language model
+  - evidence uptake vision language model
+
+sources:
+  - id: riesthuis_2024
+    title: "Simulation-Based Power Analyses for the Smallest Effect Size of Interest: A Confidence-Interval Approach for Minimum-Effect and Equivalence Testing"
+    date: 2024-04
+    authors: [Paul Riesthuis]
+    url: https://doi.org/10.1177/25152459241240722
+    topics: [minimum-effect testing, SESOI-aware decision rules, equivalence testing, analytic power]
+    directions: [P]
+    collision: Establishes SESOI-aware minimum-effect/equivalence power analysis; no VLM or false-claim audit.
+  - id: lakens_2017
+    title: Equivalence Tests
+    date: 2017
+    authors: [Daniël Lakens]
+    url: https://doi.org/10.1177/1948550617697177
+    topics: [SESOI-aware decision rules, equivalence testing]
+    directions: [P]
+    collision: TOST and equivalence decisions are established ingredients and are not claimed as novel.
+  - id: schuirmann_1987
+    title: A comparison of the two one-sided tests procedure and the power approach for assessing the equivalence of average bioavailability
+    date: 1987
+    authors: [Donald J. Schuirmann]
+    url: https://doi.org/10.1007/BF01068419
+    topics: [equivalence testing, non-inferiority testing]
+    directions: [P]
+    collision: Classical two-one-sided testing foundation; no selective VLM certification.
+  - id: el_yaniv_wiener_2010
+    title: On the Foundations of Noise-free Selective Classification
+    date: 2010
+    authors: [Ran El-Yaniv, Yair Wiener]
+    url: https://jmlr.org/papers/v11/el-yaniv10a.html
+    topics: [selective prediction, risk-coverage analysis]
+    directions: [P]
+    collision: Defines selective-classification foundations and risk/coverage behavior.
+  - id: geifman_el_yaniv_2017
+    title: Selective Classification for Deep Neural Networks
+    date: 2017
+    authors: [Yonatan Geifman, Ran El-Yaniv]
+    url: https://arxiv.org/abs/1705.08500
+    topics: [selective prediction, risk-coverage analysis]
+    directions: [P]
+    collision: Neural selective prediction is established; no SESOI or mechanism-claim estimand.
+  - id: bates_et_al_2021
+    title: Distribution-free, Risk-controlling Prediction Sets
+    date: 2021
+    authors: [Stephen Bates, Anastasios Angelopoulos, Lihua Lei, Jitendra Malik, Michael Jordan]
+    url: https://doi.org/10.1145/3478535
+    topics: [conformal risk control, finite-sample risk control]
+    directions: [P]
+    collision: Distribution-free risk control is an established ingredient.
+  - id: angelopoulos_et_al_2022
+    title: Conformal Risk Control
+    date: 2022-08-04
+    authors: [Anastasios Angelopoulos, Stephen Bates, Adam Fisch, Lihua Lei, Tal Schuster]
+    url: https://arxiv.org/abs/2208.02814
+    topics: [conformal risk control, finite-sample risk control]
+    directions: [P]
+    collision: Supplies the monotone-loss calibration guarantee and its exchangeability boundary.
+  - id: xu_et_al_2026
+    title: "Look Again Before You Abstain: Budgeted Conformal Evidence Acquisition for Reliable Vision-Language Model"
+    date: 2026-06-15
+    authors: [Jian Xu, Yanning Wu, Delu Zeng, John Paisley, Qibin Zhao]
+    url: https://arxiv.org/abs/2606.16667
+    topics: [VLM selective prediction, conformal risk control, intervention, abstention]
+    directions: [P]
+    collision: Very close VLM risk/abstention neighbor, but targets hallucination claims and evidence reacquisition rather than SESOI minimum-effect certification against known DGP truth.
+  - id: kotte_2026
+    title: "When Can Conformal Risk Control Certify LLM Outputs? Bounds, Impossibility, and Adaptation for Structured Generation"
+    date: 2026-06-27
+    authors: [Varun Kotte]
+    url: https://arxiv.org/abs/2606.29054
+    topics: [LLM selective prediction, conformal risk control, feasibility, structured generation]
+    directions: [P, M]
+    collision: Directly motivates feasibility-before-certification and abstention limits; no VLM known-state mechanistic-claim estimand.
+  - id: yu_niu_he_2026
+    title: Answer-Level Trust Selection for Physical Vision-Language Reasoning
+    date: 2026-08-20
+    authors: [Rongyu Yu, Ke Niu, Fengxiang He]
+    url: https://arxiv.org/abs/2608.19807
+    topics: [VLM selective prediction, risk-coverage analysis, controlled intervention]
+    directions: [P]
+    collision: Closest recent P neighbor across 20 VLMs; selects reliable individual quantitative answers, not effect claims or known-state false mechanistic claims.
+
+  - id: geng_et_al_2023
+    title: Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning
+    date: 2023
+    authors: [Saibo Geng, Martin Josifoski, Maxime Peyrard, Robert West]
+    url: https://doi.org/10.18653/v1/2023.emnlp-main.674
+    topics: [grammar-constrained decoding, structured output]
+    directions: [M]
+    collision: True token-level grammar-constrained decoding is established and is not a novelty claim.
+  - id: beurer_kellner_et_al_2024
+    title: "Guiding LLMs The Right Way: Fast, Non-Invasive Constrained Generation"
+    date: 2024-03-11
+    authors: [Luca Beurer-Kellner, Marc Fischer, Martin Vechev]
+    url: https://arxiv.org/abs/2403.06988
+    topics: [grammar-constrained decoding, decoding automata, tokenization]
+    directions: [M]
+    collision: Establishes correctness/performance concerns for constrained decoding engines.
+  - id: geng_et_al_2025
+    title: "JSONSchemaBench: A Rigorous Benchmark of Structured Outputs for Language Models"
+    date: 2025-01-18
+    authors: [Saibo Geng, Hudson Cooper, Michał Moskal, Samuel Jenkins, Julian Berman, Nathan Ranchin, Robert West, Eric Horvitz, Harsha Nori]
+    url: https://arxiv.org/abs/2501.10868
+    topics: [JSON-schema constrained decoding, structured-output benchmark]
+    directions: [M]
+    collision: Benchmarks six constrained-decoding frameworks on syntax, coverage, efficiency, and output quality; not a VLM answer-contract equivalence study.
+  - id: song_et_al_2026
+    title: Empirical Study for Structured Output Control in LLMs for Software Engineering
+    date: 2026-06-08
+    authors: [Yewei Song, Prateek Rajput, Tiezhu Sun, Saad Ezzini, Tegawendé F. Bissyandé, Jacques Klein]
+    url: https://arxiv.org/abs/2606.09395
+    topics: [grammar-constrained decoding, syntactic validity, semantic validity, structured-output benchmark]
+    directions: [M]
+    collision: Already separates syntax, structure, and semantics in LLM tasks; Direction M must not claim that decomposition alone as novel.
+  - id: parikh_2026
+    title: Structured Output Collapses Answer Diversity Across 44 Language Models
+    date: 2026-07-20
+    authors: [Tapan Parikh]
+    url: https://arxiv.org/abs/2607.18476
+    topics: [answer-contract effects, prompt-only JSON, decoder enforcement]
+    directions: [M]
+    collision: Direct evidence that prompt-only JSON changes semantic choices and that decoder enforcement may add no further shift; language-only wide-answer tasks, not fixed-truth VLM measurement equivalence.
+  - id: usman_2026
+    title: "PhantomFill: When the Form Demands an Answer, Language Models Invent One"
+    date: 2026-06-11
+    authors: [Rana Muhammad Usman]
+    url: https://arxiv.org/abs/2607.20492
+    topics: [answer-contract effects, grammar-constrained decoding, required-schema fabrication]
+    directions: [M]
+    collision: Demonstrates semantic coercion from required fields even under grammar-constrained decoding; no images, CLL comparison, or canonicalizer decomposition.
+  - id: chen_qu_wang_2026
+    title: "The Calibration Floor: Format Repair Can Masquerade as Self-Correction at Small-to-Mid Scale"
+    date: 2026-08-05
+    authors: [Mingguang Chen, Bo Qu, Licheng Wang]
+    url: https://arxiv.org/abs/2608.04355
+    topics: [grammar-constrained decoding, parser effects, semantic-content decomposition]
+    directions: [M]
+    collision: Very close measurement lesson; shows format recovery can dominate apparent self-correction, but not VLM cross-contract semantic equivalence.
+
+  - id: frangakis_rubin_2002
+    title: Principal Stratification in Causal Inference
+    date: 2002-03
+    authors: [Constantine E. Frangakis, Donald B. Rubin]
+    url: https://doi.org/10.1111/j.0006-341X.2002.00021.x
+    topics: [principal stratification, post-treatment variables]
+    directions: [U]
+    collision: Principal stratification is foundational and not itself novel.
+  - id: angrist_imbens_rubin_1996
+    title: Identification of Causal Effects Using Instrumental Variables
+    date: 1996-06
+    authors: [Joshua D. Angrist, Guido W. Imbens, Donald B. Rubin]
+    url: https://doi.org/10.1080/01621459.1996.10476902
+    topics: [instrumental variables, CACE, monotonicity, exclusion restriction]
+    directions: [U]
+    collision: IV/CACE identification assumptions are established and must be stated rather than branded novel.
+  - id: balke_pearl_1997
+    title: Bounds on Treatment Effects from Studies with Imperfect Compliance
+    date: 1997-09
+    authors: [Alexander Balke, Judea Pearl]
+    url: https://doi.org/10.1080/01621459.1997.10474074
+    topics: [partial identification, imperfect compliance, bounds]
+    directions: [U]
+    collision: Partial-identification bounds under noncompliance are established.
+  - id: montgomery_nyhan_torres_2018
+    title: How Conditioning on Posttreatment Variables Can Ruin Your Experiment and What to Do about It
+    date: 2018-03-30
+    authors: [Jacob M. Montgomery, Brendan Nyhan, Michelle Torres]
+    url: https://doi.org/10.1111/ajps.12357
+    topics: [post-treatment selection, collider bias]
+    directions: [U]
+    collision: Directly establishes why observed-uptake filtering is not a causal estimand.
+  - id: anderson_rubin_1949
+    title: Estimation of the Parameters of a Single Equation in a Complete System of Stochastic Equations
+    date: 1949
+    authors: [T. W. Anderson, Herman Rubin]
+    url: https://doi.org/10.1214/aoms/1177730090
+    topics: [instrumental variables, weak instruments, robust inference]
+    directions: [U]
+    collision: Provides the weak-instrument-robust testing lineage used for assumption-sensitive decisions.
+  - id: bronder_2026
+    title: "Does a Tool Result Carry More Authority Than Plain Text? Three Prospective Studies of False-Claim Adoption in a Synthetic Assignment Task with Claude Opus 5"
+    date: 2026-08-15
+    authors: [Justin Bronder]
+    url: https://arxiv.org/abs/2608.14992
+    topics: [false-claim adoption, intervention uptake, answer-contract effects]
+    directions: [U, M]
+    collision: Prospective false-claim adoption intervention is a close behavioral neighbor, but is single-model text-only and does not identify latent uptake strata or use IV/bounds.
+  - id: li_liu_2026
+    title: EviSafe Evidence-Grounded Safety Evaluation for Vision-Language Models
+    date: 2026-08-24
+    authors: [Xuetong Li, Gaofeng Liu]
+    url: https://arxiv.org/abs/2608.23313
+    topics: [multimodal intervention, counterfactual evidence, behavioral sensitivity]
+    directions: [U]
+    collision: Controlled VLM evidence interventions across eleven models, but no randomized encouragement, latent uptake estimand, IV, or partial-identification decision.
+
+topic_coverage:
+  minimum-effect testing: [riesthuis_2024]
+  SESOI-aware decision rules: [riesthuis_2024, lakens_2017]
+  equivalence and non-inferiority testing: [lakens_2017, schuirmann_1987]
+  selective prediction: [el_yaniv_wiener_2010, geifman_el_yaniv_2017, yu_niu_he_2026]
+  risk-coverage analysis: [el_yaniv_wiener_2010, geifman_el_yaniv_2017, yu_niu_he_2026]
+  conformal risk control: [bates_et_al_2021, angelopoulos_et_al_2022, xu_et_al_2026, kotte_2026]
+  grammar-constrained decoding: [geng_et_al_2023, beurer_kellner_et_al_2024, song_et_al_2026]
+  JSON-schema constrained decoding: [geng_et_al_2025]
+  structured-output benchmark: [geng_et_al_2025, song_et_al_2026]
+  LLM/VLM answer-contract effects: [parikh_2026, usman_2026, chen_qu_wang_2026, bronder_2026]
+  principal stratification: [frangakis_rubin_2002]
+  instrumental variables: [angrist_imbens_rubin_1996, anderson_rubin_1949]
+  post-treatment selection: [montgomery_nyhan_torres_2018]
+  partial identification: [balke_pearl_1997]
+  multimodal intervention uptake: [li_liu_2026, bronder_2026]
+
 directions:
-  P: PENDING_PRIMARY_SOURCE_SEARCH
-  M: PENDING_PRIMARY_SOURCE_SEARCH
-  U: PENDING_PRIMARY_SOURCE_SEARCH
+  P:
+    decision: NOVELTY_PASS_WITH_CAUTION
+    nearest_work: [xu_et_al_2026, yu_niu_he_2026, kotte_2026]
+    remaining_difference: Known-DGP certification of scene-level effect claims relative to a fixed SESOI and precomputed certification alternative, with explicit false-mechanistic-claim control and invalid-measurement/intervention states.
+    prohibited_novelty_claims: [SESOI, indifference zone, selective prediction, conformal risk control]
+    exact_conjunction_collision_found: false
+  M:
+    decision: NOVELTY_PASS_WITH_CAUTION
+    nearest_work: [parikh_2026, chen_qu_wang_2026, usman_2026, song_et_al_2026]
+    remaining_difference: Fixed-truth VLM cross-contract measurement equivalence across conditional likelihood, true token-level constraints, prompt-only JSON, and a preregistered deterministic canonicalizer.
+    caution: Syntax-versus-semantics decomposition and contract-induced content change are already demonstrated in LLMs; engineering equivalence alone cannot be a Q1 central claim.
+    prohibited_novelty_claims: [constrained decoding, JSON Schema, prompt comparison, parser comparison]
+    exact_conjunction_collision_found: false
+  U:
+    decision: NOVELTY_PASS
+    nearest_work: [frangakis_rubin_2002, angrist_imbens_rubin_1996, bronder_2026, li_liu_2026]
+    remaining_difference: Known-potential-state calibration of randomized encouragement, latent multimodal uptake, point/partial/non-identification decisions, and false-mechanistic-claim control before any real-VLM causal claim.
+    prohibited_novelty_claims: [principal stratification, instrumental variables, partial-identification bounds]
+    exact_conjunction_collision_found: false
