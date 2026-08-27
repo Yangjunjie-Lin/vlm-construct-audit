@@ -1,0 +1,111 @@
+schema_version: 1
+protocol_id: tier0_5_three_loop_triage_v1
+frozen_at: 2026-08-27
+base_commit: aad52b0b8d714a03056a8f1ff561606519a765d3
+branch: codex/tier0-5-three-loop-triage
+scientific_pilot_execution_authorized: false
+old_tier0_inventory_role: historical_baseline_and_regression_only
+old_inventory:
+  calibration_systems: 6
+  scenes: 48
+  repeated_dgp_samples: 200
+  threshold_configurations: 405
+locked_thresholds:
+  sensitivity_go: 0.80
+  sensitivity_no_go: 0.70
+  specificity_min: 0.95
+  fmcr_max: 0.05
+  coverage_min: 0.90
+  type_s_max: 0.05
+  abstention_max: 0.40
+  measurement_lower_bound_min: 0.98
+  contract_kappa_min: 0.90
+  contract_kappa_lower_bound_min: 0.85
+  sesoi: 0.10
+prohibited_changes:
+  - lower_any_locked_threshold
+  - change_SESOI
+  - tune_on_old_tier0_inventory
+  - tune_on_tier0_5_holdout
+  - add_post_holdout_gate_metric_prompt_or_label
+  - filter_individuals_by_observed_uptake
+  - treat_abstention_as_accuracy
+  - report_loop_c_as_scientific_VLM_evidence
+splits:
+  tier0_5_development:
+    scene_seed_base: 51000
+    system_parameter_seed_range: [510000, 510099]
+    template_namespace: loop_a_dev_template
+    shortcut_markers: [DEV_ALPHA, DEV_BETA, DEV_GAMMA]
+    parser_corruption_patterns: [drop_final_brace, option_shift_plus_one, duplicate_answer_key]
+    entity_id_permutation_seed: 51017
+  tier0_5_holdout:
+    scene_seed_base: 91000
+    system_parameter_seed_range: [910000, 910099]
+    template_namespace: loop_a_holdout_template
+    shortcut_markers: [HOLD_KAPPA, HOLD_LAMBDA, HOLD_OMEGA]
+    parser_corruption_patterns: [unicode_quote, option_shift_minus_one, trailing_entity_id]
+    entity_id_permutation_seed: 91019
+    result_access_before_method_freeze: forbidden
+    execution_limit: one
+loop_a:
+  baseline: A0_current_full_B5_at_base_commit
+  sample_sizes: [48, 96, 192, 384]
+  repetitions_per_family_size_split: 100
+  families: 12
+  power_only_resolution_max_n: 192
+  maximum_development_only_repairs: 1
+  repair_name_if_required: AuditV2
+  repair_allowed_only_after_A0_sensitivity_below_0_80_at_n384: true
+  holdout_gate:
+    sensitivity_min: 0.80
+    specificity_min: 0.95
+    fmcr_max: 0.05
+    coverage_min: 0.90
+    type_s_max: 0.05
+    abstention_max: 0.40
+loop_b:
+  scene_count: 160
+  probes_per_scene: 3
+  probe_count: 480
+  scene_seed_base: 62000
+  template_count: 16
+  template_namespace: loop_b_holdout_template
+  entity_permutation_seed: 62017
+  adversarial_parser_responses: 240
+  serialization_review_pairs: 42
+  human_reviewers_required: 2
+  automated_gates:
+    scene_cluster_lower_min: 0.98
+    two_way_cluster_lower_min: 0.98
+    scorer_ranking_agreement: 1.0
+    semantic_answer_agreement: 1.0
+    valid_parser_recall_min: 0.99
+    invalid_parser_rejection_min: 0.99
+    canonical_fact_equality: 1.0
+loop_c:
+  scene_count: 12
+  scene_seed_base: 73000
+  split: development_only
+  real_model_families_required: 3
+  calls_per_model_min: 40
+  calls_total_range: [120, 240]
+  scientific_factorial_forbidden: true
+  reasoning_test_split_forbidden: true
+  tiny_random_or_mock_substitution_forbidden: true
+  outcome_reporting_forbidden: true
+cross_loop_isolation:
+  loop_c_behavior_may_modify_loop_a: false
+  loop_b_failures_may_select_models: false
+  loop_a_holdout_may_modify_thresholds: false
+  prompt_or_parser_repair_after_loop_c: false
+final_authorization_requires:
+  - LOOP_A_GO
+  - LOOP_B_AUTOMATED_GO
+  - LOOP_B_HUMAN_GO
+  - LOOP_C_GO
+  - independent_remote_available
+  - fresh_clone_ci_passed
+  - clean_working_tree
+  - artifact_verification_passed
+

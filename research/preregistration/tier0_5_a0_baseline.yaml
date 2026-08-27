@@ -1,0 +1,21 @@
+schema_version: 1
+baseline_id: A0
+source_commit: aad52b0b8d714a03056a8f1ff561606519a765d3
+source_config_hash: ef50eab80bedc40c23248ddbaf88896438b444baeb1a7d9b2609e3f8f51a598c
+policy: current_full_B5_intersection_union_audit
+source_artifacts:
+  fixed_inventory: artifacts/metrics/audit_decisions.yaml
+  repeated_dgp: artifacts/metrics/statistical_calibration.yaml
+  threshold_sensitivity: artifacts/metrics/threshold_sensitivity_table.yaml
+reproduced_metrics_required:
+  fixed_inventory_fmcr: 0.20
+  full_audit_fixed_inventory_fmcr: 0.00
+  repeated_dgp_baseline_fmcr: 0.60
+  repeated_dgp_full_audit_fmcr: 0.00
+  sensitivity: 0.735
+  coverage: 0.96375
+  type_s: 0.00
+  type_m_ratio: 1.009423347398031
+  abstention: 0.2288888888888889
+mutation_before_unseen_development_run: forbidden
+
