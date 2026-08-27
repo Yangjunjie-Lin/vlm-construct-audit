@@ -253,12 +253,23 @@ def build_artifact_manifest() -> dict[str, Any]:
         tier0_5_manifest_path,
         tier0_5_verification_path,
     }
+    tier0_5_report_names = {
+        "loop_a_calibration_generalization.md",
+        "loop_a_decision.yaml",
+        "loop_b_decision.yaml",
+        "loop_b_measurement_robustness.md",
+        "loop_c_decision.yaml",
+        "loop_c_vlm_engineering_preflight.md",
+        "tier0_5_evidence_map.yaml",
+        "tier0_5_final_decision.yaml",
+        "tier0_5_three_loop_report.md",
+    }
     files = []
     for root in roots:
         if not root.exists():
             continue
         for path in sorted(p for p in root.rglob("*") if p.is_file()):
-            if path in excluded_manifests:
+            if path in excluded_manifests or (path.parent == Path("reports") and path.name in tier0_5_report_names):
                 continue
             files.append({"path": path.as_posix(), "sha256": sha256_file(path), "bytes": path.stat().st_size})
     manifest = {
