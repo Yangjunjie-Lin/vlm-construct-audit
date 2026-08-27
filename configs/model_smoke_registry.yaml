@@ -1,0 +1,81 @@
+schema_version: 1
+registry_id: tier0_5_three_family_real_checkpoint_smoke_v1
+frozen_at: 2026-08-27
+frozen_before_model_execution: true
+selection_uses_model_outcomes: false
+scientific_inference_authorized: false
+inventory:
+  scenes: 12
+  split: development_only
+  serializations: [natural_language, triples]
+  contracts: [conditional_likelihood, constrained_generation]
+  minimum_cases_per_model: 40
+  maximum_total_calls: 240
+  scientific_factorial_forbidden: true
+  reasoning_test_forbidden: true
+environment_policy:
+  isolated_venv: .venv-vlm-smoke
+  do_not_modify_tier0_environment: true
+  mock_or_tiny_random_substitution: forbidden
+  api_proxy: forbidden
+  required_visual_forward: true
+  deterministic_rerun_fraction: 1.0
+verification:
+  source: official_huggingface_model_api_and_revision_pinned_model_cards
+  verified_at: 2026-08-27
+  official_pages:
+    - https://huggingface.co/HuggingFaceTB/SmolVLM-256M-Instruct
+    - https://huggingface.co/OpenGVLab/InternVL2_5-2B
+    - https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct
+models:
+  - model_id: smolvlm_256m_instruct
+    family: SmolVLM-Idefics3
+    repository: HuggingFaceTB/SmolVLM-256M-Instruct
+    revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    commit_hash: 7e3e67edbbed1bf9888184d9df282b700a323964
+    license: Apache-2.0
+    parameter_count: 256484928
+    processor_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    tokenizer_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    dtype: float16
+    quantization: none
+    device_map: cuda:0
+    trust_remote_code: false
+    selection_reason: smallest stable official instruction checkpoint in the Idefics3-based SmolVLM family
+  - model_id: internvl2_5_2b
+    family: InternVL2.5-InternLM2
+    repository: OpenGVLab/InternVL2_5-2B
+    revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    commit_hash: 573169ee54df216786bb9a189e9a32a060a008cf
+    license: MIT; bundled InternLM2.5 component Apache-2.0
+    parameter_count: 2205754368
+    processor_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    tokenizer_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    dtype: float16
+    quantization: bitsandbytes_int8
+    device_map: cuda:0
+    trust_remote_code: true
+    selection_reason: smallest stable official instruction checkpoint in the InternVL2.5 family
+  - model_id: qwen2_vl_2b_instruct
+    family: Qwen2-VL
+    repository: Qwen/Qwen2-VL-2B-Instruct
+    revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    commit_hash: 895c3a49bc3fa70a340399125c650a463535e71c
+    license: Apache-2.0
+    parameter_count: 2208985600
+    processor_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    tokenizer_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    dtype: float16
+    quantization: bitsandbytes_int8
+    device_map: cuda:0
+    trust_remote_code: false
+    selection_reason: smallest stable official instruction checkpoint in the Qwen2-VL family
+gates:
+  checkpoint_load_success: 1.0
+  actual_visual_forward_success: 1.0
+  artifact_completeness: 1.0
+  parser_valid_rate_min: 0.98
+  independent_scorer_ranking_agreement: 1.0
+  deterministic_rerun_agreement_min: 0.99
+  silent_fallback_allowed: false
+  full_pilot_resource_feasible: true
