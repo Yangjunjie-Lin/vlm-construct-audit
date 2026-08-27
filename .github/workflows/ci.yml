@@ -18,3 +18,5 @@ jobs:
       - run: python -m vlm_construct_audit minimum-loop
         env:
           VLM_CA_CI: "1"
+      - run: python -m vlm_construct_audit adjudicate-tier0-5
+      - run: python -m vlm_construct_audit verify-artifacts

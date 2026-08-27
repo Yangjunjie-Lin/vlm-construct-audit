@@ -16,6 +16,9 @@ from .interventions import build_interventions
 from .reporting import build_artifact_manifest, build_evidence_map, build_report, verify_artifacts
 from .serialization import build_serializations, validate_equivalence
 from .statistics import analyze_predictions, run_known_dgp_simulation, run_threshold_sensitivity
+from .triage.loop_b import run_loop_b
+from .triage.loop_c import run_loop_c
+from .triage.reporting import adjudicate_tier0_5, verify_tier0_5_artifacts
 from .utils import load_yaml
 
 
@@ -105,6 +108,24 @@ def _run_pilot() -> int:
     return 2
 
 
+def _read_loop_a() -> dict[str, Any]:
+    result = load_yaml("artifacts/loop_a/holdout/summary.yaml")
+    return {
+        "decision": result["decision"],
+        "holdout_execution_count": result["holdout_execution_count"],
+        "holdout_rerun_forbidden": result["holdout_rerun_forbidden"],
+        "config_hash": result["config_hash"],
+    }
+
+
+def _verify_all() -> dict[str, Any]:
+    base = verify_artifacts()
+    tier = None
+    if Path("artifacts/manifests/tier0_5_artifact_manifest.yaml").exists():
+        tier = verify_tier0_5_artifacts()
+    return {"status": "PASS", "tier0": base, "tier0_5": tier}
+
+
 def _command_table(config: str) -> dict[str, Callable[[], Any]]:
     return {
         "validate-config": validate_config,
@@ -116,8 +137,12 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "audit-claims": build_audit_decisions,
         "build-evidence-map": build_evidence_map,
         "build-report": build_report,
-        "verify-artifacts": verify_artifacts,
+        "verify-artifacts": _verify_all,
         "minimum-loop": lambda: minimum_loop(config),
+        "run-loop-a": _read_loop_a,
+        "run-loop-b": run_loop_b,
+        "run-loop-c": run_loop_c,
+        "adjudicate-tier0-5": adjudicate_tier0_5,
     }
 
 
@@ -129,6 +154,7 @@ def main(argv: list[str] | None = None) -> int:
             "validate-config", "generate-data", "validate-equivalence", "run-calibration",
             "run-smoke", "run-pilot", "analyze", "audit-claims", "build-evidence-map",
             "build-report", "verify-artifacts", "minimum-loop",
+            "run-loop-a", "run-loop-b", "run-loop-c", "adjudicate-tier0-5",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
@@ -140,4 +166,3 @@ def main(argv: list[str] | None = None) -> int:
     result = _command_table(args.config)[args.command]()
     _show(result)
     return 0
-

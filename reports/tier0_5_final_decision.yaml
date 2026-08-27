@@ -1,0 +1,97 @@
+schema_version: 1
+decision: STOP_FOR_METHOD_FAILURE
+loop_a: LOOP_A_NO_GO
+loop_b_automated: GO
+loop_b_human: PENDING
+loop_c: LOOP_C_NO_GO
+three_model_scientific_pilot: NOT_AUTHORIZED
+exact_next_action: STOP_FOR_METHOD_FAILURE
+reasons:
+- loop_a_non_strong_sensitivity_and_threshold_stability_failed_after_single_allowed_repair
+- loop_b_human_equivalence_review_pending
+- loop_c_constrained_parser_integrity_gate_failed_for_all_three_families
+remote_successor_repository: https://github.com/Yangjunjie-Lin/vlm-construct-audit
+gate_table:
+- gate: Loop A known-valid sensitivity >= 0.80
+  value: 0.8233333333333334
+  status: PASS
+- gate: Loop A known-invalid specificity >= 0.95
+  value: 1.0
+  status: PASS
+- gate: Loop A FMCR <= 0.05
+  value: 0.0
+  status: PASS
+- gate: Loop A coverage >= 0.90
+  value: 0.9616666666666667
+  status: PASS
+- gate: Loop A Type-S <= 0.05
+  value: 0.0
+  status: PASS
+- gate: Loop A abstention <= 0.40
+  value: 0.22833333333333333
+  status: PASS
+- gate: Loop A not driven by strong tier
+  value: 0.79
+  status: FAIL
+- gate: Loop A stable across frozen grid
+  value: 0.5
+  status: FAIL
+- gate: Loop B scene-cluster lower >= 0.98
+  value: 0.9851329607687279
+  status: PASS
+- gate: Loop B two-way lower >= 0.98
+  value: 0.9817246596448638
+  status: PASS
+- gate: Loop B cross-scorer ranking = 1
+  value: 1.0
+  status: PASS
+- gate: Loop B parser recall/rejection >= 0.99
+  value:
+  - 1.0
+  - 1.0
+  status: PASS
+- gate: Loop B canonical fact equality = 1
+  value: 1.0
+  status: PASS
+- gate: Loop B two independent human reviewers
+  value: 0
+  status: PENDING
+- gate: Loop C three checkpoint loads
+  value: 3
+  status: PASS
+- gate: Loop C three visual forwards
+  value: 3
+  status: PASS
+- gate: Loop C artifact completeness = 1
+  value:
+  - 1.0
+  - 1.0
+  - 1.0
+  status: PASS
+- gate: Loop C parser-valid >= 0.98
+  value:
+  - 0.0
+  - 0.0
+  - 0.15
+  status: FAIL
+- gate: Loop C independent scorer = 1
+  value:
+  - 1.0
+  - 1.0
+  - 1.0
+  status: PASS
+- gate: Loop C determinism >= 0.99
+  value:
+  - 1.0
+  - 1.0
+  - 1.0
+  status: PASS
+- gate: Remote successor available
+  value: git@github.com:Yangjunjie-Lin/vlm-construct-audit.git
+  status: PASS
+- gate: All three loops GO
+  value:
+  - LOOP_A_NO_GO
+  - LOOP_B_AUTOMATED_GO_HUMAN_PENDING
+  - LOOP_C_NO_GO
+  status: FAIL

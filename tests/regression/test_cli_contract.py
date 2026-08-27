@@ -15,6 +15,7 @@ def test_required_cli_commands_are_exposed() -> None:
         "validate-config", "generate-data", "validate-equivalence", "run-calibration",
         "run-smoke", "run-pilot", "analyze", "audit-claims", "build-evidence-map",
         "build-report", "verify-artifacts",
+        "run-loop-a", "run-loop-b", "run-loop-c", "adjudicate-tier0-5",
     ):
         assert command in result.stdout
 

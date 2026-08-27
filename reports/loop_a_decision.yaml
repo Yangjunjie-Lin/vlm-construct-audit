@@ -1,0 +1,5 @@
+decision: LOOP_A_NO_GO
+failed_reasons:
+- non_strong_effect_sensitivity_gate_failed
+- threshold_stability_reversed
+config_hash: b7b6f4fbf68a099282ce0ffb037540c8f59b29e2ae6243fa2850fe0301669e64

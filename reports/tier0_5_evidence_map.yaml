@@ -1,0 +1,34 @@
+schema_version: 1
+decision: STOP_FOR_METHOD_FAILURE
+claims:
+- id: T05-A
+  status: LOOP_A_NO_GO
+  boundary: known-DGP methodological calibration only
+  evidence:
+  - path: artifacts/loop_a/holdout/summary.yaml
+    sha256: 126911daceedede4c3e82705ca6d14458051e14e8e3a3810d842afbcb58a7449
+    bytes: 34279
+- id: T05-B-AUTO
+  status: LOOP_B_AUTOMATED_GO_HUMAN_PENDING
+  boundary: automated measurement engineering; human equivalence pending
+  evidence:
+  - path: artifacts/loop_b/measurement_metrics.yaml
+    sha256: 7d037c8bb49a9df720d0b7f983135324d7a6e853070a320c88fa071eb0e3d436
+    bytes: 3223
+  - path: data/annotations/serialization_review_packet.csv
+    sha256: b4d5cf32b149ecad0df325a46737a79d0e0415083173ec509247af844bedfeab
+    bytes: 17709
+- id: T05-C
+  status: LOOP_C_NO_GO
+  boundary: real-checkpoint engineering only; no scientific behavior claim
+  evidence:
+  - path: artifacts/loop_c/decision.yaml
+    sha256: 870dca7060b3350c240b4507d42d6cef821eba9c0b159e3f1cb0a0189d72c38b
+    bytes: 2144
+  - path: configs/model_smoke_registry.yaml
+    sha256: 6731a87c2e78d55d7d42beabf182b96c1154acc112efef98e4294f788e7600d9
+    bytes: 3184
+- id: T05-SCI
+  status: NOT_EXECUTED
+  boundary: no real-VLM scientific factorial or reasoning-test result exists
+  evidence: []

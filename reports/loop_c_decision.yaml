@@ -1,0 +1,65 @@
+schema_version: 1
+decision: LOOP_C_NO_GO
+config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
+families_registered: 3
+families_attempted: 3
+checkpoint_load_successes: 3
+visual_forward_successes: 3
+full_engineering_gate_passes: 0
+environment_cuda_available: true
+full_pilot_runtime_projection:
+  synthetic_evaluations_total: 28800
+  evaluations_per_family: 9600
+  seconds: 39681.2448959914
+  hours: 11.02256802666428
+  basis: sum_of_three_observed_per-case_family_latencies_times_9600
+  excludes_transport_set_and_setup_overhead: true
+full_pilot_storage_projection:
+  observed_prediction_bytes_for_120_primary_cases: 143228
+  projected_bytes_for_28800_cases: 34374720
+full_pilot_resource_feasible: false
+scientific_vlm_result: NOT_EXECUTED
+mock_or_tiny_random_substitution: false
+model_summaries:
+- model_id: smolvlm_256m_instruct
+  family: SmolVLM-Idefics3
+  status: GATE_FAILED
+  checkpoint_load_success: true
+  actual_visual_forward_success: true
+  artifact_completeness: 1.0
+  parser_valid_rate: 0.0
+  independent_scorer_ranking_agreement: 1.0
+  deterministic_rerun_agreement: 1.0
+  peak_vram_bytes: 2651030016
+  peak_ram_bytes: 1948663808
+  latency_seconds_mean: 2.2303732924985527
+  error_type: null
+  error: null
+- model_id: internvl2_5_2b
+  family: InternVL2.5-InternLM2
+  status: GATE_FAILED
+  checkpoint_load_success: true
+  actual_visual_forward_success: true
+  artifact_completeness: 1.0
+  parser_valid_rate: 0.0
+  independent_scorer_ranking_agreement: 1.0
+  deterministic_rerun_agreement: 1.0
+  peak_vram_bytes: 3362795008
+  peak_ram_bytes: 6065672192
+  latency_seconds_mean: 0.8778337499999906
+  error_type: null
+  error: null
+- model_id: qwen2_vl_2b_instruct
+  family: Qwen2-VL
+  status: GATE_FAILED
+  checkpoint_load_success: true
+  actual_visual_forward_success: true
+  artifact_completeness: 1.0
+  parser_valid_rate: 0.15
+  independent_scorer_ranking_agreement: 1.0
+  deterministic_rerun_agreement: 1.0
+  peak_vram_bytes: 2852916224
+  peak_ram_bytes: 4418400256
+  latency_seconds_mean: 1.0252559675005615
+  error_type: null
+  error: null
