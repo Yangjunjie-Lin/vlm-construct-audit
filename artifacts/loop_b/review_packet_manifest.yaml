@@ -1,0 +1,8 @@
+schema_version: 1
+status: HUMAN_EQUIVALENCE_REVIEW_PENDING
+genuine_pairs: 42
+decoy_pairs: 12
+packet_rows: 54
+reviewers_completed: 0
+agent_or_model_review_used: false
+config_hash: e7ccfd385b83b97b26567462996f9a0e8dcbbfa2bb0a44087b8ac6cb0e96b3c4
