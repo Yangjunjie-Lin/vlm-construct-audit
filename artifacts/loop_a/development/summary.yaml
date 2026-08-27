@@ -1,0 +1,694 @@
+schema_version: 1
+split: tier0_5_development
+method: A0
+method_source_commit: aad52b0b8d714a03056a8f1ff561606519a765d3
+execution_head: 5fd87c060209876a044ec03c812cca4e5a7949ab
+config_hash: e952e1e5d7ec5d7be7f776bcb235ab515aa1ea3648e72cce55ef527e41f42b45
+family_count: 12
+repetitions_per_family_size: 100
+sample_size_curve:
+- sample_size: 48
+  dataset_count: 1200
+  known_valid_sensitivity: 0.33166666666666667
+  non_strong_macro_sensitivity: 0.23600000000000002
+  non_strong_families_at_or_above_0_80: 0
+  valid_boundary_effect_sensitivity: 0.03
+  known_invalid_specificity: 1.0
+  fmcr: 0.0
+  coverage: 0.94
+  type_s: 0.0
+  type_m: 1.0305347009093966
+  abstention: 0.38333333333333336
+  partial_identification_accuracy: 0.0
+  exact_expected_class_accuracy: 0.5125
+  by_family:
+    ContractDependentPseudoEffect:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.77
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.77
+    CorrelatedFormatShortcut:
+      count: 100
+      expected_claim_class: FORMAT_DEPENDENT
+      exact_class_accuracy: 0.99
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    EntityMappingLeakage:
+      count: 100
+      expected_claim_class: INVALID_INTERVENTION
+      exact_class_accuracy: 0.98
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    MixedValidInvalidPopulation:
+      count: 100
+      expected_claim_class: PARTIALLY_IDENTIFIED
+      exact_class_accuracy: 0.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    PartialUptakeNoComposition:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.42
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.42
+    StochasticParserFailure:
+      count: 100
+      expected_claim_class: INVALID_MEASUREMENT
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    ValidBoundaryEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.03
+      valid_behavioral_effect_rate: 0.03
+      inconclusive_rate: 0.91
+    ValidHeterogeneousScenes:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.28
+      valid_behavioral_effect_rate: 0.28
+      inconclusive_rate: 0.63
+    ValidModerateEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.2
+      valid_behavioral_effect_rate: 0.2
+      inconclusive_rate: 0.76
+    ValidNoisyButMeasured:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.35
+      valid_behavioral_effect_rate: 0.35
+      inconclusive_rate: 0.58
+    ValidStochasticUptake:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.32
+      valid_behavioral_effect_rate: 0.32
+      inconclusive_rate: 0.41
+    ValidStrongEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.81
+      valid_behavioral_effect_rate: 0.81
+      inconclusive_rate: 0.12
+- sample_size: 96
+  dataset_count: 1200
+  known_valid_sensitivity: 0.53
+  non_strong_macro_sensitivity: 0.452
+  non_strong_families_at_or_above_0_80: 0
+  valid_boundary_effect_sensitivity: 0.03
+  known_invalid_specificity: 1.0
+  fmcr: 0.0
+  coverage: 0.9366666666666666
+  type_s: 0.0
+  type_m: 1.0119183662648499
+  abstention: 0.33166666666666667
+  partial_identification_accuracy: 0.0
+  exact_expected_class_accuracy: 0.6366666666666667
+  by_family:
+    ContractDependentPseudoEffect:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.97
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.97
+    CorrelatedFormatShortcut:
+      count: 100
+      expected_claim_class: FORMAT_DEPENDENT
+      exact_class_accuracy: 0.99
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    EntityMappingLeakage:
+      count: 100
+      expected_claim_class: INVALID_INTERVENTION
+      exact_class_accuracy: 0.98
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    MixedValidInvalidPopulation:
+      count: 100
+      expected_claim_class: PARTIALLY_IDENTIFIED
+      exact_class_accuracy: 0.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    PartialUptakeNoComposition:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.52
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.52
+    StochasticParserFailure:
+      count: 100
+      expected_claim_class: INVALID_MEASUREMENT
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    ValidBoundaryEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.03
+      valid_behavioral_effect_rate: 0.03
+      inconclusive_rate: 0.92
+    ValidHeterogeneousScenes:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.68
+      valid_behavioral_effect_rate: 0.68
+      inconclusive_rate: 0.29
+    ValidModerateEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.42
+      valid_behavioral_effect_rate: 0.42
+      inconclusive_rate: 0.55
+    ValidNoisyButMeasured:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.53
+      valid_behavioral_effect_rate: 0.53
+      inconclusive_rate: 0.41
+    ValidStochasticUptake:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.6
+      valid_behavioral_effect_rate: 0.6
+      inconclusive_rate: 0.31
+    ValidStrongEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.92
+      valid_behavioral_effect_rate: 0.92
+      inconclusive_rate: 0.01
+- sample_size: 192
+  dataset_count: 1200
+  known_valid_sensitivity: 0.6933333333333334
+  non_strong_macro_sensitivity: 0.646
+  non_strong_families_at_or_above_0_80: 2
+  valid_boundary_effect_sensitivity: 0.01
+  known_invalid_specificity: 1.0
+  fmcr: 0.0
+  coverage: 0.935
+  type_s: 0.0
+  type_m: 1.009622958722877
+  abstention: 0.2783333333333333
+  partial_identification_accuracy: 0.0
+  exact_expected_class_accuracy: 0.74
+  by_family:
+    ContractDependentPseudoEffect:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 1.0
+    CorrelatedFormatShortcut:
+      count: 100
+      expected_claim_class: FORMAT_DEPENDENT
+      exact_class_accuracy: 0.99
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    EntityMappingLeakage:
+      count: 100
+      expected_claim_class: INVALID_INTERVENTION
+      exact_class_accuracy: 0.98
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    MixedValidInvalidPopulation:
+      count: 100
+      expected_claim_class: PARTIALLY_IDENTIFIED
+      exact_class_accuracy: 0.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    PartialUptakeNoComposition:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.75
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.75
+    StochasticParserFailure:
+      count: 100
+      expected_claim_class: INVALID_MEASUREMENT
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    ValidBoundaryEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.01
+      valid_behavioral_effect_rate: 0.01
+      inconclusive_rate: 0.94
+    ValidHeterogeneousScenes:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.95
+      valid_behavioral_effect_rate: 0.95
+      inconclusive_rate: 0.03
+    ValidModerateEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.59
+      valid_behavioral_effect_rate: 0.59
+      inconclusive_rate: 0.38
+    ValidNoisyButMeasured:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.78
+      valid_behavioral_effect_rate: 0.78
+      inconclusive_rate: 0.16
+    ValidStochasticUptake:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.9
+      valid_behavioral_effect_rate: 0.9
+      inconclusive_rate: 0.08
+    ValidStrongEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.93
+      valid_behavioral_effect_rate: 0.93
+      inconclusive_rate: 0.0
+- sample_size: 384
+  dataset_count: 1200
+  known_valid_sensitivity: 0.7966666666666666
+  non_strong_macro_sensitivity: 0.77
+  non_strong_families_at_or_above_0_80: 4
+  valid_boundary_effect_sensitivity: 0.09
+  known_invalid_specificity: 1.0
+  fmcr: 0.0
+  coverage: 0.9433333333333334
+  type_s: 0.0
+  type_m: 1.0087175823754537
+  abstention: 0.2325
+  partial_identification_accuracy: 0.0
+  exact_expected_class_accuracy: 0.7966666666666666
+  by_family:
+    ContractDependentPseudoEffect:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 1.0
+    CorrelatedFormatShortcut:
+      count: 100
+      expected_claim_class: FORMAT_DEPENDENT
+      exact_class_accuracy: 0.99
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    EntityMappingLeakage:
+      count: 100
+      expected_claim_class: INVALID_INTERVENTION
+      exact_class_accuracy: 0.98
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    MixedValidInvalidPopulation:
+      count: 100
+      expected_claim_class: PARTIALLY_IDENTIFIED
+      exact_class_accuracy: 0.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    PartialUptakeNoComposition:
+      count: 100
+      expected_claim_class: INCONCLUSIVE
+      exact_class_accuracy: 0.81
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.81
+    StochasticParserFailure:
+      count: 100
+      expected_claim_class: INVALID_MEASUREMENT
+      exact_class_accuracy: 1.0
+      valid_behavioral_effect_rate: 0.0
+      inconclusive_rate: 0.0
+    ValidBoundaryEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.09
+      valid_behavioral_effect_rate: 0.09
+      inconclusive_rate: 0.86
+    ValidHeterogeneousScenes:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.98
+      valid_behavioral_effect_rate: 0.98
+      inconclusive_rate: 0.0
+    ValidModerateEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.87
+      valid_behavioral_effect_rate: 0.87
+      inconclusive_rate: 0.1
+    ValidNoisyButMeasured:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.92
+      valid_behavioral_effect_rate: 0.92
+      inconclusive_rate: 0.02
+    ValidStochasticUptake:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.99
+      valid_behavioral_effect_rate: 0.99
+      inconclusive_rate: 0.0
+    ValidStrongEffect:
+      count: 100
+      expected_claim_class: VALID_BEHAVIORAL_EFFECT
+      exact_class_accuracy: 0.93
+      valid_behavioral_effect_rate: 0.93
+      inconclusive_rate: 0.0
+power_diagnostic: LOOP_A_POWER_ONLY_FAIL_REPAIR_ELIGIBLE
+selected_sample_size_for_holdout: 384
+repair_eligible: true
+threshold_stability:
+  grid_count: 36
+  all_grid_cells_retain_go: false
+  go_fraction: 0.0
+  minimum_sensitivity: 0.5066666666666667
+  minimum_specificity: 1.0
+  maximum_fmcr: 0.0
+  maximum_abstention: 0.24833333333333332
+  rows:
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.24833333333333332
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.75
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.185
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.7966666666666666
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2325
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.8
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5166666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.17666666666666667
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.98
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.785
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.2
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.9
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.04
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.05
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+  - uptake_lower: 0.85
+    measurement_lower: 0.99
+    contract_kappa: 0.95
+    format_margin: 0.06
+    passes_loop_a: false
+    sensitivity: 0.5066666666666667
+    specificity: 1.0
+    fmcr: 0.0
+    abstention: 0.15833333333333333
+holdout_execution_count: 0

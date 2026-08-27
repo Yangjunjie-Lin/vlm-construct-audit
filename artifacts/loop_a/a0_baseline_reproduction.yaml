@@ -1,0 +1,15 @@
+schema_version: 1
+baseline_id: A0
+source_commit: aad52b0b8d714a03056a8f1ff561606519a765d3
+observed:
+  fixed_inventory_fmcr: 0.2
+  full_audit_fixed_inventory_fmcr: 0.0
+  repeated_dgp_baseline_fmcr: 0.6
+  repeated_dgp_full_audit_fmcr: 0.0
+  sensitivity: 0.735
+  coverage: 0.96375
+  type_s: 0.0
+  type_m_ratio: 1.009423347398031
+  abstention: 0.2288888888888889
+mismatches: {}
+status: PASS
