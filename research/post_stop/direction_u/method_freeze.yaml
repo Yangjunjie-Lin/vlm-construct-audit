@@ -1,0 +1,13 @@
+schema_version: 1
+direction: U
+status: ESTIMATORS_FROZEN_AFTER_DEVELOPMENT_NO_GO
+frozen_at: 2026-08-27
+estimators: [U0, U1, U2, U3, U4, U5]
+development_revision_count: 1
+further_repairs: forbidden
+point_partial_nonidentification_policy_frozen: true
+holdout_authorized: false
+holdout_execution_count: 0
+reason: development completion requirement failed after the only permitted revision
+decision: DIRECTION_U_NO_GO
+claim_boundary: No numeric known-DGP performance result was emitted; no real-VLM uptake or causal claim is permitted.

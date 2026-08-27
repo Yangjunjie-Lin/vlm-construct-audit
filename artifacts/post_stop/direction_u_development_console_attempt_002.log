@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "C:\Users\Yangjunjie Lin\AppData\Local\Programs\Python\Python312\Lib\statistics.py", line 327, in _exact_ratio
+    return (x.numerator, x.denominator)
+            ^^^^^^^^^^^
+AttributeError: 'numpy.bool' object has no attribute 'numerator'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\__main__.py", line 4, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\cli.py", line 177, in main
+    result = _command_table(args.config)[args.command]()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\cli.py", line 152, in <lambda>
+    "run-direction-u-development": lambda: run_direction_u("development"),
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\post_stop\direction_u.py", line 265, in run_direction_u
+    summary = _summarize(rows, config, split)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\post_stop\direction_u.py", line 208, in _summarize
+    "U0": _method_metrics(point, "U0", "true_CACE"),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\UoM_CS\GitHub\vlm-construct-audit\src\vlm_construct_audit\post_stop\direction_u.py", line 174, in _method_metrics
+    "type_s": mean(signed) if signed else 0.0,
+              ^^^^^^^^^^^^
+  File "C:\Users\Yangjunjie Lin\AppData\Local\Programs\Python\Python312\Lib\statistics.py", line 484, in mean
+    T, total, n = _sum(data)
+                  ^^^^^^^^^^
+  File "C:\Users\Yangjunjie Lin\AppData\Local\Programs\Python\Python312\Lib\statistics.py", line 193, in _sum
+    for n, d in map(_exact_ratio, values):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yangjunjie Lin\AppData\Local\Programs\Python\Python312\Lib\statistics.py", line 330, in _exact_ratio
+    raise TypeError(msg)
+TypeError: can't convert type 'bool' to numerator/denominator

@@ -1,0 +1,18 @@
+schema_version: 1
+direction: U
+decision: DIRECTION_U_NO_GO
+claims:
+  - claim: twelve known-potential-state DGPs and six estimators were preregistered
+    scope: design only
+    evidence: research/post_stop/direction_u/preregistration.yaml
+  - claim: development failed after the only permitted revision
+    scope: execution provenance
+    evidence: research/post_stop/direction_u/development_completion.yaml
+  - claim: sealed holdout and real-model smoke were not executed
+    scope: authorization boundary
+    evidence: research/post_stop/direction_u/method_freeze.yaml
+prohibited_claims:
+  - known-DGP bias or coverage result
+  - real-VLM uptake effect
+  - principal-stratum identification in a real model
+  - internal VLM mechanism

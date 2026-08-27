@@ -1,0 +1,30 @@
+schema_version: 1
+direction: U
+split: development
+status: DEVELOPMENT_FAILED_AFTER_FINAL_ALLOWED_REVISION
+completed_at: 2026-08-27
+config_hash: ce5231b729c1be871387437cccb11c859f095fc00cb5d929b87b617180bfa270
+development_revision_count: 1
+development_revision_budget_remaining: 0
+attempts:
+  - attempt: 1
+    failure: numpy.bool_ rejected in policy Type-S aggregation
+    dataset_or_summary_emitted: false
+    preserved_at: artifacts/post_stop/direction_u/development_initial_attempt
+  - attempt: 2
+    failure: numpy.bool_ rejected in per-method Type-S aggregation
+    dataset_or_summary_emitted: false
+    preserved_at: artifacts/post_stop/direction_u/development_final_attempt
+final_failure:
+  error_type: TypeError
+  message: statistics.mean cannot convert numpy.bool_ in _method_metrics
+  occurred_after: all 7200 registered development datasets simulated in memory
+holdout_seen: false
+holdout_authorization: DENIED
+holdout_execution_count: 0
+decision: DIRECTION_U_NO_GO
+sha256:
+  preregistration.yaml: e0051786cdfd35668018d1ad4173ea8492a256759e1688b15ce2046c9ffb1fa4
+  direction_u.py: c36a99a2e90e450ecca99deecb251527db2d71b288fdaf8e12381f821616b633
+  final_execution_marker.yaml: d76cbcb5d183e175ada59d31b934010277776c5cd3c495b77bc154391fd528fc
+  final_console.log: ccf656e11937e6f9954c4fddbc8be51c5c480356e06d0aaf1065a9ccae617254

@@ -1,0 +1,18 @@
+schema_version: 1
+direction: U
+decision: DIRECTION_U_NO_GO
+novelty: NOVELTY_PASS
+basis: development failed after the only permitted revision
+development:
+  registered_datasets_per_attempt: 7200
+  numeric_summary_emitted: false
+  revision_count: 1
+  final_error: numpy.bool_ rejected in per-method Type-S aggregation
+sealed_holdout:
+  authorized: false
+  execution_count: 0
+known_DGP_GO: false
+real_model_feasibility_smoke:
+  authorized: false
+  executed: false
+claim_boundary: No known-DGP operating-characteristic conclusion, no real-VLM causal effect, and no principal-stratum claim.
