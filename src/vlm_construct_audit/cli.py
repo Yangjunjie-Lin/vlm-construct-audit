@@ -13,7 +13,16 @@ from .audit import build_audit_decisions
 from .calibration.runner import run_calibration, run_smoke
 from .data import generate_dataset
 from .interventions import build_interventions
-from .post_stop import freeze_post_stop, run_direction_m, run_direction_p, run_direction_u
+from .post_stop import (
+    adjudicate_post_stop,
+    freeze_post_stop,
+    import_human_review,
+    run_direction_m,
+    run_direction_p,
+    run_direction_u,
+    seal_direction,
+    verify_post_stop_artifacts,
+)
 from .reporting import build_artifact_manifest, build_evidence_map, build_report, verify_artifacts
 from .serialization import build_serializations, validate_equivalence
 from .statistics import analyze_predictions, run_known_dgp_simulation, run_threshold_sensitivity
@@ -151,6 +160,12 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "run-direction-m-holdout": lambda: run_direction_m("holdout"),
         "run-direction-u-development": lambda: run_direction_u("development"),
         "run-direction-u-holdout": lambda: run_direction_u("holdout"),
+        "seal-direction-p": lambda: seal_direction("p"),
+        "seal-direction-m": lambda: seal_direction("m"),
+        "seal-direction-u": lambda: seal_direction("u"),
+        "import-human-review": import_human_review,
+        "adjudicate-post-stop": adjudicate_post_stop,
+        "verify-post-stop-artifacts": verify_post_stop_artifacts,
     }
 
 
@@ -166,6 +181,8 @@ def main(argv: list[str] | None = None) -> int:
             "post-stop-freeze", "run-direction-p-development", "run-direction-p-holdout",
             "run-direction-m-development", "run-direction-m-holdout",
             "run-direction-u-development", "run-direction-u-holdout",
+            "seal-direction-p", "seal-direction-m", "seal-direction-u",
+            "import-human-review", "adjudicate-post-stop", "verify-post-stop-artifacts",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")

@@ -1,0 +1,15 @@
+schema_version: 1
+status: PENDING_TWO_INDEPENDENT_HUMAN_REVIEWERS
+packet: data/annotations/serialization_review_packet.csv
+instructions: data/annotations/serialization_review_instructions.md
+reviewer_files_required:
+  - data/annotations/reviewer_1.csv
+  - data/annotations/reviewer_2.csv
+packet_sha256: b4d5cf32b149ecad0df325a46737a79d0e0415083173ec509247af844bedfeab
+instructions_sha256: 0e82f2117472d5d504b5734f3a4a08dfe61ffbe06749b3e7ffadfd7fa8e8839c
+template_sha256: 51314547b7bfaa3683dc7ec7cabd805587c1e540bf4a9d421a205e4b383ca726
+reviewer_count_completed: 0
+agent_or_model_review_used: false
+key_disclosure_to_reviewers: forbidden
+packet_mutation_after_first_return: forbidden
+final_adjudication_authorized: false
