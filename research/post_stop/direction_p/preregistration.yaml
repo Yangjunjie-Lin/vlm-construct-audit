@@ -1,0 +1,134 @@
+schema_version: 1
+registry_id: post_stop_direction_p_v1
+direction: P
+title: SESOI-Aware Risk-Coverage Claim Certification
+frozen_at: 2026-08-27
+novelty_decision: NOVELTY_PASS_WITH_CAUTION
+historical_outcomes_used_for_tuning: false
+scientific_sesoi_delta0: 0.10
+certification_alternative_delta1: 0.15
+delta1_selection:
+  selected_before_any_direction_p_simulation: true
+  paired_scene_variance: 0.16
+  primary_one_sided_alpha: 0.025
+  primary_critical_z: 1.959963984540054
+  target_power: 0.80
+  feasible_maximum_sample_size: 768
+  analytic_power_at_delta1_and_n768: 0.933
+  desired_false_claim_rate: 0.025
+  rationale: smallest two-decimal alternative at or above the analytic 80-percent-power effect under the frozen paired-variance and alpha assumptions
+decision_space:
+  - EFFECT_BELOW_SESOI
+  - EFFECT_IN_INDIFFERENCE_ZONE
+  - EFFECT_ABOVE_CERTIFICATION_THRESHOLD
+  - INVALID_MEASUREMENT
+  - INVALID_INTERVENTION
+  - FORMAT_OR_CONTRACT_DEPENDENT
+  - PARTIALLY_IDENTIFIED
+  - INCONCLUSIVE
+gray_zone_statement: Gray-zone output is neither success nor failure; the design cannot certify that effect at the target error rate.
+analytic_power_grid:
+  sample_sizes: [128, 256, 384, 768, 1024]
+  effects: [0.00, 0.05, 0.09, 0.10, 0.11, 0.13, 0.15, 0.18, 0.25]
+  below_rule_one_sided_alpha: 0.05
+simulation:
+  sample_sizes: [128, 256, 384, 768]
+  primary_sample_size: 768
+  repetitions_per_family_size_split: 100
+  maximum_development_only_revisions: 1
+  sealed_holdout_execution_limit: 1
+development:
+  dataset_seed_formula: 171000000 + sample_size * 10000 + family_index * 100 + repetition
+  parameter_seed_range: [171000, 171099]
+  template_namespace: post_stop_p_dev_contract_v1
+  corruption_patterns: [escaped_solidus_key, scalar_where_enum_required, nested_answer_shadow]
+  entity_mapping: seeded_bijective_latin_square_v1
+  entity_mapping_seed: 17117
+holdout:
+  dataset_seed_formula: 271000000 + sample_size * 10000 + family_index * 100 + repetition
+  parameter_seed_range: [271000, 271099]
+  template_namespace: post_stop_p_holdout_contract_v1
+  corruption_patterns: [zero_width_key_split, array_where_scalar_required, sibling_answer_collision]
+  entity_mapping: seeded_affine_permutation_v1
+  entity_mapping_seed: 27119
+  seeds_sealed_before_execution: true
+  expected_decisions_locked_before_execution: true
+  intermediate_results_forbidden: true
+measurement_validation:
+  probes_per_dataset: 800
+  lower_bound_alpha: 0.05
+  cutoff: 0.98
+  parser_valid_cutoff: 0.98
+intervention_validation:
+  probes_per_dataset: 800
+  lower_bound_alpha: 0.05
+  cutoff: 0.80
+contract_validation:
+  kappa_cutoff: 0.90
+  kappa_lower_cutoff: 0.85
+  format_materiality: 0.10
+paired_estimator:
+  cell_count: 4
+  pooled_estimate: equal_mean_of_cell_estimates
+  effective_n: minimum_scene_count_not_cell_count_times_scene_count
+  standard_error: maximum_observed_paired_difference_variance_across_cells_divided_by_effective_n
+  confidence_interval: two_sided_95_percent_normal
+methods:
+  P0:
+    name: frozen_AuditV2_adapter
+    source: src/vlm_construct_audit/triage/audit_v2.py
+    modification: forbidden
+  P1:
+    name: ordinary_one_sided_minimum_effect_test
+    critical_z: 1.6448536269514722
+    non_rejection_output: INCONCLUSIVE
+  P2:
+    name: three_way_SESOI_indifference_certification
+    certification_critical_z: 1.6448536269514722
+    below_critical_z: 1.6448536269514722
+  P3:
+    name: preregistered_selective_risk_coverage_certification
+    certification_critical_z: 1.959963984540054
+    below_critical_z: 1.6448536269514722
+    threshold_stability_z: [1.81, 1.96, 2.05, 2.17]
+    exchangeability: datasets are exchangeable only within a registered family, sample size, split, and frozen generator
+    calibration_test_separation: development and sealed holdout use disjoint seed namespaces and parameter seeds
+    finite_sample_boundary: no conformal guarantee is claimed across families, seed shifts, generator changes, threshold selection on holdout, or real VLMs
+families:
+  - {family: NullEffect, family_index: 1, truth_effect: [0.00, 0.00], expected_decision: EFFECT_BELOW_SESOI, eligibility: valid}
+  - {family: SubSESOIEffect, family_index: 2, truth_effect: [0.035, 0.075], expected_decision: EFFECT_BELOW_SESOI, eligibility: valid}
+  - {family: ExactSESOIEffect, family_index: 3, truth_effect: [0.10, 0.10], expected_decision: EFFECT_BELOW_SESOI, eligibility: valid}
+  - {family: NearBoundaryEffect, family_index: 4, truth_effect: [0.1005, 0.1020], expected_decision: EFFECT_IN_INDIFFERENCE_ZONE, eligibility: valid}
+  - {family: CertificationBoundaryEffect, family_index: 5, truth_effect: [0.155, 0.165], expected_decision: EFFECT_ABOVE_CERTIFICATION_THRESHOLD, eligibility: valid, cell_effect_offsets: [-0.075, 0.025, 0.025, 0.025]}
+  - {family: ModerateEffect, family_index: 6, truth_effect: [0.195, 0.225], expected_decision: EFFECT_ABOVE_CERTIFICATION_THRESHOLD, eligibility: valid, cell_effect_offsets: [-0.100, 0.033, 0.033, 0.034]}
+  - {family: StrongEffect, family_index: 7, truth_effect: [0.290, 0.350], expected_decision: EFFECT_ABOVE_CERTIFICATION_THRESHOLD, eligibility: valid}
+  - {family: HeterogeneousEffect, family_index: 8, truth_effect: [0.175, 0.215], expected_decision: EFFECT_ABOVE_CERTIFICATION_THRESHOLD, eligibility: valid, cell_effect_offsets: [-0.085, 0.028, 0.028, 0.029]}
+  - {family: StochasticUptakeITT, family_index: 9, truth_effect: [0.173, 0.238], expected_decision: EFFECT_ABOVE_CERTIFICATION_THRESHOLD, eligibility: valid, cell_effect_offsets: [-0.080, 0.026, 0.027, 0.027]}
+  - {family: MeasurementCorruption, family_index: 10, truth_effect: [0.18, 0.24], expected_decision: INVALID_MEASUREMENT, eligibility: invalid_measurement}
+  - {family: ContractPseudoEffect, family_index: 11, truth_effect: [0.00, 0.00], expected_decision: FORMAT_OR_CONTRACT_DEPENDENT, eligibility: invalid_contract}
+  - {family: FormatShortcut, family_index: 12, truth_effect: [0.00, 0.00], expected_decision: FORMAT_OR_CONTRACT_DEPENDENT, eligibility: invalid_format}
+  - {family: InvalidUptake, family_index: 13, truth_effect: [0.00, 0.00], expected_decision: INVALID_INTERVENTION, eligibility: invalid_intervention}
+  - {family: MixedPrincipalStrata, family_index: 14, truth_effect: [0.07, 0.14], expected_decision: PARTIALLY_IDENTIFIED, eligibility: partially_identified}
+new_parameter_ranges:
+  valid_measurement_probability: [0.9980, 0.9998]
+  corrupt_measurement_probability: [0.90, 0.945]
+  valid_uptake_probability: [0.90, 0.985]
+  invalid_uptake_probability: [0.40, 0.68]
+  valid_contract_kappa: [0.955, 0.995]
+  invalid_contract_kappa: [0.25, 0.70]
+  stochastic_uptake_probability: [0.72, 0.82]
+  stochastic_complier_effect: [0.24, 0.29]
+primary_metrics: [FMCR, sensitivity, specificity, gray_zone_overclaim_rate, coverage, Type-S, Type-M, abstention, risk_coverage_curve, threshold_stability]
+go_gates:
+  fmcr_max: 0.05
+  specificity_effect_le_delta0_min: 0.95
+  sensitivity_effect_ge_delta1_min: 0.80
+  gray_zone_overclaim_max: 0.05
+  coverage_min: 0.90
+  type_s_max: 0.05
+  abstention_max: 0.40
+  non_strong_families_with_sensitivity_ge_0_80_min: 2
+  threshold_stability_required: true
+  p3_sensitivity_improvement_over_p0_paired_ci_lower_gt_zero: true
+  p3_fmcr_not_worse_than_p0: true
+claim_boundary: Known-DGP methodological evidence only; no real-VLM effect or internal mechanism is identified.

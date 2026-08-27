@@ -1,0 +1,22 @@
+schema_version: 1
+verified_at: '2026-08-27T12:43:39.207589+00:00'
+status: PASS
+stop_tag: vlm-construct-audit-tier0-5-stop
+stop_tag_target: ce0e797a4926ab5d2309915c2eef14fd9c5be44d
+historical_state:
+  decision: STOP_FOR_METHOD_FAILURE
+  loop_a: LOOP_A_NO_GO
+  loop_b_automated: GO
+  loop_b_human: PENDING
+  loop_c: LOOP_C_NO_GO
+  three_model_scientific_pilot: NOT_AUTHORIZED
+  exact_next_action: STOP_FOR_METHOD_FAILURE
+old_holdout_rerun: FORBIDDEN
+protected_sha256:
+  reports/tier0_5_three_loop_report.md: 16b3976e0a670d904d4d469683f61043452c4da048ddb4c83e1f6d254607b0e6
+  reports/tier0_5_final_decision.yaml: 9691a574cadc85e87a1f0fb1882fbe9db3580b5b8c181386882f59f16ace0294
+  artifacts/loop_a/holdout/summary.yaml: 126911daceedede4c3e82705ca6d14458051e14e8e3a3810d842afbcb58a7449
+  artifacts/loop_b/measurement_metrics.yaml: 7d037c8bb49a9df720d0b7f983135324d7a6e853070a320c88fa071eb0e3d436
+  artifacts/loop_c/decision.yaml: 870dca7060b3350c240b4507d42d6cef821eba9c0b159e3f1cb0a0189d72c38b
+  src/vlm_construct_audit/triage/audit_v2.py: 9ba5c1e25cfa2c205b815df8b2602d089db0320bc1f62e17dff8dd79ef816ccc
+recoalign_write_performed: false
