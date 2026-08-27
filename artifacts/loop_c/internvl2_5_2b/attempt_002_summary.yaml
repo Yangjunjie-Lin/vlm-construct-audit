@@ -1,0 +1,73 @@
+schema_version: 1
+model_id: internvl2_5_2b
+family: InternVL2.5-InternLM2
+repository: OpenGVLab/InternVL2_5-2B
+revision: 573169ee54df216786bb9a189e9a32a060a008cf
+config_hash: b4c04afa8e7664c5f02ffded6309aa3f3c72703082b3f23666176e6af777ed5e
+checkpoint_load_success: false
+actual_visual_forward_success: false
+status: FAILED
+scientific_vlm_result: NOT_EXECUTED
+error_type: ChunkedEncodingError
+error: '(''Connection broken: IncompleteRead(25517630 bytes read, 4386053410 more
+  expected)'', IncompleteRead(25517630 bytes read, 4386053410 more expected))'
+traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\urllib3\\response.py\", line 905, in _error_catcher\n\
+  \    yield\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\\
+  Lib\\site-packages\\urllib3\\response.py\", line 1043, in _raw_read\n    raise IncompleteRead(self._fp_bytes_read,\
+  \ self.length_remaining)\nurllib3.exceptions.IncompleteRead: IncompleteRead(25517630\
+  \ bytes read, 4386053410 more expected)\n\nThe above exception was the direct cause\
+  \ of the following exception:\n\nTraceback (most recent call last):\n  File \"D:\\\
+  UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\requests\\\
+  models.py\", line 937, in generate\n    yield from self.raw.stream(chunk_size, decode_content=True)\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  urllib3\\response.py\", line 1267, in stream\n    data = self.read(amt=amt, decode_content=decode_content)\n\
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\\
+  GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\urllib3\\response.py\"\
+  , line 1155, in read\n    data = self._raw_read(amt)\n           ^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  urllib3\\response.py\", line 1021, in _raw_read\n    with self._error_catcher():\n\
+  \         ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yangjunjie Lin\\AppData\\Local\\\
+  Programs\\Python\\Python312\\Lib\\contextlib.py\", line 158, in __exit__\n    self.gen.throw(value)\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  urllib3\\response.py\", line 925, in _error_catcher\n    raise ProtocolError(arg,\
+  \ e) from e\nurllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(25517630\
+  \ bytes read, 4386053410 more expected)', IncompleteRead(25517630 bytes read, 4386053410\
+  \ more expected))\n\nDuring handling of the above exception, another exception occurred:\n\
+  \nTraceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  src\\vlm_construct_audit\\triage\\vlm_smoke_worker.py\", line 457, in run_model\n\
+  \    worker = InternVLWorker(registry) if registry[\"family\"].startswith(\"InternVL\"\
+  ) else StandardWorker(registry)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"\
+  D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\triage\\vlm_smoke_worker.py\"\
+  , line 290, in __init__\n    self.model = AutoModel.from_pretrained(\n         \
+  \        ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\transformers\\models\\auto\\auto_factory.py\"\
+  , line 559, in from_pretrained\n    return model_class.from_pretrained(\n      \
+  \     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\transformers\\modeling_utils.py\", line 262,\
+  \ in _wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  transformers\\modeling_utils.py\", line 3854, in from_pretrained\n    resolved_archive_file\
+  \ = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)\n\
+  \                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  transformers\\utils\\hub.py\", line 342, in cached_file\n    resolved_file = hf_hub_download(\n\
+  \                    ^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\huggingface_hub\\utils\\_validators.py\", line\
+  \ 114, in _inner_fn\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  huggingface_hub\\file_download.py\", line 1014, in hf_hub_download\n    return _hf_hub_download_to_cache_dir(\n\
+  \           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\huggingface_hub\\file_download.py\", line 1175,\
+  \ in _hf_hub_download_to_cache_dir\n    _download_to_tmp_and_move(\n  File \"D:\\\
+  UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\huggingface_hub\\\
+  file_download.py\", line 1742, in _download_to_tmp_and_move\n    http_get(\n  File\
+  \ \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  huggingface_hub\\file_download.py\", line 500, in http_get\n    for chunk in r.iter_content(chunk_size=constants.DOWNLOAD_CHUNK_SIZE):\n\
+  \                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File\
+  \ \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  requests\\models.py\", line 939, in generate\n    raise ChunkedEncodingError(e)\n\
+  requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(25517630\
+  \ bytes read, 4386053410 more expected)', IncompleteRead(25517630 bytes read, 4386053410\
+  \ more expected))\n"
+peak_vram_bytes: 0
