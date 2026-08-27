@@ -44,7 +44,7 @@ def _sha256_file(path: Path) -> str:
 
 
 def _canonical_hash(value: Any) -> str:
-    raw = json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    raw = json.dumps(value, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
 
 
@@ -71,7 +71,7 @@ def environment_snapshot() -> dict[str, Any]:
         gpu = {
             "name": properties.name,
             "total_vram_bytes": properties.total_memory,
-            "capability": list(properties.gcnArchName) if hasattr(properties, "gcnArchName") else None,
+            "architecture": str(properties.gcnArchName) if hasattr(properties, "gcnArchName") else None,
         }
     return {
         "operating_system": platform.platform(),

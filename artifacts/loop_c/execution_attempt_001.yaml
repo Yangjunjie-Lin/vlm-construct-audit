@@ -1,0 +1,17 @@
+schema_version: 1
+attempt: 1
+status: ABORTED_BEFORE_CHECKPOINT_LOAD
+invalid_intermediate_decision: LOOP_C_BLOCKED_BY_COMPUTE
+invalid_reason: no checkpoint was attempted because config hashing failed first
+error_type: TypeError
+error: Object of type date is not JSON serializable
+failed_stage: worker_registry_config_hash
+families_affected:
+  - smolvlm_256m_instruct
+  - internvl2_5_2b
+  - qwen2_vl_2b_instruct
+checkpoint_download_started: false
+checkpoint_load_started: false
+model_output_observed: false
+gate_or_prompt_changed: false
+repair: canonical JSON hashing now serializes YAML date scalars identically to project canonical_hash
