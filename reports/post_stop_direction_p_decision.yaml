@@ -1,0 +1,42 @@
+schema_version: 1
+direction: P
+decision: DIRECTION_P_GO
+novelty: NOVELTY_PASS_WITH_CAUTION
+split: sealed_holdout
+holdout_execution_count: 1
+holdout_rerun_forbidden: true
+config_hash: 57f963d7c4ca117d4846c8d6dc12eab7cebbdd6a1944b65b38c42b9bdcd5d404
+method: P3_preregistered_selective_risk_coverage_certification
+delta0: 0.10
+delta1: 0.15
+primary_sample_size: 768
+primary_metrics:
+  fmcr: 0.0
+  specificity_effect_le_delta0: 1.0
+  sensitivity_effect_ge_delta1: 1.0
+  gray_zone_overclaim_rate: 0.0
+  coverage: 1.0
+  type_s: 0.0
+  type_m_ratio: 1.0023187550433916
+  abstention_rate: 0.0
+  explicit_gray_zone_rate: 0.1457142857142857
+non_strong_family_sensitivity:
+  CertificationBoundaryEffect: 1.0
+  ModerateEffect: 1.0
+  HeterogeneousEffect: 1.0
+  StochasticUptakeITT: 1.0
+threshold_stability: PASS
+paired_sensitivity_improvement_over_frozen_AuditV2_adapter:
+  estimate: 0.296
+  ci95: [0.25594746548812797, 0.336052534511872]
+  paired_datasets: 500
+fmcr_not_worse_than_frozen_AuditV2_adapter: true
+all_go_gates_passed: true
+development_revisions: 1
+holdout_deviations: []
+claim_boundary: Known-DGP methodological evidence only; no real-VLM scientific effect or internal mechanism is identified.
+pilot_authorization: BLOCKED_BY_LOOP_B_HUMAN_PENDING_AND_FINAL_SELECTION_NOT_YET_ADJUDICATED
+artifacts:
+  dataset_results_sha256: 126e97dfc5b18a5605215c225814fd81aabb3c2fd567829c3d6f008df1f361f5
+  summary_sha256: 66cc9a5855acbc542fbef74028aac0ad6438c5e1b3e85b6b932099dcbbe14eca
+  execution_marker_sha256: 2b0a568d9408d5e73d175671cb1bc917545a291f16f9d874b0e9293187734810

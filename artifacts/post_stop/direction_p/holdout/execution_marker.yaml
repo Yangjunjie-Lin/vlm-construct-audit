@@ -1,0 +1,12 @@
+schema_version: 1
+direction: P
+split: holdout
+started_at: '2026-08-27T12:47:49.016520+00:00'
+config_hash: 57f963d7c4ca117d4846c8d6dc12eab7cebbdd6a1944b65b38c42b9bdcd5d404
+execution_count: 1
+old_loop_a_holdout_accessed_for_tuning: false
+intermediate_results_emitted: false
+status: COMPLETE
+completed_at: '2026-08-27T12:47:50.548339+00:00'
+dataset_count: 5600
+decision: DIRECTION_P_GO

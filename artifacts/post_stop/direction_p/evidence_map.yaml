@@ -1,0 +1,22 @@
+schema_version: 1
+direction: P
+decision: DIRECTION_P_GO
+claims:
+  - claim: analytic feasibility at delta1=0.15 and N=768
+    scope: frozen normal paired-DGP approximation
+    evidence: research/post_stop/direction_p/power_table.yaml
+  - claim: sealed holdout GO gates all passed
+    scope: 14 registered known-DGP families only
+    evidence: artifacts/post_stop/direction_p/holdout/summary.yaml
+  - claim: sensitivity improved over the frozen AuditV2 adapter without FMCR worsening
+    scope: paired new Direction P holdout datasets only
+    evidence: artifacts/post_stop/direction_p/holdout/dataset_results.jsonl
+  - claim: one development reporting revision was consumed and initial results were retained
+    scope: provenance
+    evidence: research/post_stop/direction_p/development_amendment_001.yaml
+prohibited_claims:
+  - AuditV2 passed
+  - old Loop A holdout was rerun
+  - real VLM behavioral effect
+  - internal VLM mechanism
+  - conformal prediction is itself novel
