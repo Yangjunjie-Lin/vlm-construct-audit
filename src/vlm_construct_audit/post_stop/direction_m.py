@@ -241,17 +241,18 @@ def _constrained_generate(worker: Any, prompt: str, image: Image.Image, answers:
             return [eos]
         return sorted(next_tokens)
 
+    generation = {
+        "max_new_tokens": max(map(len, sequences)) + 1,
+        "do_sample": False,
+        "num_beams": 1,
+        "prefix_allowed_tokens_fn": allowed,
+        "eos_token_id": eos,
+        "pad_token_id": tokenizer.pad_token_id if tokenizer.pad_token_id is not None else eos,
+    }
+    if not isinstance(worker, InternVLWorker):
+        generation["use_cache"] = True
     with torch.inference_mode():
-        output = worker.model.generate(
-            **inputs,
-            max_new_tokens=max(map(len, sequences)) + 1,
-            do_sample=False,
-            num_beams=1,
-            use_cache=True,
-            prefix_allowed_tokens_fn=allowed,
-            eos_token_id=eos,
-            pad_token_id=tokenizer.pad_token_id if tokenizer.pad_token_id is not None else eos,
-        )
+        output = worker.model.generate(**inputs, **generation)
     suffix = output[0, input_length:]
     raw = tokenizer.decode(suffix, skip_special_tokens=True).strip()
     return raw, {"automaton_language_size": len(sequences), "allowed_token_sequences": sequences, "token_level_mask_applied": True}
