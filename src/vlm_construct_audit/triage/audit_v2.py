@@ -130,7 +130,7 @@ def audit_claim_v2(
         passed_gates=passed,
         failed_gates=failed,
         effect_size=pooled["estimate"],
-        confidence_interval=[pooled["one_sided_95_lower"], None],
+        confidence_interval=[pooled["one_sided_95_lower"], 1.0],
         equivalence_result=replication_results["equivalence"],
         replication_status=(
             "ALL_CELL_POINT_ESTIMATES_ABOVE_SESOI"
@@ -146,4 +146,3 @@ def audit_claim_v2(
         scope_flags=scope_flags,
         diagnostic_subtype="audit_v2_scene_pooled_one_sided_with_partial_identification",
     )
-
