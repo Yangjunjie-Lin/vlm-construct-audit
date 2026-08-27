@@ -1,0 +1,286 @@
+schema_version: 1
+registry_id: post_stop_direction_u_v1
+direction: U
+title: Post-Treatment-Safe Uptake Identification
+frozen_at: 2026-08-27
+novelty_decision: NOVELTY_PASS
+old_loop_a_or_loop_c_outcomes_used_for_tuning: false
+estimands:
+  encouragement: full_population_ITT_of_randomized_Z
+  uptake: complier_average_causal_effect_of_latent_true_U_where_identified
+  filtering_on_observed_uptake: forbidden_for_causal_claim
+sample_sizes: [256, 512, 1024]
+repetitions_per_DGP_size_split: 200
+maximum_development_only_revisions: 1
+sealed_holdout_execution_limit: 1
+development:
+  seed_formula: 183000000 + sample_size * 10000 + DGP_index * 1000 + repetition
+  parameter_seed_range: [183000, 183199]
+  compliance_namespace: post_stop_u_dev_compliance_v1
+holdout:
+  seed_formula: 283000000 + sample_size * 10000 + DGP_index * 1000 + repetition
+  parameter_seed_range: [283000, 283199]
+  compliance_namespace: post_stop_u_holdout_compliance_v1
+  seeds_sealed_before_execution: true
+methods:
+  U0: naive_filtering_on_observed_uptake
+  U1: full_population_ITT
+  U2: regression_adjustment_using_observed_uptake
+  U3: principal_stratification_mixture_estimator
+  U4: Wald_IV_complier_effect_estimator
+  U5: preregistered_assumption_sensitivity_bounds
+weak_encouragement_cutoff: 0.10
+confidence_level: 0.95
+positive_claim_rule: two_sided_CI_excludes_zero_in_positive_direction
+partial_bound_policy:
+  outcome_range: [0, 1]
+  violation_budget_interpretation: registered design-level maximum reduced-form distortion, never selected from outcomes
+  measurement_reliability_range_interpretation: sensitivity_plus_specificity_minus_one
+  no_registered_budget_output: NOT_IDENTIFIED
+policy:
+  assumptions_hold_and_first_stage_strong: U4_point_estimate_with_sensitivity_warning_none
+  assumptions_partially_defensible_with_registered_budget: U5_PARTIALLY_IDENTIFIED
+  weak_or_nonidentified: NOT_IDENTIFIED
+  ITT_always_reported: true
+DGPs:
+  - DGP: AlwaysUptake
+    DGP_index: 1
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: 0.92 probability always-uptake stratum
+    U1: identical for always-uptake units
+    Y0: stratum-specific Bernoulli potential outcome without uptake
+    Y1: Y0 probability shifted by registered stratum effect
+    principal_stratum: {always: 0.92, complier: 0.00, defier: 0.00, never: 0.08}
+    baseline_probabilities: {always: 0.30, complier: 0.70, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.20, complier: 0.20, defier: 0.20, never: 0.20}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.0
+    true_CACE_or_target_stratum_effect: not_identified_no_compliers
+    identification_status: NOT_IDENTIFIED
+  - DGP: NeverUptake
+    DGP_index: 2
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: 0.08 probability always-uptake stratum
+    U1: identical without compliers
+    Y0: stratum-specific Bernoulli potential outcome without uptake
+    Y1: Y0 probability shifted by registered stratum effect
+    principal_stratum: {always: 0.08, complier: 0.00, defier: 0.00, never: 0.92}
+    baseline_probabilities: {always: 0.30, complier: 0.70, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.20, complier: 0.20, defier: 0.20, never: 0.20}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.0
+    true_CACE_or_target_stratum_effect: not_identified_no_compliers
+    identification_status: NOT_IDENTIFIED
+  - DGP: FormatComplier
+    DGP_index: 3
+    Z: Bernoulli(0.5) randomized format encouragement
+    A: target evidence supplied to all units
+    U0: uptake under control format by principal stratum
+    U1: uptake under active format by principal stratum
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.15, complier: 0.65, defier: 0.00, never: 0.20}
+    baseline_probabilities: {always: 0.25, complier: 0.75, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.00, complier: 0.00, defier: 0.00, never: 0.00}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.0
+    true_CACE_or_target_stratum_effect: 0.0
+    identification_status: POINT_IDENTIFIED
+  - DGP: InstructionComplier
+    DGP_index: 4
+    Z: Bernoulli(0.5) randomized instruction encouragement
+    A: target evidence supplied to all units
+    U0: uptake under control instruction by principal stratum
+    U1: uptake under active instruction by principal stratum
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.10, complier: 0.75, defier: 0.00, never: 0.15}
+    baseline_probabilities: {always: 0.25, complier: 0.60, defier: 0.10, never: 0.45}
+    stratum_effects: {always: 0.10, complier: 0.18, defier: 0.10, never: 0.10}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.135
+    true_CACE_or_target_stratum_effect: 0.18
+    identification_status: POINT_IDENTIFIED
+  - DGP: Defier
+    DGP_index: 5
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: includes defier uptake under control
+    U1: excludes defier uptake under active encouragement
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.15, complier: 0.40, defier: 0.25, never: 0.20}
+    baseline_probabilities: {always: 0.25, complier: 0.75, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.00, complier: 0.00, defier: 0.00, never: 0.00}
+    exclusion_restriction: holds
+    monotonicity: violated
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.0
+    true_CACE_or_target_stratum_effect: 0.0
+    identification_status: NOT_IDENTIFIED
+  - DGP: PartialUptake
+    DGP_index: 6
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: principal-stratum uptake under control
+    U1: principal-stratum uptake under active encouragement
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.25, complier: 0.45, defier: 0.00, never: 0.30}
+    baseline_probabilities: {always: 0.30, complier: 0.55, defier: 0.10, never: 0.45}
+    stratum_effects: {always: 0.12, complier: 0.25, defier: 0.12, never: 0.12}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.1125
+    true_CACE_or_target_stratum_effect: 0.25
+    identification_status: POINT_IDENTIFIED
+  - DGP: MeasurementMisclassifiedUptake
+    DGP_index: 7
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: latent true uptake under control
+    U1: latent true uptake under active encouragement
+    Y0: Bernoulli potential outcome without true uptake
+    Y1: Bernoulli potential outcome with true uptake
+    principal_stratum: {always: 0.15, complier: 0.65, defier: 0.00, never: 0.20}
+    baseline_probabilities: {always: 0.25, complier: 0.60, defier: 0.10, never: 0.45}
+    stratum_effects: {always: 0.10, complier: 0.18, defier: 0.10, never: 0.10}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: {sensitivity: 0.96, specificity: 0.96, registered_reliability_range: [0.88, 0.96]}
+    direct_Z_effect: 0.0
+    true_ITT: 0.117
+    true_CACE_or_target_stratum_effect: 0.18
+    identification_status: PARTIALLY_IDENTIFIED
+    violation_budget: 0.012
+    compliance_regime: high_compliance_with_uptake_measurement_error
+  - DGP: HeterogeneousTreatmentEffect
+    DGP_index: 8
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: principal-stratum uptake under control
+    U1: principal-stratum uptake under active encouragement
+    Y0: heterogeneous stratum-specific Bernoulli outcome
+    Y1: heterogeneous stratum-specific uptake outcome
+    principal_stratum: {always: 0.20, complier: 0.55, defier: 0.00, never: 0.25}
+    baseline_probabilities: {always: 0.30, complier: 0.55, defier: 0.10, never: 0.40}
+    stratum_effects: {always: 0.05, complier: 0.20, defier: -0.05, never: 0.30}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.11
+    true_CACE_or_target_stratum_effect: 0.20
+    identification_status: POINT_IDENTIFIED
+  - DGP: ExclusionRestrictionViolated
+    DGP_index: 9
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: principal-stratum uptake under control
+    U1: principal-stratum uptake under active encouragement
+    Y0: Bernoulli potential outcome without uptake plus direct encouragement effect
+    Y1: Bernoulli potential outcome with uptake plus direct encouragement effect
+    principal_stratum: {always: 0.15, complier: 0.65, defier: 0.00, never: 0.20}
+    baseline_probabilities: {always: 0.25, complier: 0.75, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.00, complier: 0.00, defier: 0.00, never: 0.00}
+    exclusion_restriction: violated
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.015
+    true_ITT: 0.015
+    true_CACE_or_target_stratum_effect: 0.0
+    identification_status: PARTIALLY_IDENTIFIED
+    violation_budget: 0.025
+    compliance_regime: high_compliance_with_bounded_direct_encouragement_effect
+  - DGP: MonotonicityViolated
+    DGP_index: 10
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: includes a small defier stratum
+    U1: complier uptake minus defier uptake
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.15, complier: 0.58, defier: 0.03, never: 0.24}
+    baseline_probabilities: {always: 0.25, complier: 0.60, defier: 0.20, never: 0.45}
+    stratum_effects: {always: 0.10, complier: 0.18, defier: 0.18, never: 0.10}
+    exclusion_restriction: holds
+    monotonicity: violated
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.099
+    true_CACE_or_target_stratum_effect: 0.18
+    identification_status: PARTIALLY_IDENTIFIED
+    violation_budget: 0.012
+    compliance_regime: strong_encouragement_with_small_defier_fraction
+  - DGP: WeakEncouragement
+    DGP_index: 11
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: nearly identical to U1
+    U1: only six-percent complier stratum
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.47, complier: 0.06, defier: 0.00, never: 0.47}
+    baseline_probabilities: {always: 0.25, complier: 0.70, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.10, complier: 0.25, defier: 0.10, never: 0.10}
+    exclusion_restriction: holds
+    monotonicity: holds
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.015
+    true_CACE_or_target_stratum_effect: 0.25
+    identification_status: NOT_IDENTIFIED
+  - DGP: DefierPopulation
+    DGP_index: 12
+    Z: Bernoulli(0.5) randomized encouragement
+    A: target evidence supplied to all units
+    U0: large defier uptake component
+    U1: complier uptake component
+    Y0: Bernoulli potential outcome without uptake
+    Y1: Bernoulli potential outcome with uptake
+    principal_stratum: {always: 0.15, complier: 0.25, defier: 0.30, never: 0.30}
+    baseline_probabilities: {always: 0.25, complier: 0.75, defier: 0.10, never: 0.50}
+    stratum_effects: {always: 0.00, complier: 0.00, defier: 0.00, never: 0.00}
+    exclusion_restriction: holds
+    monotonicity: violated
+    measurement_error: none
+    direct_Z_effect: 0.0
+    true_ITT: 0.0
+    true_CACE_or_target_stratum_effect: 0.0
+    identification_status: NOT_IDENTIFIED
+primary_metrics: [estimand_bias, RMSE, coverage, false_positive_rate, Type-S, FMCR, bound_width, bound_coverage, assumption_sensitivity, weak_instrument_failure_rate]
+go_gates:
+  point_identified_absolute_bias_max: 0.03
+  point_identified_coverage_min: 0.90
+  fmcr_max: 0.05
+  type_s_max: 0.05
+  partial_bound_coverage_min: 0.90
+  partial_median_bound_width_max: 0.20
+  informative_realistic_compliance_regimes_min: 2
+  sensitivity_warning_rate_violation_settings: 1.00
+  unconditional_valid_rate_violation_settings: 0.00
+  fmcr_absolute_reduction_vs_naive_min: 0.10
+known_DGP_claim_boundary: Known-potential-state methodological evidence only.
+real_model_smoke:
+  allowed_only_after_known_DGP_GO: true
+  models: 3
+  development_scenes: 20
+  formal_downstream_claim: forbidden
+  allowed_questions: [encouragement_changes_uptake_probability, assumptions_may_be_testable]

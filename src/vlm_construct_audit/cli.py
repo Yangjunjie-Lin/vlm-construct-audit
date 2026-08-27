@@ -13,7 +13,7 @@ from .audit import build_audit_decisions
 from .calibration.runner import run_calibration, run_smoke
 from .data import generate_dataset
 from .interventions import build_interventions
-from .post_stop import freeze_post_stop, run_direction_m, run_direction_p
+from .post_stop import freeze_post_stop, run_direction_m, run_direction_p, run_direction_u
 from .reporting import build_artifact_manifest, build_evidence_map, build_report, verify_artifacts
 from .serialization import build_serializations, validate_equivalence
 from .statistics import analyze_predictions, run_known_dgp_simulation, run_threshold_sensitivity
@@ -149,6 +149,8 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "run-direction-p-holdout": lambda: run_direction_p("holdout"),
         "run-direction-m-development": lambda: run_direction_m("development"),
         "run-direction-m-holdout": lambda: run_direction_m("holdout"),
+        "run-direction-u-development": lambda: run_direction_u("development"),
+        "run-direction-u-holdout": lambda: run_direction_u("holdout"),
     }
 
 
@@ -163,6 +165,7 @@ def main(argv: list[str] | None = None) -> int:
             "run-loop-a", "run-loop-b", "run-loop-c", "adjudicate-tier0-5",
             "post-stop-freeze", "run-direction-p-development", "run-direction-p-holdout",
             "run-direction-m-development", "run-direction-m-holdout",
+            "run-direction-u-development", "run-direction-u-holdout",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
