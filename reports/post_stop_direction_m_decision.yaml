@@ -1,0 +1,42 @@
+schema_version: 1
+direction: M
+decision: DIRECTION_M_NO_GO
+novelty: NOVELTY_PASS_WITH_CAUTION
+basis: development engineering gate failed after the only allowed revision
+sealed_holdout:
+  authorized: false
+  execution_count: 0
+  reason: three-model completion gate failed
+development_revisions: 1
+models:
+  smolvlm_256m_instruct:
+    status: COMPLETE
+    true_constrained_syntax: 1.0
+    prompt_only_JSON_syntax: 0.0
+    scorer_agreement: 1.0
+    rerun_agreement: 1.0
+    CLL_vs_constrained_kappa: 0.2105263157894737
+    kappa_ci95: [0.12067827889574274, 0.3016551211286612]
+    paired_correctness_change: -0.23333333333333334
+    paired_correctness_change_ci95: [-0.38333333333333336, -0.06666666666666667]
+  internvl2_5_2b:
+    status: FAILED
+    error: unused image_flags kwarg in pinned remote constrained-generation wrapper
+  qwen2_vl_2b_instruct:
+    status: COMPLETE
+    true_constrained_syntax: 1.0
+    prompt_only_JSON_syntax: 0.25
+    scorer_agreement: 1.0
+    rerun_agreement: 1.0
+    CLL_vs_constrained_kappa: 0.927710843373494
+    kappa_ci95: [0.8533399450494589, 0.9818185946660061]
+    paired_correctness_change: 0.03333333333333333
+    paired_correctness_change_ci95: [-0.03333333333333333, 0.1]
+canonicalizer:
+  valid_form_recall: 1.0
+  invalid_ambiguous_rejection: 1.0
+scientific_paths:
+  equivalence_models: []
+  material_effect_models: [smolvlm_256m_instruct]
+  cross_family_material_effect: false
+claim_boundary: Development-only real-checkpoint measurement evidence; syntax is not capability and no internal mechanism is identified.

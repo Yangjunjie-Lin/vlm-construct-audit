@@ -1,0 +1,21 @@
+schema_version: 1
+direction: M
+decision: DIRECTION_M_NO_GO
+claims:
+  - claim: true constrained syntax was 1.0 in both completed families
+    scope: development only
+    evidence: artifacts/post_stop/direction_m/development/summary.yaml
+  - claim: prompt-only JSON syntax was 0.0 and 0.25 in completed families
+    scope: instruction compliance, not capability
+    evidence: artifacts/post_stop/direction_m/development/summary.yaml
+  - claim: three-family engineering gate failed after one revision
+    scope: holdout authorization
+    evidence: research/post_stop/direction_m/development_completion.yaml
+  - claim: sealed holdout was not executed
+    scope: provenance
+    evidence: research/post_stop/direction_m/method_freeze.yaml
+prohibited_claims:
+  - historical prompt-only JSON was constrained decoding
+  - syntax validity is semantic validity
+  - cross-family scientific contract effect
+  - internal VLM mechanism

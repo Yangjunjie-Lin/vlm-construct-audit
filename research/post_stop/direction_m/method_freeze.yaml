@@ -1,0 +1,17 @@
+schema_version: 1
+direction: M
+status: FROZEN_AFTER_DEVELOPMENT_NO_GO
+frozen_at: 2026-08-27
+development_revision_count: 1
+further_repairs: forbidden
+contracts_frozen: [M-C1, M-C2, M-C3, M-C4]
+parser_and_canonicalizer_frozen: true
+model_revisions_frozen: true
+scientific_thresholds_frozen: true
+source_sha256: 8f2388e5b7a91f1d171973afbd0cd2b080da2af1991e0caca34dd45b99d4c829
+preregistration_sha256: 565ac887bc4780989d3b951484d6b8cdc0c183f7202430078f8970023a47f80d
+holdout_authorized: false
+holdout_execution_count: 0
+holdout_reason: three-family engineering measurement gate failed after the only allowed development revision
+decision: DIRECTION_M_NO_GO
+claim_boundary: Completed-model results are development-only engineering/measurement evidence and cannot support a cross-family scientific claim.

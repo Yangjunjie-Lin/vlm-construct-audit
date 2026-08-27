@@ -2,22 +2,31 @@ model_id: internvl2_5_2b
 family: InternVL2.5-InternLM2
 revision: 573169ee54df216786bb9a189e9a32a060a008cf
 status: FAILED
-error_type: TypeError
-error: transformers.generation.utils.GenerationMixin.generate() got multiple values
-  for keyword argument 'use_cache'
+error_type: ValueError
+error: 'The following `model_kwargs` are not used by the model: [''image_flags'']
+  (note: typos in the generate arguments will also show up in this list)'
 traceback: "Traceback (most recent call last):\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
-  src\\vlm_construct_audit\\post_stop\\direction_m.py\", line 317, in run_model\n\
+  src\\vlm_construct_audit\\post_stop\\direction_m.py\", line 318, in run_model\n\
   \    first = _run_once(worker, scene, serialization, contract)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
   \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\post_stop\\\
-  direction_m.py\", line 273, in _run_once\n    raw, automaton = _constrained_generate(worker,\
+  direction_m.py\", line 274, in _run_once\n    raw, automaton = _constrained_generate(worker,\
   \ prompt, image, scene[\"candidates\"])\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
   \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\src\\vlm_construct_audit\\post_stop\\\
-  direction_m.py\", line 245, in _constrained_generate\n    output = worker.model.generate(\n\
-  \             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
-  .venv-vlm-smoke\\Lib\\site-packages\\torch\\utils\\_contextlib.py\", line 116, in\
-  \ decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n\
-  \  File \"C:\\Users\\Yangjunjie Lin\\.cache\\huggingface\\modules\\transformers_modules\\\
-  OpenGVLab\\InternVL2_5-2B\\573169ee54df216786bb9a189e9a32a060a008cf\\modeling_internvl_chat.py\"\
-  , line 341, in generate\n    outputs = self.language_model.generate(\n         \
-  \     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: transformers.generation.utils.GenerationMixin.generate()\
-  \ got multiple values for keyword argument 'use_cache'\n"
+  direction_m.py\", line 255, in _constrained_generate\n    output = worker.model.generate(**inputs,\
+  \ **generation)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File\
+  \ \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  torch\\utils\\_contextlib.py\", line 116, in decorate_context\n    return func(*args,\
+  \ **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Yangjunjie Lin\\\
+  .cache\\huggingface\\modules\\transformers_modules\\OpenGVLab\\InternVL2_5-2B\\\
+  573169ee54df216786bb9a189e9a32a060a008cf\\modeling_internvl_chat.py\", line 341,\
+  \ in generate\n    outputs = self.language_model.generate(\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+  \  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  torch\\utils\\_contextlib.py\", line 116, in decorate_context\n    return func(*args,\
+  \ **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\\
+  .venv-vlm-smoke\\Lib\\site-packages\\transformers\\generation\\utils.py\", line\
+  \ 1983, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File\
+  \ \"D:\\UoM_CS\\GitHub\\vlm-construct-audit\\.venv-vlm-smoke\\Lib\\site-packages\\\
+  transformers\\generation\\utils.py\", line 1393, in _validate_model_kwargs\n   \
+  \ raise ValueError(\nValueError: The following `model_kwargs` are not used by the\
+  \ model: ['image_flags'] (note: typos in the generate arguments will also show up\
+  \ in this list)\n"

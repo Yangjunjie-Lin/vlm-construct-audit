@@ -1,9 +1,13 @@
 schema_version: 1
 direction: M
 hypothesis: measurement_contract_decomposition
-status: AWAITING_NOVELTY_GATE_AND_PREREGISTRATION
+status: FROZEN_DIRECTION_M_NO_GO
 historical_condition_name: historical_prompt_only_exact_json
 old_loop_c_outcomes_for_selection_or_tuning: forbidden
 development_scene_namespace: post_stop_m_dev_pending_freeze
 holdout_scene_namespace: post_stop_m_holdout_pending_seal
 holdout_execution_count: 0
+holdout_authorized: false
+development_revision_count: 1
+development_revision_budget_remaining: 0
+decision: DIRECTION_M_NO_GO

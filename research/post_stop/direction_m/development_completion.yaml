@@ -1,0 +1,32 @@
+schema_version: 1
+direction: M
+split: development
+status: DEVELOPMENT_ENGINEERING_GATE_FAILED_AFTER_FINAL_ALLOWED_REVISION
+completed_at: 2026-08-27
+config_hash: bbe12bb858906fc241bd9159466903495ab28d2a5abfa9a2eea6dae471846400
+development_revision_count: 1
+development_revision_budget_remaining: 0
+model_status:
+  smolvlm_256m_instruct: COMPLETE
+  internvl2_5_2b: FAILED
+  qwen2_vl_2b_instruct: COMPLETE
+final_failure:
+  model: internvl2_5_2b
+  error_type: ValueError
+  message: "The following model_kwargs are not used by the model: ['image_flags']"
+  contract: M-C2 true token-prefix constrained JSON
+engineering_gates:
+  three_models_complete: false
+  grammar_syntax_all_models: false
+  artifact_completeness_all_models: false
+  independent_scorer_all_models: false
+  deterministic_rerun_all_models: false
+  canonicalizer_valid_recall: true
+  canonicalizer_invalid_rejection: true
+holdout_authorization: DENIED
+holdout_execution_count: 0
+result: DIRECTION_M_NO_GO
+artifact_sha256:
+  summary.yaml: fde4989c27fb7e6fad55109dcac3e49cea1ef0d5fcaa7e2138387722ac95dd99
+  execution_marker.yaml: a807a1b31c13ee7f32129696d2cecf128653c152556baa41e9d6924d365e0f87
+  internvl2_5_2b_summary.yaml: f6245033b6e8298a289f6d6388dc4ff60bbf28392d7a92ad69d9738947939edf
