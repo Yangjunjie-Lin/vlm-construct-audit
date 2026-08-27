@@ -14,7 +14,7 @@ import numpy as np
 
 from ..audit.engine import audit_claim
 from ..statistics.core import clopper_pearson_lower
-from ..utils import canonical_hash, dump_yaml, load_yaml, write_jsonl
+from ..utils import canonical_hash, dump_yaml, load_yaml, utc_timestamp, write_jsonl
 from .audit_v2 import audit_claim_v2
 
 VALID_CLASS = "VALID_BEHAVIORAL_EFFECT"
@@ -156,7 +156,11 @@ def _simulate_a0_inputs(
     rng = np.random.default_rng(parameter_seed)
     params = _family_parameters(family, rng)
     name = family_name
-    templates = split_spec["actual_templates"]
+    if "actual_templates" in split_spec:
+        templates = split_spec["actual_templates"]
+    else:
+        template_split = "development" if "dev" in split_spec["template_namespace"] else "holdout"
+        templates = load_yaml("research/preregistration/loop_a_templates.yaml")[template_split]
     template = templates[
         _derive_seed(split_spec["template_namespace"], root_seed, name, "template") % len(templates)
     ]
@@ -585,6 +589,138 @@ def run_loop_a_holdout() -> dict[str, Any]:
     freeze = load_yaml("research/preregistration/loop_a_method_freeze.yaml")
     if freeze["holdout_authorized"] is not True:
         raise RuntimeError("Method freeze does not authorize holdout")
-    if freeze["method"] != "A0":
-        raise NotImplementedError("AuditV2 holdout runner is not implemented")
-    return _run_split("holdout", freeze["method"])
+    registry = load_yaml("research/preregistration/loop_a_dgp_registry.yaml")
+    protocol = load_yaml("research/preregistration/tier0_5_three_loop.yaml")
+    templates = load_yaml("research/preregistration/loop_a_templates.yaml")
+    split_spec = {**registry["holdout"], "actual_templates": templates["holdout"]}
+    policy = _policy_from_registry(registry)
+    repetitions = int(registry["repetitions_per_family_size_split"])
+    config_hash = canonical_hash(
+        {"registry": registry, "protocol": protocol, "method_freeze": freeze, "sealed_batch": True}
+    )
+    started_at = utc_timestamp()
+    method_rows: dict[str, list[dict[str, Any]]] = {"A0": [], "AuditV2": []}
+    selected_observables: list[dict[str, Any]] = []
+
+    for n in registry["sample_sizes"]:
+        for family in registry["families"]:
+            for repetition in range(repetitions):
+                root_seed = 91000 + repetition
+                inputs, metadata = _simulate_a0_inputs(family, int(n), root_seed, split_spec)
+                for method, classifier in (("A0", audit_claim), ("AuditV2", audit_claim_v2)):
+                    decision = classifier(
+                        inputs["measurement"],
+                        inputs["uptake"],
+                        inputs["downstream"],
+                        inputs["replication"],
+                        policy,
+                    )
+                    row = {
+                        "split": "tier0_5_holdout",
+                        "method": method,
+                        "family": family["family"],
+                        "family_index": family["family_index"],
+                        "sample_size": int(n),
+                        "repetition": repetition,
+                        "scene_seed": root_seed,
+                        "system_parameter_seed": split_spec["parameter_seed_range"][0] + repetition,
+                        "template_namespace": metadata["template_namespace"],
+                        "template_id": metadata["template_id"],
+                        "template_sha256": metadata["template_sha256"],
+                        "shortcut_marker": metadata["shortcut_marker"],
+                        "parser_corruption_pattern": metadata["parser_corruption_pattern"],
+                        "entity_id_permutation_seed": metadata["entity_id_permutation_seed"],
+                        "expected_claim_class": family["expected_claim_class"],
+                        "allowed_identification_status": family["allowed_identification_status"],
+                        "decision": decision.decision,
+                        "identification_status": decision.identification_status,
+                        "scope_flags": decision.scope_flags,
+                        "true_effect": metadata["true_effect"],
+                        "effect_estimate": decision.effect_size,
+                        "effect_ci95": decision.confidence_interval,
+                        "passed_gates": decision.passed_gates,
+                        "failed_gates": decision.failed_gates,
+                        "config_hash": config_hash,
+                    }
+                    method_rows[method].append(row)
+                    if method == freeze["method"]:
+                        selected_observables.append({**row, "a0_inputs": deepcopy(inputs)})
+
+    curves = {
+        method: [_summarize(rows, int(n)) for n in registry["sample_sizes"]]
+        for method, rows in method_rows.items()
+    }
+    primary_n = int(freeze["primary_sample_size"])
+    primary = {
+        method: next(row for row in curve if row["sample_size"] == primary_n)
+        for method, curve in curves.items()
+    }
+    threshold = _threshold_stability(selected_observables, registry, primary_n)
+    a0, selected = primary["A0"], primary[freeze["method"]]
+    comparison_pass = (
+        selected["known_valid_sensitivity"] > a0["known_valid_sensitivity"]
+        and selected["known_invalid_specificity"] >= a0["known_invalid_specificity"]
+        and selected["fmcr"] <= a0["fmcr"]
+        and selected["abstention"] <= a0["abstention"]
+    )
+    non_strong_pass = (
+        selected["non_strong_macro_sensitivity"] >= 0.80
+        and selected["non_strong_families_at_or_above_0_80"] >= 3
+    )
+    failed_reasons = []
+    if not _passes_loop_a(selected):
+        failed_reasons.append("primary_operating_characteristic_gate_failed")
+    if not non_strong_pass:
+        failed_reasons.append("non_strong_effect_sensitivity_gate_failed")
+    if not threshold["all_grid_cells_retain_go"]:
+        failed_reasons.append("threshold_stability_reversed")
+    if not comparison_pass:
+        failed_reasons.append("AuditV2_did_not_dominate_A0_under_frozen_comparison")
+    decision = "LOOP_A_GO" if not failed_reasons else "LOOP_A_NO_GO"
+
+    output_dir = Path("artifacts/loop_a/holdout")
+    output_dir.mkdir(parents=True, exist_ok=False)
+    write_jsonl(output_dir / "a0_dataset_results.jsonl", method_rows["A0"])
+    write_jsonl(output_dir / "audit_v2_dataset_results.jsonl", method_rows["AuditV2"])
+    report = {
+        "schema_version": 1,
+        "split": "tier0_5_holdout",
+        "sealed_execution_started_at": started_at,
+        "sealed_execution_completed_at": utc_timestamp(),
+        "holdout_execution_count": 1,
+        "intermediate_results_emitted": False,
+        "method": freeze["method"],
+        "method_source_commit": freeze["method_source_commit"],
+        "execution_head": _git_head(),
+        "config_hash": config_hash,
+        "family_count": 12,
+        "monte_carlo_repetitions_per_family_size": repetitions,
+        "sample_size_curves": curves,
+        "primary_sample_size": primary_n,
+        "primary_metrics": primary,
+        "A0_vs_AuditV2": {
+            "sensitivity_change": selected["known_valid_sensitivity"] - a0["known_valid_sensitivity"],
+            "specificity_change": selected["known_invalid_specificity"] - a0["known_invalid_specificity"],
+            "fmcr_change": selected["fmcr"] - a0["fmcr"],
+            "abstention_change": selected["abstention"] - a0["abstention"],
+            "exact_class_accuracy_change": selected["exact_expected_class_accuracy"] - a0["exact_expected_class_accuracy"],
+            "frozen_comparison_pass": comparison_pass,
+        },
+        "threshold_stability": threshold,
+        "non_strong_diagnostic_pass": non_strong_pass,
+        "decision": decision,
+        "failed_reasons": failed_reasons,
+        "holdout_rerun_forbidden": True,
+    }
+    dump_yaml(output_dir / "summary.yaml", report)
+    dump_yaml(
+        output_dir / "execution_marker.yaml",
+        {
+            "schema_version": 1,
+            "holdout_execution_count": 1,
+            "completed_at": report["sealed_execution_completed_at"],
+            "config_hash": config_hash,
+            "rerun_forbidden": True,
+        },
+    )
+    return report
