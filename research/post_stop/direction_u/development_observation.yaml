@@ -1,0 +1,14 @@
+schema_version: 1
+direction: U
+observed_at: 2026-08-27
+split: development
+status: DEVELOPMENT_SUMMARY_FAILED_NO_DATASET_ARTIFACT_EMITTED
+failure:
+  error_type: TypeError
+  message: statistics.mean cannot convert numpy.bool_ to numerator/denominator
+  location: Type-S summary aggregation after all simulated rows were held in memory
+execution_marker_sha256: 686bbede308ba7802679ea99335505da2d8540288669bbe8c61170c0eeba15dc
+console_sha256: 1be8da7aaa80b97c7ff3ac3082b948e7724b3e2887e32cb067e0219c30f2d603
+dataset_or_summary_emitted: false
+holdout_seen: false
+initial_attempt_preserved_at: artifacts/post_stop/direction_u/development_initial_attempt

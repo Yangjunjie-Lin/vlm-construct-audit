@@ -1,0 +1,24 @@
+schema_version: 1
+amendment_id: direction_u_development_amendment_001
+recorded_at: 2026-08-27
+recorded_before_holdout: true
+holdout_seen: false
+revision_number: 1
+maximum_development_only_revisions: 1
+revision_budget_consumed: true
+trigger: numpy.bool_ compatibility failure in report-only Type-S aggregation
+change:
+  old_behavior: pass numpy.bool_ generator values to statistics.mean
+  new_behavior: convert each comparison to the built-in bool before statistics.mean
+unchanged:
+  - all DGP definitions and potential-state truths
+  - all development and holdout seeds
+  - all six estimators
+  - identification policy
+  - weak-instrument threshold
+  - partial-identification budgets
+  - metrics and gates
+  - no historical outcome use
+scientific_effect: none; type conversion cannot change a comparison truth value
+full_development_rerun_required: true
+further_development_revision: forbidden

@@ -1,0 +1,8 @@
+schema_version: 1
+direction: U
+split: development
+status: RUNNING
+started_at: '2026-08-27T14:03:30.527759+00:00'
+execution_count: 1
+config_hash: ce5231b729c1be871387437cccb11c859f095fc00cb5d929b87b617180bfa270
+historical_outcomes_used_for_tuning: false
