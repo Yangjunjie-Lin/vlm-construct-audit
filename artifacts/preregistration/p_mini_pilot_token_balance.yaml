@@ -1,0 +1,55 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+status: PASS
+checked_before_model_inference: true
+tokenizer_source: frozen revisions loaded from local cache only
+weight_downloaded: false
+threshold:
+  absolute_token_difference_max: 1
+summaries:
+- model_id: smolvlm_256m_instruct
+  tokenizer_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+  serialization: natural_language
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+- model_id: smolvlm_256m_instruct
+  tokenizer_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+  serialization: triples
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+- model_id: internvl2_5_2b
+  tokenizer_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+  serialization: natural_language
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+- model_id: internvl2_5_2b
+  tokenizer_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+  serialization: triples
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+- model_id: qwen2_vl_2b_instruct
+  tokenizer_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+  serialization: natural_language
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+- model_id: qwen2_vl_2b_instruct
+  tokenizer_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+  serialization: triples
+  scene_count: 960
+  maximum_absolute_token_difference: 0
+  mean_absolute_token_difference: 0.0
+  proportion_at_or_below_one: 1.0
+pre_inference_exclusions: []
+eligible_scene_count: 960
+post_inference_exclusion_forbidden: true
+scientific_outcome_use_forbidden: true

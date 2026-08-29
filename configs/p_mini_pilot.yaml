@@ -1,0 +1,21 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+status: PREREGISTRATION_PENDING_INDEPENDENT_AUDIT
+base_commit: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+selected_direction: P
+scientific_question: After independent measurement-integrity and intervention-uptake checks, can SESOI-aware risk-coverage certification give stable power-calibrated scope-bounded conclusions about supplied-evidence behavioral effects in three independent open-weight VLM families?
+scene_count: 960
+splits:
+  uptake_validation: 192
+  reasoning_test: 768
+development_split: null
+engineering_smoke_scenes: 12
+primary_construct: two_hop_directed_relation_composition
+secondary_diagnostics: [direct_relation, entity_attribute_binding]
+models_config: configs/p_mini_pilot_models.yaml
+serializations_config: configs/p_mini_pilot_serializations.yaml
+interventions_config: configs/p_mini_pilot_interventions.yaml
+statistics_config: configs/p_mini_pilot_statistics.yaml
+primary_answer_contract: length_normalized_conditional_likelihood
+scientific_inference_authorized: false
+authorization_file: research/authorization/p_mini_pilot_independent_audit.yaml

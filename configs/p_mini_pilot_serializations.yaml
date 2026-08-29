@@ -1,0 +1,17 @@
+schema_version: 1
+serializations: [natural_language, triples]
+primary_only: true
+json_serialization: forbidden
+canonical_source: directed_fact_records
+canonical_fields:
+  - entity_set
+  - attribute_set
+  - directed_relation_set
+  - required_fact_set
+  - answer
+required_canonical_fact_equality: 1.0
+human_equivalence_basis:
+  status: HUMAN_REVIEW_GO
+  source: data/annotations/human_review_metrics.yaml
+  reuse_scope: reviewed generator and semantic-equivalence principle
+third_serialization_after_results: forbidden

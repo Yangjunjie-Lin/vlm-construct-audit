@@ -1,0 +1,30 @@
+schema_version: 1
+primary:
+  name: correct_relational_evidence_vs_target_specific_corrupted_relational_evidence
+  conditions: [correct_relational_evidence, target_specific_corrupted_relational_evidence]
+  corruption_operator: horizontal_relation_antonym_v1
+  changed_required_fact_count: 1
+  corruption_timing: before_inference
+  malformed_or_nonsense_control: forbidden
+secondary:
+  matched_irrelevant_evidence:
+    scope: uptake negative control only
+    confirmatory_effect_use: forbidden
+matching_requirements:
+  entity_count: exact
+  relation_count: exact
+  sentence_or_triple_count: exact
+  lexical_template: exact_except_relation_antonym
+  answer_candidate_overlap: exact
+  punctuation_structure: exact
+  entity_repetition_count: exact
+  evidence_position: exact
+tokenizer_balance:
+  model_x_serialization_absolute_token_difference_max: 1
+  check_all_three_frozen_tokenizers: true
+  post_inference_deletion: forbidden
+  pre_inference_repair_order:
+    - replace corruption operator
+    - replace relation pair
+    - record exclusion if no eligible construction remains
+scientific_outcome_use_forbidden: true

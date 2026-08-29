@@ -1,0 +1,64 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+generated_before_model_inference: true
+formal_scene_count: 960
+split_counts:
+  uptake_validation: 192
+  reasoning_test: 768
+engineering_smoke_count: 12
+development_split: null
+primary_construct: two_hop_directed_relation_composition
+namespace_policy:
+  formal_template: p_mini_formal_relcomp_v1
+  engineering_template: p_mini_engineering_smoke_v1
+  entity_prefixes:
+  - PUP
+  - PRT
+  - PES
+  answer_prefix: ANS_
+  formal_seed_bases:
+    scene: 830100000
+    option_permutation: 830200000
+    corruption: 830300000
+    serialization: 830400000
+    image_rendering: 830500000
+  engineering_seed_bases:
+    scene: 831100000
+    option_permutation: 831200000
+    corruption: 831300000
+    serialization: 831400000
+    image_rendering: 831500000
+  formal_engineering_seed_overlap: 0
+validation:
+  status: PASS
+  failures: []
+  scene_count: 960
+  unique_scene_ids: 960
+  unique_seed_values: 4800
+  option_position_counts:
+    reasoning_test:0: 192
+    reasoning_test:1: 192
+    reasoning_test:2: 192
+    reasoning_test:3: 192
+    uptake_validation:0: 48
+    uptake_validation:1: 48
+    uptake_validation:2: 48
+    uptake_validation:3: 48
+  uptake_task_counts:
+    entity_id_to_semantic_entity: 48
+    entity_to_attribute: 48
+    entity_to_direct_relation: 48
+    relation_direction: 48
+files:
+  data/p_mini_pilot/scenes.jsonl:
+    sha256: 9f7e8f9d535be270b65112ffe3e1dfe646f30fbde51c39b6611782d4c149f33e
+  data/p_mini_pilot/uptake_validation.jsonl:
+    sha256: de4dbd1e750ea6093e8ab277485e212e527b6629c9670a288ab94ec932bf7b9e
+  data/p_mini_pilot/reasoning_test.jsonl:
+    sha256: c8b10af2a3df69ccccb31009c28bbd1669c278f8ad3e789482a44835e9778024
+  data/p_mini_pilot/engineering_smoke.jsonl:
+    sha256: e79ad536c942dc408d97c2b9924a39780fca2c783a9ddfa4022dfb5cee2502da
+eligible_scene_ids_sha256: fdb7b7d8caabc4a3039c544ece71ed3e868076559eb10ab116793a544871f79e
+pre_inference_exclusions: []
+post_outcome_exclusion_forbidden: true
+scientific_outcome_use_forbidden: true

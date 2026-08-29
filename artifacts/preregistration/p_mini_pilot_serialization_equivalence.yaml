@@ -1,0 +1,22 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+status: PASS
+scene_count: 960
+serializations:
+- natural_language
+- triples
+conditions_per_scene: 2
+canonical_comparisons: 1920
+canonical_fact_equality: 1.0
+canonical_fields:
+- entity_set
+- attribute_set
+- directed_relation_set
+- required_fact_set
+- answer
+human_review_basis:
+  status: HUMAN_REVIEW_GO
+  source: data/annotations/human_review_metrics.yaml
+  scope: previously reviewed programmatic generation and semantic-equivalence principle
+  new_model_or_agent_review_used: false
+scientific_outcome_use_forbidden: true
