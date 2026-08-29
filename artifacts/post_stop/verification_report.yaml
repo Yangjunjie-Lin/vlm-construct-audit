@@ -1,17 +1,17 @@
 schema_version: 1
-verified_at: '2026-08-27T14:12:37.130363+00:00'
-status: PENDING_EXTERNAL_HUMAN_REVIEW
+verified_at: '2026-08-29T23:14:00.099691+00:00'
+status: PASS
 checks:
   historical_freeze: true
   P_holdout_once: true
   M_holdout_zero: true
   U_holdout_zero: true
   direction_decisions_present: true
-  human_review_complete: false
+  human_review_complete: true
   model_as_human_forbidden: true
 directions:
   P: DIRECTION_P_GO
   M: DIRECTION_M_NO_GO
   U: DIRECTION_U_NO_GO
-human_review: PENDING
-final_reports_present: false
+human_review: HUMAN_REVIEW_GO
+final_reports_present: true

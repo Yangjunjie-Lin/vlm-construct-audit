@@ -1,0 +1,24 @@
+schema_version: 1
+final_decision: PREREGISTER_POWER_CALIBRATED_MINI_PILOT
+claims:
+- claim: Tier 0.5 STOP state and historical artifacts remain frozen
+  evidence: artifacts/post_stop/verification_report.yaml
+  scope: historical provenance
+- claim: Post-STOP novelty audit completed before new results
+  evidence: research/post_stop/literature_matrix.yaml
+  scope: novelty screening
+- claim: Direction P sealed known-DGP GO
+  evidence: reports/post_stop_direction_p_decision.yaml
+  scope: known-DGP methodology
+- claim: Direction M NO-GO without sealed holdout
+  evidence: reports/post_stop_direction_m_decision.yaml
+  scope: development engineering
+- claim: Direction U NO-GO without sealed holdout
+  evidence: reports/post_stop_direction_u_decision.yaml
+  scope: development execution
+- claim: Loop B independent human gate
+  evidence: data/annotations/human_review_metrics.yaml
+  scope: measurement foundation
+- claim: Exactly one direction selected under frozen priority P > U > M
+  evidence: reports/post_stop_final_decision.yaml
+  scope: final adjudication

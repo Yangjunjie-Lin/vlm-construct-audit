@@ -1,0 +1,20 @@
+schema_version: 1
+decision: PREREGISTER_POWER_CALIBRATED_MINI_PILOT
+selected_direction: P
+priority_order:
+- P
+- U
+- M
+direction_decisions:
+  P: DIRECTION_P_GO
+  U: DIRECTION_U_NO_GO
+  M: DIRECTION_M_NO_GO
+novelty:
+  P: NOVELTY_PASS_WITH_CAUTION
+  U: NOVELTY_PASS
+  M: NOVELTY_PASS_WITH_CAUTION
+loop_b_human: HUMAN_REVIEW_GO
+audit_v2: LOOP_A_NO_GO
+old_holdout_rerun: false
+recoalign_modified: false
+exact_next_action: PREREGISTER_POWER_CALIBRATED_MINI_PILOT
