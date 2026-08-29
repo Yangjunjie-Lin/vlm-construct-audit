@@ -1,0 +1,57 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+primary_estimand:
+  name: model_serialization_scene_paired_behavioral_itt
+  notation: theta_m_f = E[Y_m_f(correct evidence) - Y_m_f(corrupted evidence)]
+  outcome: indicator that the length-normalized CLL top-ranked semantic answer is correct
+  unit: base_scene
+  pairing: preserve both evidence conditions within every resampled scene
+  cells: 6
+  model_count: 3
+  serialization_count: 2
+  interpretation: behavioral ITT under the frozen protocol
+  latent_internal_mechanism_effect: false
+validated_cell_estimand:
+  eligibility_unit: model_x_serialization
+  rule: Only a cell passing the independent uptake gate is eligible for a supplied-evidence behavioral-effect interpretation.
+  failed_cell_reporting: Complete reasoning-test ITT remains reported with UPTAKE_NOT_ESTABLISHED or INVALID_INTERVENTION.
+  individual_scene_filtering: forbidden
+uptake_gate:
+  split: uptake_validation
+  scene_count_per_cell: 192
+  questions_per_scene: 1
+  tasks:
+    entity_to_attribute: 48
+    entity_to_direct_relation: 48
+    relation_direction: 48
+    entity_id_to_semantic_entity: 48
+  direct_uptake_accuracy_lower_bound_min: 0.80
+  lower_bound_method: scene-level one-sided 95-percent Clopper-Pearson bound
+  lower_bound_alpha: 0.05
+  clustering_rule: Base scene is the cluster; if implementation ever emits multiple probe rows for a scene, collapse to one all-required-probes-correct scene indicator before the bound.
+  negative_control: matched_irrelevant_evidence
+  negative_control_accuracy_upper_bound_max: 0.60
+  negative_control_upper_bound_method: scene-level one-sided 95-percent Clopper-Pearson bound
+  failed_gate_labels: [UPTAKE_NOT_ESTABLISHED, INVALID_INTERVENTION]
+secondary_estimands:
+  - name: direct_relation_accuracy
+    role: measurement diagnostic only
+  - name: entity_attribute_binding_accuracy
+    role: measurement diagnostic only
+  - name: matched_irrelevant_evidence_accuracy
+    role: answer-prior diagnostic only
+  - name: candidate_margin_difference
+    role: scorer diagnostic only
+forbidden_units_as_independent:
+  - candidate
+  - token
+  - uptake_question
+  - serialization
+  - evidence_condition
+extrapolation_forbidden:
+  - all VLMs
+  - all model sizes
+  - all image tasks
+  - all answer contracts
+  - all serializations
+  - real-image tasks

@@ -1,0 +1,63 @@
+schema_version: 1
+primary_analysis: scene_paired_risk_difference
+delta0: 0.10
+delta1: 0.15
+certification_one_sided_alpha: 0.025
+certification_critical_z: 1.959963984540054
+p1_one_sided_alpha: 0.05
+p1_critical_z: 1.6448536269514722
+p2_certification_critical_z: 1.6448536269514722
+p2_below_critical_z: 1.6448536269514722
+p3_below_critical_z: 1.6448536269514722
+confidence_interval:
+  method: scene_paired_percentile_bootstrap
+  two_sided_level: 0.95
+  resamples: 10000
+  seed: 840601
+  resample_unit: base_scene
+  preserve_evidence_pair: true
+  separate_condition_bootstrap: forbidden
+standard_error:
+  primary: empirical_standard_deviation_of_scene_paired_differences_divided_by_sqrt_n
+  analytic_power_only: sqrt((discordance - effect_squared) / n)
+multiplicity:
+  confirmatory_cells: 6
+  family_wise_alpha: 0.025
+  procedure: Holm
+  unadjusted_effect_sizes_and_intervals: always_report
+answer_contract:
+  primary: length_normalized_conditional_likelihood
+  required_candidate_records:
+    - candidate_token_ids
+    - raw_log_likelihood
+    - token_count
+    - length_normalized_score
+    - independent_recomputation_score
+    - candidate_ranking
+    - candidate_margin
+    - maximum_scorer_difference
+  independent_ranking_agreement_required: 1.0
+  tie_break: stable lexical candidate_id
+  forbidden_primary_endpoints:
+    - free_generation
+    - prompt_only_json
+    - grammar_constrained_generation
+    - llm_as_judge
+    - semantic_repair
+    - fuzzy_parser
+uptake_gate:
+  unit: model_x_serialization
+  direct_accuracy_lower_bound_min: 0.80
+  method: scene-level one-sided 95-percent Clopper-Pearson
+  negative_control_accuracy_upper_bound_max: 0.60
+  individual_scene_filtering: forbidden
+report_every_cell:
+  - point_estimate
+  - two_sided_95_percent_ci
+  - one_sided_certification_lower_bound
+  - p1_minimum_effect_decision
+  - p2_three_way_decision
+  - p3_selective_risk_coverage_decision
+  - gray_zone_status
+  - uptake_eligibility
+  - holm_adjusted_summary

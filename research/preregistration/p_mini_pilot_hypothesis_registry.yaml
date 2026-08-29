@@ -1,0 +1,38 @@
+schema_version: 1
+registry_id: p_mini_pilot_hypotheses_v1
+frozen_at: 2026-08-30
+primary_question: Can the frozen P3 procedure issue stable, power-calibrated, scope-bounded certifications for supplied-evidence behavioral effects after independent measurement and uptake checks?
+confirmatory_cells:
+  - [smolvlm_256m_instruct, natural_language]
+  - [smolvlm_256m_instruct, triples]
+  - [internvl2_5_2b, natural_language]
+  - [internvl2_5_2b, triples]
+  - [qwen2_vl_2b_instruct, natural_language]
+  - [qwen2_vl_2b_instruct, triples]
+cell_hypotheses:
+  null: theta_m_f <= 0.10
+  certification_alternative: theta_m_f >= 0.15
+  indifference_zone: 0.10 < theta_m_f < 0.15
+  positive_label: EFFECT_ABOVE_CERTIFICATION_THRESHOLD
+  indifference_label: EFFECT_IN_INDIFFERENCE_ZONE
+  below_label: EFFECT_BELOW_SESOI
+  invalid_labels: [INVALID_MEASUREMENT, INVALID_INTERVENTION, UPTAKE_NOT_ESTABLISHED]
+  non_rejection_label: INCONCLUSIVE
+confirmatory_replication_hypothesis:
+  unit: model_family
+  rule: A family replicates only if both frozen serializations pass uptake and obtain Holm-supported positive P3 certification.
+  required_families: 2
+  leave_one_model_out_direction_stability: required
+path_a: Stable Certification
+path_b: Audit-Value Certification
+secondary_hypotheses:
+  - direct relation and entity-attribute probes diagnose construct validity but cannot change GO/NO-GO
+  - matched irrelevant evidence diagnoses answer priors but is not an intervention-effect estimate
+  - serialization differences are fully reported but do not test serialization invariance
+prohibited_post_hoc_actions:
+  - choose the best cell as primary
+  - add a third serialization
+  - replace a model using reasoning accuracy
+  - change delta0 or delta1
+  - filter reasoning scenes using individual uptake outcomes
+  - promote a secondary diagnostic to confirmatory

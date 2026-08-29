@@ -1,0 +1,33 @@
+schema_version: 1
+policy_id: p_mini_pilot_multiplicity_v1
+frozen_at: 2026-08-30
+confirmatory_family:
+  hypotheses: six model_x_serialization minimum-effect claims
+  family_wise_alpha: 0.025
+  adjustment: Holm step-down
+  p_values: one-sided scene-paired minimum-effect p-values against delta0
+  ties: stable lexical order by model_id then serialization
+cell_level_reporting:
+  p3_certification_alpha: 0.025
+  unadjusted_point_estimate: required
+  unadjusted_two_sided_95_percent_ci: required
+  unadjusted_one_sided_lower_bound: required
+  unadjusted_p1_p2_p3_decisions: required
+  holm_adjusted_p_value: required
+  holm_supported_confirmatory_claim: required
+replication_gate:
+  confirmatory: true
+  family_counts_only_if:
+    - both serializations pass uptake
+    - both serializations obtain P3 positive certification
+    - both cell claims remain supported after Holm adjustment
+  required_family_count: 2
+  third_family_certified_reverse_effect: forbidden
+  serialization_single_driver: forbidden
+path_b_multiplicity:
+  naive_positive_claim_definition: unadjusted two-sided zero-effect p-value below 0.05 with positive estimate
+  p3_scope_change_requires_holm_support: false
+  consistency_requirement: at least two independent model_x_serialization cells
+  interpretation: audit-value pattern, not a family-wise positive effect claim
+no_best_cell_selection: true
+all_six_cells_reported: true
