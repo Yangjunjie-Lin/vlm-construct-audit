@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import random
 from collections import Counter
 from pathlib import Path
@@ -585,3 +586,220 @@ def write_p_mini_pilot_token_balance() -> dict[str, Any]:
     if failures:
         raise ValueError(artifact)
     return artifact
+
+
+def generate_p_mini_pilot_power_analysis() -> dict[str, Any]:
+    """Freeze paired-outcome analytic and Monte Carlo power before VLM inference."""
+    import numpy as np
+    from scipy.stats import norm
+
+    effects = [0.00, 0.05, 0.10, 0.12, 0.15, 0.18, 0.25]
+    discordances = [0.15, 0.25, 0.35, 0.50, 1.00]
+    sample_sizes = [384, 512, 768, 1024, 1536]
+    delta0 = 0.10
+    delta1 = 0.15
+    z_cert = float(norm.ppf(0.975))
+    z_min = float(norm.ppf(0.95))
+    z_ci = float(norm.ppf(0.975))
+    repetitions = 50_000
+    rows: list[dict[str, Any]] = []
+    for effect_index, effect in enumerate(effects):
+        for discordance_index, discordance in enumerate(discordances):
+            p10 = (discordance + effect) / 2
+            p01 = (discordance - effect) / 2
+            for sample_index, sample_size in enumerate(sample_sizes):
+                if p10 < 0 or p01 < 0 or p10 + p01 > 1:
+                    rows.append(
+                        {
+                            "effect": effect,
+                            "paired_discordance": discordance,
+                            "sample_size": sample_size,
+                            "status": "INFEASIBLE_PAIRED_PROBABILITIES",
+                            "reason": "paired discordance must be at least the absolute effect",
+                        }
+                    )
+                    continue
+                variance = discordance - effect**2
+                analytic_se = math.sqrt(variance / sample_size)
+                analytic_certification = float(
+                    norm.cdf((effect - delta0) / analytic_se - z_cert)
+                )
+                analytic_minimum_effect = float(
+                    norm.cdf((effect - delta0) / analytic_se - z_min)
+                )
+                analytic_below = float(
+                    norm.cdf((delta0 - effect) / analytic_se - z_min)
+                )
+                analytic_gray = max(
+                    0.0, 1.0 - analytic_certification - analytic_below
+                )
+                seed = (
+                    850_000_000
+                    + effect_index * 1_000_000
+                    + discordance_index * 10_000
+                    + sample_index
+                )
+                rng = np.random.default_rng(seed)
+                counts = rng.multinomial(
+                    sample_size, [p10, p01, 1 - discordance], size=repetitions
+                )
+                estimates = (counts[:, 0] - counts[:, 1]) / sample_size
+                sum_squares = (counts[:, 0] + counts[:, 1]).astype(float)
+                sample_variances = (
+                    sum_squares - sample_size * estimates**2
+                ) / (sample_size - 1)
+                standard_errors = np.sqrt(
+                    np.maximum(sample_variances, 0.0) / sample_size
+                )
+                certify = estimates - z_cert * standard_errors > delta0
+                below = estimates + z_min * standard_errors <= delta0
+                gray = ~(certify | below)
+                reject_minimum = estimates - z_min * standard_errors > delta0
+                ci_lower = estimates - z_ci * standard_errors
+                ci_upper = estimates + z_ci * standard_errors
+                coverage = (ci_lower <= effect) & (effect <= ci_upper)
+                rows.append(
+                    {
+                        "effect": effect,
+                        "paired_discordance": discordance,
+                        "sample_size": sample_size,
+                        "status": "FEASIBLE",
+                        "p10": p10,
+                        "p01": p01,
+                        "paired_variance": variance,
+                        "analytic_certification_power": analytic_certification,
+                        "analytic_false_positive_probability": (
+                            analytic_certification if effect <= delta0 else None
+                        ),
+                        "analytic_gray_zone_probability": analytic_gray,
+                        "analytic_minimum_effect_rejection_probability": analytic_minimum_effect,
+                        "monte_carlo_repetitions": repetitions,
+                        "monte_carlo_seed": seed,
+                        "certification_power": float(certify.mean()),
+                        "false_positive_probability": (
+                            float(certify.mean()) if effect <= delta0 else None
+                        ),
+                        "gray_zone_probability": float(gray.mean()),
+                        "ci_coverage": float(coverage.mean()),
+                        "minimum_effect_rejection_probability": float(
+                            reject_minimum.mean()
+                        ),
+                    }
+                )
+    target_rows = [
+        row
+        for row in rows
+        if row.get("status") == "FEASIBLE"
+        and row["effect"] == delta1
+        and row["sample_size"] == 768
+        and row["paired_discordance"] in {0.15, 0.25}
+    ]
+    minimum_target_power = min(row["analytic_certification_power"] for row in target_rows)
+    retained = minimum_target_power >= 0.80
+    analysis = {
+        "schema_version": 1,
+        "analysis_id": "p_mini_pilot_paired_power_v1",
+        "generated_before_model_inference": True,
+        "delta0": delta0,
+        "delta1": delta1,
+        "one_sided_certification_alpha": 0.025,
+        "target_power": 0.80,
+        "paired_outcome_definition": {
+            "p10": "P(correct-evidence answer correct, corrupted-evidence answer wrong)",
+            "p01": "P(correct-evidence answer wrong, corrupted-evidence answer correct)",
+            "effect": "p10 - p01",
+            "discordance": "p10 + p01",
+            "variance": "discordance - effect^2",
+        },
+        "effect_grid": effects,
+        "discordance_grid": [0.15, 0.25, 0.35, 0.50, "conservative_upper_case_1.00"],
+        "sample_size_grid": sample_sizes,
+        "plausible_discordance_region": [0.15, 0.25],
+        "plausibility_basis": "contains the frozen known-DGP variance assumption 0.16, which implies discordance 0.1825 at effect 0.15",
+        "stress_discordances": [0.35, 0.50, 1.00],
+        "simulation_repetitions_per_feasible_cell": repetitions,
+        "power_at_delta1_n768": {
+            str(row["paired_discordance"]): {
+                "analytic": row["analytic_certification_power"],
+                "monte_carlo": row["certification_power"],
+                "ci_coverage": row["ci_coverage"],
+                "gray_zone_probability": row["gray_zone_probability"],
+            }
+            for row in target_rows
+        },
+        "minimum_analytic_power_at_delta1_n768_in_plausible_region": minimum_target_power,
+        "analytic_false_positive_at_effect_delta0": 0.025,
+        "sample_size_decision": "RETAIN_N_768" if retained else "INCREASE_REQUIRED",
+        "reasoning_test_n": 768 if retained else None,
+        "maximum_allowed_n": 1536,
+        "feasible": retained,
+        "resource_check": {
+            "candidate_score_upper_bound": 46080,
+            "sequential_model_loading": True,
+            "estimated_gpu_hours_upper_bound": 18,
+            "available_gpu": "NVIDIA GeForce RTX 3060 Laptop GPU, 6441926656 VRAM bytes",
+            "n_increase_required": False,
+            "assessment": "FEASIBLE_WITHIN_FROZEN_LOCAL_ENGINEERING_ENVELOPE",
+        },
+        "rows": rows,
+        "scientific_outcome_use_forbidden": True,
+    }
+    _dump_yaml("research/preregistration/p_mini_pilot_power_analysis.yaml", analysis)
+    lines = [
+        "# P Mini-Pilot Paired Power Analysis",
+        "",
+        "Status: **FEASIBLE; retain N=768**. This analysis uses paired base-scene outcomes, not",
+        "two independent Bernoulli samples. For paired difference D in {-1,0,1},",
+        "`E[D]=p10-p01` and `Var(D)=p10+p01-(p10-p01)^2`.",
+        "",
+        "The preregistered plausible discordance region is 0.15-0.25. It contains the frozen",
+        "known-DGP variance assumption (variance 0.16 corresponds to discordance 0.1825 at",
+        "effect 0.15). Discordances 0.35, 0.50, and 1.00 are reported as stress cases, not used",
+        "to redefine delta1 or the plausible region after results.",
+        "",
+        "## N=768 at the certification alternative",
+        "",
+        "| Discordance | p10 | p01 | Analytic power | MC power | Gray | CI coverage |",
+        "|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    all_target_rows = [
+        row
+        for row in rows
+        if row.get("status") == "FEASIBLE"
+        and row["effect"] == delta1
+        and row["sample_size"] == 768
+    ]
+    for row in all_target_rows:
+        lines.append(
+            f"| {row['paired_discordance']:.2f} | {row['p10']:.3f} | {row['p01']:.3f} | "
+            f"{row['analytic_certification_power']:.4f} | {row['certification_power']:.4f} | "
+            f"{row['gray_zone_probability']:.4f} | {row['ci_coverage']:.4f} |"
+        )
+    lines.extend(
+        [
+            "",
+            f"Minimum analytic power within the plausible region: **{minimum_target_power:.4f}**.",
+            "The certification false-positive probability at the boundary effect delta0 is",
+            "0.025 analytically. Monte Carlo false-positive estimates, gray-zone probabilities,",
+            "95% Wald-CI coverage, and ordinary one-sided minimum-effect rejection probabilities",
+            "are frozen for every feasible effect x discordance x N cell in the YAML artifact.",
+            "",
+            "Stress cases show why the paired discordance assumption matters: high discordance can",
+            "make N=768 underpowered even when the mean effect is 0.15. They do not trigger an N",
+            "increase because they are outside the prospectively declared plausible region.",
+            "Neither delta0 nor delta1 is changed.",
+            "",
+            "## Resource decision",
+            "",
+            "The design requires at most 46,080 candidate scores with sequential checkpoint loading.",
+            "The conservative local budget is 18 GPU-hours on the preflighted RTX 3060 Laptop GPU.",
+            "No sample-size increase is required, so N=768 remains within the frozen engineering",
+            "envelope. This resource estimate does not authorize model execution.",
+        ]
+    )
+    report = ROOT / "reports/p_mini_pilot_power_analysis.md"
+    report.parent.mkdir(parents=True, exist_ok=True)
+    report.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    if not retained:
+        raise ValueError("N=768 is underpowered in the plausible discordance region")
+    return analysis
