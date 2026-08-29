@@ -1,0 +1,220 @@
+schema_version: 1
+audit_id: direction_p_mini_pilot_primary_source_update_2026_08_30
+cutoff_date: 2026-08-30
+executed_at: 2026-08-30
+status: COMPLETE_WITH_NONEXHAUSTIVENESS_CAVEAT
+source_policy:
+  admissible:
+    - original paper
+    - official conference page
+    - official journal page
+    - official project page
+  discovery_surfaces:
+    - arXiv official search and abstract pages
+    - publisher DOI pages
+  primary_source_only_for_collision_decision: true
+  absence_is_not_proof: true
+search_log:
+  baseline_audit: research/post_stop/literature_matrix.yaml
+  baseline_cutoff: 2026-08-27
+  updated_window: [2026-08-28, 2026-08-30]
+  queries:
+    - VLM selective prediction
+    - MLLM conformal risk control
+    - risk-coverage VLM evaluation
+    - SESOI minimum-effect testing
+    - power-calibrated certification
+    - behavioral effect certification
+    - multimodal intervention evaluation
+    - construct-valid VLM evaluation
+    - false mechanistic claim control
+    - claim-level conformal inference
+    - selective inference for treatment effects
+  newest_first_update_result: No newly announced primary source in the update window matched the registered collision conjunction.
+collision_conjunction:
+  - VLM intervention study
+  - known-state false-claim calibration
+  - fixed SESOI
+  - power-calibrated certification alternative
+  - claim-level selective or risk-coverage decision
+  - independent uptake validation
+  - multi-family real VLM application
+papers:
+  - id: riesthuis_2024
+    paper: "Simulation-Based Power Analyses for the Smallest Effect Size of Interest: A Confidence-Interval Approach for Minimum-Effect and Equivalence Testing"
+    date: 2024-04-16
+    venue_or_status: Advances in Methods and Practices in Psychological Science
+    url: https://doi.org/10.1177/25152459241240722
+    problem: Power analysis for minimum-effect and equivalence tests around a smallest effect size of interest.
+    estimand: Generic population effect relative to a fixed SESOI.
+    unit_of_certification: Study-level effect.
+    models: None; statistical methodology.
+    ground_truth: User-specified data-generating scenarios.
+    risk_control: Confidence-interval decision probabilities under simulation.
+    sesoi: Explicit.
+    intervention_validity: Not applicable.
+    overlap: Establishes that power must target the SESOI-aware decision, not ordinary rejection of zero.
+    remaining_difference: No VLM, supplied-evidence intervention, uptake gate, known-state claim audit, or claim-level risk-coverage policy.
+  - id: lakens_2017
+    paper: Equivalence Tests
+    date: 2017-02-01
+    venue_or_status: Social Psychological and Personality Science
+    url: https://doi.org/10.1177/1948550617697177
+    problem: Equivalence testing and smallest effects of interest.
+    estimand: Generic effect relative to equivalence bounds.
+    unit_of_certification: Study-level effect.
+    models: None; statistical methodology.
+    ground_truth: Sampling-model assumptions.
+    risk_control: Two one-sided tests.
+    sesoi: Explicit.
+    intervention_validity: Not applicable.
+    overlap: SESOI and indifference-zone foundations.
+    remaining_difference: No VLM, behavioral intervention, known-DGP audit, or selective risk-coverage decision.
+  - id: el_yaniv_wiener_2010
+    paper: On the Foundations of Noise-free Selective Classification
+    date: 2010-08-01
+    venue_or_status: Journal of Machine Learning Research 11
+    url: https://jmlr.org/papers/v11/el-yaniv10a.html
+    problem: Selective classification with abstention and coverage control.
+    estimand: Prediction risk as a function of retained coverage.
+    unit_of_certification: Individual prediction and population risk-coverage curve.
+    models: Generic classifiers.
+    ground_truth: Labeled examples.
+    risk_control: Selective risk and coverage.
+    sesoi: None.
+    intervention_validity: None.
+    overlap: Supplies the selective-prediction and risk-coverage foundation.
+    remaining_difference: Does not certify paired intervention effects or police behavioral-mechanistic claim scope.
+  - id: geifman_el_yaniv_2017
+    paper: Selective Classification for Deep Neural Networks
+    date: 2017-05-24
+    venue_or_status: NeurIPS 2017; original arXiv paper
+    url: https://arxiv.org/abs/1705.08500
+    problem: Risk-controlled abstention for deep classifiers.
+    estimand: Classification risk at retained coverage.
+    unit_of_certification: Individual answer selection and aggregate risk.
+    models: Deep image classifiers.
+    ground_truth: Standard labeled benchmarks.
+    risk_control: Selective classification with a risk target.
+    sesoi: None.
+    intervention_validity: None.
+    overlap: Neural risk-coverage methodology.
+    remaining_difference: No paired supplied-evidence effect, uptake validation, or fixed minimum-effect alternative.
+  - id: bates_et_al_2021
+    paper: Distribution-free, Risk-controlling Prediction Sets
+    date: 2021-10-15
+    venue_or_status: Journal of the ACM 68(6)
+    url: https://doi.org/10.1145/3478535
+    problem: Distribution-free control of user-chosen prediction-set risks.
+    estimand: Expected loss of a prediction set.
+    unit_of_certification: Prediction set and aggregate loss.
+    models: Generic predictive systems.
+    ground_truth: Exchangeable labeled calibration data.
+    risk_control: Finite-sample risk-controlling prediction sets.
+    sesoi: None.
+    intervention_validity: None.
+    overlap: Risk-control building block.
+    remaining_difference: No VLM intervention-effect estimand, uptake gate, or known-DGP false-claim calibration.
+  - id: angelopoulos_et_al_2022
+    paper: Conformal Risk Control
+    date: 2022-08-04
+    venue_or_status: Original arXiv paper; ICLR 2024
+    url: https://arxiv.org/abs/2208.02814
+    problem: Distribution-free control of monotone losses through calibration.
+    estimand: Expected user-specified loss.
+    unit_of_certification: Calibrated prediction policy.
+    models: Generic predictive systems.
+    ground_truth: Exchangeable calibration examples.
+    risk_control: Conformal risk control.
+    sesoi: None.
+    intervention_validity: None.
+    overlap: Formal risk-control ingredient used by neighboring work.
+    remaining_difference: Does not provide SESOI-aware paired behavioral-effect certification or independent evidence-uptake validation.
+  - id: xu_et_al_2026
+    paper: "Look Again Before You Abstain: Budgeted Conformal Evidence Acquisition for Reliable Vision-Language Model"
+    date: 2026-06-15
+    venue_or_status: arXiv preprint, version 4 dated 2026-07-21
+    url: https://arxiv.org/abs/2606.16667
+    problem: Bound hallucination risk while choosing answer, abstain, or acquire additional visual evidence.
+    estimand: Hallucination risk among asserted claims under an evidence-acquisition budget.
+    unit_of_certification: Object-existence claim and acquisition policy.
+    models: Vision-language models.
+    ground_truth: Labeled object-existence benchmark.
+    risk_control: Distribution-free conformal filter and budgeted evidence acquisition.
+    sesoi: None for a paired behavioral intervention effect.
+    intervention_validity: Claim-specific re-examination is part of the policy; no independent uptake split.
+    overlap: Closest conformal VLM evidence-acquisition and abstention neighbor.
+    remaining_difference: Certifies answer grounding risk, not a fixed-SESOI supplied-evidence ITT calibrated on known DGPs.
+  - id: kotte_2026
+    paper: "When Can Conformal Risk Control Certify LLM Outputs? Bounds, Impossibility, and Adaptation for Structured Generation"
+    date: 2026-06-27
+    venue_or_status: arXiv preprint
+    url: https://arxiv.org/abs/2606.29054
+    problem: Feasibility, impossibility, and adaptation of conformal risk control for structured LLM outputs.
+    estimand: Task loss under a retained-output policy.
+    unit_of_certification: Structured output configuration and prediction policy.
+    models: Six open-weight LLMs, not VLM intervention cells.
+    ground_truth: Eight labeled datasets across four tasks.
+    risk_control: Hoeffding, empirical-Bernstein, betting-based e-CRC, and adaptive conformal inference.
+    sesoi: None for an intervention effect.
+    intervention_validity: None.
+    overlap: Makes feasibility-before-certification and abstention costs explicit.
+    remaining_difference: No multimodal supplied-evidence intervention, known-state effect-claim calibration, or uptake eligibility gate.
+  - id: yu_niu_he_2026
+    paper: Answer-Level Trust Selection for Physical Vision-Language Reasoning
+    date: 2026-08-20
+    venue_or_status: arXiv preprint
+    url: https://arxiv.org/abs/2608.19807
+    problem: Select trustworthy individual quantitative VLM answers without ground truth at deployment.
+    estimand: Answer-level reliability under a post-hoc trust score.
+    unit_of_certification: Individual physical-reasoning answer.
+    models: Qwen2.5-VL-7B in depth and 20 VLM backbones.
+    ground_truth: Annotated physical quantities and targeted failure cases.
+    risk_control: Empirical selective performance and risk-coverage behavior.
+    sesoi: None for a paired behavioral effect.
+    intervention_validity: Eight behavioral diagnostics include controlled interventions, but no independent uptake gate.
+    overlap: Closest multi-family VLM selective-prediction study with interventions.
+    remaining_difference: Selects answers rather than prospectively certifying a paired supplied-evidence effect against fixed delta0/delta1 after known-DGP calibration.
+  - id: li_liu_2026
+    paper: "EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models"
+    date: 2026-08-24
+    venue_or_status: arXiv preprint
+    url: https://arxiv.org/abs/2608.23313
+    problem: Evaluate whether VLM safety behavior tracks textual and visual safety evidence and counterfactual changes.
+    estimand: Diagnostic consistency and behavioral sensitivity to safety-critical counterfactual evidence.
+    unit_of_certification: Scenario/probe behavior and benchmark-level metric.
+    models: Eleven VLMs.
+    ground_truth: 1181 gold scenarios and 2452 targeted counterfactual variants.
+    risk_control: No SESOI-aware claim-certification procedure.
+    sesoi: None.
+    intervention_validity: Gold evidence annotations and targeted counterfactuals; no independent cell-level uptake lower-bound gate.
+    overlap: Closest multi-model controlled VLM evidence-intervention evaluation.
+    remaining_difference: Uses an evidence-aware judge and diagnostic metrics, not CLL paired ITT with known-DGP-calibrated P3 claim eligibility.
+  - id: bronder_2026
+    paper: "Does a Tool Result Carry More Authority Than Plain Text? Three Prospective Studies of False-Claim Adoption in a Synthetic Assignment Task with Claude Opus 5"
+    date: 2026-08-15
+    venue_or_status: arXiv preprint
+    url: https://arxiv.org/abs/2608.14992
+    problem: Measure prospective false-claim adoption under tool-result versus plain-text evidence.
+    estimand: Behavioral false-claim adoption difference.
+    unit_of_certification: Study-level behavioral effect.
+    models: One API model; text-only.
+    ground_truth: Synthetic assignment truth.
+    risk_control: Prospective design, not selective risk-coverage certification.
+    sesoi: No fixed delta0/delta1 certification framework.
+    intervention_validity: Manipulated evidence authority; no independent uptake-validation split.
+    overlap: Direct behavioral intervention and false-claim neighbor.
+    remaining_difference: Not vision-language, not open-weight multi-family, and not known-DGP-calibrated claim certification.
+collision_assessment:
+  exact_conjunction_collision_found: false
+  decision: NOVELTY_PASS_WITH_CAUTION
+  caution: ATS and EviSafe materially narrow the VLM intervention/selection gap, while BCEA and structured-generation CRC cover much of the generic risk-control machinery.
+  remaining_contribution: Prospective multi-family application of a power-calibrated claim-certification procedure to supplied-evidence VLM behavioral effects after known-DGP calibration.
+  prohibited_as_novel:
+    - SESOI
+    - indifference zone
+    - conformal prediction
+    - selective prediction
+    - risk-coverage curve
+    - paired bootstrap
+    - conditional likelihood
