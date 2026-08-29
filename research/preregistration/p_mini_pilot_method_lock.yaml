@@ -1,0 +1,56 @@
+schema_version: 1
+lock_id: p_mini_pilot_direction_p_p3_lock_v1
+method: P3
+method_name: preregistered_selective_risk_coverage_certification
+source_files:
+  - src/vlm_construct_audit/post_stop/direction_p.py
+  - research/post_stop/direction_p/preregistration.yaml
+  - research/post_stop/direction_p/power_table.yaml
+  - research/post_stop/direction_p/method_freeze.yaml
+source_commit: 8b7a6988a78fd7b0fb0c581f6c29988e63be0800
+source_state_commit: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+source_file_hashes:
+  src/vlm_construct_audit/post_stop/direction_p.py: 02f90b85f96a27edef5d6daf17eb835fc8edad1191043eedfdff8877050dbae3
+  research/post_stop/direction_p/preregistration.yaml: d0e4cc1275f4abdff8d87b1fb77c9e195a2cd03799f598aa56ff020e844aefe3
+  research/post_stop/direction_p/power_table.yaml: 201ed208e5a43984576174fdc4915899f762829c255d690fd42dd8c803de0364
+  research/post_stop/direction_p/method_freeze.yaml: b62a24565eb6de96993d8ffb1cd4e24edb5bc9a90bc34742bf9834d133621a83
+delta0: 0.10
+delta1: 0.15
+known_dgp_decision: DIRECTION_P_GO
+known_dgp_decision_file: reports/post_stop_direction_p_decision.yaml
+known_dgp_holdout_execution_count: 1
+known_dgp_holdout_rerun: forbidden
+method_changes_allowed_after_preregistration: false
+frozen_decision_parameters:
+  p1_critical_z: 1.6448536269514722
+  p2_certification_critical_z: 1.6448536269514722
+  p2_below_critical_z: 1.6448536269514722
+  p3_certification_critical_z: 1.959963984540054
+  p3_below_critical_z: 1.6448536269514722
+  indifference_zone: 0.10 < effect < 0.15
+  positive_label: EFFECT_ABOVE_CERTIFICATION_THRESHOLD
+  below_label: EFFECT_BELOW_SESOI
+  gray_label: EFFECT_IN_INDIFFERENCE_ZONE
+frozen_components:
+  - P3 decision thresholds
+  - risk-coverage policy
+  - gray-zone definition
+  - certification alternative
+  - abstention and inconclusive rule
+  - known-DGP family labels
+  - invalid-measurement and invalid-intervention precedence
+audit_failure_rule:
+  trigger: independent audit finds a substantive P3 method error
+  decision: P3_METHOD_LOCK_INVALID
+  current_mini_pilot_authorization: invalidated
+  required_restart:
+    - new known-DGP development
+    - new preregistration
+    - new sealed holdout
+  direct_code_fix_then_real_vlm_continuation: forbidden
+engineering_amendment_policy:
+  allowed_examples: [file path, CLI wiring, nonnumeric serialization transport]
+  numerical_result_change: forbidden
+  method_decision_change: forbidden
+  amendment_required: true
+claim_boundary: The lock calibrates behavioral claim eligibility under registered known DGPs; it does not identify an internal VLM mechanism.
