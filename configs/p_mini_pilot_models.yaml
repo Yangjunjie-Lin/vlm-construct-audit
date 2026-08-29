@@ -1,0 +1,63 @@
+schema_version: 1
+registry_id: p_mini_pilot_three_family_models_v1
+frozen_at: 2026-08-30
+selection_basis: pre-scientific engineering registry
+source_registry: configs/model_smoke_registry.yaml
+transformers_version: 4.49.0
+models:
+  - model_id: smolvlm_256m_instruct
+    family: SmolVLM-Idefics3
+    repository: HuggingFaceTB/SmolVLM-256M-Instruct
+    revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    weight_hashes:
+      model.safetensors: 74dea5904032e5ae99a2e0eef5179e6ac0f1dedc3ab0c7c2a5d4d387c843203e
+    parameter_count: 256484928
+    license: Apache-2.0
+    processor_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    tokenizer_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+    dtype: float16
+    quantization: none
+    device_map: cuda:0
+    transformers_version: 4.49.0
+    trust_remote_code: false
+    selection_reason: Existing official revision in the pre-scientific registry; smallest stable instruction checkpoint in its family and verified for visual CLL scoring.
+  - model_id: internvl2_5_2b
+    family: InternVL2.5-InternLM2
+    repository: OpenGVLab/InternVL2_5-2B
+    revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    weight_hashes:
+      model.safetensors: 2135909ed23cb6c934a57a9f7e194c6ab128042a76f8934cdedfa0194181f50d
+    parameter_count: 2205754368
+    license: MIT; bundled InternLM2.5 component Apache-2.0
+    processor_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    tokenizer_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+    dtype: float16
+    quantization: bitsandbytes_int8
+    device_map: cuda:0
+    transformers_version: 4.49.0
+    trust_remote_code: true
+    selection_reason: Existing official revision in the pre-scientific registry; smallest stable checkpoint in its family and verified for visual CLL scoring.
+  - model_id: qwen2_vl_2b_instruct
+    family: Qwen2-VL
+    repository: Qwen/Qwen2-VL-2B-Instruct
+    revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    weight_hashes:
+      model-00001-of-00002.safetensors: 994ac2b03f97de8bc647d0fe5eba2e4b632b3e28dc03574c29bdfc36cf47e1b9
+      model-00002-of-00002.safetensors: 92540d8353c8d226a589a3b179bdb33851c970ee2cc2ac7ba035f79425e7b833
+    parameter_count: 2208985600
+    license: Apache-2.0
+    processor_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    tokenizer_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+    dtype: float16
+    quantization: bitsandbytes_int8
+    device_map: cuda:0
+    transformers_version: 4.49.0
+    trust_remote_code: false
+    selection_reason: Existing official revision in the pre-scientific registry; smallest stable instruction checkpoint in its family and verified for visual CLL scoring.
+freeze_rules:
+  scientific_output_before_replacement: forbidden
+  performance_based_replacement: forbidden
+  registry_wide_refreeze_after_any_replacement: required
+  engineering_preflight_after_replacement: required
+  simultaneous_loading: forbidden
+scientific_outcome_use_forbidden: true

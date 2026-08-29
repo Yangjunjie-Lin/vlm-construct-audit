@@ -1,0 +1,58 @@
+schema_version: 1
+policy_id: p_mini_pilot_model_selection_v1
+frozen_at: 2026-08-30
+selection_basis: pre-scientific engineering registry
+source_registry: configs/model_smoke_registry.yaml
+scientific_task_outcomes_used: false
+registered_count: 3
+required_distinct_families: 3
+eligibility:
+  official_weights: required
+  exact_revision: required
+  explicit_license: required
+  local_hardware_feasible: required
+  visual_input: required
+  length_normalized_candidate_likelihood: required
+  api_model: forbidden
+  mock: forbidden
+  tiny_random: forbidden
+  scientific_task_accuracy_selection: forbidden
+engineering_evidence:
+  checkpoint_load_success_all_three: true
+  actual_visual_forward_success_all_three: true
+  independent_candidate_scorer_ranking_agreement_all_three: 1.0
+  source: artifacts/loop_c/*/summary.yaml
+  interpretation: pre-scientific engineering evidence only
+  prompt_parser_gate_failures_used_for_selection: false
+replacement_policy:
+  timing: before any mini-pilot scientific output
+  allowed_reasons:
+    - weights unavailable
+    - license changed incompatibly
+    - purely technical incompatibility prevents the frozen CLL contract
+  family_change: forbidden
+  choose_by:
+    - preregistered parameter-scale rule
+    - local hardware feasibility
+    - official status and license
+  task_correctness_inspection: forbidden
+  candidate_checkpoint_comparison_by_performance: forbidden
+  required_actions:
+    - record a preregistration amendment
+    - replace and refreeze the entire three-model registry
+    - repeat engineering-only scorer preflight
+    - recompute tokenizer balance before inference
+resource_envelope:
+  hardware_source: artifacts/loop_c/environment.yaml
+  gpu: NVIDIA GeForce RTX 3060 Laptop GPU
+  gpu_vram_bytes: 6441926656
+  ram_bytes: 34003582976
+  disk_free_bytes_at_preflight: 448170307584
+  reasoning_prompt_sets: 9216
+  uptake_prompt_sets: 2304
+  fixed_candidates_per_prompt: 4
+  maximum_candidate_scores: 46080
+  sequential_model_loading: required
+  simultaneous_three_model_loading: forbidden
+  no_weight_download_in_ci: true
+scientific_outcome_use_forbidden: true
