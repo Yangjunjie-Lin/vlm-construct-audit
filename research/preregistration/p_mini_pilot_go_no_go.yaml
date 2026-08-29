@@ -1,0 +1,57 @@
+schema_version: 1
+policy_id: p_mini_pilot_go_no_go_v1
+frozen_at: 2026-08-30
+path_order: [Stable Certification, Audit-Value Certification, NO-GO]
+paths_mutually_exclusive: true
+stable_certification_path:
+  label: Stable Certification
+  requirements:
+    - At least two of three model families pass the uptake gate in both serializations.
+    - At least two of three families obtain Holm-supported EFFECT_ABOVE_CERTIFICATION_THRESHOLD in both serializations.
+    - The third family has no certified reverse behavioral effect.
+    - The result is not driven by one serialization.
+    - For every leave-one-family-out set, the pooled paired-effect direction remains positive.
+    - No more than two of the six confirmatory cells are INCONCLUSIVE.
+  certified_reverse_definition: one-sided 97.5-percent upper bound below -0.10 in any uptake-eligible cell
+  next_stage_candidate: EXPAND_STABLE_BEHAVIORAL_EFFECT_STUDY
+audit_value_certification_path:
+  label: Audit-Value Certification
+  evaluated_only_if_stable_path_false: true
+  requirements:
+    - At least two of three model families pass the uptake gate in both serializations.
+    - Ordinary zero-effect significance or naive reporting would issue a positive behavioral-effect claim.
+    - P3 legitimately downgrades the claim because the effect does not clear delta0 or delta1, power is insufficient, or registered risk control fails.
+    - At least two independent model_x_serialization cells exhibit the same direction of claim-scope change.
+    - The pattern is not attributable to parser failure, candidate mapping, token imbalance, one template, one model, or one serialization.
+    - The downgrade agrees with the frozen known-DGP P3 decision logic.
+  naive_positive_definition: positive paired estimate with an unadjusted two-sided zero-effect p-value below 0.05
+  allowed_scope_claim: P3 changed the permitted scope of the behavioral-effect claim.
+  internal_mechanism_error_claim: forbidden
+  next_stage_candidate: EXPAND_FALSE_CLAIM_SCOPE_AUDIT
+p3_abstention_dependency:
+  excessive_rule: More than half of P3-versus-naive claim-scope changes are INCONCLUSIVE and P3 has more INCONCLUSIVE cells than P1.
+  excessive_action: NO_GO
+  explicit_gray_zone_or_below_or_invalid_required_for_path_b: true
+no_go_conditions:
+  - fewer than two of three model families pass the uptake gate
+  - every uptake-eligible cell is uninformative indifference or inconclusive
+  - neither Stable Certification nor Audit-Value Certification holds
+  - the conclusion is entirely driven by one model family
+  - the conclusion is entirely driven by one serialization
+  - a certified reverse effect occurs across model families
+  - token or evidence balance fails
+  - independent scorer ranking agreement is below 1.00
+  - artifact completeness is below 1.00
+  - P3 advantage is primarily produced by increased abstention under the frozen excessive rule
+  - novelty audit is NOVELTY_NO_GO
+no_go_action: TERMINATE_SUCCESSOR_PROGRAM
+post_no_go_rescue_forbidden:
+  - replace a model
+  - add prompts
+  - change delta0 or delta1
+  - reopen Direction M or U
+  - create a fourth direction
+  - add a third serialization
+  - add real-image data
+  - rerun reasoning_test
+pilot_success_is_not_required_to_be_positive: true

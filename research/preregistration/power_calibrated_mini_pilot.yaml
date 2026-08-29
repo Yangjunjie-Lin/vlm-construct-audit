@@ -1,0 +1,51 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+title: Direction P Power-Calibrated Mini-Pilot
+frozen_date: 2026-08-30
+historical_anchor:
+  repository: https://github.com/Yangjunjie-Lin/vlm-construct-audit
+  branch: codex/post-stop-three-direction-screen
+  commit: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+  post_stop_final_tag: vlm-construct-audit-post-stop-final
+  final_decision: PREREGISTER_POWER_CALIBRATED_MINI_PILOT
+  audit_v2: LOOP_A_NO_GO
+  direction_p: DIRECTION_P_GO
+  direction_m: DIRECTION_M_NO_GO
+  direction_u: DIRECTION_U_NO_GO
+scientific_design:
+  models: 3
+  model_families: 3
+  formal_scenes: 960
+  uptake_validation: 192
+  reasoning_test: 768
+  engineering_smoke: 12
+  primary_construct: two_hop_directed_relation_composition
+  intervention: correct relational evidence versus target-specific corrupted relational evidence
+  serializations: [natural_language, triples]
+  answer_contract: length_normalized_conditional_likelihood
+  estimand: model_x_serialization scene-paired behavioral ITT
+  delta0: 0.10
+  delta1: 0.15
+  certification_alpha: 0.025
+  multiplicity: Holm across six confirmatory cells at FWER 0.025
+locks:
+  identity: research/preregistration/p_mini_pilot_identity.md
+  novelty: research/preregistration/p_mini_pilot_novelty_boundary.md
+  models: configs/p_mini_pilot_models.yaml
+  data: data/p_mini_pilot/data_manifest.yaml
+  estimands: research/preregistration/p_mini_pilot_estimands.yaml
+  hypotheses: research/preregistration/p_mini_pilot_hypothesis_registry.yaml
+  power: research/preregistration/p_mini_pilot_power_analysis.yaml
+  method: research/preregistration/p_mini_pilot_method_lock.yaml
+  multiplicity: research/preregistration/p_mini_pilot_multiplicity_policy.yaml
+  decisions: research/preregistration/p_mini_pilot_go_no_go.yaml
+  deviations: research/preregistration/p_mini_pilot_deviation_policy.yaml
+decision_space:
+  - PREREGISTRATION_COMPLETE_NO_INFERENCE
+  - NOVELTY_NO_GO
+  - MINI_PILOT_INFEASIBLE
+  - PREREGISTRATION_VALIDATION_FAILURE
+current_decision: PREREGISTRATION_COMPLETE_NO_INFERENCE
+scientific_inference_authorized: false
+authorization_file: research/authorization/p_mini_pilot_independent_audit.yaml
+exact_next_action: AWAIT_INDEPENDENT_PREREGISTRATION_AUDIT

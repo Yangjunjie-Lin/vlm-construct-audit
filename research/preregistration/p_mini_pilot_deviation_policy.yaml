@@ -1,0 +1,51 @@
+schema_version: 1
+policy_id: p_mini_pilot_deviation_v1
+frozen_at: 2026-08-30
+current_state:
+  amendments: []
+  model_replacements: []
+  pre_inference_scene_exclusions: []
+  scientific_deviations: []
+  reasoning_test_executions: 0
+  scientific_prediction_count: 0
+allowed_before_inference_only:
+  - file-path correction
+  - CLI wiring correction
+  - serialization transport correction that changes no canonical fact or numeric design element
+  - model replacement strictly under the frozen technical replacement policy
+requirements_for_any_allowed_amendment:
+  - record timestamp, reason, affected files, before/after hashes, and scientific impact
+  - state that no scientific model output was available
+  - rerun all preregistration and no-inference verification
+  - create a new audited commit and preregistration tag
+  - obtain a new independent preregistration audit
+substantive_changes_invalidating_current_preregistration:
+  - P3 numerical or decision change
+  - delta0 or delta1 change
+  - model selection using task correctness
+  - construct, intervention, serialization, answer-contract, estimand, uptake-gate, multiplicity, or GO/NO-GO change
+  - post-outcome scene exclusion
+  - prompt tuning on formal scenes
+  - reasoning-test rerun
+model_replacement:
+  allowed_reasons: [weight disappearance, license change, purely technical incompatibility]
+  same_family_required: true
+  before_any_scientific_output: true
+  compare_candidate_task_performance: forbidden
+  refreeze_entire_registry: required
+  engineering_scorer_preflight: required
+  tokenizer_rebalance: required
+  amendment: required
+validation_attempt_log:
+  - event_id: PRETAG_VALIDATION_001
+    check: ruff check src/vlm_construct_audit/preregistration
+    result: FAIL
+    reason: unused unpacked helper variable in the new deterministic generator
+    disposition: renamed as an intentionally unused variable before the data-generator commit
+    scientific_output_available: false
+    numerical_or_design_change: false
+failed_scientific_runs: []
+authorization_boundary:
+  authoring_agent_may_create_independent_audit_file: false
+  audit_pass_required_after_any_amendment: true
+  inference_before_reauthorization: forbidden
