@@ -1,0 +1,24 @@
+schema_version: 1
+status: HUMAN_REVIEW_GO
+imported_at: '2026-08-29T23:09:02.240704+00:00'
+reviewer_count: 2
+reviewer_ids:
+- HR01
+- HR02
+agent_or_model_review_used: false
+packet_sha256: b4d5cf32b149ecad0df325a46737a79d0e0415083173ec509247af844bedfeab
+packet_rows: 54
+fact_equivalence_agreement: 1
+cohen_kappa: 1.0
+critical_semantic_mismatch: 0
+decoy_detection:
+  HR01: 1
+  HR02: 1
+  minimum: 1
+disagreement_count: 0
+gates:
+  critical_semantic_mismatch: true
+  fact_equivalence_agreement: true
+  cohen_kappa: true
+  decoy_detection: true
+disagreements_deleted: false

@@ -1,0 +1,270 @@
+pair_id,question,options,evidence_a,evidence_b,fact_equivalent,same_entities,same_attributes,same_relations,same_answer,naturalness_issue,ambiguity_issue,critical_error,reviewer_id
+pair_000,What color is the entity in_front_of lb_088_z1?,red | blue | green | yellow | purple | orange,"(lb_088_s0, in_front_of, lb_088_z1)
+(lb_088_s0, color, green)
+(lb_088_z1, shape, square)","Entity lb_088_s0 is in_front_of entity lb_088_z1.
+Entity lb_088_s0 has color green.
+Entity lb_088_z1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_001,What color is the entity in_front_of lb_028_n1?,red | blue | green | yellow | purple | orange,"(lb_028_w0, in_front_of, lb_028_n1)
+(lb_028_w0, color, green)
+(lb_028_n1, shape, square)","Entity lb_028_w0 is in_front_of entity lb_028_n1.
+Entity lb_028_w0 has color green.
+Entity lb_028_n1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_002,What color is the entity above lb_128_r1?,red | blue | green | yellow | purple | orange,"Entity lb_128_k0 is above entity lb_128_r1.
+Entity lb_128_k0 has color red.
+Entity lb_128_r1 has shape square.","(lb_128_k0, above, lb_128_r1)
+(lb_128_k0, color, red)
+(lb_128_r1, shape, square)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_003,What color is the entity behind twice from lb_137_r2?,red | blue | green | yellow | purple | orange,"Entity lb_137_t0 is behind entity lb_137_k1.
+Entity lb_137_k1 is behind entity lb_137_r2.
+Entity lb_137_t0 has color yellow.","(lb_137_t0, behind, lb_137_k1)
+(lb_137_k1, behind, lb_137_r2)
+(lb_137_t0, color, yellow)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_004,What color is the entity behind twice from lb_131_l2?,red | blue | green | yellow | purple | orange,"(lb_131_n0, behind, lb_131_u1)
+(lb_131_u1, behind, lb_131_l2)
+(lb_131_n0, color, purple)","Entity lb_131_n0 is behind entity lb_131_u1.
+Entity lb_131_u1 is behind entity lb_131_l2.
+Entity lb_131_n0 has color purple.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_005,What color is the entity right_of twice from lb_097_z2?,red | blue | green | yellow | purple | orange,"(lb_097_l0, right_of, lb_097_s1)
+(lb_097_s1, right_of, lb_097_z2)
+(lb_097_l0, color, purple)","Entity lb_097_l0 is right_of entity lb_097_s1.
+Entity lb_097_s1 is right_of entity lb_097_z2.
+Entity lb_097_l0 has color purple.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_006,What color is the entity left_of lb_192_r1?,red | blue | green | yellow | purple | orange,"(lb_192_k0, right_of, lb_192_r1)
+(lb_192_k0, color, orange)
+(lb_192_r1, shape, square)","Entity lb_192_k0 is right_of entity lb_192_r1.
+Entity lb_192_k0 has color orange.
+Entity lb_192_r1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_007,What color is the entity left_of lb_132_v1?,red | blue | green | yellow | purple | orange,"(lb_132_o0, right_of, lb_132_v1)
+(lb_132_o0, color, yellow)
+(lb_132_v1, shape, square)","Entity lb_132_o0 is right_of entity lb_132_v1.
+Entity lb_132_o0 has color yellow.
+Entity lb_132_v1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_008,What color is the entity in_front_of lb_064_r1?,red | blue | green | yellow | purple | orange,"(lb_064_k0, behind, lb_064_r1)
+(lb_064_k0, color, red)
+(lb_064_r1, shape, square)","Entity lb_064_k0 is behind entity lb_064_r1.
+Entity lb_064_k0 has color red.
+Entity lb_064_r1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_009,What color is the entity right_of twice from lb_139_t2?,red | blue | green | yellow | purple | orange,"Entity lb_139_v0 is left_of entity lb_139_m1.
+Entity lb_139_m1 is right_of entity lb_139_t2.
+Entity lb_139_v0 has color yellow.","(lb_139_v0, left_of, lb_139_m1)
+(lb_139_m1, right_of, lb_139_t2)
+(lb_139_v0, color, yellow)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_010,What color is the entity below twice from lb_039_p2?,red | blue | green | yellow | purple | orange,"(lb_039_r0, above, lb_039_y1)
+(lb_039_y1, below, lb_039_p2)
+(lb_039_r0, color, orange)","Entity lb_039_r0 is above entity lb_039_y1.
+Entity lb_039_y1 is below entity lb_039_p2.
+Entity lb_039_r0 has color orange.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_011,What color is the entity below twice from lb_177_z2?,red | blue | green | yellow | purple | orange,"Entity lb_177_l0 is above entity lb_177_s1.
+Entity lb_177_s1 is below entity lb_177_z2.
+Entity lb_177_l0 has color blue.","(lb_177_l0, above, lb_177_s1)
+(lb_177_s1, below, lb_177_z2)
+(lb_177_l0, color, blue)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_012,What color is the entity left_of lb_114_t1?,red | blue | green | yellow | purple | orange,"Entity lb_114_t1 is left_of entity lb_114_m0.
+Entity lb_114_m0 has color orange.
+Entity lb_114_t1 has shape star.","(lb_114_t1, left_of, lb_114_m0)
+(lb_114_m0, color, orange)
+(lb_114_t1, shape, star)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_013,What color is the entity above lb_194_t1?,red | blue | green | yellow | purple | orange,"(lb_194_t1, above, lb_194_m0)
+(lb_194_m0, color, green)
+(lb_194_t1, shape, star)","Entity lb_194_t1 is above entity lb_194_m0.
+Entity lb_194_m0 has color green.
+Entity lb_194_t1 has shape star.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_014,What color is the entity in_front_of lb_118_x1?,red | blue | green | yellow | purple | orange,"(lb_118_x1, in_front_of, lb_118_q0)
+(lb_118_q0, color, blue)
+(lb_118_x1, shape, star)","Entity lb_118_x1 is in_front_of entity lb_118_q0.
+Entity lb_118_q0 has color blue.
+Entity lb_118_x1 has shape star.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_015,What color is the entity behind twice from lb_041_r2?,red | blue | green | yellow | purple | orange,"(lb_041_k1, behind, lb_041_t0)
+(lb_041_k1, behind, lb_041_r2)
+(lb_041_t0, color, green)","Entity lb_041_k1 is behind entity lb_041_t0.
+Entity lb_041_k1 is behind entity lb_041_r2.
+Entity lb_041_t0 has color green.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_016,What color is the entity right_of twice from lb_007_p2?,red | blue | green | yellow | purple | orange,"Entity lb_007_y1 is right_of entity lb_007_r0.
+Entity lb_007_y1 is right_of entity lb_007_p2.
+Entity lb_007_r0 has color purple.","(lb_007_y1, right_of, lb_007_r0)
+(lb_007_y1, right_of, lb_007_p2)
+(lb_007_r0, color, purple)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_017,What color is the entity behind twice from lb_179_l2?,red | blue | green | yellow | purple | orange,"Entity lb_179_u1 is behind entity lb_179_n0.
+Entity lb_179_u1 is behind entity lb_179_l2.
+Entity lb_179_n0 has color green.","(lb_179_u1, behind, lb_179_n0)
+(lb_179_u1, behind, lb_179_l2)
+(lb_179_n0, color, green)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_018,What color is the entity above lb_098_t1?,red | blue | green | yellow | purple | orange,"(lb_098_m0, above, lb_098_t1)
+(lb_098_m0, color, orange)
+(lb_098_t1, shape, star)","Entity lb_098_m0 is above entity lb_098_t1.
+Entity lb_098_m0 has color orange.
+Entity lb_098_t1 has shape star.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_019,What color is the entity left_of lb_192_r1?,red | blue | green | yellow | purple | orange,"Entity lb_192_k0 is left_of entity lb_192_r1.
+Entity lb_192_k0 has color yellow.
+Entity lb_192_r1 has shape square.","(lb_192_k0, left_of, lb_192_r1)
+(lb_192_k0, color, yellow)
+(lb_192_r1, shape, square)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_020,What color is the entity left_of lb_168_z1?,red | blue | green | yellow | purple | orange,"Entity lb_168_s0 is left_of entity lb_168_z1.
+Entity lb_168_s0 has color purple.
+Entity lb_168_z1 has shape square.","(lb_168_s0, left_of, lb_168_z1)
+(lb_168_s0, color, purple)
+(lb_168_z1, shape, square)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_021,What color is the entity behind twice from lb_047_x2?,red | blue | green | yellow | purple | orange,"Entity lb_047_z0 is behind entity lb_047_q1.
+Entity lb_047_q1 is behind entity lb_047_x2.
+Entity lb_047_z0 has color green.","(lb_047_z0, behind, lb_047_q1)
+(lb_047_q1, behind, lb_047_x2)
+(lb_047_z0, color, green)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_022,What color is the entity below twice from lb_123_t2?,red | blue | green | yellow | purple | orange,"Entity lb_123_v0 is below entity lb_123_m1.
+Entity lb_123_m1 is below entity lb_123_t2.
+Entity lb_123_v0 has color red.","(lb_123_v0, below, lb_123_m1)
+(lb_123_m1, below, lb_123_t2)
+(lb_123_v0, color, red)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_023,What color is the entity right_of twice from lb_187_t2?,red | blue | green | yellow | purple | orange,"Entity lb_187_v0 is right_of entity lb_187_m1.
+Entity lb_187_m1 is right_of entity lb_187_t2.
+Entity lb_187_v0 has color orange.","(lb_187_v0, right_of, lb_187_m1)
+(lb_187_m1, right_of, lb_187_t2)
+(lb_187_v0, color, orange)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_024,What color is the entity in_front_of lb_016_r1?,red | blue | green | yellow | purple | orange,"Entity lb_016_r1 is in_front_of entity lb_016_y2.
+Entity lb_016_r1 has color yellow.
+Entity lb_016_y2 has shape triangle.","(lb_016_r1, in_front_of, lb_016_y2)
+(lb_016_r1, color, yellow)
+(lb_016_y2, shape, triangle)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_025,What color is the entity left_of lb_186_l1?,red | blue | green | yellow | purple | orange,"Entity lb_186_l1 is left_of entity lb_186_s2.
+Entity lb_186_l1 has color yellow.
+Entity lb_186_s2 has shape circle.","(lb_186_l1, left_of, lb_186_s2)
+(lb_186_l1, color, yellow)
+(lb_186_s2, shape, circle)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_026,What color is the entity in_front_of lb_196_v1?,red | blue | green | yellow | purple | orange,"(lb_196_v1, in_front_of, lb_196_m2)
+(lb_196_v1, color, blue)
+(lb_196_m2, shape, triangle)","Entity lb_196_v1 is in_front_of entity lb_196_m2.
+Entity lb_196_v1 has color blue.
+Entity lb_196_m2 has shape triangle.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_027,What color is the entity right_of twice from lb_073_r2?,red | blue | green | yellow | purple | orange,"(lb_073_k1, right_of, lb_073_r2)
+(lb_073_r2, right_of, lb_073_y3)
+(lb_073_k1, color, blue)","Entity lb_073_k1 is right_of entity lb_073_r2.
+Entity lb_073_r2 is right_of entity lb_073_y3.
+Entity lb_073_k1 has color blue.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_028,What color is the entity below twice from lb_081_z2?,red | blue | green | yellow | purple | orange,"Entity lb_081_s1 is below entity lb_081_z2.
+Entity lb_081_z2 is below entity lb_081_l0.
+Entity lb_081_s1 has color green.","(lb_081_s1, below, lb_081_z2)
+(lb_081_z2, below, lb_081_l0)
+(lb_081_s1, color, green)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_029,What color is the entity right_of twice from lb_079_x2?,red | blue | green | yellow | purple | orange,"(lb_079_q1, right_of, lb_079_x2)
+(lb_079_x2, right_of, lb_079_o3)
+(lb_079_q1, color, purple)","Entity lb_079_q1 is right_of entity lb_079_x2.
+Entity lb_079_x2 is right_of entity lb_079_o3.
+Entity lb_079_q1 has color purple.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_030,What color is the entity above lb_074_l1?,red | blue | green | yellow | purple | orange,"Entity lb_074_u0 is above entity lb_074_l1.
+Entity lb_074_u0 has color yellow.
+Entity lb_074_l1 has shape star.","(lb_074_u0, above, lb_074_l1)
+(lb_074_u0, color, yellow)
+(lb_074_l1, shape, star)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_031,What color is the entity left_of lb_108_n1?,red | blue | green | yellow | purple | orange,"(lb_108_w0, left_of, lb_108_n1)
+(lb_108_w0, color, purple)
+(lb_108_n1, shape, square)","Entity lb_108_w0 is left_of entity lb_108_n1.
+Entity lb_108_w0 has color purple.
+Entity lb_108_n1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_032,What color is the entity above lb_056_z1?,red | blue | green | yellow | purple | orange,"(lb_056_s0, above, lb_056_z1)
+(lb_056_s0, color, orange)
+(lb_056_z1, shape, square)","Entity lb_056_s0 is above entity lb_056_z1.
+Entity lb_056_s0 has color orange.
+Entity lb_056_z1 has shape square.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_033,What color is the entity below twice from lb_183_p2?,red | blue | green | yellow | purple | orange,"(lb_183_r0, below, lb_183_y1)
+(lb_183_y1, below, lb_183_p2)
+(lb_183_r0, color, yellow)","Entity lb_183_r0 is below entity lb_183_y1.
+Entity lb_183_y1 is below entity lb_183_p2.
+Entity lb_183_r0 has color yellow.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_034,What color is the entity right_of twice from lb_031_x2?,red | blue | green | yellow | purple | orange,"Entity lb_031_z0 is right_of entity lb_031_q1.
+Entity lb_031_q1 is right_of entity lb_031_x2.
+Entity lb_031_z0 has color orange.","(lb_031_z0, right_of, lb_031_q1)
+(lb_031_q1, right_of, lb_031_x2)
+(lb_031_z0, color, orange)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_035,What color is the entity behind twice from lb_143_x2?,red | blue | green | yellow | purple | orange,"Entity lb_143_z0 is behind entity lb_143_q1.
+Entity lb_143_q1 is behind entity lb_143_x2.
+Entity lb_143_z0 has color red.","(lb_143_z0, behind, lb_143_q1)
+(lb_143_q1, behind, lb_143_x2)
+(lb_143_z0, color, red)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_036,What color is the entity left_of lb_138_l1?,red | blue | green | yellow | purple | orange,"(lb_138_u0, left_of, lb_138_l1)
+(lb_138_u0, color, yellow)
+(lb_138_l1, shape, star)","Entity lb_138_u0 is left_of entity lb_138_l1.
+Entity lb_138_u0 has color yellow.
+Entity lb_138_l1 has shape star.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_037,What color is the entity below twice from lb_171_t2?,red | blue | green | yellow | purple | orange,"Entity lb_171_m1 is below entity lb_171_t2.
+Entity lb_171_t2 is below entity lb_171_v0.
+Entity lb_171_m1 has color red.","(lb_171_m1, below, lb_171_t2)
+(lb_171_t2, below, lb_171_v0)
+(lb_171_m1, color, red)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_038,What color is the entity left_of lb_198_x1?,red | blue | green | yellow | purple | orange,"Entity lb_198_q0 is left_of entity lb_198_x1.
+Entity lb_198_q0 has color green.
+Entity lb_198_x1 has shape star.","(lb_198_q0, left_of, lb_198_x1)
+(lb_198_q0, color, green)
+(lb_198_x1, shape, star)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_039,What color is the entity in_front_of lb_178_t1?,red | blue | green | yellow | purple | orange,"(lb_178_m0, in_front_of, lb_178_t1)
+(lb_178_m0, color, yellow)
+(lb_178_t1, shape, star)","Entity lb_178_m0 is in_front_of entity lb_178_t1.
+Entity lb_178_m0 has color yellow.
+Entity lb_178_t1 has shape star.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_040,What color is the entity in_front_of lb_046_p1?,red | blue | green | yellow | purple | orange,"(lb_046_p1, in_front_of, lb_046_w2)
+(lb_046_p1, color, red)
+(lb_046_w2, shape, circle)","Entity lb_046_p1 is in_front_of entity lb_046_w2.
+Entity lb_046_p1 has color red.
+Entity lb_046_w2 has shape circle.",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_041,What color is the entity above lb_158_p1?,red | blue | green | yellow | purple | orange,"Entity lb_158_y0 is above entity lb_158_p1.
+Entity lb_158_y0 has color green.
+Entity lb_158_p1 has shape star.","(lb_158_y0, above, lb_158_p1)
+(lb_158_y0, color, green)
+(lb_158_p1, shape, star)",TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,HR01
+pair_042,What color is the entity below twice from lb_129_z2?,red | blue | green | yellow | purple | orange,"(lb_129_l0, below, lb_129_s1)
+(lb_129_s1, below, lb_129_z2)","Entity lb_129_l0 is below entity lb_129_s1.
+Entity lb_129_s1 is below entity lb_129_z2.
+Entity lb_129_l0 has color purple.",FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,HR01
+pair_043,What color is the entity in_front_of lb_148_v1?,red | blue | green | yellow | purple | orange,"(lb_148_v1, in_front_of, lb_148_o0)
+(lb_148_o0, color, yellow)
+(lb_148_v1, shape, square)","Entity lb_148_o0 is in_front_of entity lb_148_v1.
+Entity lb_148_o0 has color yellow.
+Entity lb_148_v1 has shape square.",FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,HR01
+pair_044,What color is the entity below twice from lb_165_n2?,red | blue | green | yellow | purple | orange,"(lb_165_p0, below, lb_165_w1)
+(lb_165_w1, below, lb_165_n2)
+(lb_165_p0, color, red)","Entity lb_165_p0 is above entity lb_165_w1.
+Entity lb_165_w1 is below entity lb_165_n2.
+Entity lb_165_p0 has color red.",FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,HR01
+pair_045,What color is the entity right_of twice from lb_031_x2?,red | blue | green | yellow | purple | orange,"(lb_031_z0, right_of, lb_031_q1)
+(lb_031_q1, right_of, lb_031_x2)
+(lb_031_z0, color, __mutated_attribute__)","Entity lb_031_z0 is right_of entity lb_031_q1.
+Entity lb_031_q1 is right_of entity lb_031_x2.
+Entity lb_031_z0 has color blue.",FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,HR01
+pair_046,What color is the entity behind twice from lb_125_v2?,red | blue | green | yellow | purple | orange,"(lb_125_x0, behind, lb_125_o1)
+(lb_125_o1, behind, lb_125_v2)
+(lb_125_x0, color, yellow)
+(lb_125_x0, behind, lb_125_o1)","Entity lb_125_x0 is behind entity lb_125_o1.
+Entity lb_125_o1 is behind entity lb_125_v2.
+Entity lb_125_x0 has color yellow.",FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,HR01
+pair_047,What color is the entity left_of lb_042_l1?,red | blue | green | yellow | purple | orange,"Entity lb_042_u0 is left_of entity lb_042_l1.
+Entity lb_042_u0 has color orange.
+Entity lb_042_l1 has shape star.","(lb_042_u0, left_of, lb_042_l1)
+(lb_042_u0, color, orange)",FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,TRUE,HR01
+pair_048,What color is the entity left_of lb_006_x1?,red | blue | green | yellow | purple | orange,"(lb_006_o2, left_of, lb_006_x1)
+(lb_006_x1, color, purple)
+(lb_006_o2, shape, circle)","Entity lb_006_x1 is left_of entity lb_006_o2.
+Entity lb_006_x1 has color purple.
+Entity lb_006_o2 has shape circle.",FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,HR01
+pair_049,What color is the entity left_of lb_042_l1?,red | blue | green | yellow | purple | orange,"Entity lb_042_u0 is left_of entity lb_042_l1.
+Entity lb_042_u0 has color orange.
+Entity lb_042_l1 has shape star.","(lb_042_u0, right_of, lb_042_l1)
+(lb_042_u0, color, orange)
+(lb_042_l1, shape, star)",FALSE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,HR01
+pair_050,What color is the entity in_front_of lb_034_t1?,red | blue | green | yellow | purple | orange,"(lb_034_m0, in_front_of, lb_034_t1)
+(lb_034_m0, color, __mutated_attribute__)
+(lb_034_t1, shape, star)","Entity lb_034_m0 is in_front_of entity lb_034_t1.
+Entity lb_034_m0 has color blue.
+Entity lb_034_t1 has shape star.",FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,HR01
+pair_051,What color is the entity left_of lb_168_z1?,red | blue | green | yellow | purple | orange,"Entity lb_168_s0 is left_of entity lb_168_z1.
+Entity lb_168_s0 has color red.
+Entity lb_168_z1 has shape square.","(lb_168_s0, left_of, lb_168_z1)
+(lb_168_s0, color, red)
+(lb_168_z1, shape, square)
+(lb_168_s0, left_of, lb_168_z1)",FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,HR01
+pair_052,What color is the entity left_of lb_120_z1?,red | blue | green | yellow | purple | orange,"Entity lb_120_s0 is left_of entity lb_120_z1.
+Entity lb_120_s0 has color purple.
+Entity lb_120_z1 has shape square.","(lb_120_s0, left_of, lb_120_z1)
+(lb_120_s0, color, purple)",FALSE,TRUE,FALSE,TRUE,TRUE,FALSE,FALSE,TRUE,HR01
+pair_053,What color is the entity in_front_of lb_166_x1?,red | blue | green | yellow | purple | orange,"Entity lb_166_x1 is in_front_of entity lb_166_o2.
+Entity lb_166_x1 has color red.
+Entity lb_166_o2 has shape circle.","(lb_166_o2, in_front_of, lb_166_x1)
+(lb_166_x1, color, red)
+(lb_166_o2, shape, circle)",FALSE,TRUE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,HR01
