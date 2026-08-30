@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 import yaml
 
+from vlm_construct_audit.construct_v2 import external_review
 from vlm_construct_audit.construct_v2.external_review import (
     ATTESTATION_FIELDS,
     PACKET_FIELDS,
@@ -136,8 +137,23 @@ def test_private_mappings_and_returns_are_not_tracked() -> None:
     assert tracked == ""
 
 
-def test_import_remains_pending_without_all_four_returns() -> None:
-    result = import_external_review_returns()
+def test_import_remains_pending_without_all_four_returns(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(external_review, "verify_external_review_packages", lambda _root: {})
+    monkeypatch.setattr(
+        external_review,
+        "pending_external_review_status",
+        lambda _root: {
+            "status": "PENDING_EXTERNAL_CONSTRUCT_REVIEW",
+            "original_packet_unchanged": True,
+            "formal_vlm_inference_count": 0,
+            "runner_blocked": True,
+            "mapping_revealed": False,
+            "candidate_tag_created": False,
+        },
+    )
+    result = import_external_review_returns(tmp_path)
     assert result["status"] == "PENDING_EXTERNAL_CONSTRUCT_REVIEW"
     assert len(result["missing_return_files"]) == 4
     assert result["original_packet_unchanged"] is True
