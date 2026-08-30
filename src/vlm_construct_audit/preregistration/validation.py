@@ -58,8 +58,10 @@ IMPLEMENTATION_FILES = [
     "src/vlm_construct_audit/preregistration/__init__.py",
     "src/vlm_construct_audit/preregistration/p_mini_pilot.py",
     "src/vlm_construct_audit/preregistration/validation.py",
+    "src/vlm_construct_audit/post_stop/__init__.py",
     "src/vlm_construct_audit/cli.py",
     "tests/unit/test_p_mini_pilot_preregistration.py",
+    "tests/unit/test_post_stop_m.py",
     "tests/regression/test_cli_contract.py",
 ]
 

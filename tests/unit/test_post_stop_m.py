@@ -1,5 +1,13 @@
 from __future__ import annotations
 
+import pytest
+
+for optional_module in ("torch", "PIL", "transformers"):
+    pytest.importorskip(
+        optional_module,
+        reason="Direction M canonicalizer tests require the optional real-checkpoint stack",
+    )
+
 from vlm_construct_audit.post_stop.direction_m import (
     canonicalize_response,
     canonicalizer_validation,

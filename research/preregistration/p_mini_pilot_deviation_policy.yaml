@@ -58,6 +58,13 @@ validation_attempt_log:
     disposition: restored all affected frozen artifact bytes and routed verification commands through read-only recomputation or snapshot restoration
     scientific_output_available: false
     numerical_or_design_change: false
+  - event_id: PRETAG_VALIDATION_004
+    check: first remote fresh-clone install and full pytest
+    result: FAIL
+    reason: ordinary dev installation omitted the optional Torch model stack, while the Post-STOP package imported Direction M eagerly during test collection
+    disposition: made Post-STOP direction entry points lazy and marked Direction M model-stack tests optional when Torch, Pillow, or Transformers is absent
+    scientific_output_available: false
+    numerical_or_design_change: false
 failed_scientific_runs: []
 authorization_boundary:
   authoring_agent_may_create_independent_audit_file: false
