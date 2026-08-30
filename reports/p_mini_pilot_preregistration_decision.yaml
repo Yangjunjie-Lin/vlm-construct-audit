@@ -1,0 +1,29 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+decision: PREREGISTRATION_COMPLETE_NO_INFERENCE
+decision_date: 2026-08-30
+base_commit: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+branch: codex/power-calibrated-mini-pilot-preregistration
+novelty_decision: NOVELTY_PASS_WITH_CAUTION
+power_decision: RETAIN_N_768
+method_lock: P3
+historical_integrity:
+  audit_v2_unchanged: true
+  old_loop_a_holdout_rerun: false
+  direction_p_known_dgp_holdout_rerun: false
+  direction_m_unchanged: true
+  direction_u_unchanged: true
+  human_review_unchanged: true
+  recoalign_unchanged: true
+no_inference_verification:
+  scientific_prediction_count: 0
+  reasoning_test_model_output_files: 0
+  scientific_metrics_files: 0
+  run_command_remains_blocked: true
+preregistration_validation: PASS
+preregistration_verification: PASS_PRETAG
+fresh_clone_verification: PENDING_BRANCH_PUSH
+scientific_inference_authorized: false
+independent_authorization_file_created: false
+expected_preregistration_tag: p-mini-pilot-preregistered
+exact_next_action: AWAIT_INDEPENDENT_PREREGISTRATION_AUDIT

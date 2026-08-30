@@ -1,0 +1,65 @@
+schema_version: 1
+protocol_id: direction_p_power_calibrated_mini_pilot_v1
+decision: PREREGISTRATION_COMPLETE_NO_INFERENCE
+claims:
+  - claim: Frozen historical authorization and Post-STOP integrity are preserved.
+    evidence:
+      - reports/post_stop_final_decision.yaml
+      - artifacts/post_stop/verification_report.yaml
+      - research/post_stop/global_stop_rules.yaml
+    scope: historical provenance only
+  - claim: Updated primary-source search found no complete novelty collision through 2026-08-30.
+    evidence:
+      - research/preregistration/p_mini_pilot_literature_matrix.yaml
+      - research/preregistration/p_mini_pilot_novelty_boundary.md
+    scope: systematic non-exhaustive novelty audit
+  - claim: Three exact official open-weight revisions were selected without scientific task outcomes.
+    evidence:
+      - configs/p_mini_pilot_models.yaml
+      - research/preregistration/p_mini_pilot_model_selection_policy.yaml
+      - configs/model_smoke_registry.yaml
+    scope: pre-scientific checkpoint identity and engineering feasibility
+  - claim: 960 new formal scenes and 12 disjoint engineering scenes are generated, validated, and hashed.
+    evidence:
+      - data/p_mini_pilot/data_manifest.yaml
+      - data/p_mini_pilot/scenes.jsonl
+      - data/p_mini_pilot/engineering_smoke.jsonl
+    scope: frozen synthetic data design; not model outcomes
+  - claim: Correct/corrupted evidence is matched and differs by zero tokens in all six tokenizer-by-serialization checks.
+    evidence:
+      - artifacts/preregistration/p_mini_pilot_token_balance.yaml
+      - reports/p_mini_pilot_intervention_balance.md
+    scope: engineering intervention balance only
+  - claim: Natural-language and triple serializations have canonical fact equality 1.00.
+    evidence: artifacts/preregistration/p_mini_pilot_serialization_equivalence.yaml
+    scope: canonical generation and prior human-reviewed principle
+  - claim: The primary estimand and six-cell multiplicity family are frozen at the base-scene level.
+    evidence:
+      - research/preregistration/p_mini_pilot_estimands.yaml
+      - research/preregistration/p_mini_pilot_multiplicity_policy.yaml
+      - configs/p_mini_pilot_statistics.yaml
+    scope: future confirmatory statistical protocol
+  - claim: N=768 reaches at least 0.80 certification power at delta1 throughout the plausible paired-discordance region.
+    evidence:
+      - research/preregistration/p_mini_pilot_power_analysis.yaml
+      - reports/p_mini_pilot_power_analysis.md
+    scope: paired analytic and Monte Carlo power calibration
+  - claim: P3 is locked to the frozen known-DGP source and hashes without a holdout rerun.
+    evidence: research/preregistration/p_mini_pilot_method_lock.yaml
+    scope: Direction P method identity
+  - claim: Stable, Audit-Value, and NO-GO paths are prospectively fixed.
+    evidence:
+      - research/preregistration/p_mini_pilot_go_no_go.yaml
+      - research/preregistration/p_mini_pilot_deviation_policy.yaml
+    scope: future decision policy
+  - claim: No P Mini-Pilot scientific prediction or metric exists and the run command is blocked.
+    evidence:
+      - docs/p_mini_pilot_execution_boundary.md
+      - reports/p_mini_pilot_preregistration_decision.yaml
+    scope: preregistration-stage no-inference guarantee
+  - claim: The package requires an independent audited authorization tied to frozen hashes.
+    evidence:
+      - research/preregistration/power_calibrated_mini_pilot.yaml
+      - artifacts/preregistration/p_mini_pilot_preregistration_manifest.yaml
+    scope: future authorization boundary
+scientific_outcome_evidence_present: false
