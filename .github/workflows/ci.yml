@@ -29,3 +29,4 @@ jobs:
       - run: python -m vlm_construct_audit run-construct-v2-oracles
       - run: python -m vlm_construct_audit verify-construct-v2-external-review-packages
       - run: python -m vlm_construct_audit verify-no-construct-v2-inference
+      - run: python -m vlm_construct_audit validate-construct-v2-post-review-policy
