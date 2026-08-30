@@ -21,21 +21,21 @@ deduplication: title and DOI/arXiv identifier
 scope: original research papers; surveys used only for discovery and excluded from novelty comparison
 papers:
   - id: clevr_2017
-    citation: Johnson et al. (2017), CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning
+    citation: "Johnson et al. (2017), CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
     url: https://doi.org/10.1109/CVPR.2017.215
     overlap: synthetic compositional visual reasoning with controlled scene structure
     boundary: image contains the whole scene state; question text is not a complementary second-hop evidence modality
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: gqa_2019
-    citation: Hudson and Manning (2019), GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering
+    citation: "Hudson and Manning (2019), GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering"
     url: https://doi.org/10.1109/CVPR.2019.00686
     overlap: relation composition and structured visual question answering
     boundary: does not isolate an image first hop and text-only second hop in a paired evidence intervention
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: winoground_2022
-    citation: Thrush et al. (2022), Winoground: Probing Vision and Language Models for Visio-Linguistic Compositionality
+    citation: "Thrush et al. (2022), Winoground: Probing Vision and Language Models for Visio-Linguistic Compositionality"
     url: https://doi.org/10.1109/CVPR52688.2022.00517
     overlap: paired image-caption compositional sensitivity
     boundary: matching probe, not cross-modal bridge completion or a correct-versus-corrupted behavioral ITT
@@ -49,14 +49,14 @@ papers:
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: crepe_2023
-    citation: Ma et al. (2023), CREPE: Can Vision-Language Foundation Models Reason Compositionally?
+    citation: "Ma et al. (2023), CREPE: Can Vision-Language Foundation Models Reason Compositionally?"
     url: https://arxiv.org/abs/2212.07796
     overlap: systematicity and productivity tests using scene graphs and hard negative captions
     boundary: compositional retrieval benchmark rather than a complementary-modality causal evidence contrast
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: sugarcrepe_2023
-    citation: Hsieh et al. (2023), SugarCrepe: Fixing Hackable Benchmarks for Vision-Language Compositionality
+    citation: "Hsieh et al. (2023), SugarCrepe: Fixing Hackable Benchmarks for Vision-Language Compositionality"
     url: https://arxiv.org/abs/2306.14610
     overlap: explicit audit and adversarial reduction of language-only benchmark shortcuts
     boundary: caption discrimination; does not test an image-only-unidentified plus evidence-only-unidentified bridge
@@ -64,7 +64,7 @@ papers:
     prospective_known_dgp_claim_certification: false
     novelty_constraint: leakage resistance and hard-negative construction are prior art, not contributions here
   - id: multimodalqa_2021
-    citation: Talmor et al. (2021), MultiModalQA: Complex Question Answering over Text, Tables and Images
+    citation: "Talmor et al. (2021), MultiModalQA: Complex Question Answering over Text, Tables and Images"
     url: https://arxiv.org/abs/2104.06039
     overlap: explicitly constructs cross-modal questions by combining single-modality questions and demonstrates the need for multimodal multi-hop reasoning
     boundary: closest task-level prior art; it is not a paired correct-versus-target-corrupted evidence intervention and does not certify a prespecified behavioral SESOI with a known-DGP-calibrated rule
@@ -72,28 +72,28 @@ papers:
     prospective_known_dgp_claim_certification: false
     novelty_constraint: cross-modal complementarity and multi-hop reasoning are not novel here
   - id: webqa_2022
-    citation: Chang et al. (2022), WebQA: Multihop and Multimodal QA
+    citation: "Chang et al. (2022), WebQA: Multihop and Multimodal QA"
     url: https://doi.org/10.1109/CVPR52688.2022.01600
     overlap: source selection, multimodal aggregation, and multihop QA over images and text
     boundary: open-domain retrieval/generation with heterogeneous modality paths, not a controlled one-fact bridge intervention
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: murag_2022
-    citation: Chen et al. (2022), MuRAG: Multimodal Retrieval-Augmented Generator for Open Question Answering over Images and Text
+    citation: "Chen et al. (2022), MuRAG: Multimodal Retrieval-Augmented Generator for Open Question Answering over Images and Text"
     url: https://doi.org/10.18653/v1/2022.emnlp-main.375
     overlap: retrieval and reasoning over both image and text evidence on WebQA and MultiModalQA
     boundary: model/training contribution rather than prospective construct-valid behavioral intervention certification
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: vl_checklist_2022
-    citation: Zhao et al. (2022), VL-CheckList: Evaluating Pre-trained Vision-Language Models with Objects, Attributes and Relations
+    citation: "Zhao et al. (2022), VL-CheckList: Evaluating Pre-trained Vision-Language Models with Objects, Attributes and Relations"
     url: https://arxiv.org/abs/2207.00221
     overlap: capability-specific measurement rather than aggregate downstream accuracy
     boundary: object/attribute/relation checklist without cross-modal bridge complementarity or intervention uptake gates
     paired_evidence_intervention: false
     prospective_known_dgp_claim_certification: false
   - id: mm_vet_2023
-    citation: Yu et al. (2023), MM-Vet: Evaluating Large Multimodal Models for Integrated Capabilities
+    citation: "Yu et al. (2023), MM-Vet: Evaluating Large Multimodal Models for Integrated Capabilities"
     url: https://arxiv.org/abs/2308.02490
     overlap: integrated combinations of six core vision-language capabilities
     boundary: open-ended benchmark with an LLM evaluator; no symbolic unimodal non-identification or paired evidence ITT
@@ -130,7 +130,7 @@ papers:
     prospective_known_dgp_claim_certification: false
     novelty_constraint: modality conflict must not be conflated with complementarity
   - id: visreason_2026
-    citation: Guo et al. (2026), Can MLLMs Reason Beyond Language? VisReason: A Comprehensive Benchmark for Vision-Centric Reasoning
+    citation: "Guo et al. (2026), Can MLLMs Reason Beyond Language? VisReason: A Comprehensive Benchmark for Vision-Centric Reasoning"
     url: https://arxiv.org/abs/2605.25364
     overlap: recent vision-centric reasoning benchmark explicitly asking whether performance is grounded in visual evidence
     boundary: vision-centric rather than modality-complementary; no paired textual bridge intervention or known-DGP certification
@@ -150,4 +150,3 @@ candidate_contribution: Prospective testing of known-DGP-calibrated behavioral c
 closest_prior_art: MultiModalQA establishes complementary cross-modal multi-hop QA; MMStar and SugarCrepe establish visual-dependency and shortcut-audit expectations; none in this search combines those construct requirements with a prespecified paired evidence intervention and known-DGP-calibrated SESOI claim certification.
 decision: NOVELTY_PASS_WITH_CAUTION
 caution: The contribution is the joint prospective certification design, not a new reasoning task, benchmark primitive, statistical correction, or mechanism discovery.
-
