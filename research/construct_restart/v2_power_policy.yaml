@@ -1,0 +1,33 @@
+schema_version: 1
+policy_id: direction_p_construct_v2_multiplicity_power
+candidate_reasoning_n: [768, 1024, 1280, 1536]
+maximum_reasoning_n: 1536
+delta0: 0.10
+delta1: 0.15
+primary_scenario:
+  effects: [0.15, 0.15, 0.00]
+  interpretation: two active families at the certification alternative
+  plausible_discordance_upper_bound: 0.25
+selection_rule: smallest candidate N with minimum overall Stable Path power at least 0.80 over the registered dependence grid in the primary scenario
+target_overall_stable_path_power: 0.80
+effect_scenarios:
+  - [0.15, 0.15, 0.00]
+  - [0.15, 0.15, 0.15]
+  - [0.18, 0.18, 0.00]
+  - [0.18, 0.18, 0.18]
+  - [0.15, 0.18, 0.25]
+discordance: [0.15, 0.25, 0.35, 0.50]
+cross_model_correlation: [0.00, 0.25, 0.50]
+natural_language_triples_correlation: [0.25, 0.50, 0.75, 0.90]
+simulation:
+  repetitions_per_row: 30000
+  seed_base: 864000000
+reported_metrics:
+  - marginal cell power
+  - Holm-supported family power
+  - probability at least two families certify
+  - certified reverse probability
+  - overall Stable Path power
+failure_status: V2_MINI_PILOT_INFEASIBLE
+effect_or_discordance_changed_after_results: forbidden
+

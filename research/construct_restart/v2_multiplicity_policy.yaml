@@ -1,0 +1,22 @@
+schema_version: 1
+confirmatory_family:
+  hypotheses: 3
+  serialization: natural_language
+  one_hypothesis_per_model_family: true
+  family_wise_alpha: 0.025
+  correction: Holm step-down
+positive_certification: Holm rejection of theta_m <= 0.10 under frozen P3
+stable_path:
+  at_least_two_holm_supported_positive_families: required
+  certified_reverse_effect: forbidden
+triples:
+  role: secondary robustness
+  in_primary_holm_family: false
+  may_replace_failed_natural_language: false
+  direction_consistency_in_supported_families: required
+  certified_reverse_effect: forbidden
+  reverse_format_materiality_margin: 0.05
+path_b:
+  go_path: false
+  descriptive_reporting_only: true
+
