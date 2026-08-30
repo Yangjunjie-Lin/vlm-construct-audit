@@ -16,6 +16,8 @@ def test_required_cli_commands_are_exposed() -> None:
         "run-smoke", "run-pilot", "analyze", "audit-claims", "build-evidence-map",
         "build-report", "verify-artifacts",
         "run-loop-a", "run-loop-b", "run-loop-c", "adjudicate-tier0-5",
+        "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
+        "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
     ):
         assert command in result.stdout
 
@@ -29,4 +31,16 @@ def test_scientific_pilot_fails_closed() -> None:
     )
     assert result.returncode == 2
     assert "NOT_AUTHORIZED" in result.stdout
+    assert "no_inference_started: true" in result.stdout
+
+
+def test_p_mini_pilot_fails_closed_pending_independent_audit() -> None:
+    result = subprocess.run(
+        [sys.executable, "-m", "vlm_construct_audit", "run-p-mini-pilot"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 2
+    assert "NOT_AUTHORIZED_PENDING_INDEPENDENT_PREREGISTRATION_AUDIT" in result.stdout
     assert "no_inference_started: true" in result.stdout

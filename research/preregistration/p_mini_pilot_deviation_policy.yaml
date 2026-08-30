@@ -44,6 +44,13 @@ validation_attempt_log:
     disposition: renamed as an intentionally unused variable before the data-generator commit
     scientific_output_available: false
     numerical_or_design_change: false
+  - event_id: PRETAG_VALIDATION_002
+    check: ruff check for preregistration CLI, guards, and tests
+    result: FAIL
+    reason: export list ordering and one unused import in new validation code
+    disposition: sorted exports and removed the unused import before the guard commit
+    scientific_output_available: false
+    numerical_or_design_change: false
 failed_scientific_runs: []
 authorization_boundary:
   authoring_agent_may_create_independent_audit_file: false

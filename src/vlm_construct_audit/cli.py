@@ -23,6 +23,12 @@ from .post_stop import (
     seal_direction,
     verify_post_stop_artifacts,
 )
+from .preregistration import (
+    validate_independent_authorization,
+    validate_p_mini_pilot_preregistration,
+    verify_no_p_mini_pilot_inference,
+    verify_p_mini_pilot_preregistration,
+)
 from .reporting import build_artifact_manifest, build_evidence_map, build_report, verify_artifacts
 from .serialization import build_serializations, validate_equivalence
 from .statistics import analyze_predictions, run_known_dgp_simulation, run_threshold_sensitivity
@@ -118,6 +124,26 @@ def _run_pilot() -> int:
     return 2
 
 
+def _run_p_mini_pilot() -> int:
+    authorization = validate_independent_authorization()
+    if not authorization["valid"]:
+        _show(
+            {
+                "status": "NOT_AUTHORIZED_PENDING_INDEPENDENT_PREREGISTRATION_AUDIT",
+                "no_inference_started": True,
+                "authorization": authorization,
+            }
+        )
+        return 2
+    _show(
+        {
+            "status": "AUTHORIZED_AUDIT_VALID_BUT_SCIENTIFIC_RUNNER_NOT_BUNDLED",
+            "no_inference_started": True,
+        }
+    )
+    return 3
+
+
 def _read_loop_a() -> dict[str, Any]:
     result = load_yaml("artifacts/loop_a/holdout/summary.yaml")
     return {
@@ -166,6 +192,9 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "import-human-review": import_human_review,
         "adjudicate-post-stop": adjudicate_post_stop,
         "verify-post-stop-artifacts": verify_post_stop_artifacts,
+        "validate-p-mini-pilot-preregistration": validate_p_mini_pilot_preregistration,
+        "verify-p-mini-pilot-preregistration": verify_p_mini_pilot_preregistration,
+        "verify-no-p-mini-pilot-inference": verify_no_p_mini_pilot_inference,
     }
 
 
@@ -183,6 +212,8 @@ def main(argv: list[str] | None = None) -> int:
             "run-direction-u-development", "run-direction-u-holdout",
             "seal-direction-p", "seal-direction-m", "seal-direction-u",
             "import-human-review", "adjudicate-post-stop", "verify-post-stop-artifacts",
+            "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
+            "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
@@ -191,6 +222,14 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"Config not found: {args.config}")
     if args.command == "run-pilot":
         return _run_pilot()
+    if args.command == "run-p-mini-pilot":
+        return _run_p_mini_pilot()
     result = _command_table(args.config)[args.command]()
     _show(result)
+    if args.command in {
+        "validate-p-mini-pilot-preregistration",
+        "verify-p-mini-pilot-preregistration",
+        "verify-no-p-mini-pilot-inference",
+    } and result.get("status") != "PASS":
+        return 1
     return 0
