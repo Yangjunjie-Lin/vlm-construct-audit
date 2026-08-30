@@ -1,0 +1,59 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+status: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+freeze_scope: human_review_adjudication_and_preregistration_candidate_policy
+successful_github_ci:
+  run_id: 33325505718
+  url: https://github.com/Yangjunjie-Lin/vlm-construct-audit/actions/runs/33325505718
+  conclusion: success
+  verified_head: 72717eedf56d7987185a713525f7611425770d84
+  steps:
+    - pytest
+    - ruff check .
+    - minimum-loop
+    - adjudicate-tier0-5
+    - verify-artifacts
+    - verify-post-stop-artifacts
+    - verify-frozen-p-mini-pilot-preregistration-read-only
+    - validate-construct-v2
+    - audit-construct-v2-leakage
+    - run-construct-v2-oracles
+    - verify-construct-v2-external-review-packages
+    - verify-no-construct-v2-inference
+    - validate-construct-v2-post-review-policy
+historical_failed_ci:
+  original_run_id: 33320790289
+  original_failure_step: verify-p-mini-pilot-preregistration
+  successor_repair_runs:
+    - run_id: 33324409628
+      failure_step: validate-construct-v2
+    - run_id: 33324700283
+      failure_step: validate-construct-v2
+    - run_id: 33325155386
+      failure_step: verify-construct-v2-external-review-packages
+post_review_policy:
+  path: research/construct_restart/v2_post_review_decision_policy.yaml
+  sha256: 89a912cf6d62a2bb2f52d7ce5a4b74a4578ce557f84277dbaeec43f5cfc63217
+policy_freeze_annotated_tag: construct-v2-human-gate-policy-freeze
+reviewer_state_at_freeze:
+  reviewer_count_completed: 0
+  four_return_files_present: false
+  human_metrics_present: false
+  human_decision_present: false
+review_package_commitments:
+  reviewer_1_bundle_sha256: c7c1547dfff6baf016d3a9882ce252af196b165c91a0fdf58e89b7025eb3e496
+  reviewer_2_bundle_sha256: f0dd40c5eab48c4f73f6bbddde33800165c18a4792389c7ea43c223529716697
+  reviewer_1_mapping_commitment: 71a48a2eae3ba87ec97a7e98ffbff3c749fbcf8cf62a886ea259e75595cdb96f
+  reviewer_2_mapping_commitment: 442dd8a1e45ffd03ad7e7752a8499f8957f5885799320277b2bcf77ee450f79d
+  original_packet_sha256: fb50c9a303bf9f606669b175822f483cc3da80797a3eabc7d67c611b7887a6a3
+no_inference_at_freeze:
+  formal_predictions: 0
+  uptake_outputs: 0
+  reasoning_outputs: 0
+  scientific_metrics: 0
+  runner_blocked: true
+  authorization_files: 0
+candidate_status_at_freeze: NOT_CREATED
+candidate_tag_created: false
+recoalign_archived: true
+exact_next_action_after_tag_and_ci_success: DISTRIBUTE_FROZEN_BUNDLES_TO_TWO_REAL_INDEPENDENT_REVIEWERS
