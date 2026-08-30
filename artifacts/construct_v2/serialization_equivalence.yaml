@@ -1,0 +1,8 @@
+schema_version: 1
+scene_count: 1280
+canonical_nl_triples_equality: 1.0
+changed_fact_count_exactly_one_rate: 1.0
+direct_image_text_conflict_count: 0
+failures: []
+changed_fact_failures: []
+status: PASS

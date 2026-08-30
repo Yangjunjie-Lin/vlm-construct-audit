@@ -1,0 +1,83 @@
+schema_version: 1
+whole_split:
+  reasoning_test:
+    northeast: 320
+    northwest: 320
+    southeast: 320
+    southwest: 320
+by_template:
+  directional:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  locate:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  relation:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  where:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+by_entity_count:
+  '3':
+    northeast: 108
+    northwest: 108
+    southeast: 108
+    southwest: 108
+  '4':
+    northeast: 106
+    northwest: 106
+    southeast: 106
+    southwest: 106
+  '5':
+    northeast: 106
+    northwest: 106
+    southeast: 106
+    southwest: 106
+by_correct_option_position:
+  '0':
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  '1':
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  '2':
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  '3':
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+by_serialization:
+  natural_language:
+    southeast: 320
+    southwest: 320
+    northeast: 320
+    northwest: 320
+  triples:
+    southeast: 320
+    southwest: 320
+    northeast: 320
+    northwest: 320
+gates:
+  whole_split_four_class_exact: true
+  template_four_class_exact: true
+  entity_count_four_class_exact: true
+  option_position_four_class_exact: true
+  serialization_four_class_exact: true
+status: PASS

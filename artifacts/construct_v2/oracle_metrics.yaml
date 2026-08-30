@@ -1,0 +1,40 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+scene_count: 1280
+question_only:
+  bayes_optimal_accuracy: 0.25
+  conditional_answer_entropy_bits: 2.0
+  unique_solution_rate: 0.0
+  signature_count: 160
+image_only:
+  bayes_optimal_accuracy: 0.5
+  conditional_answer_entropy_bits: 1.0
+  unique_solution_rate: 0.0
+  signature_count: 640
+evidence_only:
+  bayes_optimal_accuracy: 0.5
+  conditional_answer_entropy_bits: 1.0
+  unique_solution_rate: 0.0
+  signature_count: 636
+joint_multimodal:
+  accuracy: 1.0
+  unique_solution_rate: 1.0
+  corrupted_expected_answer_accuracy: 1.0
+support_checks:
+  question_only: true
+  image_only: true
+  evidence_only: true
+gates:
+  question_only_unique_solution_rate_zero: true
+  question_only_bayes_accuracy_le_0_30: true
+  image_only_unique_solution_rate_zero: true
+  image_only_entropy_ge_1_bit: true
+  image_only_bayes_accuracy_le_0_50: true
+  evidence_only_unique_solution_rate_zero: true
+  evidence_only_entropy_ge_1_bit: true
+  evidence_only_bayes_accuracy_le_0_50: true
+  joint_accuracy_one: true
+  joint_unique_solution_rate_one: true
+  corrupted_joint_expected_accuracy_one: true
+  symbolic_support_sizes: true
+status: PASS

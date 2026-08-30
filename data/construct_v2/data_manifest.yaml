@@ -1,0 +1,21 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+protocol_revision: 1
+scientific_model_inference_used: false
+v1_scene_reuse: false
+counts:
+  uptake_validation: 256
+  reasoning_test: 1280
+  engineering_smoke: 24
+  formal_total: 1536
+rendered_images: 1816
+files:
+  data/construct_v2/uptake_validation.jsonl: 0794e75fd395c230041aa36df52dfe6509f526c7183d5407895630c0565af548
+  data/construct_v2/reasoning_test.jsonl: 7ef345f6f5a77dde65c16e9188da020ae4a1e12cef7c18814911dd881e379a3d
+  data/construct_v2/engineering_smoke.jsonl: 255371665f684db486285ea6dbdf282e7529f3e9afe236be3fc8f245946a4771
+  data/construct_v2/scenes.jsonl: ae3cc2d04bc1997c803eea63ddf97b00cce67d57054be5c621755abb35440bde
+answer_counts:
+  southeast: 320
+  southwest: 320
+  northeast: 320
+  northwest: 320

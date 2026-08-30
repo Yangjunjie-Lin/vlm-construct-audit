@@ -1,0 +1,268 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+base_scene_count: 1280
+deterministic_contingency:
+  target: condition-specific semantic answer over paired correct/corrupted rows
+  rows: 2560
+  fields:
+    scene_index_mod_16:
+      levels: 16
+      bayes_accuracy: 0.28828125
+      deterministic_mapping: false
+      pass: true
+    scene_id_hash_bucket:
+      levels: 16
+      bayes_accuracy: 0.278515625
+      deterministic_mapping: false
+      pass: true
+    scene_id:
+      levels: 1280
+      bayes_accuracy: 0.5
+      deterministic_mapping: false
+      pass: true
+    entity_aliases:
+      levels: 160
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    template_id:
+      levels: 4
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    option_position:
+      levels: 4
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    option_order:
+      levels: 4
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    entity_count:
+      levels: 3
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    color_shape_pattern:
+      levels: 160
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    corruption_seed_mod_16:
+      levels: 16
+      bayes_accuracy: 0.284765625
+      deterministic_mapping: false
+      pass: true
+    rendering_seed_mod_16:
+      levels: 16
+      bayes_accuracy: 0.276171875
+      deterministic_mapping: false
+      pass: true
+    template_x_entity_count:
+      levels: 12
+      bayes_accuracy: 0.25
+      deterministic_mapping: false
+      pass: true
+    template_x_option_position:
+      levels: 16
+      bayes_accuracy: 0.5
+      deterministic_mapping: false
+      pass: true
+  unique_row_key_note: scene_id plus condition is an observational row key and is
+    necessarily unique; neither component is model-visible, and scene_id alone is
+    explicitly audited
+  status: PASS
+cross_validated_shortcuts:
+  folds: 5
+  splitter: stratified group CV; both conditions from a scene remain in one fold
+  classification_target: four-class condition-specific semantic answer
+  views:
+    question_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 204
+        n: 2560
+        cross_validated_accuracy: 0.0796875
+        one_sided_95_exact_upper: 0.08904808640829145
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 400
+        n: 2560
+        cross_validated_accuracy: 0.15625
+        one_sided_95_exact_upper: 0.16853970926622522
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    entity_labels_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 560
+        n: 2560
+        cross_validated_accuracy: 0.21875
+        one_sided_95_exact_upper: 0.2326198238463112
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 204
+        n: 2560
+        cross_validated_accuracy: 0.0796875
+        one_sided_95_exact_upper: 0.08904808640829145
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 322
+        n: 2560
+        cross_validated_accuracy: 0.12578125
+        one_sided_95_exact_upper: 0.13707483866781958
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    scene_metadata_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 633
+        n: 2560
+        cross_validated_accuracy: 0.247265625
+        one_sided_95_exact_upper: 0.2616965003803096
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 654
+        n: 2560
+        cross_validated_accuracy: 0.25546875
+        one_sided_95_exact_upper: 0.2700453498785394
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 621
+        n: 2560
+        cross_validated_accuracy: 0.242578125
+        one_sided_95_exact_upper: 0.25692269072785945
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    option_order_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 558
+        n: 2560
+        cross_validated_accuracy: 0.21796875
+        one_sided_95_exact_upper: 0.23182194394386632
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 558
+        n: 2560
+        cross_validated_accuracy: 0.21796875
+        one_sided_95_exact_upper: 0.23182194394386632
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 561
+        n: 2560
+        cross_validated_accuracy: 0.219140625
+        one_sided_95_exact_upper: 0.23301873750344163
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    template_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 558
+        n: 2560
+        cross_validated_accuracy: 0.21796875
+        one_sided_95_exact_upper: 0.23182194394386632
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 558
+        n: 2560
+        cross_validated_accuracy: 0.21796875
+        one_sided_95_exact_upper: 0.23182194394386632
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 561
+        n: 2560
+        cross_validated_accuracy: 0.219140625
+        one_sided_95_exact_upper: 0.23301873750344163
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    question_text_char_ngrams:
+      character_ngram_logistic:
+        correct: 367
+        n: 2560
+        cross_validated_accuracy: 0.143359375
+        one_sided_95_exact_upper: 0.15524933773016983
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+    scene_id_char_ngrams:
+      character_ngram_logistic:
+        correct: 656
+        n: 2560
+        cross_validated_accuracy: 0.25625
+        one_sided_95_exact_upper: 0.27084013180155103
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+  maximum_accuracy: 0.25625
+  maximum_one_sided_95_exact_upper: 0.27084013180155103
+  status: PASS
+status: PASS

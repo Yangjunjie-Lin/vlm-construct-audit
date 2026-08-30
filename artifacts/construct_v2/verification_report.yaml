@@ -1,0 +1,54 @@
+schema_version: 1
+counts:
+  uptake: 256
+  reasoning: 1280
+  smoke: 24
+rendered_image_count: 1816
+gates:
+  uptake_256: true
+  reasoning_matches_power_selected_n: true
+  smoke_24: true
+  formal_total_1536: true
+  split_uuids_disjoint: true
+  manifest_hashes_match: true
+  all_rendered_images_exist: true
+  model_visible_internal_ids_absent: true
+  answer_balance: true
+  relation_balance: true
+  template_balance: true
+  uptake_balance: true
+  canonical_serialization_equality: true
+  token_length_difference_le_one: true
+  no_scientific_inference: true
+balance:
+  answer_balance: PASS
+  relation_balance: PASS
+  template_balance: PASS
+  uptake_balance: PASS
+serialization_equivalence:
+  schema_version: 1
+  scene_count: 1280
+  canonical_nl_triples_equality: 1.0
+  changed_fact_count_exactly_one_rate: 1.0
+  direct_image_text_conflict_count: 0
+  failures: []
+  changed_fact_failures: []
+  status: PASS
+token_balance:
+  status: PASS
+  maximum_observed_difference: 0
+no_inference:
+  status: PASS
+  formal_prediction_files: 0
+  uptake_model_outputs: 0
+  reasoning_model_outputs: 0
+  scientific_metrics: 0
+  runner_blocked: true
+  runner_status: V2_NOT_AUTHORIZED_PENDING_HUMAN_AND_INDEPENDENT_AUDIT
+  authorization_files_created_by_preaudit: false
+  files_by_root:
+    artifacts/construct_v2/predictions: []
+    artifacts/construct_v2/model_outputs: []
+    artifacts/construct_v2/uptake_model_outputs: []
+    artifacts/construct_v2/reasoning_model_outputs: []
+status: PASS

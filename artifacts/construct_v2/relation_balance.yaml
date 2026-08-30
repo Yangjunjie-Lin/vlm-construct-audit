@@ -1,0 +1,59 @@
+schema_version: 1
+reasoning_visual_first_hop:
+  east_of:
+    northeast: 160
+    southeast: 160
+  north_of:
+    northeast: 160
+    northwest: 160
+  south_of:
+    southeast: 160
+    southwest: 160
+  west_of:
+    northwest: 160
+    southwest: 160
+reasoning_text_second_hop:
+  east_of:
+    northeast: 160
+    southeast: 160
+  north_of:
+    northeast: 160
+    northwest: 160
+  south_of:
+    southeast: 160
+    southwest: 160
+  west_of:
+    northwest: 160
+    southwest: 160
+structural_support_note: Conditioning on one cardinal component of a diagonal answer
+  leaves exactly two, not four, logically possible diagonal classes; both are exactly
+  balanced.
+conditional_support_size: 2
+conditional_entropy_bits: 1.0
+uptake_task_answer_counts:
+  visual_hop_relation:
+    north: 16
+    south: 16
+    east: 16
+    west: 16
+  textual_bridge_relation:
+    north: 16
+    south: 16
+    east: 16
+    west: 16
+  direction_reversal:
+    north: 16
+    south: 16
+    east: 16
+    west: 16
+  cross_modal_bridge_binding:
+    north: 16
+    south: 16
+    east: 16
+    west: 16
+gates:
+  first_hop_all_cardinals_present: true
+  second_hop_all_cardinals_present: true
+  reasoning_applicable_support_exact: true
+  uptake_each_task_16_per_cardinal: true
+status: PASS

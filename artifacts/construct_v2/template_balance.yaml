@@ -1,0 +1,29 @@
+schema_version: 1
+reasoning:
+  directional:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  locate:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  relation:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+  where:
+    northeast: 80
+    northwest: 80
+    southeast: 80
+    southwest: 80
+uptake_templates:
+  uptake_cross_modal_bridge_binding_v1: 64
+  uptake_textual_bridge_relation_v1: 64
+  uptake_direction_reversal_v1: 64
+  uptake_visual_hop_relation_v1: 64
+question_text_deterministic_answer_mapping: false
+status: PASS
