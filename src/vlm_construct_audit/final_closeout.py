@@ -877,7 +877,12 @@ def verify_final_closeout(
     ) != _final_adjudication_payload():
         failures.append("release final adjudication mismatch")
 
-    clean = not _git(root, "status", "--porcelain=v1")
+    dirty_paths = [
+        line
+        for line in _git(root, "status", "--porcelain=v1").splitlines()
+        if line
+    ]
+    clean = not dirty_paths
     if require_clean_worktree and not clean:
         failures.append("working tree is not clean")
     result = {
@@ -893,6 +898,7 @@ def verify_final_closeout(
         "review_returns_and_attestations": review_preservation,
         "release_hashes_match": release_valid,
         "working_tree_clean": clean,
+        "dirty_paths": dirty_paths,
         "head": _git(root, "rev-parse", "HEAD"),
     }
     return result

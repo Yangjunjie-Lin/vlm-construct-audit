@@ -47,6 +47,7 @@ def test_final_closeout_verifier_enforces_terminal_state() -> None:
     assert result["candidate_tag_absent"] is True
     assert result["scientific_execution"]["formal_prediction_files"] == 0
     assert result["scientific_execution"]["authorization_files"] == []
+    assert isinstance(result["dirty_paths"], list)
 
 
 def test_final_successor_adjudication_matches_release() -> None:
