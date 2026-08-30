@@ -70,20 +70,25 @@ program without model, prompt, threshold, serialization, or dataset rescue.
 - Historical artifact verification: PASS.
 - Post-STOP artifact verification: PASS.
 - Preregistration validation: PASS.
-- Preregistration hash verification: PASS against the pre-tag 40-file aggregate manifest.
+- Preregistration hash verification: PASS against the pre-tag 45-file aggregate manifest.
 - No-inference verification: PASS; predictions 0, reasoning outputs 0, scientific metrics 0,
   run command blocked.
 - CI: configured to install normal/dev dependencies, run all three preregistration checks, and
   never download or execute formal model weights.
-- Fresh clone: pending branch push; required before the annotated preregistration tag is finalized.
+- Fresh clone: PASS at `fa68091684504e780857da640d7027c745d416a3` using a new remote clone
+  and external Python 3.12 venv. Installation, 68 passed tests with 2 optional model-stack skips,
+  ruff, historical artifact verification, read-only Post-STOP verification, preregistration
+  validation and hashes, no-inference validation, and the blocked run-command check all passed;
+  the clone remained Git-clean.
 
 ## Researcher degrees of freedom
 
 Current preregistration amendments: none. Model replacements: none. Pre-inference scene
-exclusions: none. Scientific deviations: none. Failed scientific runs: none. Two pre-tag ruff
-checks found only new-code hygiene defects (one unused helper variable, then export ordering and an
-unused import); both are recorded in the deviation policy and were corrected before their
-respective commits. No scientific output was available during either check.
+exclusions: none. Scientific deviations: none. Failed scientific runs: none. Six failed pre-tag
+validation attempts are recorded in the deviation policy. They concerned new-code hygiene,
+timestamp-preserving read-only verification, an optional-dependency import, test isolation, and
+cross-checkout LF normalization. None involved scientific model output or changed any numerical
+or scientific design element.
 
 ## Exact next action
 
