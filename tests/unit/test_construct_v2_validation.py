@@ -8,7 +8,9 @@ from vlm_construct_audit.construct_v2.validation import (
 
 
 def test_balance_artifacts_pass_for_registered_factorial_design() -> None:
-    result = write_balance_artifacts(build_reasoning_rows(768), build_uptake_rows())
+    result = write_balance_artifacts(
+        build_reasoning_rows(768), build_uptake_rows(), write=False
+    )
     assert result == {
         "answer_balance": "PASS",
         "relation_balance": "PASS",
@@ -18,9 +20,8 @@ def test_balance_artifacts_pass_for_registered_factorial_design() -> None:
 
 
 def test_natural_language_and_triples_are_canonically_equal() -> None:
-    result = write_serialization_equivalence(build_reasoning_rows(768))
+    result = write_serialization_equivalence(build_reasoning_rows(768), write=False)
     assert result["status"] == "PASS"
     assert result["canonical_nl_triples_equality"] == 1.0
     assert result["changed_fact_count_exactly_one_rate"] == 1.0
     assert result["direct_image_text_conflict_count"] == 0
-

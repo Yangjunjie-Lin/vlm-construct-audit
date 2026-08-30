@@ -67,7 +67,10 @@ def _balanced(
 
 
 def write_balance_artifacts(
-    reasoning: list[dict[str, Any]], uptake: list[dict[str, Any]]
+    reasoning: list[dict[str, Any]],
+    uptake: list[dict[str, Any]],
+    *,
+    write: bool = True,
 ) -> dict[str, Any]:
     whole = _stratified_counts(reasoning, lambda _row: "reasoning_test")
     by_template = _stratified_counts(reasoning, lambda row: row["template_id"])
@@ -141,9 +144,10 @@ def write_balance_artifacts(
         "question_text_deterministic_answer_mapping": False,
         "status": "PASS" if _balanced(by_template, set(ANSWERS)) else "FAIL",
     }
-    _dump_yaml("artifacts/construct_v2/answer_balance.yaml", answer_artifact)
-    _dump_yaml("artifacts/construct_v2/relation_balance.yaml", relation_artifact)
-    _dump_yaml("artifacts/construct_v2/template_balance.yaml", template_artifact)
+    if write:
+        _dump_yaml("artifacts/construct_v2/answer_balance.yaml", answer_artifact)
+        _dump_yaml("artifacts/construct_v2/relation_balance.yaml", relation_artifact)
+        _dump_yaml("artifacts/construct_v2/template_balance.yaml", template_artifact)
     return {
         "answer_balance": answer_artifact["status"],
         "relation_balance": relation_artifact["status"],
@@ -160,7 +164,9 @@ def _parse_serialization(value: str, serialization: str) -> tuple[str, str, str]
     return match.group(1), f"{match.group(2)}_of", match.group(3)
 
 
-def write_serialization_equivalence(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def write_serialization_equivalence(
+    rows: list[dict[str, Any]], *, write: bool = True
+) -> dict[str, Any]:
     failures = []
     changed_fact_failures = []
     conflict_count = 0
@@ -193,7 +199,8 @@ def write_serialization_equivalence(rows: list[dict[str, Any]]) -> dict[str, Any
             else "FAIL"
         ),
     }
-    _dump_yaml("artifacts/construct_v2/serialization_equivalence.yaml", result)
+    if write:
+        _dump_yaml("artifacts/construct_v2/serialization_equivalence.yaml", result)
     return result
 
 
@@ -336,4 +343,3 @@ def validate_construct_v2() -> dict[str, Any]:
     }
     _dump_yaml("artifacts/construct_v2/verification_report.yaml", result)
     return result
-

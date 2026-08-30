@@ -19,6 +19,10 @@ def test_required_cli_commands_are_exposed() -> None:
         "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
         "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
         "retire-p-mini-pilot-v1",
+        "generate-construct-v2", "validate-construct-v2",
+        "audit-construct-v2-leakage", "run-construct-v2-oracles",
+        "analyze-construct-v2-power", "build-construct-v2-review-packet",
+        "verify-no-construct-v2-inference", "build-construct-v2-report",
     ):
         assert command in result.stdout
 

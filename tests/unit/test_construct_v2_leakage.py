@@ -10,5 +10,5 @@ def test_all_registered_shortcut_classifiers_remain_below_gates() -> None:
     shortcut = result["cross_validated_shortcuts"]
     assert shortcut["maximum_accuracy"] <= 0.30
     assert shortcut["maximum_one_sided_95_exact_upper"] <= 0.35
+    assert shortcut["views"]["option_position_only"]
     assert result["deterministic_contingency"]["status"] == "PASS"
-

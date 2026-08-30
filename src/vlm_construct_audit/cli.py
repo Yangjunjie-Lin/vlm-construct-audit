@@ -11,7 +11,17 @@ import yaml
 
 from .audit import build_audit_decisions
 from .calibration.runner import run_calibration, run_smoke
-from .construct_v2 import retire_v1
+from .construct_v2 import (
+    analyze_construct_v2_power,
+    audit_construct_v2_leakage,
+    build_construct_v2_report,
+    build_construct_v2_review_packet,
+    generate_construct_v2,
+    retire_v1,
+    run_construct_v2_oracles,
+    validate_construct_v2,
+    verify_no_construct_v2_inference,
+)
 from .data import generate_dataset
 from .interventions import build_interventions
 from .post_stop import (
@@ -164,6 +174,16 @@ def _verify_all() -> dict[str, Any]:
     return {"status": "PASS", "tier0": base, "tier0_5": tier}
 
 
+def _analyze_construct_v2_power_cli() -> dict[str, Any]:
+    result = analyze_construct_v2_power()
+    return {
+        "status": result["status"],
+        "chosen_reasoning_n": result["chosen_reasoning_n"],
+        "primary_sample_size_evaluation": result["primary_sample_size_evaluation"],
+        "p3_method_hashes_unchanged": result["p3_method_hashes"]["unchanged"],
+    }
+
+
 def _command_table(config: str) -> dict[str, Callable[[], Any]]:
     return {
         "validate-config": validate_config,
@@ -198,6 +218,14 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "verify-p-mini-pilot-preregistration": verify_p_mini_pilot_preregistration,
         "verify-no-p-mini-pilot-inference": verify_no_p_mini_pilot_inference,
         "retire-p-mini-pilot-v1": retire_v1,
+        "generate-construct-v2": generate_construct_v2,
+        "validate-construct-v2": validate_construct_v2,
+        "audit-construct-v2-leakage": audit_construct_v2_leakage,
+        "run-construct-v2-oracles": run_construct_v2_oracles,
+        "analyze-construct-v2-power": _analyze_construct_v2_power_cli,
+        "build-construct-v2-review-packet": build_construct_v2_review_packet,
+        "verify-no-construct-v2-inference": verify_no_construct_v2_inference,
+        "build-construct-v2-report": build_construct_v2_report,
     }
 
 
@@ -218,6 +246,10 @@ def main(argv: list[str] | None = None) -> int:
             "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
             "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
             "retire-p-mini-pilot-v1",
+            "generate-construct-v2", "validate-construct-v2",
+            "audit-construct-v2-leakage", "run-construct-v2-oracles",
+            "analyze-construct-v2-power", "build-construct-v2-review-packet",
+            "verify-no-construct-v2-inference", "build-construct-v2-report",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
@@ -234,6 +266,11 @@ def main(argv: list[str] | None = None) -> int:
         "validate-p-mini-pilot-preregistration",
         "verify-p-mini-pilot-preregistration",
         "verify-no-p-mini-pilot-inference",
+        "validate-construct-v2",
+        "audit-construct-v2-leakage",
+        "run-construct-v2-oracles",
+        "analyze-construct-v2-power",
+        "verify-no-construct-v2-inference",
     } and result.get("status") != "PASS":
         return 1
     return 0

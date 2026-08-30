@@ -124,6 +124,8 @@ def _dict_views(item: dict[str, Any], view: str) -> dict[str, float | str]:
         }
     if view == "option_order_only":
         return {"order": "|".join(row["answer"]["semantic_candidates"])}
+    if view == "option_position_only":
+        return {"position": float(row["answer"]["correct_option_position"])}
     if view == "template_only":
         return {"template": row["template_id"]}
     raise ValueError(view)
@@ -190,7 +192,7 @@ def cross_validated_shortcut_audit(
     groups = np.asarray([item["base"]["scene_uuid"] for item in expanded])
     views = (
         "question_only", "entity_labels_only", "scene_metadata_only",
-        "option_order_only", "template_only",
+        "option_order_only", "option_position_only", "template_only",
     )
     results: dict[str, dict[str, Any]] = {}
     for view in views:
@@ -251,4 +253,3 @@ def audit_construct_v2_leakage() -> dict[str, Any]:
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(yaml.safe_dump(result, sort_keys=False), encoding="utf-8")
     return result
-

@@ -211,6 +211,39 @@ cross_validated_shortcuts:
         accuracy_gate_le_0_30: true
         upper_gate_le_0_35: true
         pass: true
+    option_position_only:
+      majority_baseline:
+        correct: 638
+        n: 2560
+        cross_validated_accuracy: 0.24921875
+        one_sided_95_exact_upper: 0.26368493005865523
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      decision_tree:
+        correct: 581
+        n: 2560
+        cross_validated_accuracy: 0.226953125
+        one_sided_95_exact_upper: 0.24099338254546904
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      logistic_regression:
+        correct: 613
+        n: 2560
+        cross_validated_accuracy: 0.239453125
+        one_sided_95_exact_upper: 0.25373889618094847
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
+      random_forest:
+        correct: 587
+        n: 2560
+        cross_validated_accuracy: 0.229296875
+        one_sided_95_exact_upper: 0.2433844508723646
+        accuracy_gate_le_0_30: true
+        upper_gate_le_0_35: true
+        pass: true
     template_only:
       majority_baseline:
         correct: 638

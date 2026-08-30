@@ -1,0 +1,55 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+automated_gate_status: PASS
+final_decision: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+gates:
+  joint_multimodal_oracle_accuracy_1_00: true
+  question_only_unique_solution_rate_0: true
+  image_only_unique_solution_rate_0: true
+  evidence_only_unique_solution_rate_0: true
+  question_only_shortcut_accuracy_le_0_30: true
+  metadata_shortcut_accuracy_le_0_30: true
+  entity_label_shortcut_accuracy_le_0_30: true
+  option_position_shortcut_accuracy_le_0_30: true
+  all_shortcut_95_upper_bounds_le_0_35: true
+  answer_balance: true
+  relation_balance: true
+  template_balance: true
+  task_specific_uptake_balance: true
+  correct_corrupted_changed_fact_count_1: true
+  direct_image_text_conflict_count_0: true
+  canonical_nl_triples_equality_1_00: true
+  token_length_maximum_difference_le_1: true
+  overall_stable_path_power_ge_0_80: true
+  p3_method_hashes_unchanged: true
+  scientific_model_output_count_0: true
+  runner_blocked: true
+values:
+  joint_multimodal_oracle_accuracy: 1.0
+  question_only_unique_solution_rate: 0.0
+  image_only_unique_solution_rate: 0.0
+  evidence_only_unique_solution_rate: 0.0
+  shortcut_maximum_accuracy: 0.25625
+  shortcut_maximum_one_sided_95_exact_upper: 0.27084013180155103
+  question_only_maximum_accuracy: 0.24921875
+  metadata_maximum_accuracy: 0.25546875
+  entity_label_maximum_accuracy: 0.24921875
+  option_position_maximum_accuracy: 0.24921875
+  chosen_reasoning_n: 1280
+  chosen_n_stable_path_power_range:
+  - 0.8700333333333333
+  - 0.8861666666666667
+  token_maximum_absolute_difference: 0
+  formal_prediction_files: 0
+  uptake_model_outputs: 0
+  reasoning_model_outputs: 0
+  scientific_metrics: 0
+human_review:
+  packet_rows: 80
+  genuine: 64
+  decoys: 16
+  reviewers_required: 2
+  reviewers_completed: 0
+  status: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+novelty_decision: NOVELTY_PASS_WITH_CAUTION
+formal_vlm_inference_run: false
