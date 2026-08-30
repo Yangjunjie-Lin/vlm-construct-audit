@@ -1,0 +1,11 @@
+schema_version: 1
+primary_contrast: correct_bridge_evidence_vs_target_specific_corrupted_bridge_evidence
+paired_constants: [image, question, entities, candidate_semantics, option_order]
+correct_condition: B R2 C
+corrupted_condition: B inverse_R2 C
+corruption_operator: cardinal_antonym
+changed_fact_count: 1
+image_text_conflict_change: false
+direct_image_text_conflict_allowed: false
+matched_irrelevant_controls: required_per_uptake_task
+

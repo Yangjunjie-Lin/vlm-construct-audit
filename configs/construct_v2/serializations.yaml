@@ -1,0 +1,16 @@
+schema_version: 1
+primary_confirmatory:
+  id: natural_language
+  rationale:
+    - approximates ordinary researcher-supplied evidence
+    - avoids making format invariance a confirmatory burden
+    - reduces unnecessary confirmatory multiplicity
+secondary_robustness:
+  id: triples
+  required_complete_run: true
+  may_rescue_primary_failure: false
+  separate_confirmatory_family: false
+additional_serializations_allowed: false
+forbidden: [json]
+canonical_fact_equivalence_required: 1.0
+

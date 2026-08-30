@@ -1,0 +1,33 @@
+schema_version: 1
+registry_id: direction_p_construct_valid_mini_pilot_v2_hypotheses
+primary_hypotheses:
+  - id: H1
+    family: SmolVLM
+    null: theta_smolvlm <= 0.10
+  - id: H2
+    family: InternVL
+    null: theta_internvl <= 0.10
+  - id: H3
+    family: Qwen-VL
+    null: theta_qwenvl <= 0.10
+certification_alternative: theta_m >= 0.15
+indifference_zone: 0.10 < theta_m < 0.15
+primary_serialization: natural_language
+multiplicity:
+  procedure: Holm step-down
+  family_wise_one_sided_alpha: 0.025
+  hypothesis_count: 3
+stable_path:
+  required_holm_supported_positive_families: 2
+  certified_reverse_effect_in_remaining_family: forbidden
+secondary_robustness:
+  serialization: triples
+  replace_primary_on_failure: forbidden
+  requirements:
+    - same direction in Holm-supported families
+    - no certified reverse effect
+    - no reverse format difference beyond the materiality margin
+path_b:
+  role: secondary descriptive comparison only
+  go_authority: false
+

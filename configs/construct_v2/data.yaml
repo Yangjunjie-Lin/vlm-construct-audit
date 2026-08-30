@@ -1,0 +1,25 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+protocol_revision: 1
+generator_seed: 862001
+rendering_seed: 862101
+option_permutation_seed: 862201
+corruption_seed: 862301
+question_template_seed: 862401
+splits:
+  uptake_validation: 256
+  reasoning_test_candidates: [768, 1024, 1280, 1536]
+  engineering_smoke: 24
+formal_data_reuse_from_v1: forbidden
+answer_space: [northeast, northwest, southeast, southwest]
+entity_counts: [3, 4, 5]
+question_templates: [where, locate, directional, relation]
+model_visible_scene_identifier: false
+model_visible_entity_scheme: color_shape_descriptors
+internal_scene_uuid_scheme: uuid5_from_preregistered_random_nonce
+images:
+  canvas: [256, 256]
+  format: PNG
+  c_visible: false
+  spatial_legend: false
+

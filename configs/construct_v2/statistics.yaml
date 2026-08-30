@@ -1,0 +1,18 @@
+schema_version: 1
+primary_analysis: scene_paired_risk_difference
+delta0: 0.10
+delta1: 0.15
+p3_certification_critical_z: 1.959963984540054
+p3_below_critical_z: 1.6448536269514722
+multiplicity:
+  hypotheses: 3
+  family_wise_one_sided_alpha: 0.025
+  procedure: Holm
+confidence_interval:
+  method: scene_paired_percentile_bootstrap
+  level: 0.95
+  resamples: 10000
+  seed: 862601
+triples_reverse_format_materiality_margin: 0.05
+path_b_go_authority: false
+

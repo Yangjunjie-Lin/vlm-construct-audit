@@ -1,0 +1,35 @@
+schema_version: 1
+base_scene_count: 256
+tasks:
+  visual_hop_relation:
+    scenes: 64
+    answer_classes: [north, south, east, west]
+    scenes_per_answer: 16
+  textual_bridge_relation:
+    scenes: 64
+    answer_classes: [north, south, east, west]
+    scenes_per_answer: 16
+  direction_reversal:
+    scenes: 64
+    answer_classes: [north, south, east, west]
+    scenes_per_answer: 16
+  cross_modal_bridge_binding:
+    scenes: 64
+    answer_classes: [north, south, east, west]
+    scenes_per_answer: 16
+gate_unit: model_x_serialization_x_uptake_task
+direct_accuracy:
+  method: scene-level one-sided 95-percent Clopper-Pearson
+  exact_lower_bound_min: 0.80
+  all_tasks_must_pass: true
+irrelevant_control:
+  method: scene-level one-sided 95-percent Clopper-Pearson
+  exact_upper_bound_max: 0.40
+paired_evidence_utility:
+  difference_min: 0.20
+  confidence_interval: scene-paired exact-compatible bootstrap
+  resamples: 10000
+  seed: 862501
+cross_task_compensation: forbidden
+individual_scene_filtering: forbidden
+

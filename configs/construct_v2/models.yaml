@@ -1,0 +1,14 @@
+schema_version: 1
+registry_id: direction_p_construct_valid_mini_pilot_v2_models
+selection_timing: before_any_v2_scientific_output
+source_registry: configs/p_mini_pilot_models.yaml
+families:
+  - family_id: SmolVLM
+    model_id: smolvlm_256m_instruct
+  - family_id: InternVL
+    model_id: internvl2_5_2b
+  - family_id: Qwen-VL
+    model_id: qwen2_vl_2b_instruct
+performance_based_replacement: forbidden
+formal_inference_authorized: false
+

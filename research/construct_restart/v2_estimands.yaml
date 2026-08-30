@@ -1,0 +1,21 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+primary_estimand:
+  notation: theta_m = E[Y_m(correct bridge evidence) - Y_m(corrupted bridge evidence)]
+  name: cross_modal_bridge_composition_behavioral_itt
+  outcome: natural-language primary CLL top-ranked semantic answer correctness
+  unit: base_scene
+  pairing: same image and question under correct and corrupted bridge evidence
+  model_families: [SmolVLM, InternVL, Qwen-VL]
+  serialization: natural_language
+  answer_contract: length_normalized_candidate_conditional_likelihood
+  candidate_scoring_target: semantic answer text
+  interpretation: protocol-specific behavioral ITT
+  internal_compositional_mechanism_effect: false
+secondary_estimand:
+  notation: theta_m_triples
+  serialization: triples
+  role: robustness only
+  confirmatory_family_member: false
+individual_scene_uptake_filtering: forbidden
+

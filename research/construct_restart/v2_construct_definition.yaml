@@ -1,0 +1,44 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+construct: cross_modal_bridge_composition
+formal_scene:
+  image_fact: A R1 B
+  text_fact: B R2 C
+  question: relation of A to C
+  answer_space: [northeast, northwest, southeast, southwest]
+  image_entities: [A, B]
+  text_introduced_entity: C
+modality_allocation:
+  image:
+    provides: [A identity, B identity, visual first-hop relation]
+    forbids: [C spatial position, second-hop bridge relation, final composed answer]
+  evidence:
+    provides: [B descriptor, C descriptor, textual second-hop bridge relation]
+    forbids: [first-hop relation, final composed answer]
+  joint:
+    unique_solution_required: true
+primary_intervention:
+  correct: correct second-hop bridge relation
+  corrupted: antonym of the target second-hop bridge relation
+  changed_fact_count: 1
+  image_change: forbidden
+  question_change: forbidden
+  option_order_change: forbidden
+  direct_image_text_conflict: forbidden
+construct_gates:
+  question_only:
+    unique_solution_rate: 0.0
+    bayes_optimal_accuracy_max: 0.30
+  image_only:
+    unique_solution_rate: 0.0
+    conditional_answer_entropy_min_bits: 1.0
+    bayes_optimal_accuracy_max: 0.50
+  evidence_only:
+    unique_solution_rate: 0.0
+    conditional_answer_entropy_min_bits: 1.0
+    bayes_optimal_accuracy_max: 0.50
+  joint_multimodal:
+    accuracy: 1.0
+    unique_solution_rate: 1.0
+failure_status: CONSTRUCT_V2_NO_GO
+
