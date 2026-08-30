@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 from collections import Counter, defaultdict
 from collections.abc import Callable, Hashable
 from pathlib import Path
@@ -18,6 +19,11 @@ from .uptake import validate_uptake_design
 
 NL_PATTERN = re.compile(r"^The (.+) is (north|south|east|west) of the (.+)\.$")
 TRIPLE_PATTERN = re.compile(r"^\((.+), (north|south|east|west)_of, (.+)\)$")
+AUTOMATED_FREEZE_TAG = "construct-v2-automated-preaudit-freeze"
+AUTOMATED_FREEZE_COMMIT = "1552a3c77e0bdd6bf0fdb0bf49447c19df4af6f2"
+TOKEN_BALANCE_PATH = "artifacts/construct_v2/token_balance.yaml"
+TOKEN_REGISTRY_PATH = "configs/p_mini_pilot_models.yaml"
+TOKEN_REASONING_PATH = "data/construct_v2/reasoning_test.jsonl"
 
 
 def _read_jsonl(path: str) -> list[dict[str, Any]]:
@@ -40,6 +46,84 @@ def _hash(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _git_bytes(*args: str, check: bool = True) -> subprocess.CompletedProcess[bytes]:
+    return subprocess.run(["git", *args], cwd=ROOT, check=check, capture_output=True)
+
+
+def _verify_frozen_token_balance_read_only(
+    rows: list[dict[str, Any]], *, fallback_reason: str
+) -> dict[str, Any]:
+    """Verify the preaudit token result when a clean CI host has no tokenizer cache."""
+    failures: list[str] = []
+    tag_type = _git_bytes(
+        "cat-file", "-t", f"refs/tags/{AUTOMATED_FREEZE_TAG}", check=False
+    )
+    if tag_type.returncode != 0 or tag_type.stdout.decode().strip() != "tag":
+        failures.append("automated preaudit freeze is not an annotated tag")
+    target = _git_bytes(
+        "rev-parse", "--verify", f"{AUTOMATED_FREEZE_TAG}^{{commit}}", check=False
+    )
+    if target.returncode != 0 or target.stdout.decode().strip() != AUTOMATED_FREEZE_COMMIT:
+        failures.append("automated preaudit freeze tag target mismatch")
+
+    frozen_bytes: dict[str, bytes] = {}
+    for relative in (TOKEN_BALANCE_PATH, TOKEN_REGISTRY_PATH, TOKEN_REASONING_PATH):
+        result = _git_bytes("show", f"{AUTOMATED_FREEZE_TAG}:{relative}", check=False)
+        if result.returncode != 0:
+            failures.append(f"frozen token-balance input missing: {relative}")
+            continue
+        frozen_bytes[relative] = result.stdout
+        current = ROOT / relative
+        if not current.is_file() or current.read_bytes() != result.stdout:
+            failures.append(f"current token-balance input differs from frozen tag: {relative}")
+
+    token: dict[str, Any] = {}
+    registry: dict[str, Any] = {}
+    try:
+        token = yaml.safe_load(frozen_bytes.get(TOKEN_BALANCE_PATH, b"")) or {}
+        registry = yaml.safe_load(frozen_bytes.get(TOKEN_REGISTRY_PATH, b"")) or {}
+    except yaml.YAMLError as exc:
+        failures.append(f"frozen token-balance YAML invalid: {exc}")
+    models = registry.get("models", []) if isinstance(registry, dict) else []
+    expected_summaries = {
+        (model.get("model_id"), model.get("tokenizer_revision"), serialization)
+        for model in models
+        for serialization in ("natural_language", "triples")
+    }
+    summaries = token.get("summaries", []) if isinstance(token, dict) else []
+    observed_summaries = {
+        (row.get("model_id"), row.get("tokenizer_revision"), row.get("serialization"))
+        for row in summaries
+    }
+    if len(models) != 3 or observed_summaries != expected_summaries or len(summaries) != 6:
+        failures.append("frozen token-balance model/revision/serialization coverage mismatch")
+    if any(row.get("scene_count") != len(rows) for row in summaries):
+        failures.append("frozen token-balance scene count mismatch")
+    if (
+        token.get("checked_before_model_inference") is not True
+        or token.get("model_weights_loaded") is not False
+        or token.get("maximum_allowed_difference") != 1
+        or token.get("maximum_observed_difference", 2) > 1
+        or token.get("failures") != []
+        or token.get("status") != "PASS"
+        or any(row.get("maximum_absolute_token_difference", 2) > 1 for row in summaries)
+    ):
+        failures.append("frozen token-balance gate content mismatch")
+    result = dict(token)
+    result.update(
+        {
+            "status": "PASS" if not failures else "FAIL",
+            "failures": failures,
+            "verification_mode": "READ_ONLY_AUTOMATED_FREEZE_TAG_SNAPSHOT",
+            "fallback_reason": fallback_reason,
+            "frozen_tag": AUTOMATED_FREEZE_TAG,
+            "frozen_commit": AUTOMATED_FREEZE_COMMIT,
+            "tracked_artifact_modified": False,
+        }
+    )
+    return result
 
 
 def _stratified_counts(
@@ -207,54 +291,60 @@ def write_serialization_equivalence(
 def write_token_balance(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Use frozen local tokenizers only; never load model weights."""
 
-    from transformers import AutoTokenizer  # type: ignore[import-not-found]
+    try:
+        from transformers import AutoTokenizer  # type: ignore[import-not-found]
+    except ModuleNotFoundError as exc:
+        return _verify_frozen_token_balance_read_only(rows, fallback_reason=str(exc))
 
     model_registry = yaml.safe_load(
         (ROOT / "configs/p_mini_pilot_models.yaml").read_text(encoding="utf-8")
     )["models"]
     summaries = []
     failures = []
-    for model in model_registry:
-        tokenizer = AutoTokenizer.from_pretrained(
-            model["repository"],
-            revision=model["tokenizer_revision"],
-            local_files_only=True,
-            trust_remote_code=bool(model["trust_remote_code"]),
-        )
-        for serialization in ("natural_language", "triples"):
-            differences = []
-            for row in rows:
-                correct = len(
-                    tokenizer.encode(
-                        row["evidence"]["correct"][serialization], add_special_tokens=False
-                    )
-                )
-                corrupted = len(
-                    tokenizer.encode(
-                        row["evidence"]["corrupted"][serialization], add_special_tokens=False
-                    )
-                )
-                difference = abs(correct - corrupted)
-                differences.append(difference)
-                if difference > 1:
-                    failures.append(
-                        {
-                            "scene_uuid": row["scene_uuid"],
-                            "model_id": model["model_id"],
-                            "serialization": serialization,
-                            "difference": difference,
-                        }
-                    )
-            summaries.append(
-                {
-                    "model_id": model["model_id"],
-                    "tokenizer_revision": model["tokenizer_revision"],
-                    "serialization": serialization,
-                    "scene_count": len(rows),
-                    "maximum_absolute_token_difference": max(differences),
-                    "mean_absolute_token_difference": sum(differences) / len(differences),
-                }
+    try:
+        for model in model_registry:
+            tokenizer = AutoTokenizer.from_pretrained(
+                model["repository"],
+                revision=model["tokenizer_revision"],
+                local_files_only=True,
+                trust_remote_code=bool(model["trust_remote_code"]),
             )
+            for serialization in ("natural_language", "triples"):
+                differences = []
+                for row in rows:
+                    correct = len(
+                        tokenizer.encode(
+                            row["evidence"]["correct"][serialization], add_special_tokens=False
+                        )
+                    )
+                    corrupted = len(
+                        tokenizer.encode(
+                            row["evidence"]["corrupted"][serialization], add_special_tokens=False
+                        )
+                    )
+                    difference = abs(correct - corrupted)
+                    differences.append(difference)
+                    if difference > 1:
+                        failures.append(
+                            {
+                                "scene_uuid": row["scene_uuid"],
+                                "model_id": model["model_id"],
+                                "serialization": serialization,
+                                "difference": difference,
+                            }
+                        )
+                summaries.append(
+                    {
+                        "model_id": model["model_id"],
+                        "tokenizer_revision": model["tokenizer_revision"],
+                        "serialization": serialization,
+                        "scene_count": len(rows),
+                        "maximum_absolute_token_difference": max(differences),
+                        "mean_absolute_token_difference": sum(differences) / len(differences),
+                    }
+                )
+    except OSError as exc:
+        return _verify_frozen_token_balance_read_only(rows, fallback_reason=str(exc))
     result = {
         "schema_version": 1,
         "checked_before_model_inference": True,

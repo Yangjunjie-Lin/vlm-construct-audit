@@ -12,6 +12,7 @@ import pytest
 import yaml
 
 from vlm_construct_audit.construct_v2 import adjudication, candidate, external_review
+from vlm_construct_audit.construct_v2 import validation as construct_validation
 from vlm_construct_audit.construct_v2.adjudication import INVALID, NO_GO, READY
 from vlm_construct_audit.construct_v2.external_review import (
     JUDGMENTS,
@@ -423,3 +424,21 @@ def test_construct_validator_declares_frozen_tokenizer_runtime() -> None:
     registry = yaml.safe_load((ROOT / "configs/p_mini_pilot_models.yaml").read_text())
     assert registry["transformers_version"] == "4.49.0"
     assert {model["transformers_version"] for model in registry["models"]} == {"4.49.0"}
+
+
+def test_clean_ci_tokenizer_fallback_is_tag_scoped_and_read_only(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rows = construct_validation._read_jsonl("data/construct_v2/reasoning_test.jsonl")
+    result = construct_validation._verify_frozen_token_balance_read_only(
+        rows, fallback_reason="test clean CI cache miss"
+    )
+    assert result["status"] == "PASS"
+    assert result["verification_mode"] == "READ_ONLY_AUTOMATED_FREEZE_TAG_SNAPSHOT"
+    assert result["tracked_artifact_modified"] is False
+    monkeypatch.setattr(construct_validation, "AUTOMATED_FREEZE_COMMIT", "0" * 40)
+    result = construct_validation._verify_frozen_token_balance_read_only(
+        rows, fallback_reason="test moved tag"
+    )
+    assert result["status"] == "FAIL"
+    assert "automated preaudit freeze tag target mismatch" in result["failures"]
