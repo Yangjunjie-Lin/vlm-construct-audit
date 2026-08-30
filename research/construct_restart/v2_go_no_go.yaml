@@ -1,0 +1,29 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+primary_go_path:
+  all_required:
+    - CONSTRUCT_VALID
+    - UPTAKE_VALID
+    - MEASUREMENT_VALID
+    - 2_OF_3_HOLM_SUPPORTED_P3_CERTIFICATION
+  certified_reverse_effect: forbidden
+path_b:
+  go_or_extension_authority: false
+  role: secondary descriptive naive-claim versus P3-scope comparison
+  mechanism_claim_from_scope_downgrade: forbidden
+primary_serialization: natural_language
+secondary_serialization:
+  id: triples
+  rescue_primary_failure: forbidden
+  robustness_only: true
+gate_precedence:
+  - construct validity
+  - independent human construct review
+  - independent preregistration audit
+  - execution readiness authorization
+  - task-specific uptake
+  - measurement validity
+  - multiplicity-controlled P3 certification
+current_execution_status: V2_NOT_AUTHORIZED_PENDING_HUMAN_AND_INDEPENDENT_AUDIT
+forbidden_statuses: [RUN_V2_PILOT, START_VLM_INFERENCE, SCIENTIFIC_PILOT_AUTHORIZED]
+

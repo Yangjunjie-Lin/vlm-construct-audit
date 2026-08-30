@@ -1,0 +1,24 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+pre_result_generator_revision_limit: 1
+revision_trigger: any automated construct or leakage gate failure
+revision_requirements:
+  - preserve failed dataset, report, and hashes
+  - increment protocol revision
+  - regenerate the entire formal dataset
+  - recompute every hash and automated audit
+  - record the failure before inspecting any model output
+partial_scene_deletion_to_repair_leakage: forbidden
+post_result_sample_size_increase: forbidden
+post_result_scene_exclusion: forbidden
+delta0_change: requires_new_known_DGP_development_preregistration_and_holdout
+delta1_change: requires_new_known_DGP_development_preregistration_and_holdout
+primary_serialization_change_after_results: forbidden
+secondary_to_primary_promotion: forbidden
+path_b_promotion: forbidden
+second_construct_failure_action: TERMINATE_DIRECTION_P
+alternative_directions_after_failure: forbidden
+current_revision: 1
+revisions_used: 0
+formal_model_outputs_observed: false
+

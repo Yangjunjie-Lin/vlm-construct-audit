@@ -5,6 +5,7 @@ from .governance import retire_v1
 from .leakage import audit_construct_v2_leakage
 from .oracle import run_construct_v2_oracles
 from .power import analyze_construct_v2_power
+from .runner_guard import verify_no_construct_v2_inference
 from .uptake import validate_uptake_design
 
 __all__ = [
@@ -16,4 +17,5 @@ __all__ = [
     "retire_v1",
     "run_construct_v2_oracles",
     "validate_uptake_design",
+    "verify_no_construct_v2_inference",
 ]
