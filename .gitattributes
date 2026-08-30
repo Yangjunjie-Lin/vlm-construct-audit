@@ -11,3 +11,4 @@
 data/** -text
 artifacts/** -text
 reports/** -text
+release/vlm-construct-audit-negative-evidence-v1/** -text

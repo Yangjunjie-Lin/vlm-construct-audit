@@ -6,6 +6,7 @@ import csv
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -45,6 +46,24 @@ PROVENANCE_CLARIFICATION_SHA256 = (
 RELEASE_ROOT = Path("release/vlm-construct-audit-negative-evidence-v1")
 FINAL_TAG = "vlm-construct-audit-final-closeout-2026-08-30"
 RELEASE_NAME = "vlm-construct-audit-negative-evidence-v1"
+HISTORICAL_TAGS = {
+    "construct-v2-automated-preaudit-freeze": (
+        "1552a3c77e0bdd6bf0fdb0bf49447c19df4af6f2"
+    ),
+    "construct-v2-human-gate-policy-freeze": (
+        "1f4e85b8d474a882c40f39d3fd0aa26b70e254a1"
+    ),
+    "p-mini-pilot-preregistered": "9de60b87ec54bc852a7bb2e9cff87d9c23638042",
+    "p-mini-pilot-preregistration-audit-no-pass": (
+        "97c64947a0e6b30b0c9a0654519bbd93ae37d846"
+    ),
+    "vlm-construct-audit-post-stop-final": (
+        "f993282e0a27b8da0ba1c239fb96715c9fc5b79a"
+    ),
+    "vlm-construct-audit-tier0-5-stop": (
+        "ce0e797a4926ab5d2309915c2eef14fd9c5be44d"
+    ),
+}
 
 
 def _sha256(path: Path) -> str:
@@ -555,7 +574,7 @@ def build_final_negative_evidence_release(root: Path = ROOT) -> dict[str, Any]:
         "LICENSES.md": _licenses_note(),
     }
     for name, content in text_payloads.items():
-        (release / name).write_text(content, encoding="utf-8")
+        (release / name).write_bytes(content.encode("utf-8"))
     copies = {
         "CLAIM_BOUNDARY.md": Path("reports/final_closeout/final_claim_boundary.md"),
         "HYPOTHESIS_CLOSEOUT.yaml": Path("research/final_closeout/hypothesis_closeout.yaml"),
@@ -563,8 +582,8 @@ def build_final_negative_evidence_release(root: Path = ROOT) -> dict[str, Any]:
     }
     for name, source in copies.items():
         (release / name).write_bytes((root / source).read_bytes())
-    (release / "FINAL_ADJUDICATION.yaml").write_text(
-        yaml.safe_dump(_final_adjudication_payload(), sort_keys=False), encoding="utf-8"
+    (release / "FINAL_ADJUDICATION.yaml").write_bytes(
+        yaml.safe_dump(_final_adjudication_payload(), sort_keys=False).encode("utf-8")
     )
     package_names = sorted([*text_payloads, *copies, "FINAL_ADJUDICATION.yaml"])
     source_artifacts = {
@@ -588,11 +607,11 @@ def build_final_negative_evidence_release(root: Path = ROOT) -> dict[str, Any]:
         "frozen_review_inputs": FROZEN_REVIEW_HASHES,
     }
     manifest_path = release / "ARTIFACT_MANIFEST.yaml"
-    manifest_path.write_text(yaml.safe_dump(manifest, sort_keys=False), encoding="utf-8")
+    manifest_path.write_bytes(yaml.safe_dump(manifest, sort_keys=False).encode("utf-8"))
     checksum_names = sorted([*package_names, "ARTIFACT_MANIFEST.yaml"])
     checksums = "".join(f"{_sha256(release / name)}  {name}\n" for name in checksum_names)
     checksum_path = release / "checksums.sha256"
-    checksum_path.write_text(checksums, encoding="utf-8")
+    checksum_path.write_bytes(checksums.encode("utf-8"))
     return {
         "status": "NEGATIVE_EVIDENCE_RELEASE_BUILT",
         "release": RELEASE_NAME,
@@ -602,3 +621,201 @@ def build_final_negative_evidence_release(root: Path = ROOT) -> dict[str, Any]:
         "manifest_sha256": _sha256(manifest_path),
         "checksums_sha256": _sha256(checksum_path),
     }
+
+
+def _git(root: Path, *args: str, check: bool = True) -> str:
+    completed = subprocess.run(
+        ["git", *args],
+        cwd=root,
+        check=check,
+        capture_output=True,
+        text=True,
+    )
+    return completed.stdout.strip()
+
+
+def _verify_release_hashes(root: Path) -> tuple[bool, list[str]]:
+    release = root / RELEASE_ROOT
+    failures: list[str] = []
+    checksum_path = release / "checksums.sha256"
+    if not checksum_path.is_file():
+        return False, ["release checksums.sha256 missing"]
+    listed: set[str] = set()
+    for line in checksum_path.read_text(encoding="utf-8").splitlines():
+        parts = line.split("  ", 1)
+        if len(parts) != 2:
+            failures.append(f"malformed checksum line: {line}")
+            continue
+        expected, name = parts
+        path = release / name
+        try:
+            path.resolve().relative_to(release.resolve())
+        except ValueError:
+            failures.append(f"checksum path escapes release: {name}")
+            continue
+        listed.add(name)
+        if not path.is_file():
+            failures.append(f"release file missing: {name}")
+        elif _sha256(path) != expected:
+            failures.append(f"release checksum mismatch: {name}")
+    expected_files = {
+        path.name for path in release.iterdir() if path.is_file() and path != checksum_path
+    }
+    if listed != expected_files:
+        failures.append("release checksum inventory mismatch")
+    manifest_path = release / "ARTIFACT_MANIFEST.yaml"
+    if manifest_path.is_file():
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+        for name, expected in manifest.get("package_files", {}).items():
+            if not (release / name).is_file() or _sha256(release / name) != expected:
+                failures.append(f"release manifest package mismatch: {name}")
+        for relative, expected in manifest.get("source_artifacts", {}).items():
+            source = root / relative
+            if not source.is_file() or _sha256(source) != expected:
+                failures.append(f"release manifest source mismatch: {relative}")
+    return not failures, failures
+
+
+def _formal_construct_v2_state(root: Path) -> dict[str, Any]:
+    roots = (
+        Path("artifacts/construct_v2/predictions"),
+        Path("artifacts/construct_v2/model_outputs"),
+        Path("artifacts/construct_v2/uptake_model_outputs"),
+        Path("artifacts/construct_v2/reasoning_model_outputs"),
+    )
+    counts = {
+        path.as_posix(): (
+            sum(item.is_file() for item in (root / path).rglob("*"))
+            if (root / path).exists()
+            else 0
+        )
+        for path in roots
+    }
+    authorization_paths = (
+        Path("research/authorization/construct_v2_independent_audit.yaml"),
+        Path("research/authorization/construct_v2_execution_readiness.yaml"),
+    )
+    authorization_files = [
+        path.as_posix() for path in authorization_paths if (root / path).is_file()
+    ]
+    return {
+        "formal_prediction_files": sum(counts.values()),
+        "uptake_outputs": counts["artifacts/construct_v2/uptake_model_outputs"],
+        "reasoning_outputs": counts["artifacts/construct_v2/reasoning_model_outputs"],
+        "scientific_metrics": int(
+            (root / "artifacts/construct_v2/scientific_metrics.yaml").is_file()
+        ),
+        "authorization_files": authorization_files,
+        "runner_blocked": not authorization_files,
+        "counts_by_root": counts,
+    }
+
+
+def verify_final_closeout(
+    root: Path = ROOT, *, require_clean_worktree: bool = True
+) -> dict[str, Any]:
+    """Fail closed on any mutable claim, authorization, output, tag, or hash drift."""
+
+    root = root.resolve()
+    failures: list[str] = []
+    evidence = yaml.safe_load(
+        (root / "reports/final_closeout/final_evidence_map.yaml").read_text(encoding="utf-8")
+    )
+    hypotheses = yaml.safe_load(
+        (root / "research/final_closeout/hypothesis_closeout.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
+    claim_statuses = {claim["status"] for claim in evidence["claims"]}
+    hypothesis_statuses = {item["status"] for item in hypotheses["hypotheses"]}
+    forbidden_states = {"PENDING", "ACTIVE", "AUTHORIZED"}
+    if evidence.get("pending_claim_count") != 0 or claim_statuses & forbidden_states:
+        failures.append("pending claim detected")
+    if (
+        hypotheses.get("active_hypothesis_count") != 0
+        or hypothesis_statuses & forbidden_states
+    ):
+        failures.append("active hypothesis detected")
+
+    formal = _formal_construct_v2_state(root)
+    if formal["formal_prediction_files"] != 0:
+        failures.append("formal construct-v2 prediction or model output detected")
+    if formal["uptake_outputs"] != 0:
+        failures.append("formal construct-v2 uptake output detected")
+    if formal["reasoning_outputs"] != 0:
+        failures.append("formal construct-v2 reasoning output detected")
+    if formal["scientific_metrics"] != 0:
+        failures.append("formal construct-v2 scientific metrics detected")
+    if formal["authorization_files"] or not formal["runner_blocked"]:
+        failures.append("construct-v2 authorization or open runner detected")
+
+    candidate_paths = (
+        Path("research/preregistration/construct_v2"),
+        Path("artifacts/construct_v2_preregistration_candidate"),
+        Path("reports/construct_v2_preregistration_candidate_readiness.md"),
+        Path("reports/construct_v2_preregistration_candidate_decision.yaml"),
+        Path("reports/construct_v2_candidate_evidence_map.yaml"),
+        Path("reports/construct_v2_open_audit_issues.yaml"),
+    )
+    candidate_artifacts = [
+        path.as_posix() for path in candidate_paths if (root / path).exists()
+    ]
+    candidate_tags = [
+        tag for tag in _git(root, "tag", "--list", "*candidate*").splitlines() if tag
+    ]
+    if candidate_artifacts or candidate_tags:
+        failures.append("construct-v2 preregistration candidate detected")
+
+    tag_targets: dict[str, str | None] = {}
+    for tag, expected in HISTORICAL_TAGS.items():
+        completed = subprocess.run(
+            ["git", "rev-parse", "--verify", f"{tag}^{{commit}}"],
+            cwd=root,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        observed = completed.stdout.strip() if completed.returncode == 0 else None
+        tag_targets[tag] = observed
+        if observed != expected:
+            failures.append(f"historical tag mismatch: {tag}")
+
+    review_preservation: dict[str, dict[str, Any]] = {}
+    for name, expected in FROZEN_REVIEW_HASHES.items():
+        path = root / RESULTS / name
+        observed = _sha256(path) if path.is_file() else None
+        review_preservation[name] = {
+            "expected": expected,
+            "observed": observed,
+            "preserved": observed == expected,
+        }
+        if observed != expected:
+            failures.append(f"frozen review artifact mismatch: {name}")
+
+    release_valid, release_failures = _verify_release_hashes(root)
+    failures.extend(release_failures)
+    release_adjudication_path = root / RELEASE_ROOT / "FINAL_ADJUDICATION.yaml"
+    if not release_adjudication_path.is_file() or yaml.safe_load(
+        release_adjudication_path.read_text(encoding="utf-8")
+    ) != _final_adjudication_payload():
+        failures.append("release final adjudication mismatch")
+
+    clean = not _git(root, "status", "--porcelain=v1")
+    if require_clean_worktree and not clean:
+        failures.append("working tree is not clean")
+    result = {
+        "status": "PASS" if not failures else "FAIL",
+        "decision": "TERMINATE_SUCCESSOR_PROGRAM",
+        "failures": failures,
+        "no_pending_claims": evidence.get("pending_claim_count") == 0,
+        "no_active_hypotheses": hypotheses.get("active_hypothesis_count") == 0,
+        "scientific_execution": formal,
+        "candidate_tag_absent": not candidate_tags,
+        "candidate_artifacts_absent": not candidate_artifacts,
+        "historical_tags": tag_targets,
+        "review_returns_and_attestations": review_preservation,
+        "release_hashes_match": release_valid,
+        "working_tree_clean": clean,
+        "head": _git(root, "rev-parse", "HEAD"),
+    }
+    return result

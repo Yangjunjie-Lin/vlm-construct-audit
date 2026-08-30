@@ -33,6 +33,7 @@ from .data import generate_dataset
 from .final_closeout import (
     audit_final_review_integrity,
     build_final_negative_evidence_release,
+    verify_final_closeout,
 )
 from .interventions import build_interventions
 from .post_stop import (
@@ -256,6 +257,7 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         ),
         "audit-final-review-integrity": audit_final_review_integrity,
         "build-final-negative-evidence-release": build_final_negative_evidence_release,
+        "verify-final-closeout": verify_final_closeout,
     }
 
 
@@ -290,6 +292,7 @@ def main(argv: list[str] | None = None) -> int:
             "verify-construct-v2-preregistration-candidate",
             "audit-final-review-integrity",
             "build-final-negative-evidence-release",
+            "verify-final-closeout",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
@@ -314,6 +317,7 @@ def main(argv: list[str] | None = None) -> int:
         "verify-no-construct-v2-inference",
         "validate-construct-v2-post-review-policy",
         "verify-construct-v2-preregistration-candidate",
+        "verify-final-closeout",
     } and result.get("status") != "PASS":
         return 1
     if args.command == "adjudicate-construct-v2-human-review" and result.get(

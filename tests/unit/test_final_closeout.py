@@ -5,6 +5,7 @@ from vlm_construct_audit.final_closeout import (
     RELEASE_ROOT,
     audit_final_review_integrity,
     build_final_negative_evidence_release,
+    verify_final_closeout,
 )
 
 
@@ -34,3 +35,14 @@ def test_negative_evidence_release_checksums_match() -> None:
     for line in lines:
         expected, name = line.split("  ", 1)
         assert hashlib.sha256((release / name).read_bytes()).hexdigest() == expected
+
+
+def test_final_closeout_verifier_enforces_terminal_state() -> None:
+    build_final_negative_evidence_release()
+    result = verify_final_closeout(require_clean_worktree=False)
+    assert result["status"] == "PASS"
+    assert result["no_pending_claims"] is True
+    assert result["no_active_hypotheses"] is True
+    assert result["candidate_tag_absent"] is True
+    assert result["scientific_execution"]["formal_prediction_files"] == 0
+    assert result["scientific_execution"]["authorization_files"] == []
