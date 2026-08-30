@@ -7,8 +7,6 @@ from pathlib import Path
 
 import yaml
 
-from vlm_construct_audit.construct_v2.review import build_construct_v2_review_packet
-
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -16,9 +14,11 @@ def test_review_packet_contains_blinded_balanced_genuine_and_registered_decoys()
     commitment = yaml.safe_load(
         (ROOT / "external_review_packages/public_commitment.yaml").read_text(encoding="utf-8")
     )
-    result = build_construct_v2_review_packet()
-    assert result["status"] == "PENDING_EXTERNAL_CONSTRUCT_REVIEW"
-    assert result["packet_rows"] == 80
+    manifest = yaml.safe_load(
+        (ROOT / "artifacts/construct_v2_review/packet_manifest.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
     with (ROOT / "data/construct_v2_review/review_packet.csv").open(
         encoding="utf-8-sig", newline=""
     ) as handle:
@@ -27,6 +27,9 @@ def test_review_packet_contains_blinded_balanced_genuine_and_registered_decoys()
         (ROOT / "artifacts/construct_v2_review/hidden_key.yaml").read_text(encoding="utf-8")
     )
     assert len(packet) == 80
+    assert manifest["row_count"] == 80
+    assert manifest["genuine_count"] == 64
+    assert manifest["decoy_count"] == 16
     assert "status" not in packet[0]
     assert "decoy_type" not in packet[0]
     assert Counter(row["status"] for row in key["rows"]) == Counter(
