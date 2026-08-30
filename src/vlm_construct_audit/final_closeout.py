@@ -400,8 +400,8 @@ def audit_final_review_integrity(root: Path = ROOT) -> dict[str, Any]:
     yaml_path = root / AUDIT_YAML
     md_path = root / AUDIT_MD
     yaml_path.parent.mkdir(parents=True, exist_ok=True)
-    yaml_path.write_text(yaml.safe_dump(audit, sort_keys=False), encoding="utf-8")
-    md_path.write_text(_audit_markdown(audit), encoding="utf-8")
+    yaml_path.write_bytes(yaml.safe_dump(audit, sort_keys=False).encode("utf-8"))
+    md_path.write_bytes(_audit_markdown(audit).encode("utf-8"))
     return audit
 
 

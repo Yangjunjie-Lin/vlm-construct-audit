@@ -97,7 +97,7 @@ claims:
       - A replacement or third review is authorized.
     hashes:
       reports/construct_v2_human_review_decision.yaml: 6ed2c07bd64c6bed477ff245f0301c7bf8ee68595bde72b8d901b7cdce8ae644
-      reports/final_closeout/review_integrity_audit.yaml: 45c4e7dd7eb04b40b02da9a3b63d5e44a1c3c10773ab390e1f2d1a410375022e
+      reports/final_closeout/review_integrity_audit.yaml: 7537a75ae2fce182067686d516f8510caf140b91b07e174c2c4481fad17574cc
       data/construct_v2_review/results/human_construct_review_metrics.yaml: 0fa818864f323e79fe5dabde18c01b45ebeeb8ff3566a301de295cb20c7adf13
   - claim_id: EVIDENCE-009
     claim: Formal Direction P v2 VLM scientific inference count is zero.
