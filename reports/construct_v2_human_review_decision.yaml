@@ -1,0 +1,23 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+decision: CONSTRUCT_V2_HUMAN_NO_GO
+input_state: HUMAN_CONSTRUCT_REVIEW_FAIL
+decision_policy: research/construct_restart/v2_post_review_decision_policy.yaml
+decision_policy_sha256: 89a912cf6d62a2bb2f52d7ce5a4b74a4578ce557f84277dbaeec43f5cfc63217
+human_metrics_sha256: 0fa818864f323e79fe5dabde18c01b45ebeeb8ff3566a301de295cb20c7adf13
+validation_failures: []
+reviewer_count: 2
+human_pass_authorizes_candidate_only: false
+runner_authorized: false
+formal_vlm_inference_authorized: false
+execution_authorization_created: false
+no_inference:
+  formal_predictions: 0
+  model_outputs: 0
+  uptake_outputs: 0
+  reasoning_outputs: 0
+  scientific_metrics: 0
+  authorization_files: 0
+  runner_blocked: true
+  status: PASS
+exact_next_action: TERMINATE_DIRECTION_P
