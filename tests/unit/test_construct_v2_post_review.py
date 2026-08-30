@@ -415,3 +415,11 @@ def test_frozen_bundles_tags_recoalign_boundary_and_no_inference() -> None:
     no_inference = verify_no_construct_v2_inference()
     assert no_inference["status"] == "PASS"
     assert no_inference["formal_prediction_files"] == 0
+
+
+def test_construct_validator_declares_frozen_tokenizer_runtime() -> None:
+    project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert '"transformers==4.49.0"' in project
+    registry = yaml.safe_load((ROOT / "configs/p_mini_pilot_models.yaml").read_text())
+    assert registry["transformers_version"] == "4.49.0"
+    assert {model["transformers_version"] for model in registry["models"]} == {"4.49.0"}
