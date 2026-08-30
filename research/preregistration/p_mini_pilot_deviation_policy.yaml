@@ -72,6 +72,13 @@ validation_attempt_log:
     disposition: normalized method-lock source hashing to UTF-8 LF and isolated all three test writers from tracked artifacts
     scientific_output_available: false
     numerical_or_design_change: false
+  - event_id: PRETAG_VALIDATION_006
+    check: third remote fresh-clone preregistration manifest verification
+    result: FAIL
+    reason: the preregistration power-analysis manifest hash had captured stale CRLF working-tree bytes despite the repository LF checkout policy
+    disposition: mechanically normalized the unchanged power-analysis YAML to LF and rebuilt the preregistration manifest
+    scientific_output_available: false
+    numerical_or_design_change: false
 failed_scientific_runs: []
 authorization_boundary:
   authoring_agent_may_create_independent_audit_file: false
