@@ -43,6 +43,11 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _crlf_bytes(text: str) -> bytes:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    return normalized.replace("\n", "\r\n").encode("utf-8")
+
+
 def _descriptor(row: dict[str, Any], role: str) -> str:
     return next(entity["descriptor"] for entity in row["entities"] if entity["role"] == role)
 
@@ -199,8 +204,9 @@ def build_construct_v2_review_packet() -> dict[str, Any]:
         for row in packet_rows:
             writer.writerow({"review_id": row["review_id"]})
     instructions_path = ROOT / "data/construct_v2_review/review_instructions.md"
-    instructions_path.write_text(
-        """# Independent Direction P v2 construct review
+    instructions_path.write_bytes(
+        _crlf_bytes(
+            """# Independent Direction P v2 construct review
 
 Review all 80 rows independently. Do not consult another reviewer, the author,
 the hidden key, generator code, or another reviewer's answers. The packet mixes
@@ -228,8 +234,8 @@ agentic build. Two eligible reviewers are required. Agreement is computed across
 all binary construct judgments, with overall agreement >=0.95 and Cohen's kappa
 >=0.80. Genuine scenes require zero critical errors. At least 90% of decoys must
 be marked `critical_error=yes`. Do not edit `review_packet.csv`.
-""",
-        encoding="utf-8",
+"""
+        )
     )
     hidden_path = ROOT / "artifacts/construct_v2_review/hidden_key.yaml"
     hidden_path.parent.mkdir(parents=True, exist_ok=True)
@@ -240,7 +246,7 @@ be marked `critical_error=yes`. Do not edit `review_packet.csv`.
         "decoy_count": 16,
         "rows": keys,
     }
-    hidden_path.write_text(yaml.safe_dump(hidden, sort_keys=False), encoding="utf-8")
+    hidden_path.write_bytes(_crlf_bytes(yaml.safe_dump(hidden, sort_keys=False)))
     manifest_path = ROOT / "artifacts/construct_v2_review/packet_manifest.yaml"
     files = [packet_path, instructions_path, template_path, hidden_path]
     manifest = {
@@ -259,7 +265,7 @@ be marked `critical_error=yes`. Do not edit `review_packet.csv`.
         "files": {str(path.relative_to(ROOT)).replace("\\", "/"): _sha256(path) for path in files},
         "agent_or_author_may_serve_as_reviewer": False,
     }
-    manifest_path.write_text(yaml.safe_dump(manifest, sort_keys=False), encoding="utf-8")
+    manifest_path.write_bytes(_crlf_bytes(yaml.safe_dump(manifest, sort_keys=False)))
     return {
         "status": "PENDING_EXTERNAL_CONSTRUCT_REVIEW",
         "packet_rows": len(packet_rows),
