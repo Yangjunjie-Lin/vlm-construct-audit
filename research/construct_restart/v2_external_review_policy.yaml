@@ -1,0 +1,72 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+policy_frozen_before_human_results: true
+reviewer_count_required: 2
+packet_row_count: 80
+reviewer_eligibility:
+  is_real_human: true
+  independent_of_dataset_authorship: true
+  independent_of_generator_implementation: true
+  did_not_consult_other_reviewer: true
+  did_not_use_ai_or_automated_model: true
+  did_not_access_repository: true
+  did_not_access_hidden_key: true
+  did_not_access_generator_code: true
+  receives_only_assigned_offline_bundle: true
+  completes_every_row: true
+  author_or_agent_may_serve_as_reviewer: false
+response_contract:
+  nominal_categories: [yes, no, uncertain]
+  automatic_completion_or_repair: forbidden
+  reviewer_notes_required_per_row: true
+  judgment_fields:
+    - visual_first_hop_correct
+    - bridge_entity_uniquely_identifiable
+    - text_second_hop_correct
+    - text_second_hop_not_visually_represented
+    - conditions_differ_in_exactly_one_target_relation
+    - no_direct_image_text_conflict
+    - joint_answer_unique
+    - image_alone_not_uniquely_sufficient
+    - evidence_alone_not_uniquely_sufficient
+    - nl_triples_fact_equivalent
+    - critical_error
+uncertain_handling:
+  category_role: third_nominal_category
+  convert_to_yes: forbidden
+  remove_from_agreement: forbidden
+  remove_from_kappa: forbidden
+  genuine_required_construct_field_no_or_uncertain_passes: false
+  genuine_critical_error_required_value: no
+  decoy_detection_success_required_value: yes
+  decoy_uncertain_is_detection_success: false
+agreement_analysis:
+  cohen_kappa: three_category_nominal
+  gate_uses_original_two_reviewer_results: true
+  author_or_third_party_adjudication_changes_gate: false
+  required_reports:
+    - all_field_raw_agreement
+    - all_field_nominal_cohen_kappa
+    - per_field_agreement
+    - per_field_kappa
+    - uncertain_count
+    - reviewer_specific_decoy_detection
+    - genuine_construct_failure_count
+human_gate:
+  reviewer_count: 2
+  response_completeness: 1.00
+  attestation_validation: PASS
+  overall_agreement_minimum: 0.95
+  overall_nominal_cohen_kappa_minimum: 0.80
+  genuine_required_field_no_count: 0
+  genuine_required_field_uncertain_count: 0
+  genuine_critical_error_yes_or_uncertain_count: 0
+  minimum_reviewer_decoy_detection: 0.90
+  deleted_disagreements: 0
+  model_or_agent_review_used: false
+mapping_release:
+  before_both_complete_returns_validate: forbidden
+  after_both_complete_returns_validate: required
+privacy:
+  public_reviewer_identifier: reviewer_code_only
+  unnecessary_personal_identity_information: forbidden

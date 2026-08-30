@@ -16,10 +16,13 @@ from .construct_v2 import (
     audit_construct_v2_leakage,
     build_construct_v2_report,
     build_construct_v2_review_packet,
+    build_external_review_packages,
     generate_construct_v2,
+    import_external_review_returns,
     retire_v1,
     run_construct_v2_oracles,
     validate_construct_v2,
+    verify_external_review_packages,
     verify_no_construct_v2_inference,
 )
 from .data import generate_dataset
@@ -224,6 +227,9 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "run-construct-v2-oracles": run_construct_v2_oracles,
         "analyze-construct-v2-power": _analyze_construct_v2_power_cli,
         "build-construct-v2-review-packet": build_construct_v2_review_packet,
+        "build-construct-v2-external-review-packages": build_external_review_packages,
+        "verify-construct-v2-external-review-packages": verify_external_review_packages,
+        "import-construct-v2-external-review": import_external_review_returns,
         "verify-no-construct-v2-inference": verify_no_construct_v2_inference,
         "build-construct-v2-report": build_construct_v2_report,
     }
@@ -249,6 +255,9 @@ def main(argv: list[str] | None = None) -> int:
             "generate-construct-v2", "validate-construct-v2",
             "audit-construct-v2-leakage", "run-construct-v2-oracles",
             "analyze-construct-v2-power", "build-construct-v2-review-packet",
+            "build-construct-v2-external-review-packages",
+            "verify-construct-v2-external-review-packages",
+            "import-construct-v2-external-review",
             "verify-no-construct-v2-inference", "build-construct-v2-report",
         ],
     )

@@ -1,0 +1,42 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+status: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+source_freeze:
+  branch: codex/construct-valid-direction-p-v2
+  commit: 1552a3c77e0bdd6bf0fdb0bf49447c19df4af6f2
+  annotated_tag: construct-v2-automated-preaudit-freeze
+packet_row_count: 80
+original_packet:
+  path: data/construct_v2_review/review_packet.csv
+  sha256: fb50c9a303bf9f606669b175822f483cc3da80797a3eabc7d67c611b7887a6a3
+frozen_hidden_key_sha256: 8715c6568816a69299a6e48fc5bab69b24368b99025a41c17c29ce0619912779
+frozen_packet_manifest_sha256: 3312b639a3a99b8aa4ff365999eb729869ab933ecd92385d5da0bd14291f4360
+amendment:
+  path: research/construct_restart/v2_review_blinding_amendment_001.yaml
+  sha256: 9ceadcc8826d81bd66ab66a2b80affa92f7da625b8dbb1d28aaf19ee9060d011
+review_policy:
+  path: research/construct_restart/v2_external_review_policy.yaml
+  sha256: 710c48c7e2f7b1a027d00e166ab862d53b5c5e9b819ced7712020238a8c9c740
+reviewer_count_required: 2
+bundles:
+  reviewer_1:
+    path: external_review_packages/reviewer_1_bundle.zip
+    sha256: c7c1547dfff6baf016d3a9882ce252af196b165c91a0fdf58e89b7025eb3e496
+    sha256_file: external_review_packages/reviewer_1_bundle_sha256.txt
+    mapping_sha256_commitment: 71a48a2eae3ba87ec97a7e98ffbff3c749fbcf8cf62a886ea259e75595cdb96f
+  reviewer_2:
+    path: external_review_packages/reviewer_2_bundle.zip
+    sha256: f0dd40c5eab48c4f73f6bbddde33800165c18a4792389c7ea43c223529716697
+    sha256_file: external_review_packages/reviewer_2_bundle_sha256.txt
+    mapping_sha256_commitment: 442dd8a1e45ffd03ad7e7752a8499f8957f5885799320277b2bcf77ee450f79d
+private_mapping_controls:
+  gitignored: true
+  included_in_bundle: false
+  publish_before_both_returns_validate: false
+original_packet_unchanged: true
+formal_vlm_inference_count: 0
+uptake_output_count: 0
+reasoning_output_count: 0
+scientific_metrics_count: 0
+runner_blocked: true
+model_or_agent_review_used: false
