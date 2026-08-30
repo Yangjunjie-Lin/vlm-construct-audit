@@ -1,0 +1,58 @@
+{
+  "audit_status": "CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED",
+  "direct_gate": {
+    "overall_lower_bound_at_minimum": 0.8055633308860078,
+    "overall_minimum_observed_accuracy": 0.8541666666666666,
+    "overall_minimum_successes": 164,
+    "per_task_lower_bound_at_minimum": 0.8193634792026964,
+    "per_task_minimum_observed_accuracy": 0.9166666666666666,
+    "per_task_minimum_successes_for_same_cutoff": 44
+  },
+  "gate_definition": {
+    "bound": "one_sided_95_percent_clopper_pearson",
+    "direct_lower_bound_cutoff": 0.8,
+    "negative_control_upper_bound_cutoff": 0.6,
+    "overall_scene_count": 192,
+    "scenes_per_task": 48,
+    "tasks": 4
+  },
+  "measurement_theory": {
+    "aggregate_classification": "unjustified_reflective_aggregate",
+    "primary_task_specific_minima_required": [
+      "entity_to_direct_relation",
+      "relation_direction"
+    ],
+    "reason": "The four probes are distinct prerequisite skills; high object, attribute, or ID mapping cannot compensate for failed directed-relation uptake."
+  },
+  "negative_control": {
+    "cutoff_assessment": "too_permissive_for_a_chance_0.25_negative_control",
+    "four_choice_chance": 0.25,
+    "overall_maximum_successes_that_still_pass": 103,
+    "overall_observed_accuracy_at_maximum": 0.5364583333333334,
+    "overall_upper_bound_at_maximum": 0.5975195274463327,
+    "per_task_maximum_successes_that_still_pass": 22,
+    "per_task_observed_accuracy_at_maximum": 0.4583333333333333,
+    "per_task_upper_bound_at_maximum": 0.5863429977919278,
+    "required_diagnostics": [
+      "absolute_accuracy",
+      "correct_vs_irrelevant_contrast",
+      "answer_prior",
+      "option_position_dependence"
+    ]
+  },
+  "reporting_boundary": {
+    "failed_cell_claim_eligibility_forbidden": true,
+    "failed_cell_itt_reporting_required": true,
+    "separation_in_frozen_estimand_text": true
+  },
+  "schema_version": 1,
+  "worst_case_masking": {
+    "aggregate_gate_can_mask_primary_relation_failure": true,
+    "assumption": "three non-relation-direction tasks score 48/48",
+    "overall_lower_bound": 0.8055633308860078,
+    "overall_successes": 164,
+    "relation_direction_lower_bound": 0.2958770027182113,
+    "relation_direction_minimum_successes_while_overall_gate_passes": 20,
+    "relation_direction_observed_accuracy": 0.4166666666666667
+  }
+}
