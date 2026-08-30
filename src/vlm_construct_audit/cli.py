@@ -11,6 +11,7 @@ import yaml
 
 from .audit import build_audit_decisions
 from .calibration.runner import run_calibration, run_smoke
+from .construct_v2 import retire_v1
 from .data import generate_dataset
 from .interventions import build_interventions
 from .post_stop import (
@@ -23,7 +24,6 @@ from .post_stop import (
     seal_direction,
 )
 from .preregistration import (
-    validate_independent_authorization,
     validate_p_mini_pilot_preregistration,
     verify_frozen_post_stop_artifacts_read_only,
     verify_no_p_mini_pilot_inference,
@@ -125,23 +125,14 @@ def _run_pilot() -> int:
 
 
 def _run_p_mini_pilot() -> int:
-    authorization = validate_independent_authorization()
-    if not authorization["valid"]:
-        _show(
-            {
-                "status": "NOT_AUTHORIZED_PENDING_INDEPENDENT_PREREGISTRATION_AUDIT",
-                "no_inference_started": True,
-                "authorization": authorization,
-            }
-        )
-        return 2
     _show(
         {
-            "status": "AUTHORIZED_AUDIT_VALID_BUT_SCIENTIFIC_RUNNER_NOT_BUNDLED",
+            "status": "V1_SCIENTIFIC_EXECUTION_PERMANENTLY_FORBIDDEN",
+            "audit_decision": "AUDIT_FAIL_CONSTRUCT_VALIDITY",
             "no_inference_started": True,
         }
     )
-    return 3
+    return 2
 
 
 def _read_loop_a() -> dict[str, Any]:
@@ -206,6 +197,7 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "validate-p-mini-pilot-preregistration": validate_p_mini_pilot_preregistration,
         "verify-p-mini-pilot-preregistration": verify_p_mini_pilot_preregistration,
         "verify-no-p-mini-pilot-inference": verify_no_p_mini_pilot_inference,
+        "retire-p-mini-pilot-v1": retire_v1,
     }
 
 
@@ -225,6 +217,7 @@ def main(argv: list[str] | None = None) -> int:
             "import-human-review", "adjudicate-post-stop", "verify-post-stop-artifacts",
             "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
             "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
+            "retire-p-mini-pilot-v1",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")

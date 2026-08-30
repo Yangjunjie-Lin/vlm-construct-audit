@@ -1,0 +1,19 @@
+schema_version: 1
+protocol: direction_p_power_calibrated_mini_pilot_v1
+preregistration_tag: p-mini-pilot-preregistered
+preregistration_commit: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+audit_decision: AUDIT_FAIL_CONSTRUCT_VALIDITY
+audit_commit: 97c64947a0e6b30b0c9a0654519bbd93ae37d846
+scientific_inference_executed: false
+runner_authorized: false
+v1_scientific_execution_permanently_forbidden: true
+ordinary_amendment_allowed: false
+required_restart: NEW_CONSTRUCT_NEW_DATA_NEW_PREREGISTRATION
+allowed_historical_roles:
+  - failed preregistration provenance
+  - construct-validity negative case
+immutable_assets:
+  preregistration_tag: true
+  formal_scenes: true
+  p3_outputs: true
+
