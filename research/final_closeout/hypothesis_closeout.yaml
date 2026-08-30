@@ -1,0 +1,106 @@
+schema_version: 1
+program: vlm-construct-audit
+decision: TERMINATE_SUCCESSOR_PROGRAM
+allowed_statuses:
+  - FALSIFIED
+  - NO_GO
+  - NOT_IDENTIFIED
+  - NOT_EXECUTED
+  - RETIRED
+  - INVALID_MEASUREMENT
+  - INVALID_REVIEW
+  - INCONCLUSIVE
+active_hypothesis_count: 0
+new_hypothesis_creation: forbidden
+hypotheses:
+  - hypothesis_id: H-RECOALIGN-STRUCTURED-INTERFACE-GAP
+    hypothesis: Structured Reasoning Interface Gap
+    status: FALSIFIED
+    basis: The frozen ReCoAlign closeout rejected the claim-bearing method line.
+    supporting_artifacts:
+      - docs/recoalign_provenance_boundary.md
+    boundary: This historical result is not a successor-program real-VLM mechanism finding.
+  - hypothesis_id: H-GRAPH-SUPERIORITY
+    hypothesis: Graph representations are superior for the target VLM mechanism claim.
+    status: NOT_IDENTIFIED
+    basis: No valid design isolated graph representation as the causal source of performance.
+    supporting_artifacts:
+      - reports/claim_boundary.md
+      - docs/recoalign_provenance_boundary.md
+    boundary: Downstream accuracy cannot identify an internal graph mechanism.
+  - hypothesis_id: H-SEMANTIC-SUFFICIENCY
+    hypothesis: The measured outputs establish semantic sufficiency.
+    status: NOT_IDENTIFIED
+    basis: Measurement validity and behavioral output do not identify semantic sufficiency.
+    supporting_artifacts:
+      - docs/claim_taxonomy.md
+      - reports/claim_boundary.md
+    boundary: Measurement validity may not be relabeled semantic validity.
+  - hypothesis_id: H-AUDIT-V2
+    hypothesis: AuditV2 satisfies the frozen operating gates.
+    status: NO_GO
+    basis: Non-strong sensitivity and threshold-stability gates failed after the allowed repair.
+    supporting_artifacts:
+      - reports/tier0_5_final_decision.yaml
+      - research/post_stop/failure_decomposition.md
+    boundary: The later P method result does not repair or reinterpret AuditV2.
+  - hypothesis_id: H-DIRECTION-M
+    hypothesis: Direction M establishes a stable measurement-contract decomposition.
+    status: NO_GO
+    basis: The only allowed development revision did not complete the three-model gate.
+    supporting_artifacts:
+      - reports/post_stop_direction_m_decision.yaml
+    boundary: Development-only evidence cannot support a cross-family or mechanism claim.
+  - hypothesis_id: H-DIRECTION-U
+    hypothesis: Direction U identifies post-treatment-safe uptake.
+    status: NO_GO
+    basis: Development failed after the only permitted revision; no holdout was authorized.
+    supporting_artifacts:
+      - reports/post_stop_direction_u_decision.yaml
+    boundary: No real-VLM causal or principal-stratum effect was identified.
+  - hypothesis_id: H-DIRECTION-P-V1
+    hypothesis: Direction P v1 can validly estimate its bounded supplied-evidence effect.
+    status: INVALID_MEASUREMENT
+    basis: The independent audit found unrecorded answer leakage and a non-equivalent construct.
+    supporting_artifacts:
+      - reports/independent_audit/final_audit_decision.yaml
+      - research/construct_restart/v1_retirement.yaml
+    boundary: The v1 preregistration is preserved only as a construct-validity negative case.
+  - hypothesis_id: H-DIRECTION-P-V2
+    hypothesis: Direction P v2 has a human review sufficient to authorize scientific execution.
+    status: INCONCLUSIVE
+    basis: The frozen human gate failed and preserved artifacts do not credibly establish reviewer independence.
+    supporting_artifacts:
+      - reports/construct_v2_human_review_decision.yaml
+      - reports/final_closeout/review_integrity_audit.yaml
+    boundary: Review integrity is inconclusive; neither a human GO nor a construct falsification follows.
+  - hypothesis_id: H-VGCA-VALIDATED-REAL-VLM
+    hypothesis: VGCA is a validated real-VLM method.
+    status: NOT_EXECUTED
+    basis: No formal Direction P v2 VLM scientific inference was run.
+    supporting_artifacts:
+      - reports/construct_v2_human_review_decision.yaml
+    boundary: Known-DGP calibration cannot validate a real-VLM method.
+  - hypothesis_id: H-VLM-CVA-COMPLETED-BENCHMARK
+    hypothesis: VLM-CVA is a completed community benchmark.
+    status: NOT_EXECUTED
+    basis: The construct never passed every authorization gate and no benchmark expansion was authorized.
+    supporting_artifacts:
+      - research/construct_restart/v2_go_no_go.yaml
+      - reports/construct_v2_human_review_decision.yaml
+    boundary: Frozen construct artifacts are not a benchmark leaderboard or completed benchmark.
+  - hypothesis_id: H-CROSS-MODAL-BRIDGE-REAL-MODEL-EFFECT
+    hypothesis: Cross-modal bridge certification produces a real-model effect.
+    status: NOT_EXECUTED
+    basis: Formal VLM inference, predictions, and scientific metrics are all zero.
+    supporting_artifacts:
+      - external_review_packages/public_commitment.yaml
+      - reports/construct_v2_human_review_decision.yaml
+    boundary: V2 establishes neither ability nor inability to perform bridge composition.
+  - hypothesis_id: H-RECOALIGN-METHOD-LINE
+    hypothesis: ReCoAlign remains an active method-development line.
+    status: RETIRED
+    basis: Its repository is archived and its closeout decision terminates the program.
+    supporting_artifacts:
+      - docs/recoalign_provenance_boundary.md
+    boundary: ReCoAlign remains a frozen negative-evidence case only.
