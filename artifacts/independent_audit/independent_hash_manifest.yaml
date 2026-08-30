@@ -1,0 +1,87 @@
+{
+  "aggregate_sha256": {
+    "actual": "20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2",
+    "expected": "20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2"
+  },
+  "audited_commit": "9de60b87ec54bc852a7bb2e9cff87d9c23638042",
+  "audited_tag": "p-mini-pilot-preregistered",
+  "checks": {
+    "aggregate_sha256_match": true,
+    "data_manifest_hash_match": true,
+    "frozen_manifest_files_unchanged_on_audit_branch": true,
+    "historical_tag_targets_match": true,
+    "manifest_file_count_45": true,
+    "manifest_file_hashes_match": true,
+    "method_lock_file_hash_match": true,
+    "method_source_hashes_match": true,
+    "model_registry_hash_match": true,
+    "no_scientific_outputs": true,
+    "preregistration_tag_annotated": true,
+    "preregistration_tag_target_exact": true,
+    "recoalign_working_tree_clean": true,
+    "scene_file_hashes_match": true
+  },
+  "data_manifest_sha256": {
+    "actual": "1eef8c25123326549c345b91dcec861941b45001edd19414884339bce0c1d534",
+    "expected": "1eef8c25123326549c345b91dcec861941b45001edd19414884339bce0c1d534"
+  },
+  "historical_tags": {
+    "vlm-construct-audit-post-stop-final": {
+      "actual": "f993282e0a27b8da0ba1c239fb96715c9fc5b79a",
+      "expected": "f993282e0a27b8da0ba1c239fb96715c9fc5b79a"
+    },
+    "vlm-construct-audit-tier0-5-stop": {
+      "actual": "ce0e797a4926ab5d2309915c2eef14fd9c5be44d",
+      "expected": "ce0e797a4926ab5d2309915c2eef14fd9c5be44d"
+    }
+  },
+  "manifest_file_count": 45,
+  "manifest_mismatches": [],
+  "method_lock_sha256": {
+    "actual": "c252336a8e14e37f0fce14329a845c042a5ff0037aa5692544f6aab14f62f978",
+    "expected": "c252336a8e14e37f0fce14329a845c042a5ff0037aa5692544f6aab14f62f978"
+  },
+  "method_source_mismatches": [],
+  "model_registry_sha256": {
+    "actual": "738bef0cce88957e81b670665289d830c7d451d6774f75d9164327d88585c2d6",
+    "expected": "738bef0cce88957e81b670665289d830c7d451d6774f75d9164327d88585c2d6"
+  },
+  "protected_diff": [],
+  "recoalign": {
+    "branch": "release/recoalign-closeout-complete",
+    "exists": true,
+    "head": "e200921af44e9307c60f470c247f808a75e7d625",
+    "path": "D:\\UoM_CS\\GitHub\\recoalign",
+    "working_tree_clean": true
+  },
+  "scene_file_hashes": {
+    "data/p_mini_pilot/engineering_smoke.jsonl": {
+      "actual": "e79ad536c942dc408d97c2b9924a39780fca2c783a9ddfa4022dfb5cee2502da",
+      "expected": "e79ad536c942dc408d97c2b9924a39780fca2c783a9ddfa4022dfb5cee2502da"
+    },
+    "data/p_mini_pilot/reasoning_test.jsonl": {
+      "actual": "c8b10af2a3df69ccccb31009c28bbd1669c278f8ad3e789482a44835e9778024",
+      "expected": "c8b10af2a3df69ccccb31009c28bbd1669c278f8ad3e789482a44835e9778024"
+    },
+    "data/p_mini_pilot/scenes.jsonl": {
+      "actual": "9f7e8f9d535be270b65112ffe3e1dfe646f30fbde51c39b6611782d4c149f33e",
+      "expected": "9f7e8f9d535be270b65112ffe3e1dfe646f30fbde51c39b6611782d4c149f33e"
+    },
+    "data/p_mini_pilot/uptake_validation.jsonl": {
+      "actual": "de4dbd1e750ea6093e8ab277485e212e527b6629c9670a288ab94ec932bf7b9e",
+      "expected": "de4dbd1e750ea6093e8ab277485e212e527b6629c9670a288ab94ec932bf7b9e"
+    }
+  },
+  "schema_version": 1,
+  "scientific_output_counts": {
+    "authorization": 0,
+    "model_outputs": 0,
+    "predictions": 0,
+    "reasoning_results": 0,
+    "scientific_metrics": 0
+  },
+  "status": "PASS",
+  "tag_object": "a58898f7b1cbd50f61296cd12476ef599c1ba546",
+  "tag_target": "9de60b87ec54bc852a7bb2e9cff87d9c23638042",
+  "tag_type": "tag"
+}

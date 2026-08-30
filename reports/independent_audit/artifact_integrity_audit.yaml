@@ -1,0 +1,38 @@
+schema_version: 1
+status: PASS
+audited_tag: p-mini-pilot-preregistered
+tag_type: annotated
+tag_object: a58898f7b1cbd50f61296cd12476ef599c1ba546
+tag_target: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+manifest:
+  file_count: 45
+  expected_aggregate_sha256: 20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2
+  independently_recomputed_aggregate_sha256: 20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2
+  mismatches: []
+method_lock_sha256: c252336a8e14e37f0fce14329a845c042a5ff0037aa5692544f6aab14f62f978
+model_registry_sha256: 738bef0cce88957e81b670665289d830c7d451d6774f75d9164327d88585c2d6
+data_manifest_sha256: 1eef8c25123326549c345b91dcec861941b45001edd19414884339bce0c1d534
+historical_integrity:
+  audit_v2: LOOP_A_NO_GO
+  direction_p_known_dgp_holdout_execution_count: 1
+  direction_m_holdout_execution_count: 0
+  direction_u_holdout_execution_count: 0
+  human_review: HUMAN_REVIEW_GO
+  tier0_5_tag_target: ce0e797a4926ab5d2309915c2eef14fd9c5be44d
+  post_stop_final_tag_target: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+recoalign:
+  head: e200921af44e9307c60f470c247f808a75e7d625
+  branch: release/recoalign-closeout-complete
+  working_tree_clean: true
+  modified_by_audit: false
+scientific_output_counts:
+  formal_predictions: 0
+  reasoning_test_model_outputs: 0
+  uptake_validation_model_outputs: 0
+  scientific_metrics: 0
+  authorization_files: 0
+comparison:
+  repository_verifier: PASS
+  independent_standard_library_verifier: PASS
+  disagreement: false
+independent_evidence: artifacts/independent_audit/independent_hash_manifest.yaml

@@ -1,0 +1,161 @@
+{
+  "audited_engineering_scene_count": 12,
+  "audited_reasoning_scene_count": 768,
+  "audited_scene_count": 960,
+  "audited_uptake_scene_count": 192,
+  "character_length_difference": {
+    "natural_language": {
+      "max": 0,
+      "mean": 0.0
+    },
+    "triples": {
+      "max": 0,
+      "mean": 0.0
+    }
+  },
+  "checks": {
+    "alternative_path_count_zero": true,
+    "correct_corrupted_whitespace_token_balance": true,
+    "corrupted_implied_answer_correct_and_changed": true,
+    "corruption_changed_fact_count_one": true,
+    "corruption_is_directional_inverse_only": true,
+    "engineering_ids_disjoint": true,
+    "entity_answer_namespace_separation": true,
+    "formal_engineering_seed_disjoint": true,
+    "natural_language_canonical_equality": true,
+    "option_position_balance": true,
+    "relation_direction_matches_coordinates": true,
+    "scene_count_960": true,
+    "split_counts_192_768": true,
+    "split_disjointness": true,
+    "split_union_equals_scenes": true,
+    "triples_canonical_equality": true,
+    "two_hop_path_correct": true,
+    "unique_correct_answer": true,
+    "unique_formal_seed_values": true,
+    "unique_scene_ids": true,
+    "uptake_task_counts_48_each": true
+  },
+  "construct_validity_status": "FAIL_UNRECORDED_ANSWER_LEAKAGE",
+  "leakage": {
+    "answer_frequency": {
+      "primary_answer_counts": {
+        "ANS_REL_NE": 240,
+        "ANS_REL_NW": 240,
+        "ANS_REL_SE": 240,
+        "ANS_REL_SW": 240
+      },
+      "primary_majority_rate": 0.25,
+      "uptake_by_task": {
+        "entity_id_to_semantic_entity": {
+          "answer_counts": {
+            "ANS_ENTITY_COBALT_TRIANGLE": 16,
+            "ANS_ENTITY_CRIMSON_STAR": 16,
+            "ANS_ENTITY_IVORY_CIRCLE": 16
+          },
+          "correct_option_position_counts": {
+            "3": 48
+          },
+          "majority_answer_rate": 0.3333333333333333,
+          "scene_count": 48,
+          "task_label_to_option_position_accuracy": 1.0
+        },
+        "entity_to_attribute": {
+          "answer_counts": {
+            "ANS_COLOR_AMBER": 16,
+            "ANS_COLOR_EMERALD": 16,
+            "ANS_COLOR_VIOLET": 16
+          },
+          "correct_option_position_counts": {
+            "0": 48
+          },
+          "majority_answer_rate": 0.3333333333333333,
+          "scene_count": 48,
+          "task_label_to_option_position_accuracy": 1.0
+        },
+        "entity_to_direct_relation": {
+          "answer_counts": {
+            "ANS_DIR_S": 48
+          },
+          "correct_option_position_counts": {
+            "1": 48
+          },
+          "majority_answer_rate": 1.0,
+          "scene_count": 48,
+          "task_label_to_option_position_accuracy": 1.0
+        },
+        "relation_direction": {
+          "answer_counts": {
+            "ANS_DIR_S": 48
+          },
+          "correct_option_position_counts": {
+            "2": 48
+          },
+          "majority_answer_rate": 1.0,
+          "scene_count": 48,
+          "task_label_to_option_position_accuracy": 1.0
+        }
+      }
+    },
+    "candidate_id_semantic_leakage": {
+      "classification": "predeclared_in_generator_but_not_justified_as_nonleaking_measurement_label",
+      "primary_candidate_sets_directly_encode_NE_NW_SE_SW_rate": 1.0
+    },
+    "correct_evidence_only_solvability": 1.0,
+    "corrupted_evidence_only_gold_accuracy": 0.0,
+    "image_coordinate_only_solvability": 1.0,
+    "option_position_leakage": {
+      "scene_index_mod4_to_correct_position_accuracy": 1.0,
+      "uptake_task_or_index_to_correct_position_accuracy": 1.0
+    },
+    "preregistration_leakage_acknowledgments": {
+      "entity_id_leakage": false,
+      "option_position_leakage": false,
+      "question_only_leakage": false,
+      "template_index_leakage": false
+    },
+    "question_only_answer_leakage": {
+      "finding": "FATAL_UNRECORDED_LEAKAGE",
+      "scene_index_mod4_to_answer_id_accuracy": 1.0,
+      "scene_index_visible_in_question_entity_ids_rate": 1.0
+    },
+    "relation_frequency": {
+      "entity_to_direct_relation_all_same_answer": true,
+      "primary_answer_relation_counts": {
+        "northeast_of": 240,
+        "northwest_of": 240,
+        "southeast_of": 240,
+        "southwest_of": 240
+      },
+      "primary_balanced": true,
+      "relation_direction_all_same_answer": true
+    },
+    "template_index_leakage": {
+      "template_index_mod4_to_answer_accuracy": 1.0
+    },
+    "unrecorded_answer_leakage_present": true
+  },
+  "option_position_counts": {
+    "reasoning_test:0": 192,
+    "reasoning_test:1": 192,
+    "reasoning_test:2": 192,
+    "reasoning_test:3": 192,
+    "uptake_validation:0": 48,
+    "uptake_validation:1": 48,
+    "uptake_validation:2": 48,
+    "uptake_validation:3": 48
+  },
+  "schema_version": 1,
+  "status": "FAIL",
+  "structural_checks_status": "PASS",
+  "whitespace_token_difference": {
+    "natural_language": {
+      "max": 0,
+      "mean": 0.0
+    },
+    "triples": {
+      "max": 0,
+      "mean": 0.0
+    }
+  }
+}

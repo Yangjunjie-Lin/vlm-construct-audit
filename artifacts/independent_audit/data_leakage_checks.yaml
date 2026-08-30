@@ -1,0 +1,98 @@
+{
+  "answer_frequency": {
+    "primary_answer_counts": {
+      "ANS_REL_NE": 240,
+      "ANS_REL_NW": 240,
+      "ANS_REL_SE": 240,
+      "ANS_REL_SW": 240
+    },
+    "primary_majority_rate": 0.25,
+    "uptake_by_task": {
+      "entity_id_to_semantic_entity": {
+        "answer_counts": {
+          "ANS_ENTITY_COBALT_TRIANGLE": 16,
+          "ANS_ENTITY_CRIMSON_STAR": 16,
+          "ANS_ENTITY_IVORY_CIRCLE": 16
+        },
+        "correct_option_position_counts": {
+          "3": 48
+        },
+        "majority_answer_rate": 0.3333333333333333,
+        "scene_count": 48,
+        "task_label_to_option_position_accuracy": 1.0
+      },
+      "entity_to_attribute": {
+        "answer_counts": {
+          "ANS_COLOR_AMBER": 16,
+          "ANS_COLOR_EMERALD": 16,
+          "ANS_COLOR_VIOLET": 16
+        },
+        "correct_option_position_counts": {
+          "0": 48
+        },
+        "majority_answer_rate": 0.3333333333333333,
+        "scene_count": 48,
+        "task_label_to_option_position_accuracy": 1.0
+      },
+      "entity_to_direct_relation": {
+        "answer_counts": {
+          "ANS_DIR_S": 48
+        },
+        "correct_option_position_counts": {
+          "1": 48
+        },
+        "majority_answer_rate": 1.0,
+        "scene_count": 48,
+        "task_label_to_option_position_accuracy": 1.0
+      },
+      "relation_direction": {
+        "answer_counts": {
+          "ANS_DIR_S": 48
+        },
+        "correct_option_position_counts": {
+          "2": 48
+        },
+        "majority_answer_rate": 1.0,
+        "scene_count": 48,
+        "task_label_to_option_position_accuracy": 1.0
+      }
+    }
+  },
+  "candidate_id_semantic_leakage": {
+    "classification": "predeclared_in_generator_but_not_justified_as_nonleaking_measurement_label",
+    "primary_candidate_sets_directly_encode_NE_NW_SE_SW_rate": 1.0
+  },
+  "correct_evidence_only_solvability": 1.0,
+  "corrupted_evidence_only_gold_accuracy": 0.0,
+  "image_coordinate_only_solvability": 1.0,
+  "option_position_leakage": {
+    "scene_index_mod4_to_correct_position_accuracy": 1.0,
+    "uptake_task_or_index_to_correct_position_accuracy": 1.0
+  },
+  "preregistration_leakage_acknowledgments": {
+    "entity_id_leakage": false,
+    "option_position_leakage": false,
+    "question_only_leakage": false,
+    "template_index_leakage": false
+  },
+  "question_only_answer_leakage": {
+    "finding": "FATAL_UNRECORDED_LEAKAGE",
+    "scene_index_mod4_to_answer_id_accuracy": 1.0,
+    "scene_index_visible_in_question_entity_ids_rate": 1.0
+  },
+  "relation_frequency": {
+    "entity_to_direct_relation_all_same_answer": true,
+    "primary_answer_relation_counts": {
+      "northeast_of": 240,
+      "northwest_of": 240,
+      "southeast_of": 240,
+      "southwest_of": 240
+    },
+    "primary_balanced": true,
+    "relation_direction_all_same_answer": true
+  },
+  "template_index_leakage": {
+    "template_index_mod4_to_answer_accuracy": 1.0
+  },
+  "unrecorded_answer_leakage_present": true
+}
