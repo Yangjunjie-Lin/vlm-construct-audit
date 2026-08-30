@@ -393,6 +393,9 @@ def build_uptake_rows(n: int = 256, *, seed: int = 862701) -> list[dict[str, Any
                         },
                         "negative_control": {
                             "matched": True,
+                            "replaced_modality": (
+                                "image" if task == "visual_hop_relation" else "evidence"
+                            ),
                             "target_accuracy_upper_bound": 0.40,
                             "paired_utility_minimum": 0.20,
                         },
