@@ -33,6 +33,7 @@ from .data import generate_dataset
 from .final_closeout import (
     audit_final_review_integrity,
     build_final_negative_evidence_release,
+    build_final_successor_adjudication,
     verify_final_closeout,
 )
 from .interventions import build_interventions
@@ -257,6 +258,7 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         ),
         "audit-final-review-integrity": audit_final_review_integrity,
         "build-final-negative-evidence-release": build_final_negative_evidence_release,
+        "build-final-successor-adjudication": build_final_successor_adjudication,
         "verify-final-closeout": verify_final_closeout,
     }
 
@@ -292,6 +294,7 @@ def main(argv: list[str] | None = None) -> int:
             "verify-construct-v2-preregistration-candidate",
             "audit-final-review-integrity",
             "build-final-negative-evidence-release",
+            "build-final-successor-adjudication",
             "verify-final-closeout",
         ],
     )

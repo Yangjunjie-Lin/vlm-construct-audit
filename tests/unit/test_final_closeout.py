@@ -5,6 +5,7 @@ from vlm_construct_audit.final_closeout import (
     RELEASE_ROOT,
     audit_final_review_integrity,
     build_final_negative_evidence_release,
+    build_final_successor_adjudication,
     verify_final_closeout,
 )
 
@@ -46,3 +47,10 @@ def test_final_closeout_verifier_enforces_terminal_state() -> None:
     assert result["candidate_tag_absent"] is True
     assert result["scientific_execution"]["formal_prediction_files"] == 0
     assert result["scientific_execution"]["authorization_files"] == []
+
+
+def test_final_successor_adjudication_matches_release() -> None:
+    result = build_final_successor_adjudication()
+    assert result["decision"] == "TERMINATE_SUCCESSOR_PROGRAM"
+    assert result["scientific_inference_executed"] is False
+    assert result["paper_writing_authorized"] is False

@@ -1,33 +1,31 @@
 # VLM Construct Audit
 
-Independent successor project for validity-aware auditing of behavioral claims in
-vision-language models.
-
-Working title: *Intervene Before You Infer: Validity-Aware Auditing for Behavioral
-Claims in Vision-Language Models*.
+Frozen negative-evidence and research-governance resource for validity-aware auditing of
+behavioral claims in vision-language models.
 
 This repository is independent from the archived ReCoAlign repository. Tier 0 is a
 known-state engineering and calibration exercise; it is not evidence about real VLMs.
 
-## Status
+## Final status
 
-Tier 0 completed its executable loop with 48 scenes, six known-state systems, two
-serializations, two response contracts, 6,912 predictions, and 1,800 measurement probes.
-All six expected claim classes were recovered. The preregistered known-effect sensitivity
-was 0.735, so Tier 0 is `INCONCLUSIVE` and the three-family scientific pilot is
-`NOT_AUTHORIZED`. No real VLM result is claimed.
+`TERMINATE_SUCCESSOR_PROGRAM`. Directions M and U are NO-GO. Direction P v1 failed
+independent construct-validity audit. Direction P v2 did not obtain a human review capable of
+authorizing scientific execution; its final integrity classification is
+`REVIEW_INTEGRITY_INCONCLUSIVE`. Formal Direction P v2 VLM inference count is zero.
 
-## Quick start
+The P known-DGP result remains controlled methodological calibration only. It does not validate a
+real-VLM effect or internal mechanism. This repository is not a successful method, a benchmark
+leaderboard, or authority for further experiments or claim-bearing paper writing.
+
+## Closeout verification
 
 ```bash
 python -m pip install -e ".[dev]"
-make minimum-loop
+pytest
+ruff check .
+python -m vlm_construct_audit verify-final-closeout
 ```
 
-The total command builds and verifies data, predictions, metrics, reports, and SHA-256
-manifests. Individual commands are available through `python -m vlm_construct_audit --help`.
-
-`make scientific-pilot` intentionally fails closed until the Tier-0, model-freeze,
-human-review, compute, and real-image license gates are satisfied.
-
-Primary result: `reports/minimum_closed_loop_report.md`.
+The canonical resource is `release/vlm-construct-audit-negative-evidence-v1`. Its checksums and
+artifact manifest are verified by the final closeout command. CI success establishes software and
+record consistency only; it is not scientific validation.

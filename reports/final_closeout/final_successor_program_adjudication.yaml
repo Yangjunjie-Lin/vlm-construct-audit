@@ -1,0 +1,30 @@
+schema_version: 1
+program: vlm-construct-audit
+decision: TERMINATE_SUCCESSOR_PROGRAM
+review_integrity_classification: REVIEW_INTEGRITY_INCONCLUSIVE
+scientific_pilot_authorized: false
+scientific_inference_executed: false
+paper_writing_authorized: false
+benchmark_expansion_authorized: false
+directions:
+  M: NO_GO
+  U: NO_GO
+  P_v1: AUDIT_FAIL_CONSTRUCT_VALIDITY
+  P_v2: REVIEW_INTEGRITY_INCONCLUSIVE
+  further_direction_creation: forbidden
+scientific_execution:
+  formal_vlm_inference: 0
+  scientific_prediction_files: 0
+  uptake_outputs: 0
+  reasoning_outputs: 0
+  scientific_metrics: 0
+  runner_authorization: false
+  paper_writing_authorization: false
+interpretation:
+  p_known_dgp_role: CONTROLLED_METHODOLOGICAL_CALIBRATION
+  p_known_dgp_supports_real_vlm_claim: false
+  v2_automated_pass_overrides_human_or_integrity_gate: false
+  ci_pass_meaning: SOFTWARE_AND_RECORD_CONSISTENCY_ONLY
+  real_vlm_scientific_result_produced: false
+  sci_q1_claim_bearing_paper_available: false
+exact_next_action: PUBLISH_NEGATIVE_EVIDENCE_AND_ARCHIVE

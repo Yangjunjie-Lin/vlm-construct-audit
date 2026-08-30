@@ -46,6 +46,12 @@ PROVENANCE_CLARIFICATION_SHA256 = (
 RELEASE_ROOT = Path("release/vlm-construct-audit-negative-evidence-v1")
 FINAL_TAG = "vlm-construct-audit-final-closeout-2026-08-30"
 RELEASE_NAME = "vlm-construct-audit-negative-evidence-v1"
+FINAL_ADJUDICATION_YAML = Path(
+    "reports/final_closeout/final_successor_program_adjudication.yaml"
+)
+FINAL_ADJUDICATION_MD = Path(
+    "reports/final_closeout/final_successor_program_adjudication.md"
+)
 HISTORICAL_TAGS = {
     "construct-v2-automated-preaudit-freeze": (
         "1552a3c77e0bdd6bf0fdb0bf49447c19df4af6f2"
@@ -434,6 +440,77 @@ def _final_adjudication_payload() -> dict[str, Any]:
             "sci_q1_claim_bearing_paper_available": False,
         },
         "exact_next_action": "PUBLISH_NEGATIVE_EVIDENCE_AND_ARCHIVE",
+    }
+
+
+def _final_adjudication_markdown(payload: dict[str, Any]) -> str:
+    return f"""# Final successor-program adjudication
+
+Program: `vlm-construct-audit`
+
+Decision: `{payload['decision']}`
+
+Review integrity: `{payload['review_integrity_classification']}`
+
+## Direction closeout
+
+- Direction M: `NO_GO`.
+- Direction U: `NO_GO`.
+- Direction P v1: `AUDIT_FAIL_CONSTRUCT_VALIDITY`.
+- Direction P v2: `REVIEW_INTEGRITY_INCONCLUSIVE`; scientific action
+  `TERMINATE_DIRECTION_P`.
+- Further direction creation: forbidden.
+
+The v2 genuine items all passed their required construct fields, while both reviewers detected
+12/16 valid decoys, below the unchanged 0.90 threshold. The preserved review artifacts do not
+credibly establish reviewer independence. These facts do not authorize a rerun or any allegation
+of fraud, collusion, fabrication, dishonesty, or other personnel conduct.
+
+## Scientific execution and interpretation
+
+Formal Direction P v2 VLM inference, prediction files, uptake outputs, reasoning outputs, and
+scientific metrics are all zero. Runner authorization, scientific-pilot authorization,
+benchmark-expansion authorization, and paper-writing authorization are false.
+
+The P known-DGP result remains a controlled calibration result: P3 lowered the preregistered
+false-claim rate in that known-state setting. It cannot support a real-VLM effect or internal
+mechanism claim. The v2 automated construct PASS cannot override the human gate or final integrity
+classification. A CI PASS demonstrates software and record consistency only. No real-VLM
+scientific result was produced, and this line cannot form a claim-bearing SCI Q1 paper.
+
+Exact next action: `{payload['exact_next_action']}`.
+"""
+
+
+def build_final_successor_adjudication(root: Path = ROOT) -> dict[str, Any]:
+    """Publish the terminal adjudication without creating scientific authority."""
+
+    root = root.resolve()
+    audit = yaml.safe_load((root / AUDIT_YAML).read_text(encoding="utf-8"))
+    hypotheses = yaml.safe_load(
+        (root / "research/final_closeout/hypothesis_closeout.yaml").read_text(
+            encoding="utf-8"
+        )
+    )
+    if audit.get("review_integrity_classification") != "REVIEW_INTEGRITY_INCONCLUSIVE":
+        raise RuntimeError("final review-integrity classification changed")
+    if hypotheses.get("active_hypothesis_count") != 0:
+        raise RuntimeError("active hypothesis detected before final adjudication")
+    payload = _final_adjudication_payload()
+    yaml_path = root / FINAL_ADJUDICATION_YAML
+    md_path = root / FINAL_ADJUDICATION_MD
+    yaml_path.parent.mkdir(parents=True, exist_ok=True)
+    yaml_path.write_bytes(yaml.safe_dump(payload, sort_keys=False).encode("utf-8"))
+    md_path.write_bytes(_final_adjudication_markdown(payload).encode("utf-8"))
+    return {
+        "status": "FINAL_ADJUDICATION_PUBLISHED",
+        "decision": payload["decision"],
+        "review_integrity_classification": payload["review_integrity_classification"],
+        "scientific_inference_executed": False,
+        "paper_writing_authorized": False,
+        "exact_next_action": payload["exact_next_action"],
+        "yaml_sha256": _sha256(yaml_path),
+        "markdown_sha256": _sha256(md_path),
     }
 
 
