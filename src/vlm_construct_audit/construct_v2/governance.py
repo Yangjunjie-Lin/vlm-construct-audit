@@ -7,7 +7,6 @@ from typing import Any
 
 import yaml
 
-
 ROOT = Path(__file__).resolve().parents[3]
 RETIREMENT_PATH = ROOT / "research/construct_restart/v1_retirement.yaml"
 
