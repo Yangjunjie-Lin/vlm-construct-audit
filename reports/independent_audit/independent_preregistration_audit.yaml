@@ -1,0 +1,126 @@
+schema_version: 1
+audit_date: '2026-08-30'
+verdict: AUDIT_FAIL_CONSTRUCT_VALIDITY
+independence:
+  auditor_identity: independent_ai_audit_instance_direction_p_2026_08_30
+  auditor_type: independent_ai_agent
+  human_expert_review: false
+  prior_role_in_project: none
+  authored_preregistration_files: false
+  authored_direction_p_method: false
+  accessed_scientific_results: false
+  representation: independent_computational_and_methodological_audit_not_formal_peer_review
+frozen_state:
+  tag: p-mini-pilot-preregistered
+  tag_type: annotated
+  tag_object: a58898f7b1cbd50f61296cd12476ef599c1ba546
+  commit: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+  manifest_file_count: 45
+  aggregate_sha256: 20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2
+  method_lock_sha256: c252336a8e14e37f0fce14329a845c042a5ff0037aa5692544f6aab14f62f978
+  model_registry_sha256: 738bef0cce88957e81b670665289d830c7d451d6774f75d9164327d88585c2d6
+  data_manifest_sha256: 1eef8c25123326549c345b91dcec861941b45001edd19414884339bce0c1d534
+  protected_manifest_files_changed: 0
+historical_integrity:
+  status: PASS
+  audit_v2: LOOP_A_NO_GO
+  direction_p_known_dgp_holdout_execution_count: 1
+  direction_m_holdout_execution_count: 0
+  direction_u_holdout_execution_count: 0
+  human_review: HUMAN_REVIEW_GO
+  recoalign_head: e200921af44e9307c60f470c247f808a75e7d625
+  recoalign_clean: true
+scientific_execution:
+  formal_vlm_inference_executed: false
+  formal_prediction_count: 0
+  reasoning_test_model_output_count: 0
+  uptake_validation_model_output_count: 0
+  scientific_metrics_count: 0
+dimension_decisions:
+  artifact_integrity: PASS
+  historical_integrity: PASS
+  novelty: NOVELTY_PASS_WITH_CAUTION
+  construct_validity: FAIL_UNRECORDED_ANSWER_LEAKAGE
+  uptake_gate: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+  cell_level_power_implementation: PASS
+  stable_path_power_characterization: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+  discordance_plausibility: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+  path_b_determinism: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+  p3_method_lock: PASS_WITH_LIMITATIONS
+  official_checkpoint_identity: PASS
+  mini_pilot_runner_feasibility: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+fatal_construct_finding:
+  trigger: unrecorded_answer_leakage
+  audited_scene_count: 960
+  scene_index_visible_in_question_rate: 1.0
+  question_only_answer_decoder_accuracy: 1.0
+  option_position_decoder_accuracy: 1.0
+  preregistration_acknowledged_question_only_leakage: false
+  preregistration_acknowledged_entity_id_leakage: false
+  preregistration_acknowledged_template_index_leakage: false
+  preregistration_acknowledged_option_position_leakage: false
+  candidate_ids_encode_answer_semantics_rate: 1.0
+  image_coordinate_only_solvability: 1.0
+  correct_evidence_only_solvability: 1.0
+construct_boundary:
+  actual_narrow_estimand_without_shortcuts: supplied_evidence_behavioral_itt_under_redundant_consistent_vs_conflicting_evidence
+  internal_compositional_reasoning_mechanism_effect_identified: false
+  treatment_changes:
+    evidence_correctness: true
+    image_text_consistency: true
+    conflict_presence: true
+    evidence_implied_answer: true
+uptake_gate:
+  overall_minimum_successes_of_192: 164
+  per_task_minimum_successes_of_48_for_same_lower_bound: 44
+  worst_case_relation_direction_successes_while_overall_passes: 20
+  worst_case_relation_direction_accuracy: 0.4166666666666667
+  worst_case_relation_direction_lower_bound: 0.2958770027182113
+  negative_control_maximum_successes_while_passing: 103
+  relation_tasks_constant_answer_rows: 96
+power:
+  cell_level_implementation: PASS
+  n: 768
+  delta0: 0.10
+  delta1: 0.15
+  one_sided_alpha: 0.025
+  marginal_power_at_effect_0_15_discordance_0_25:
+    analytic: 0.8277
+    monte_carlo: 0.8321
+    exact: 0.8312
+  representative_stable_path_power_all_six_effect_0_15_d_0_25: 0.6091
+  representative_stable_path_power_two_families_effect_0_15_d_0_25: 0.3433
+  stable_path_range_all_six_effect_0_15_d_0_25: [0.5479, 0.7074]
+  stable_path_range_two_families_effect_0_15_d_0_25: [0.2284, 0.4736]
+  real_vlm_discordance_0_15_to_0_25_independently_supported: false
+path_b:
+  independent_global_null_probability_at_least_two_naive_positive: 0.008767
+  requested_correlation_grid_probability_range: [0.00875, 0.04464]
+  mechanically_deterministic: false
+  unresolved_terms:
+    - independent_cells
+    - different_model_family_requirement
+    - template_model_serialization_driver
+    - abstention_advantage
+    - inconclusive_denominator_and_ties
+    - leave_one_family_out_pooling_weights
+p3_method_lock:
+  status: PASS_WITH_LIMITATIONS
+  source_hashes_and_thresholds_match: true
+  holdout_rerun_by_audit: false
+  crlf_lf_difference_only: true
+  real_vlm_distribution_free_guarantee: false
+model_and_scorer:
+  exact_revisions_available: true
+  official_weight_hashes_match: true
+  registered_model_count: 3
+  formal_splits_sent_to_model: false
+  engineering_smoke_executed_by_audit: false
+  mini_pilot_runner_bundled: false
+  frozen_lexical_tie_break_implemented: false
+  independent_forward_path_present: false
+authorization_status: NO_AUTHORIZATION_CREATED
+authorization_file_created: false
+required_amendment: null
+audit_publication_tag: p-mini-pilot-preregistration-audit-no-pass
+exact_next_action: STOP_DIRECTION_P_OR_RESTART_FROM_REQUIRED_SCIENTIFIC_GATE

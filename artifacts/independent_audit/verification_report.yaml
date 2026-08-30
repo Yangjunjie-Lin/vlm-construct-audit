@@ -1,0 +1,109 @@
+schema_version: 1
+verification_date: '2026-08-30'
+decision: AUDIT_FAIL_CONSTRUCT_VALIDITY
+audited_source:
+  tag: p-mini-pilot-preregistered
+  tag_type: annotated
+  tag_object: a58898f7b1cbd50f61296cd12476ef599c1ba546
+  peeled_commit: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+  manifest_file_count: 45
+  aggregate_sha256: 20906cff6cbddcc18a491c562dea83bcc201bd76f5905d27c2e58bc8db32f9d2
+  protected_manifest_diff_count: 0
+audit_branch:
+  name: codex/independent-p-mini-pilot-preregistration-audit
+  head_before_final_decision_publication: db16a9b81e1ce6ac2611127ca9f44b822ad16e5f
+  commits_before_final_decision:
+    - ec20da3 audit: declare independent preregistration auditor
+    - a61c56f audit: add independent artifact and data checks
+    - d0f0795 audit: recalculate power and replication gates
+    - 0f8d698 audit: document uptake gate masking
+    - db16a9b audit: review model scorer P3 and novelty
+required_repository_commands:
+  pytest:
+    status: PASS
+    tests_passed: 77
+    duration_seconds: 63.40
+  ruff_check:
+    status: PASS
+  verify_artifacts:
+    status: PASS
+    tier0_status: PASS
+    tier0_5_status: PASS
+  verify_post_stop_artifacts:
+    status: PASS
+    frozen_report_unchanged: true
+  validate_p_mini_pilot_preregistration:
+    status: PASS
+    files_validated: 33
+    scientific_inference_authorized: false
+  verify_p_mini_pilot_preregistration:
+    status: PASS
+    manifest_file_count: 45
+    tag_status: PASS
+  verify_no_p_mini_pilot_inference:
+    status: PASS
+    scientific_prediction_count: 0
+    reasoning_test_model_output_files: 0
+    scientific_metrics_files: 0
+    forbidden_result_paths_present: []
+    independent_authorization_present: false
+    run_command_remains_blocked: true
+independent_commands:
+  verify_frozen_package:
+    status: PASS
+    repository_verifier_disagreement: false
+  audit_dataset_construct:
+    execution_status: PASS
+    construct_status: FAIL_UNRECORDED_ANSWER_LEAKAGE
+    audited_scene_count: 960
+    question_only_answer_accuracy: 1.0
+    option_position_accuracy: 1.0
+    preregistration_acknowledgment_flags:
+      question_only_leakage: false
+      template_index_leakage: false
+      entity_id_leakage: false
+      option_position_leakage: false
+  audit_uptake_gate:
+    execution_status: PASS
+    audit_status: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED
+  recompute_cell_power:
+    execution_status: PASS
+    repository_match: true
+    cell_level_conclusion: PASS
+    monte_carlo_repetitions_per_feasible_grid_cell: 100000
+  simulate_holm_replication_power:
+    execution_status: PASS
+    stable_path_repetitions_per_scenario: 50000
+    path_b_global_null_repetitions_per_dependence_cell: 200000
+required_outputs:
+  reports_present: 13
+  required_report_count: 13
+  required_reports_complete: true
+  required_artifacts_present: 7
+  required_artifact_count: 7
+  required_artifacts_complete: true
+  additional_machine_readable_artifacts:
+    - cell_level_power_recalculation.yaml
+    - data_construct_metrics.yaml
+  total_artifact_files: 9
+  independent_scripts_present: 5
+  independent_tests_present: true
+scientific_boundaries:
+  formal_vlm_inference_executed: false
+  formal_prediction_count: 0
+  reasoning_test_model_output_count: 0
+  uptake_validation_model_output_count: 0
+  scientific_metrics_count: 0
+  authorization_file_count: 0
+  authorization_status: NO_AUTHORIZATION_CREATED
+recoalign:
+  head: e200921af44e9307c60f470c247f808a75e7d625
+  working_tree_clean: true
+  modified_by_audit: false
+publication:
+  audit_tag_name: p-mini-pilot-preregistration-audit-no-pass
+  audit_tag_type_required: annotated
+  tag_message_required_to_contain: AUDIT_FAIL_CONSTRUCT_VALIDITY
+  original_preregistration_tag_must_remain_unchanged: true
+exact_next_action: STOP_DIRECTION_P_OR_RESTART_FROM_REQUIRED_SCIENTIFIC_GATE
+status: PASS

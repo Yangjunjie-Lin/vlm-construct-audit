@@ -1,0 +1,41 @@
+schema_version: 1
+decision: AUDIT_FAIL_CONSTRUCT_VALIDITY
+decision_date: '2026-08-30'
+audited_preregistration_tag: p-mini-pilot-preregistered
+audited_commit: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+fatal_rule_invoked: unrecorded_answer_leakage_or_non_equivalent_construct
+fatal_evidence:
+  formal_scene_count: 960
+  question_only_answer_decoder_correct: 960
+  option_position_decoder_correct: 960
+  leakage_recorded_in_frozen_preregistration: false
+  relation_uptake_tasks_have_constant_answers: true
+  image_coordinate_only_solvability: 1.0
+  correct_evidence_only_solvability: 1.0
+decision_rationale: >-
+  Printed entity IDs reveal the scene index, and index modulo four deterministically reveals both
+  the gold answer and correct option position in every formal scene. This exact shortcut was not
+  disclosed in the frozen preregistration. Correct evidence also duplicates the complete image
+  geometry while corrupted evidence creates a direct image-text conflict and a different implied
+  answer. The frozen experiment therefore cannot cleanly identify even its bounded supplied-
+  evidence behavioral ITT, and it cannot support an internal-mechanism claim.
+nonfatal_findings_retained:
+  - aggregate uptake gate can mask primary relation-task failure
+  - negative-control threshold is permissive and does not test answer or option priors
+  - stable-path power is materially lower than marginal cell power
+  - real-VLM discordance range lacks independent support
+  - Path B is not mechanically deterministic
+  - Mini-Pilot runner and independent scorer path are not bundled
+component_results:
+  artifact_integrity: PASS
+  historical_integrity: PASS
+  novelty: NOVELTY_PASS_WITH_CAUTION
+  cell_level_power_implementation: PASS
+  p3_method_lock: PASS_WITH_LIMITATIONS
+  construct_validity: FAIL
+formal_scientific_inference_executed: false
+authorization_status: NO_AUTHORIZATION_CREATED
+authorization_file_created: false
+required_amendment: null
+audit_tag: p-mini-pilot-preregistration-audit-no-pass
+exact_next_action: STOP_DIRECTION_P_OR_RESTART_FROM_REQUIRED_SCIENTIFIC_GATE
