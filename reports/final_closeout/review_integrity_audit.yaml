@@ -1,0 +1,213 @@
+schema_version: 1
+program: vlm-construct-audit
+audit_scope: NON_RESCUE_REVIEW_INTEGRITY_CLOSEOUT
+frozen_human_gate_decision: CONSTRUCT_V2_HUMAN_NO_GO
+review_integrity_classification: REVIEW_INTEGRITY_INCONCLUSIVE
+scientific_action: TERMINATE_DIRECTION_P
+attestations:
+  reviewer_1:
+    machine_reviewer_code: R1-HUMAN-A7K3
+    signed_statement_reviewer_code: R1-HUMAN-A7K2
+    attestation_internal_identity_consistency: FAIL
+    review_started_at: '2026-08-30T10:00:00+01:00'
+    review_completed_at: '2026-08-30T12:30:00+01:00'
+    original_sha256: af4b723ca4b0e9faca2e1030c67deeb2be903d39bc0384bd94872947fb179036
+    frozen_importer_attestation_validation: PASS
+    frozen_importer_validation_failures: []
+  reviewer_2:
+    machine_reviewer_code: R2-HUMAN-M4P9
+    signed_statement_reviewer_code: R2-HUMAN-M4P9
+    attestation_internal_identity_consistency: PASS
+    review_started_at: '2026-08-30T10:00:00+01:00'
+    review_completed_at: '2026-08-30T12:15:00+01:00'
+    original_sha256: f211fdb0a9da954b220bcd920c3436385b78247f259c3f5603b151414bf36943
+    frozen_importer_attestation_validation: PASS
+    frozen_importer_validation_failures: []
+attestation_validation_implementation_gap:
+  present: true
+  detail: The importer validates that signed_statement is non-empty but does not compare
+    a reviewer code embedded in it with reviewer_code.
+pre_deblinding_provenance_clarification:
+  status: INSPECTED_NOT_DISTRIBUTED
+  sha256: 87af9067427a3be835e8ffb7b4f156f4bb497e2a6de85d6e8293e22e50bb4e45
+  effect_on_original_attestation_inconsistency: NONE
+  replacement_attestation_accepted: false
+reviewer_independence:
+  item_count: 80
+  judgment_fields_per_item: 11
+  classification_judgment_count: 880
+  identical_classification_judgments: 880
+  overall_agreement: 1.0
+  overall_three_category_cohen_kappa: 1.0
+  per_field_agreement:
+    visual_first_hop_correct: 1.0
+    bridge_entity_uniquely_identifiable: 1.0
+    text_second_hop_correct: 1.0
+    text_second_hop_not_visually_represented: 1.0
+    conditions_differ_in_exactly_one_target_relation: 1.0
+    no_direct_image_text_conflict: 1.0
+    joint_answer_unique: 1.0
+    image_alone_not_uniquely_sufficient: 1.0
+    evidence_alone_not_uniquely_sufficient: 1.0
+    nl_triples_fact_equivalent: 1.0
+    critical_error: 1.0
+  reviewer_notes_verbatim_matches: 80
+  reviewer_notes_verbatim_match_rate: 1.0
+  detected_decoy_count: 12
+  detected_decoy_notes_verbatim_matches: 12
+  genuine_count: 64
+  genuine_none_notes_both_count: 64
+  genuine_none_notes_both_rate: 1.0
+  shared_missed_decoys:
+  - source_review_id: CVR-073
+    reviewer_1_review_id: R1-4GJGF8
+    reviewer_2_review_id: R2-3T5MQN
+    decoy_type: second_hop_visually_represented
+    reviewer_1_notes: none
+    reviewer_2_notes: none
+  - source_review_id: CVR-074
+    reviewer_1_review_id: R1-RL4C8G
+    reviewer_2_review_id: R2-SPV2KJ
+    decoy_type: second_hop_visually_represented
+    reviewer_1_notes: none
+    reviewer_2_notes: none
+  - source_review_id: CVR-075
+    reviewer_1_review_id: R1-5T79XT
+    reviewer_2_review_id: R2-ANLCPW
+    decoy_type: second_hop_visually_represented
+    reviewer_1_notes: none
+    reviewer_2_notes: none
+  - source_review_id: CVR-076
+    reviewer_1_review_id: R1-VTJ3ZP
+    reviewer_2_review_id: R2-WFMBGH
+    decoy_type: second_hop_visually_represented
+    reviewer_1_notes: none
+    reviewer_2_notes: none
+  conclusion: INDEPENDENCE_NOT_CREDIBLY_ESTABLISHED_FROM_ARTIFACTS
+  personnel_conduct_inference: NOT_SUPPORTED
+decoy_construction:
+  generation_logic: C is rendered at B minus 64 times the frozen relation vector,
+    making the stated B-to-C relation visible.
+  review_instruction_explicit: true
+  items:
+  - source_review_id: CVR-073
+    decoy_type: second_hop_visually_represented
+    C_descriptor: blue pentagon
+    text_second_hop_relation: west_of
+    C_descriptor_present_in_both_text_serializations: true
+    B_position:
+    - 128
+    - 128
+    C_position:
+    - 192
+    - 128
+    C_overlap_with_roles: []
+    image_size:
+    - 256
+    - 256
+    image_sha256: 2ab0d122fd573d73a4b064b6cff8b75f3594815fb75528fbffa8ca23b6f4ed6d
+    second_hop_is_visual_fact: true
+    genuine_ambiguity_detected: false
+    classification: DECOY_VALID
+  - source_review_id: CVR-074
+    decoy_type: second_hop_visually_represented
+    C_descriptor: gold octagon
+    text_second_hop_relation: north_of
+    C_descriptor_present_in_both_text_serializations: true
+    B_position:
+    - 128
+    - 128
+    C_position:
+    - 128
+    - 192
+    C_overlap_with_roles: []
+    image_size:
+    - 256
+    - 256
+    image_sha256: 50840a5af0ac835bcfb9caa5b85babb9b7b6b981081c5b00cd90cb063f4cafa4
+    second_hop_is_visual_fact: true
+    genuine_ambiguity_detected: false
+    classification: DECOY_VALID
+  - source_review_id: CVR-075
+    decoy_type: second_hop_visually_represented
+    C_descriptor: violet crescent
+    text_second_hop_relation: east_of
+    C_descriptor_present_in_both_text_serializations: true
+    B_position:
+    - 128
+    - 128
+    C_position:
+    - 64
+    - 128
+    C_overlap_with_roles: []
+    image_size:
+    - 256
+    - 256
+    image_sha256: f98faa3802bc640ec8361271fd46dc6bb6a8ef971f81984b2e6477e122dc4351
+    second_hop_is_visual_fact: true
+    genuine_ambiguity_detected: false
+    classification: DECOY_VALID
+  - source_review_id: CVR-076
+    decoy_type: second_hop_visually_represented
+    C_descriptor: brown circle
+    text_second_hop_relation: south_of
+    C_descriptor_present_in_both_text_serializations: true
+    B_position:
+    - 128
+    - 128
+    C_position:
+    - 128
+    - 64
+    C_overlap_with_roles: []
+    image_size:
+    - 256
+    - 256
+    image_sha256: cb02e51590b00480def072b9ced2c5b3cfd88c9fb0ac04db5c155fcdf5c1c293
+    second_hop_is_visual_fact: true
+    genuine_ambiguity_detected: false
+    classification: DECOY_VALID
+  overall_classification: DECOY_VALID
+  rescue_or_rereview_authorized: false
+genuine_items:
+  count: 64
+  all_required_construct_fields_passed: true
+  critical_error_count: 0
+frozen_decoy_gate:
+  threshold: 0.9
+  reviewer_1_rate: 0.75
+  reviewer_2_rate: 0.75
+  passed: false
+frozen_review_artifact_preservation:
+  reviewer_1_original.csv:
+    expected: d150c9eb71868f518f88dda5e579bad2389a50e5595924d1d63d79d46866f4d1
+    observed: d150c9eb71868f518f88dda5e579bad2389a50e5595924d1d63d79d46866f4d1
+    preserved: true
+  reviewer_2_original.csv:
+    expected: 27ef3cde8f34a57b4043d0cd01d9b02d973f03b9e8c3d134c081a6fa623885d0
+    observed: 27ef3cde8f34a57b4043d0cd01d9b02d973f03b9e8c3d134c081a6fa623885d0
+    preserved: true
+  reviewer_1_attestation.yaml:
+    expected: af4b723ca4b0e9faca2e1030c67deeb2be903d39bc0384bd94872947fb179036
+    observed: af4b723ca4b0e9faca2e1030c67deeb2be903d39bc0384bd94872947fb179036
+    preserved: true
+  reviewer_2_attestation.yaml:
+    expected: f211fdb0a9da954b220bcd920c3436385b78247f259c3f5603b151414bf36943
+    observed: f211fdb0a9da954b220bcd920c3436385b78247f259c3f5603b151414bf36943
+    preserved: true
+  aligned_reviews.csv:
+    expected: 2ec470fca5930c1652ad6d56ea6c6afb670229b0057daf29ef31c4a311959c61
+    observed: 2ec470fca5930c1652ad6d56ea6c6afb670229b0057daf29ef31c4a311959c61
+    preserved: true
+  human_construct_review_metrics.yaml:
+    expected: 0fa818864f323e79fe5dabde18c01b45ebeeb8ff3566a301de295cb20c7adf13
+    observed: 0fa818864f323e79fe5dabde18c01b45ebeeb8ff3566a301de295cb20c7adf13
+    preserved: true
+prohibited_personnel_inferences:
+- fraud
+- collusion
+- fabrication
+- dishonesty
+rescue_authority: false
+new_reviewer_authorized: false
+third_reviewer_authorized: false
+rereview_authorized: false
