@@ -9,6 +9,7 @@ from .validation import (
     build_p_mini_pilot_preregistration_manifest,
     validate_independent_authorization,
     validate_p_mini_pilot_preregistration,
+    verify_frozen_post_stop_artifacts_read_only,
     verify_no_p_mini_pilot_inference,
     verify_p_mini_pilot_preregistration,
 )
@@ -19,6 +20,7 @@ __all__ = [
     "generate_p_mini_pilot_power_analysis",
     "validate_independent_authorization",
     "validate_p_mini_pilot_preregistration",
+    "verify_frozen_post_stop_artifacts_read_only",
     "verify_no_p_mini_pilot_inference",
     "verify_p_mini_pilot_preregistration",
     "write_p_mini_pilot_token_balance",

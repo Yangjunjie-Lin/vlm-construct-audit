@@ -54,6 +54,7 @@ REQUIRED_PACKAGE_FILES = [
 ]
 
 IMPLEMENTATION_FILES = [
+    ".github/workflows/ci.yml",
     "src/vlm_construct_audit/preregistration/__init__.py",
     "src/vlm_construct_audit/preregistration/p_mini_pilot.py",
     "src/vlm_construct_audit/preregistration/validation.py",
@@ -247,6 +248,19 @@ def validate_p_mini_pilot_preregistration() -> dict[str, Any]:
     master = _load_yaml("research/preregistration/power_calibrated_mini_pilot.yaml")
     if master.get("scientific_inference_authorized") is not False:
         failures.append("master protocol incorrectly authorizes inference")
+    decision = _load_yaml("reports/p_mini_pilot_preregistration_decision.yaml")
+    if decision.get("decision") != "PREREGISTRATION_COMPLETE_NO_INFERENCE":
+        failures.append("preregistration decision is not complete-no-inference")
+    if decision.get("scientific_inference_authorized") is not False:
+        failures.append("decision report incorrectly authorizes inference")
+    no_inference = decision.get("no_inference_verification", {})
+    if no_inference != {
+        "scientific_prediction_count": 0,
+        "reasoning_test_model_output_files": 0,
+        "scientific_metrics_files": 0,
+        "run_command_remains_blocked": True,
+    }:
+        failures.append("decision report no-inference counts mismatch")
     return {
         "status": "PASS" if not failures else "FAIL",
         "decision": (
@@ -331,7 +345,20 @@ def verify_p_mini_pilot_preregistration() -> dict[str, Any]:
         if tag_target != head:
             failures.append(f"preregistration tag target {tag_target} != HEAD {head}")
             tag_status = "FAIL"
-        if _git("diff", "--quiet", PREREGISTRATION_TAG, check=False).returncode != 0:
+        protected = REQUIRED_PACKAGE_FILES + IMPLEMENTATION_FILES + [
+            "artifacts/preregistration/p_mini_pilot_preregistration_manifest.yaml"
+        ]
+        if (
+            _git(
+                "diff",
+                "--quiet",
+                PREREGISTRATION_TAG,
+                "--",
+                *protected,
+                check=False,
+            ).returncode
+            != 0
+        ):
             failures.append("PREREGISTRATION_TAG_DIRTY")
             tag_status = "FAIL"
     return {
@@ -408,6 +435,49 @@ def verify_no_p_mini_pilot_inference() -> dict[str, Any]:
         "scanned_structured_or_log_files": len(set(scanned_files)),
         "independent_authorization_present": authorization_present,
         "run_command_remains_blocked": not authorization_present,
+    }
+
+
+def verify_frozen_post_stop_artifacts_read_only() -> dict[str, Any]:
+    """Recompute the Post-STOP checks without refreshing a frozen report timestamp."""
+    p = _load_yaml("reports/post_stop_direction_p_decision.yaml")
+    m = _load_yaml("reports/post_stop_direction_m_decision.yaml")
+    u = _load_yaml("reports/post_stop_direction_u_decision.yaml")
+    human = _load_yaml("data/annotations/human_review_metrics.yaml")
+    checks = {
+        "historical_freeze": _tag_target("vlm-construct-audit-tier0-5-stop")
+        == STOP_COMMIT,
+        "P_holdout_once": p.get("holdout_execution_count") == 1
+        and _load_yaml("artifacts/post_stop/direction_p/holdout/execution_marker.yaml").get(
+            "execution_count"
+        )
+        == 1,
+        "M_holdout_zero": m.get("sealed_holdout", {}).get("execution_count") == 0
+        and not (ROOT / "artifacts/post_stop/direction_m/holdout/execution_marker.yaml").exists(),
+        "U_holdout_zero": u.get("sealed_holdout", {}).get("execution_count") == 0
+        and not (ROOT / "artifacts/post_stop/direction_u/holdout/execution_marker.yaml").exists(),
+        "direction_decisions_present": (
+            p.get("decision") == "DIRECTION_P_GO"
+            and m.get("decision") == "DIRECTION_M_NO_GO"
+            and u.get("decision") == "DIRECTION_U_NO_GO"
+        ),
+        "human_review_complete": human.get("reviewer_count") == 2
+        and human.get("status") == "HUMAN_REVIEW_GO"
+        and all(human.get("gates", {}).values()),
+        "model_as_human_forbidden": human.get("agent_or_model_review_used") is False,
+    }
+    return {
+        "schema_version": 1,
+        "mode": "READ_ONLY_FROZEN_RECOMPUTATION",
+        "status": "PASS" if all(checks.values()) else "FAIL",
+        "checks": checks,
+        "directions": {
+            "P": p.get("decision"),
+            "M": m.get("decision"),
+            "U": u.get("decision"),
+        },
+        "human_review": human.get("status"),
+        "frozen_report_unchanged": True,
     }
 
 

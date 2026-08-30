@@ -21,11 +21,11 @@ from .post_stop import (
     run_direction_p,
     run_direction_u,
     seal_direction,
-    verify_post_stop_artifacts,
 )
 from .preregistration import (
     validate_independent_authorization,
     validate_p_mini_pilot_preregistration,
+    verify_frozen_post_stop_artifacts_read_only,
     verify_no_p_mini_pilot_inference,
     verify_p_mini_pilot_preregistration,
 )
@@ -155,10 +155,21 @@ def _read_loop_a() -> dict[str, Any]:
 
 
 def _verify_all() -> dict[str, Any]:
-    base = verify_artifacts()
-    tier = None
-    if Path("artifacts/manifests/tier0_5_artifact_manifest.yaml").exists():
-        tier = verify_tier0_5_artifacts()
+    frozen_reports = [
+        Path("artifacts/manifests/verification_report.yaml"),
+        Path("artifacts/manifests/tier0_5_verification_report.yaml"),
+    ]
+    snapshots = {
+        path: path.read_bytes() for path in frozen_reports if path.exists()
+    }
+    try:
+        base = verify_artifacts()
+        tier = None
+        if Path("artifacts/manifests/tier0_5_artifact_manifest.yaml").exists():
+            tier = verify_tier0_5_artifacts()
+    finally:
+        for path, content in snapshots.items():
+            path.write_bytes(content)
     return {"status": "PASS", "tier0": base, "tier0_5": tier}
 
 
@@ -191,7 +202,7 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "seal-direction-u": lambda: seal_direction("u"),
         "import-human-review": import_human_review,
         "adjudicate-post-stop": adjudicate_post_stop,
-        "verify-post-stop-artifacts": verify_post_stop_artifacts,
+        "verify-post-stop-artifacts": verify_frozen_post_stop_artifacts_read_only,
         "validate-p-mini-pilot-preregistration": validate_p_mini_pilot_preregistration,
         "verify-p-mini-pilot-preregistration": verify_p_mini_pilot_preregistration,
         "verify-no-p-mini-pilot-inference": verify_no_p_mini_pilot_inference,

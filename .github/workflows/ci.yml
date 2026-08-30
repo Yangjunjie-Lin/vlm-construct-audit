@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -20,3 +22,7 @@ jobs:
           VLM_CA_CI: "1"
       - run: python -m vlm_construct_audit adjudicate-tier0-5
       - run: python -m vlm_construct_audit verify-artifacts
+      - run: python -m vlm_construct_audit verify-post-stop-artifacts
+      - run: python -m vlm_construct_audit validate-p-mini-pilot-preregistration
+      - run: python -m vlm_construct_audit verify-p-mini-pilot-preregistration
+      - run: python -m vlm_construct_audit verify-no-p-mini-pilot-inference

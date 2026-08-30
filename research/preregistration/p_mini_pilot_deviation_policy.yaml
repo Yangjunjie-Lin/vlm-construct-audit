@@ -51,6 +51,13 @@ validation_attempt_log:
     disposition: sorted exports and removed the unused import before the guard commit
     scientific_output_available: false
     numerical_or_design_change: false
+  - event_id: PRETAG_VALIDATION_003
+    check: first combined preregistration validation after manifest build
+    result: FAIL
+    reason: legacy Post-STOP verifier had refreshed the timestamp in its frozen verification report
+    disposition: restored all affected frozen artifact bytes and routed verification commands through read-only recomputation or snapshot restoration
+    scientific_output_available: false
+    numerical_or_design_change: false
 failed_scientific_runs: []
 authorization_boundary:
   authoring_agent_may_create_independent_audit_file: false
