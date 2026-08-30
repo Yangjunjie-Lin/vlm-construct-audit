@@ -1,0 +1,131 @@
+schema_version: 1
+program: vlm-construct-audit
+pending_claim_count: 0
+claims:
+  - claim_id: EVIDENCE-001
+    claim: ReCoAlign was terminated and remains an archived negative-evidence source.
+    status: RETIRED
+    scope: Historical source repository and successor provenance boundary.
+    supporting_artifacts:
+      - docs/recoalign_provenance_boundary.md
+    prohibited_extrapolations:
+      - ReCoAlign is an active method line.
+      - Historical downstream accuracy identifies an internal mechanism.
+    hashes:
+      docs/recoalign_provenance_boundary.md: 137d20596393b022ea54d287c9f576955ed893251bcb43d27e8ebccefc45823a
+  - claim_id: EVIDENCE-002
+    claim: AuditV2 has a permanent NO-GO outcome.
+    status: NO_GO
+    scope: Frozen Tier 0.5 known-DGP operating gates.
+    supporting_artifacts:
+      - reports/tier0_5_final_decision.yaml
+      - research/post_stop/failure_decomposition.md
+    prohibited_extrapolations:
+      - P3 repairs AuditV2.
+      - AuditV2 has real-VLM mechanism validity.
+    hashes:
+      reports/tier0_5_final_decision.yaml: 9691a574cadc85e87a1f0fb1882fbe9db3580b5b8c181386882f59f16ace0294
+      research/post_stop/failure_decomposition.md: 7bf965f691fbcb1e39ca92cef2cfe5a274ea3d73f276def17bbdecf541feb33f
+  - claim_id: EVIDENCE-003
+    claim: Direction M is NO-GO.
+    status: NO_GO
+    scope: Direction M development gate; no sealed holdout.
+    supporting_artifacts:
+      - reports/post_stop_direction_m_decision.yaml
+    prohibited_extrapolations:
+      - Cross-family measurement equivalence was established.
+      - Direction M identifies an internal mechanism.
+    hashes:
+      reports/post_stop_direction_m_decision.yaml: 40e77d4a4d02f3b556830c0c94a117619c1207b9f36c943073096456f0865fcb
+  - claim_id: EVIDENCE-004
+    claim: Direction U is NO-GO.
+    status: NO_GO
+    scope: Direction U development failure; no holdout or real-model smoke.
+    supporting_artifacts:
+      - reports/post_stop_direction_u_decision.yaml
+    prohibited_extrapolations:
+      - A real-VLM causal uptake effect was estimated.
+      - Principal strata were identified.
+    hashes:
+      reports/post_stop_direction_u_decision.yaml: 91f1c2322ea9c5d2f87371d9492a917cb13f8b1c1f6a2b6eb2f0b0f47b2a74aa
+  - claim_id: EVIDENCE-005
+    claim: P3 passed its controlled known-DGP calibration gates.
+    status: VERIFIED_KNOWN_DGP
+    scope: Frozen simulated known-state holdout only.
+    supporting_artifacts:
+      - reports/post_stop_direction_p_decision.yaml
+    prohibited_extrapolations:
+      - P3 is validated on real VLMs.
+      - The result identifies bridge composition or an internal mechanism.
+    hashes:
+      reports/post_stop_direction_p_decision.yaml: 1409e0bf99283216e3ad7772787f54af54d03d17ef94d7b77450f89cc6a8ce6c
+  - claim_id: EVIDENCE-006
+    claim: Direction P v1 failed independent audit for construct validity.
+    status: INVALID_MEASUREMENT
+    scope: Frozen v1 preregistration and independent audit.
+    supporting_artifacts:
+      - reports/independent_audit/final_audit_decision.yaml
+      - research/construct_restart/v1_retirement.yaml
+    prohibited_extrapolations:
+      - The v1 runner is authorized.
+      - V1 estimates a valid real-VLM scientific effect.
+    hashes:
+      reports/independent_audit/final_audit_decision.yaml: f5b3be5b689d6d0cf1d2a0be7e712c180e70544104e6ba2ae28bc4775190ecee
+      research/construct_restart/v1_retirement.yaml: 6932e031671c17030c1958f1045f0753f8157903967477f5d6959a83fd3e7443
+  - claim_id: EVIDENCE-007
+    claim: Direction P v2 passed the frozen automated construct gate.
+    status: AUTOMATED_PASS
+    scope: Automated construct, leakage, balance, oracle, and conditional-power checks.
+    supporting_artifacts:
+      - reports/construct_v2_automated_gate.yaml
+    prohibited_extrapolations:
+      - Automated PASS overrides human review.
+      - Automated PASS authorizes VLM inference.
+    hashes:
+      reports/construct_v2_automated_gate.yaml: a513b9e7e7409b8fbb661af0d11e6786be1b6a8f7c4077f431077c3267be92dd
+  - claim_id: EVIDENCE-008
+    claim: Direction P v2 has an integrity-inconclusive review and no authorizing human result.
+    status: REVIEW_INTEGRITY_INCONCLUSIVE
+    scope: Preserved two-reviewer returns, attestations, decoy gate, and non-rescue audit.
+    supporting_artifacts:
+      - reports/construct_v2_human_review_decision.yaml
+      - reports/final_closeout/review_integrity_audit.yaml
+      - data/construct_v2_review/results/human_construct_review_metrics.yaml
+    prohibited_extrapolations:
+      - Review anomalies prove reviewer misconduct.
+      - The review proves genuine v2 constructs are invalid.
+      - A replacement or third review is authorized.
+    hashes:
+      reports/construct_v2_human_review_decision.yaml: 6ed2c07bd64c6bed477ff245f0301c7bf8ee68595bde72b8d901b7cdce8ae644
+      reports/final_closeout/review_integrity_audit.yaml: 45c4e7dd7eb04b40b02da9a3b63d5e44a1c3c10773ab390e1f2d1a410375022e
+      data/construct_v2_review/results/human_construct_review_metrics.yaml: 0fa818864f323e79fe5dabde18c01b45ebeeb8ff3566a301de295cb20c7adf13
+  - claim_id: EVIDENCE-009
+    claim: Formal Direction P v2 VLM scientific inference count is zero.
+    status: VERIFIED_ZERO
+    scope: Formal predictions, uptake outputs, reasoning outputs, metrics, and runner authorization.
+    supporting_artifacts:
+      - external_review_packages/public_commitment.yaml
+      - reports/construct_v2_human_review_decision.yaml
+      - src/vlm_construct_audit/construct_v2/runner_guard.py
+    prohibited_extrapolations:
+      - Real-VLM bridge composition was established or falsified.
+      - Scientific metrics exist for Direction P v2.
+    hashes:
+      external_review_packages/public_commitment.yaml: a7a1631b746e1587d6eeb3a8b368a9943aa0fc4fa9debf27b0371a658a65d46b
+      reports/construct_v2_human_review_decision.yaml: 6ed2c07bd64c6bed477ff245f0301c7bf8ee68595bde72b8d901b7cdce8ae644
+      src/vlm_construct_audit/construct_v2/runner_guard.py: 00af69659b1e409841c54d43f9f6fa3ddf4a8eadf753f47c8fba35029da6bc2d
+  - claim_id: EVIDENCE-010
+    claim: The successor program is terminated with no further scientific direction authorized.
+    status: TERMINATED
+    scope: Terminal research-governance decision.
+    supporting_artifacts:
+      - research/final_closeout/README.md
+      - research/final_closeout/hypothesis_closeout.yaml
+      - research/final_closeout/research_question_closeout.md
+    prohibited_extrapolations:
+      - A fourth or fifth scientific direction may be created.
+      - Claim-bearing paper writing or benchmark expansion is authorized.
+    hashes:
+      research/final_closeout/README.md: a6623afa32451337a513a29426cec11d131b52d27dfbeae8211d9f08d2620b19
+      research/final_closeout/hypothesis_closeout.yaml: 87f07e7d485085b2f6f40729d724ea53417eefc1b93b8ef6efca20a8ba608004
+      research/final_closeout/research_question_closeout.md: 813f7978a05e302aa044d912d1939416dc0e444ea41f02b6f5783e1a06f84187

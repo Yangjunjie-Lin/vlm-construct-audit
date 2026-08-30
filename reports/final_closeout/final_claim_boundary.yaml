@@ -1,0 +1,52 @@
+schema_version: 1
+program: vlm-construct-audit
+decision: TERMINATE_SUCCESSOR_PROGRAM
+claim_bearing_paper_authorized: false
+allowed_claims:
+  - claim_id: ALLOWED-001
+    claim: ReCoAlign is a frozen negative-evidence case.
+    scope: Historical closeout and research-governance provenance only.
+  - claim_id: ALLOWED-002
+    claim: Downstream accuracy alone cannot identify internal VLM mechanisms.
+    scope: Construct-validity and identification boundary.
+  - claim_id: ALLOWED-003
+    claim: In the known-DGP evaluation, P3 reduced the preregistered false-claim rate.
+    scope: Controlled known-state methodological calibration only.
+  - claim_id: ALLOWED-004
+    claim: The v1 preregistration was rejected by independent audit because of construct leakage.
+    scope: Preserved preregistration and independent-audit negative evidence.
+  - claim_id: ALLOWED-005
+    claim: The v2 automated construct checks passed.
+    scope: Software, oracle, leakage, balance, power, and frozen automated checks only.
+  - claim_id: ALLOWED-006
+    claim: V2 did not obtain a human construct-review result that can authorize scientific execution.
+    scope: Frozen human NO-GO plus final review-integrity classification.
+  - claim_id: ALLOWED-007
+    claim: The successor program executed no formal VLM scientific pilot.
+    scope: Direction P v2 formal predictions, uptake, reasoning, and scientific metrics.
+  - claim_id: ALLOWED-008
+    claim: The process shows how strict research gates can prevent unsupported mechanism claims.
+    scope: Research-governance case study, not validation of a scientific method.
+prohibited_claims:
+  - claim_id: PROHIBITED-001
+    claim: P3 has been validated on real VLMs.
+  - claim_id: PROHIBITED-002
+    claim: V2 proves that VLMs can or cannot perform bridge composition.
+  - claim_id: PROHIBITED-003
+    claim: The human review proves that the v2 genuine construct is invalid.
+  - claim_id: PROHIBITED-004
+    claim: A missed decoy proves that either reviewer was dishonest.
+  - claim_id: PROHIBITED-005
+    claim: VGCA has achieved a Q1-level method contribution.
+  - claim_id: PROHIBITED-006
+    claim: VLM-CVA is a completed community benchmark.
+  - claim_id: PROHIBITED-007
+    claim: Multi-model internal-mechanism conclusions have been produced.
+  - claim_id: PROHIBITED-008
+    claim: The current project may enter claim-bearing paper writing.
+interpretive_constraints:
+  known_dgp_is_real_vlm_evidence: false
+  automated_pass_overrides_human_gate: false
+  ci_pass_is_scientific_validation: false
+  review_anomaly_supports_personnel_accusation: false
+  future_scientific_extension_authorized: false
