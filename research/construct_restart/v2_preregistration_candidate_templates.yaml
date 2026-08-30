@@ -1,0 +1,26 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+templates_frozen_before_human_returns: true
+power_language:
+  label: Stable Path downstream certification power conditional on construct validity, human construct validity, measurement integrity, and uptake eligibility
+  range_at_n_1280: [0.8700, 0.8862]
+  end_to_end_pilot_power_claim: forbidden
+  real_model_uptake_gate_probability_estimated: false
+  uptake_failure_is_independent_preceding_stop: true
+  end_to_end_success_probability_may_be_below_0_8700: true
+  existing_simulation_changed: false
+open_issue_ids:
+  - LEAKAGE_CP_CONDITION_EXPANDED_ROWS
+  - SCENE_CLUSTER_BOOTSTRAP_REQUIRED
+  - POWER_CONDITIONAL_ON_UPTAKE
+  - REAL_MODEL_UPTAKE_PASS_PROBABILITY_UNKNOWN
+  - HUMAN_INDEPENDENCE_ATTESTATION_BOUNDARY
+  - P3_BEHAVIORAL_NOT_MECHANISTIC
+  - SYNTHETIC_EXTERNAL_VALIDITY_UNKNOWN
+  - RUNNER_AND_CLL_EXECUTION_AUDIT_PENDING
+forbidden_builder_outputs:
+  - execution authorization
+  - runner authorization
+  - formal model output
+  - scientific metric
+  - candidate annotated tag

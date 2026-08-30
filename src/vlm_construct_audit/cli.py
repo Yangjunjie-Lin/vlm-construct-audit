@@ -15,6 +15,7 @@ from .construct_v2 import (
     adjudicate_construct_v2_human_review,
     analyze_construct_v2_power,
     audit_construct_v2_leakage,
+    build_construct_v2_preregistration_candidate,
     build_construct_v2_report,
     build_construct_v2_review_packet,
     build_external_review_packages,
@@ -24,6 +25,7 @@ from .construct_v2 import (
     run_construct_v2_oracles,
     validate_construct_v2,
     validate_construct_v2_post_review_policy,
+    verify_construct_v2_preregistration_candidate,
     verify_external_review_packages,
     verify_no_construct_v2_inference,
 )
@@ -242,6 +244,12 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         ),
         "verify-no-construct-v2-inference": verify_no_construct_v2_inference,
         "build-construct-v2-report": build_construct_v2_report,
+        "build-construct-v2-preregistration-candidate": (
+            build_construct_v2_preregistration_candidate
+        ),
+        "verify-construct-v2-preregistration-candidate": (
+            verify_construct_v2_preregistration_candidate
+        ),
     }
 
 
@@ -272,6 +280,8 @@ def main(argv: list[str] | None = None) -> int:
             "adjudicate-construct-v2-human-review",
             "validate-construct-v2-post-review-policy",
             "verify-no-construct-v2-inference", "build-construct-v2-report",
+            "build-construct-v2-preregistration-candidate",
+            "verify-construct-v2-preregistration-candidate",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
@@ -295,6 +305,7 @@ def main(argv: list[str] | None = None) -> int:
         "analyze-construct-v2-power",
         "verify-no-construct-v2-inference",
         "validate-construct-v2-post-review-policy",
+        "verify-construct-v2-preregistration-candidate",
     } and result.get("status") != "PASS":
         return 1
     if args.command == "adjudicate-construct-v2-human-review" and result.get(
@@ -303,5 +314,9 @@ def main(argv: list[str] | None = None) -> int:
         "CONSTRUCT_V2_READY_FOR_INDEPENDENT_PREREGISTRATION_AUDIT",
         "CONSTRUCT_V2_HUMAN_NO_GO",
     }:
+        return 1
+    if args.command == "build-construct-v2-preregistration-candidate" and result.get(
+        "status"
+    ) != "CANDIDATE_CREATED":
         return 1
     return 0

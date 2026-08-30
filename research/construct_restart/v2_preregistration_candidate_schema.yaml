@@ -1,0 +1,48 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+generation_gate: CONSTRUCT_V2_READY_FOR_INDEPENDENT_PREREGISTRATION_AUDIT
+candidate_decision: CONSTRUCT_V2_READY_FOR_INDEPENDENT_PREREGISTRATION_AUDIT
+package_root: research/preregistration/construct_v2
+package_files:
+  - master_protocol.yaml
+  - identity.md
+  - construct_definition.yaml
+  - causal_scope.md
+  - estimands.yaml
+  - hypothesis_registry.yaml
+  - model_registry.yaml
+  - uptake_policy.yaml
+  - measurement_policy.yaml
+  - p3_method_lock.yaml
+  - power_and_multiplicity.yaml
+  - go_no_go.yaml
+  - deviation_policy.yaml
+  - novelty_boundary.md
+  - human_review_lock.yaml
+  - execution_boundary.yaml
+report_files:
+  - reports/construct_v2_human_review_report.md
+  - reports/construct_v2_human_review_decision.yaml
+  - reports/construct_v2_preregistration_candidate_readiness.md
+  - reports/construct_v2_preregistration_candidate_decision.yaml
+  - reports/construct_v2_candidate_evidence_map.yaml
+  - reports/construct_v2_open_audit_issues.yaml
+artifact_files:
+  - artifacts/construct_v2_preregistration_candidate/manifest.yaml
+  - artifacts/construct_v2_preregistration_candidate/protected_files.yaml
+  - artifacts/construct_v2_preregistration_candidate/verification_report.yaml
+required_locks:
+  automated_freeze_commit: 1552a3c77e0bdd6bf0fdb0bf49447c19df4af6f2
+  automated_freeze_tag: construct-v2-automated-preaudit-freeze
+  external_review_gate_commit: fc6ca1aa4a6f931b624fbc7e414b9fb0bfcd34a6
+  policy_freeze_tag: construct-v2-human-gate-policy-freeze
+  reasoning_n: 1280
+  uptake_n: 256
+  delta0: 0.10
+  delta1: 0.15
+  primary_serialization: natural_language
+  triples_role: robustness_only
+  path_b_go_authority: false
+candidate_tag_created_by_builder: false
+scientific_inference_authorized: false
+runner_authorized: false

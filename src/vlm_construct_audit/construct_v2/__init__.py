@@ -4,6 +4,10 @@ from .adjudication import (
     adjudicate_construct_v2_human_review,
     validate_construct_v2_post_review_policy,
 )
+from .candidate import (
+    build_construct_v2_preregistration_candidate,
+    verify_construct_v2_preregistration_candidate,
+)
 from .external_review import (
     build_external_review_packages,
     import_external_review_returns,
@@ -25,6 +29,7 @@ __all__ = [
     "adjudicate_construct_v2_human_review",
     "analyze_construct_v2_power",
     "audit_construct_v2_leakage",
+    "build_construct_v2_preregistration_candidate",
     "build_construct_v2_report",
     "build_construct_v2_review_packet",
     "build_external_review_packages",
@@ -38,6 +43,7 @@ __all__ = [
     "validate_construct_v2",
     "validate_construct_v2_post_review_policy",
     "validate_uptake_design",
+    "verify_construct_v2_preregistration_candidate",
     "verify_external_review_packages",
     "verify_no_construct_v2_inference",
 ]
