@@ -42,6 +42,9 @@ FROZEN_REVIEW_HASHES = {
 PROVENANCE_CLARIFICATION_SHA256 = (
     "87af9067427a3be835e8ffb7b4f156f4bb497e2a6de85d6e8293e22e50bb4e45"
 )
+RELEASE_ROOT = Path("release/vlm-construct-audit-negative-evidence-v1")
+FINAL_TAG = "vlm-construct-audit-final-closeout-2026-08-30"
+RELEASE_NAME = "vlm-construct-audit-negative-evidence-v1"
 
 
 def _sha256(path: Path) -> str:
@@ -375,3 +378,227 @@ def audit_final_review_integrity(root: Path = ROOT) -> dict[str, Any]:
     yaml_path.write_text(yaml.safe_dump(audit, sort_keys=False), encoding="utf-8")
     md_path.write_text(_audit_markdown(audit), encoding="utf-8")
     return audit
+
+
+def _final_adjudication_payload() -> dict[str, Any]:
+    return {
+        "schema_version": 1,
+        "program": "vlm-construct-audit",
+        "decision": "TERMINATE_SUCCESSOR_PROGRAM",
+        "review_integrity_classification": "REVIEW_INTEGRITY_INCONCLUSIVE",
+        "scientific_pilot_authorized": False,
+        "scientific_inference_executed": False,
+        "paper_writing_authorized": False,
+        "benchmark_expansion_authorized": False,
+        "directions": {
+            "M": "NO_GO",
+            "U": "NO_GO",
+            "P_v1": "AUDIT_FAIL_CONSTRUCT_VALIDITY",
+            "P_v2": "REVIEW_INTEGRITY_INCONCLUSIVE",
+            "further_direction_creation": "forbidden",
+        },
+        "scientific_execution": {
+            "formal_vlm_inference": 0,
+            "scientific_prediction_files": 0,
+            "uptake_outputs": 0,
+            "reasoning_outputs": 0,
+            "scientific_metrics": 0,
+            "runner_authorization": False,
+            "paper_writing_authorization": False,
+        },
+        "interpretation": {
+            "p_known_dgp_role": "CONTROLLED_METHODOLOGICAL_CALIBRATION",
+            "p_known_dgp_supports_real_vlm_claim": False,
+            "v2_automated_pass_overrides_human_or_integrity_gate": False,
+            "ci_pass_meaning": "SOFTWARE_AND_RECORD_CONSISTENCY_ONLY",
+            "real_vlm_scientific_result_produced": False,
+            "sci_q1_claim_bearing_paper_available": False,
+        },
+        "exact_next_action": "PUBLISH_NEGATIVE_EVIDENCE_AND_ARCHIVE",
+    }
+
+
+def _release_readme() -> str:
+    return f"""# VLM Construct Audit negative evidence v1
+
+This is a negative-evidence and research-governance resource. It is not a successful method,
+not a model benchmark leaderboard, and not evidence for an internal VLM mechanism. It does not
+authorize continued experimentation, a new direction, benchmark expansion, or claim-bearing
+paper writing.
+
+The terminal decision is `TERMINATE_SUCCESSOR_PROGRAM`; the review classification is
+`REVIEW_INTEGRITY_INCONCLUSIVE`. Direction P v2 executed zero formal VLM scientific inferences.
+The P3 known-DGP result remains controlled methodological calibration only.
+
+The package preserves the lineage from archived ReCoAlign negative evidence through final
+successor-program termination. Reviewer identity data are limited to necessary anonymous codes.
+No unnecessary personal information, private mapping state, hidden-key material, or unneeded
+source returns are included.
+
+Canonical tag: `{FINAL_TAG}`. Release name: `{RELEASE_NAME}`.
+Run the commands in `REPRODUCIBILITY.md` and verify `checksums.sha256` before use.
+"""
+
+
+def _research_lineage() -> str:
+    return """# Research lineage
+
+The frozen governance chain is:
+
+1. ReCoAlign archived negative evidence (`TERMINATE_CURRENT_PROGRAM`).
+2. Tier 0 known-state calibration and executable audit plumbing.
+3. AuditV2 method failure (`LOOP_A_NO_GO`; no reinterpretation).
+4. Post-STOP M/U/P screen under frozen priority and revision limits.
+5. Direction P controlled known-DGP GO; Directions M and U NO-GO.
+6. Direction P v1 construct-validity failure under independent preregistration audit.
+7. Direction P v2 redesign and automated construct-gate PASS.
+8. External human gate NO-GO, followed by a non-rescue integrity audit classified
+   `REVIEW_INTEGRITY_INCONCLUSIVE`.
+9. Successor-program termination with zero formal Direction P v2 VLM inference.
+
+No link in this chain authorizes a mechanism claim. Later calibration evidence does not repair an
+earlier failed method, and an automated gate does not override the human or integrity outcome.
+"""
+
+
+def _review_integrity_note() -> str:
+    return """# Review integrity note
+
+The two returns agree on all 880 classification judgments and all 80 reviewer-note rows. Both
+reviews started at the same recorded time, both missed the same four
+`second_hop_visually_represented` decoys, and their explanations for the other 12 decoys are
+verbatim identical. Reviewer 1's machine code is `R1-HUMAN-A7K3`, while the original signed
+statement contains `R1-HUMAN-A7K2`; the importer checked only that the statement was non-empty.
+
+Static audit classified all four missed decoys `DECOY_VALID`. All 64 genuine items passed, while
+the unchanged 0.90 decoy gate failed at 0.75 for each reviewer. These artifacts do not establish
+reviewer independence credibly, but they also do not prove fraud, collusion, fabrication,
+dishonesty, or any other personnel conduct. No replacement signature, reviewer, third reviewer,
+or rerun is authorized. See `reports/final_closeout/review_integrity_audit.*` in the tagged source.
+"""
+
+
+def _reproducibility_note() -> str:
+    return f"""# Reproducibility
+
+Use Python 3.10 or later. No model weights are needed or permitted for this closeout.
+
+```bash
+git clone https://github.com/Yangjunjie-Lin/vlm-construct-audit.git
+cd vlm-construct-audit
+git checkout {FINAL_TAG}
+python -m pip install -e ".[dev]"
+pytest
+ruff check .
+python -m vlm_construct_audit verify-artifacts
+python -m vlm_construct_audit verify-post-stop-artifacts
+python -m vlm_construct_audit verify-frozen-p-mini-pilot-preregistration-read-only
+python -m vlm_construct_audit validate-construct-v2
+python -m vlm_construct_audit verify-no-construct-v2-inference
+python -m vlm_construct_audit audit-final-review-integrity
+python -m vlm_construct_audit build-final-successor-adjudication
+python -m vlm_construct_audit build-final-negative-evidence-release
+python -m vlm_construct_audit verify-final-closeout
+```
+
+`verify-final-closeout` verifies this package's SHA-256 file list, all historical tags, preserved
+review returns and attestations, the absent candidate and authorization artifacts, the blocked
+runner, and zero formal Direction P v2 outputs. Re-running deterministic builders must leave the
+tagged working tree clean. CI success means software and record consistency, not scientific
+validation.
+"""
+
+
+def _licenses_note() -> str:
+    return """# Licenses and privacy
+
+The `vlm-construct-audit` source and closeout documentation are released under the repository's
+MIT License; see the root `LICENSE` file in the tagged source. ReCoAlign is referenced only as an
+archived provenance source under Apache-2.0. No ReCoAlign code, data, predictions, or scientific
+artifacts are redistributed in this package.
+
+Generated construct images and governance text are included as repository artifacts under the
+repository license. External-review identities are represented only by anonymous reviewer codes.
+Private mapping state, unnecessary personal information, and the private provenance filing are
+not distributed in this release package.
+"""
+
+
+def _release_source_paths() -> tuple[Path, ...]:
+    return (
+        Path("docs/recoalign_provenance_boundary.md"),
+        Path("reports/tier0_5_final_decision.yaml"),
+        Path("reports/post_stop_direction_p_decision.yaml"),
+        Path("reports/post_stop_direction_m_decision.yaml"),
+        Path("reports/post_stop_direction_u_decision.yaml"),
+        Path("reports/independent_audit/final_audit_decision.yaml"),
+        Path("reports/construct_v2_automated_gate.yaml"),
+        Path("reports/construct_v2_human_review_decision.yaml"),
+        Path("reports/final_closeout/review_integrity_audit.yaml"),
+        Path("reports/final_closeout/final_claim_boundary.yaml"),
+        Path("reports/final_closeout/final_evidence_map.yaml"),
+        Path("research/final_closeout/hypothesis_closeout.yaml"),
+    )
+
+
+def build_final_negative_evidence_release(root: Path = ROOT) -> dict[str, Any]:
+    """Build the deterministic, non-claim-bearing negative-evidence package."""
+
+    root = root.resolve()
+    release = root / RELEASE_ROOT
+    release.mkdir(parents=True, exist_ok=True)
+    text_payloads = {
+        "README.md": _release_readme(),
+        "RESEARCH_LINEAGE.md": _research_lineage(),
+        "REVIEW_INTEGRITY_NOTE.md": _review_integrity_note(),
+        "REPRODUCIBILITY.md": _reproducibility_note(),
+        "LICENSES.md": _licenses_note(),
+    }
+    for name, content in text_payloads.items():
+        (release / name).write_text(content, encoding="utf-8")
+    copies = {
+        "CLAIM_BOUNDARY.md": Path("reports/final_closeout/final_claim_boundary.md"),
+        "HYPOTHESIS_CLOSEOUT.yaml": Path("research/final_closeout/hypothesis_closeout.yaml"),
+        "EVIDENCE_MAP.yaml": Path("reports/final_closeout/final_evidence_map.yaml"),
+    }
+    for name, source in copies.items():
+        (release / name).write_bytes((root / source).read_bytes())
+    (release / "FINAL_ADJUDICATION.yaml").write_text(
+        yaml.safe_dump(_final_adjudication_payload(), sort_keys=False), encoding="utf-8"
+    )
+    package_names = sorted([*text_payloads, *copies, "FINAL_ADJUDICATION.yaml"])
+    source_artifacts = {
+        path.as_posix(): _sha256(root / path) for path in _release_source_paths()
+    }
+    manifest = {
+        "schema_version": 1,
+        "release": RELEASE_NAME,
+        "canonical_tag": FINAL_TAG,
+        "source_closeout_base": "8b3769724b53fe014bbbca8d501b1fd8cc5ea5ba",
+        "decision": "TERMINATE_SUCCESSOR_PROGRAM",
+        "review_integrity_classification": "REVIEW_INTEGRITY_INCONCLUSIVE",
+        "formal_vlm_inference": 0,
+        "privacy": {
+            "anonymous_reviewer_codes_only": True,
+            "unnecessary_personal_information_included": False,
+            "private_mapping_or_hidden_key_included": False,
+        },
+        "package_files": {name: _sha256(release / name) for name in package_names},
+        "source_artifacts": source_artifacts,
+        "frozen_review_inputs": FROZEN_REVIEW_HASHES,
+    }
+    manifest_path = release / "ARTIFACT_MANIFEST.yaml"
+    manifest_path.write_text(yaml.safe_dump(manifest, sort_keys=False), encoding="utf-8")
+    checksum_names = sorted([*package_names, "ARTIFACT_MANIFEST.yaml"])
+    checksums = "".join(f"{_sha256(release / name)}  {name}\n" for name in checksum_names)
+    checksum_path = release / "checksums.sha256"
+    checksum_path.write_text(checksums, encoding="utf-8")
+    return {
+        "status": "NEGATIVE_EVIDENCE_RELEASE_BUILT",
+        "release": RELEASE_NAME,
+        "canonical_tag": FINAL_TAG,
+        "decision": "TERMINATE_SUCCESSOR_PROGRAM",
+        "file_count": len(checksum_names) + 1,
+        "manifest_sha256": _sha256(manifest_path),
+        "checksums_sha256": _sha256(checksum_path),
+    }

@@ -30,7 +30,10 @@ from .construct_v2 import (
     verify_no_construct_v2_inference,
 )
 from .data import generate_dataset
-from .final_closeout import audit_final_review_integrity
+from .final_closeout import (
+    audit_final_review_integrity,
+    build_final_negative_evidence_release,
+)
 from .interventions import build_interventions
 from .post_stop import (
     adjudicate_post_stop,
@@ -252,6 +255,7 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
             verify_construct_v2_preregistration_candidate
         ),
         "audit-final-review-integrity": audit_final_review_integrity,
+        "build-final-negative-evidence-release": build_final_negative_evidence_release,
     }
 
 
@@ -285,6 +289,7 @@ def main(argv: list[str] | None = None) -> int:
             "build-construct-v2-preregistration-candidate",
             "verify-construct-v2-preregistration-candidate",
             "audit-final-review-integrity",
+            "build-final-negative-evidence-release",
         ],
     )
     parser.add_argument("--config", default="configs/pilot.yaml")
