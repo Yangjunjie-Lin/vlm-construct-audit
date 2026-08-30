@@ -1,0 +1,20 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+amendment_type: review_presentation_and_blinding_only
+amendment_time: before_any_human_review_response
+scientific_data_changed: false
+review_items_changed: false
+decoy_types_changed: false
+expected_labels_changed: false
+review_thresholds_changed: false
+model_outputs_available: false
+reason:
+  - genuine and decoy rows use distinguishable image path patterns
+  - original review IDs were assigned before shuffling
+  - hidden key and generator code are available in the public repository
+repair:
+  - create reviewer-specific opaque IDs
+  - create reviewer-specific row permutations
+  - copy all images into uniform bundle-local paths
+  - exclude repository, source code, manifests, source IDs and hidden key
+  - require reviewer attestations of no repository/key/code access
