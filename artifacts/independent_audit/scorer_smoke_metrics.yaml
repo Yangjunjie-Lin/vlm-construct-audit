@@ -1,0 +1,53 @@
+schema_version: 1
+scientific_inference_executed: false
+p_mini_engineering_smoke:
+  registered_scene_count: 12
+  executed_by_independent_audit: false
+  reason: The frozen checkout contains no p_mini image renderer, prompt builder, or scientific runner. Implementing them in this audit would violate the required separation between preregistration audit and runner implementation.
+official_revision_recheck:
+  source: official_huggingface_model_api
+  checked_at: '2026-08-30'
+  models:
+    - model_id: smolvlm_256m_instruct
+      revision_available: true
+      requested_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+      resolved_revision: 7e3e67edbbed1bf9888184d9df282b700a323964
+      license: apache-2.0
+      weight_hash_match: true
+      weight_sha256: 74dea5904032e5ae99a2e0eef5179e6ac0f1dedc3ab0c7c2a5d4d387c843203e
+    - model_id: internvl2_5_2b
+      revision_available: true
+      requested_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+      resolved_revision: 573169ee54df216786bb9a189e9a32a060a008cf
+      license: mit
+      weight_hash_match: true
+      weight_sha256: 2135909ed23cb6c934a57a9f7e194c6ab128042a76f8934cdedfa0194181f50d
+    - model_id: qwen2_vl_2b_instruct
+      revision_available: true
+      requested_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+      resolved_revision: 895c3a49bc3fa70a340399125c650a463535e71c
+      license: apache-2.0
+      weight_hash_match: true
+      weight_sha256:
+        - 994ac2b03f97de8bc647d0fe5eba2e4b632b3e28dc03574c29bdfc36cf47e1b9
+        - 92540d8353c8d226a589a3b179bdb33851c970ee2cc2ac7ba035f79425e7b833
+historical_engineering_preflight:
+  source: artifacts/loop_c/*/summary.yaml
+  same_revisions_as_frozen_registry: true
+  all_checkpoint_load_success: true
+  all_actual_visual_forward_success: true
+  all_cll_ranking_recomputation_agreement: 1.0
+  all_deterministic_rerun_agreement: 1.0
+  scientific_vlm_result: NOT_EXECUTED
+source_audit:
+  image_passed_to_standard_models: true
+  image_passed_to_internvl: true
+  runtime_token_prefix_assertion_present: true
+  multi_token_candidate_span_scored: true
+  length_normalization_present: true
+  independent_forward_path_present: false
+  second_log_softmax_implementation_on_same_logits_present: true
+  frozen_lexical_tie_break_implemented: false
+  historical_tie_break: candidate_input_order
+  p_mini_specific_candidate_prompt_and_mapping_implemented: false
+status: CONDITIONAL_PREINFERENCE_AMENDMENT_REQUIRED

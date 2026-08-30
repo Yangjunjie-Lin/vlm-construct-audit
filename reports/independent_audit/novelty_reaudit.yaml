@@ -1,0 +1,185 @@
+schema_version: 1
+audit_date: '2026-08-30'
+cutoff_date: '2026-08-30'
+source_policy:
+  admissible:
+    - original paper
+    - official conference page
+    - official journal page
+    - official project page
+  secondary_sources_used_for_collision_decision: false
+search_log:
+  official_surfaces:
+    - https://arxiv.org/search/
+    - https://jmlr.org/
+    - official DOI publisher pages
+  query_families:
+    - VLM effect certification and power-calibrated behavioral effects
+    - claim-level conformal inference and selective inference for treatment effects
+    - VLM intervention validity and construct-valid multimodal evaluation
+    - multimodal evidence conflict and vision-language source conflict
+    - risk-coverage and SESOI-aware VLM evaluation
+    - false mechanistic claim control
+  newest_first_arxiv_window_reviewed: first 50 broad VLM intervention/conflict/conformal/selective/evidence results announced through the execution date
+  latest_relevant_new_results:
+    - arXiv:2608.27417
+    - arXiv:2608.27004
+    - arXiv:2608.26866
+    - arXiv:2608.24966
+  nonexhaustiveness_caveat: Absence of an indexed collision is not proof that no unpublished or unindexed collision exists.
+papers:
+  - paper: Simulation-Based Power Analyses for the Smallest Effect Size of Interest
+    date: '2024-04-16'
+    url: https://doi.org/10.1177/25152459241240722
+    problem: Power for minimum-effect and equivalence decisions around a fixed SESOI.
+    estimand: Generic population effect relative to an SESOI.
+    certification_unit: Study-level effect.
+    intervention: None.
+    models: None.
+    datasets: User-specified simulation DGPs.
+    main_result: CI-based simulation targets decision-specific power rather than ordinary rejection of zero.
+    overlap: Direct statistical basis for the frozen cell-level power calculation.
+    remaining_novelty: No VLM, multimodal conflict, uptake gate, or multi-family behavioral ITT.
+  - paper: On the Foundations of Noise-free Selective Classification
+    date: '2010-08-01'
+    url: https://jmlr.org/papers/v11/el-yaniv10a.html
+    problem: Selective classification with abstention and risk-coverage tradeoffs.
+    estimand: Selective risk at retained coverage.
+    certification_unit: Individual prediction policy and population curve.
+    intervention: Abstention policy.
+    models: Generic classifiers.
+    datasets: Theoretical and standard classification settings.
+    main_result: Establishes selective-classification foundations.
+    overlap: Risk-coverage vocabulary and abstention.
+    remaining_novelty: No paired intervention effect, SESOI, or VLM evidence validity.
+  - paper: Conformal Risk Control
+    date: '2022-08-04'
+    url: https://arxiv.org/abs/2208.02814
+    problem: Distribution-free control of monotone losses.
+    estimand: Expected user-specified loss.
+    certification_unit: Calibrated prediction policy.
+    intervention: Calibration of a prediction-set or decision threshold.
+    models: Generic predictive systems.
+    datasets: Exchangeable calibration/test examples.
+    main_result: Finite-sample risk control under exchangeability.
+    overlap: Generic risk-control machinery.
+    remaining_novelty: No fixed-margin paired VLM behavioral effect or uptake-validity gate.
+  - paper: 'Look Again Before You Abstain: Budgeted Conformal Evidence Acquisition for Reliable Vision-Language Model'
+    date: '2026-06-15'
+    url: https://arxiv.org/abs/2606.16667
+    problem: Bound VLM hallucination risk while answering, abstaining, or acquiring visual evidence.
+    estimand: Hallucination risk under an evidence-acquisition budget.
+    certification_unit: Object-existence claim and acquisition policy.
+    intervention: Claim-specific visual re-examination.
+    models: Vision-language models.
+    datasets: Labeled object-existence benchmarks.
+    main_result: Conformal filtering trades evidence-acquisition cost against asserted-claim risk.
+    overlap: Closest conformal VLM evidence-selection neighbor.
+    remaining_novelty: No SESOI paired correct/corrupted-evidence ITT or known-DGP method lock.
+  - paper: When Can Conformal Risk Control Certify LLM Outputs?
+    date: '2026-06-27'
+    url: https://arxiv.org/abs/2606.29054
+    problem: Feasibility and impossibility of conformal risk control for structured generation.
+    estimand: Structured-output task loss under retention.
+    certification_unit: Output configuration and prediction policy.
+    intervention: Adaptive retention/calibration policy.
+    models: Six open-weight LLMs.
+    datasets: Eight datasets across four tasks.
+    main_result: Certification feasibility depends on loss, sample size, and adaptation regime.
+    overlap: Feasibility-before-certification and abstention costs.
+    remaining_novelty: Not multimodal and no supplied-evidence behavioral ITT.
+  - paper: Answer-Level Trust Selection for Physical Vision-Language Reasoning
+    date: '2026-08-20'
+    url: https://arxiv.org/abs/2608.19807
+    problem: Select reliable individual quantitative VLM answers.
+    estimand: Answer-level reliability under a trust score.
+    certification_unit: Individual physical-reasoning answer.
+    intervention: Eight behavioral diagnostics include controlled input changes.
+    models: Qwen2.5-VL-7B in depth and 20 VLM backbones.
+    datasets: Annotated physical quantities and targeted failure cases.
+    main_result: Trust selection improves empirical risk-coverage behavior.
+    overlap: Multi-family VLM selection and behavioral interventions.
+    remaining_novelty: Selects answers rather than certifying a fixed-SESOI paired effect.
+  - paper: EviSafe Evidence-Grounded Safety Evaluation for Vision-Language Models
+    date: '2026-08-24'
+    url: https://arxiv.org/abs/2608.23313
+    problem: Test whether safety behavior tracks textual/visual evidence and counterfactual changes.
+    estimand: Diagnostic consistency and counterfactual behavioral sensitivity.
+    certification_unit: Scenario/probe and benchmark metric.
+    intervention: Targeted counterfactual evidence.
+    models: Eleven VLMs.
+    datasets: 1,181 gold scenarios and 2,452 variants.
+    main_result: Exposes evidence-grounding failures across models.
+    overlap: Closest controlled multi-model evidence-intervention evaluation.
+    remaining_novelty: No fixed SESOI, paired CLL ITT, or known-DGP-calibrated claim rule.
+  - paper: Does a Tool Result Carry More Authority Than Plain Text?
+    date: '2026-08-15'
+    url: https://arxiv.org/abs/2608.14992
+    problem: Prospective false-claim adoption under tool-result versus plain-text evidence.
+    estimand: False-claim adoption difference.
+    certification_unit: Study-level behavioral effect.
+    intervention: Evidence-authority format.
+    models: One text-only API model.
+    datasets: Synthetic assignment tasks.
+    main_result: Evidence presentation changes adoption behavior.
+    overlap: Prospective behavioral intervention and false-claim scope.
+    remaining_novelty: Not multimodal, multi-family, or SESOI/risk-coverage certified.
+  - paper: 'Retrieval Heads Meet Vision: Uncovering How VLMs Locate and Extract Visual Information'
+    date: '2026-08-27'
+    url: https://arxiv.org/abs/2608.27417
+    problem: Identify attention heads causally responsible for visual retrieval.
+    estimand: Grounding degradation under head masking.
+    certification_unit: Attention-head set and benchmark behavior.
+    intervention: Mask selected versus random attention heads.
+    models: Eleven VLMs.
+    datasets: Five referring-expression benchmarks plus transfer tasks.
+    main_result: Masking a small selected head set sharply degrades grounding while random masking does not.
+    overlap: Stronger internal causal intervention than the frozen external-evidence study.
+    remaining_novelty: No supplied-evidence ITT, SESOI, Holm replication gate, or uptake split.
+  - paper: Targeting the Attention Heads Behind Object Hallucination in LLaVA
+    date: '2026-08-25'
+    url: https://arxiv.org/abs/2608.24966
+    problem: Diagnose and intervene on attention heads associated with hallucinated objects.
+    estimand: Paired change in CHAIR hallucination measures under targeted intervention.
+    certification_unit: Model/intervention behavioral profile.
+    intervention: Head-sliced LoRA and inference-time grounding controller with random-head control.
+    models: LLaVA-1.5-7B.
+    datasets: 400 held-out COCO images and a 200-image control split.
+    main_result: Targeted intervention reduces hallucinations while lowering object recall.
+    overlap: Causal intervention, paired tests, and bounded behavioral interpretation.
+    remaining_novelty: Single model; no external evidence conflict, SESOI, or selective claim certification.
+  - paper: MVC-Bench Benchmarking Calibration of Medical Vision-Language Models
+    date: '2026-08-27'
+    url: https://arxiv.org/abs/2608.27004
+    problem: Evaluate calibration under model, modality, domain, prompt, and seed shifts.
+    estimand: Accuracy and calibration error under controlled shifts.
+    certification_unit: Model-setting benchmark cell.
+    intervention: Calibration and prompt-tuning strategies.
+    models: Eight VLM/Medical-VLM backbones.
+    datasets: Fundus, histopathology, and chest X-ray datasets.
+    main_result: Calibration varies materially across shifts; margin regularization often improves ECE.
+    overlap: Multi-model calibration and prompt-sensitivity evaluation.
+    remaining_novelty: No paired supplied-evidence effect, uptake gate, or minimum-effect certification.
+  - paper: Order Matters A Chinese Multi-Panel Meme Benchmark for Vision-Language Reasoning
+    date: '2026-08-27'
+    url: https://arxiv.org/abs/2608.26866
+    problem: Test order-sensitive cross-panel visual-text reasoning.
+    estimand: Accuracy drop under shuffled versus canonical panel order and explanation quality.
+    certification_unit: Benchmark task/model cell.
+    intervention: Panel-order shuffle and context ablation.
+    models: Five LVLMs.
+    datasets: 1,214 annotated multi-panel memes.
+    main_result: Canonical accuracy overstates order understanding; shuffling produces a sharp drop.
+    overlap: Cross-modal composition benchmark and controlled behavioral perturbation.
+    remaining_novelty: No fixed SESOI, claim-level risk control, or known-DGP calibration.
+collision_assessment:
+  complete_question_already_covered: false
+  current_study_is_only_cross_modal_conflict_benchmark: false
+  current_study_is_only_text_over_image_reliance: false
+  current_study_is_only_prompt_sensitivity: false
+  current_study_is_only_selective_prediction: false
+  current_study_is_only_conformal_abstention: false
+  current_study_is_only_minimum_effect_testing: false
+  caution: Most individual ingredients and much of the VLM intervention/selection space are already covered. Only the prospective joint design could remain novel, and the frozen construct failure prevents this dataset from realizing that contribution.
+  remaining_candidate_novelty: Prospective multi-family application of a known-DGP-calibrated, SESOI-aware behavioral claim-certification design with independent uptake eligibility and explicit claim-scope control.
+  decision: NOVELTY_PASS_WITH_CAUTION
