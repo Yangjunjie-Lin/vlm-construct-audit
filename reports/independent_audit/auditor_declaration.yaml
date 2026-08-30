@@ -1,0 +1,14 @@
+schema_version: 1
+auditor_identity: independent_ai_audit_instance_direction_p_2026_08_30
+auditor_type: independent_ai_agent
+human_expert_review: false
+prior_role_in_project: none
+authored_preregistration_files: false
+authored_direction_p_method: false
+accessed_scientific_results: false
+audit_start_date: '2026-08-30'
+audited_tag: p-mini-pilot-preregistered
+audited_commit: 9de60b87ec54bc852a7bb2e9cff87d9c23638042
+scope_note: >-
+  This declaration and the resulting audit represent an independent AI-based
+  computational and methodological review, not formal human peer review.
