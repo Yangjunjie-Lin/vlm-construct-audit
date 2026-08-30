@@ -15,12 +15,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -e ".[dev]"
-      - run: pytest
-      - run: ruff check .
       - run: python -m vlm_construct_audit audit-final-review-integrity
       - run: python -m vlm_construct_audit build-final-successor-adjudication
       - run: python -m vlm_construct_audit build-final-negative-evidence-release
       - run: python -m vlm_construct_audit verify-final-closeout
+      - run: pytest
+      - run: ruff check .
       - run: python -m vlm_construct_audit minimum-loop
         env:
           VLM_CA_CI: "1"
