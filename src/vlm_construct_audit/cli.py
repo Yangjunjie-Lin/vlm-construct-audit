@@ -12,6 +12,7 @@ import yaml
 from .audit import build_audit_decisions
 from .calibration.runner import run_calibration, run_smoke
 from .construct_v2 import (
+    adjudicate_construct_v2_human_review,
     analyze_construct_v2_power,
     audit_construct_v2_leakage,
     build_construct_v2_report,
@@ -22,6 +23,7 @@ from .construct_v2 import (
     retire_v1,
     run_construct_v2_oracles,
     validate_construct_v2,
+    validate_construct_v2_post_review_policy,
     verify_external_review_packages,
     verify_no_construct_v2_inference,
 )
@@ -234,6 +236,10 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "build-construct-v2-external-review-packages": build_external_review_packages,
         "verify-construct-v2-external-review-packages": verify_external_review_packages,
         "import-construct-v2-external-review": import_external_review_returns,
+        "adjudicate-construct-v2-human-review": adjudicate_construct_v2_human_review,
+        "validate-construct-v2-post-review-policy": (
+            validate_construct_v2_post_review_policy
+        ),
         "verify-no-construct-v2-inference": verify_no_construct_v2_inference,
         "build-construct-v2-report": build_construct_v2_report,
     }
@@ -263,6 +269,8 @@ def main(argv: list[str] | None = None) -> int:
             "build-construct-v2-external-review-packages",
             "verify-construct-v2-external-review-packages",
             "import-construct-v2-external-review",
+            "adjudicate-construct-v2-human-review",
+            "validate-construct-v2-post-review-policy",
             "verify-no-construct-v2-inference", "build-construct-v2-report",
         ],
     )
@@ -286,6 +294,14 @@ def main(argv: list[str] | None = None) -> int:
         "run-construct-v2-oracles",
         "analyze-construct-v2-power",
         "verify-no-construct-v2-inference",
+        "validate-construct-v2-post-review-policy",
     } and result.get("status") != "PASS":
+        return 1
+    if args.command == "adjudicate-construct-v2-human-review" and result.get(
+        "decision"
+    ) not in {
+        "CONSTRUCT_V2_READY_FOR_INDEPENDENT_PREREGISTRATION_AUDIT",
+        "CONSTRUCT_V2_HUMAN_NO_GO",
+    }:
         return 1
     return 0

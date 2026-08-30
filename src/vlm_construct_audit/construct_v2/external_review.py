@@ -833,14 +833,56 @@ def import_external_review_returns(root: Path = ROOT) -> dict[str, Any]:
         any(row[f"critical_error_reviewer_{slot}"] != "no" for slot in (1, 2))
         for row in genuine_rows
     )
+    aligned_fields = list(aligned[0])
+    disagreement_fields = [
+        "source_review_id",
+        "reviewer_1_review_id",
+        "reviewer_2_review_id",
+        "status",
+        "decoy_type",
+        "field",
+        "reviewer_1_value",
+        "reviewer_2_value",
+        "reviewer_1_notes",
+        "reviewer_2_notes",
+    ]
+    aligned_bytes = _csv_bytes(aligned, aligned_fields)
+    disagreement_bytes = _csv_bytes(disagreements, disagreement_fields)
+    response_hashes = {
+        f"reviewer_{slot}": _sha256(return_paths[slot]["responses"])
+        for slot in (1, 2)
+    }
+    attestation_hashes = {
+        f"reviewer_{slot}": _sha256(return_paths[slot]["attestation"])
+        for slot in (1, 2)
+    }
     metrics = {
+        "schema_version": 1,
+        "protocol_id": PROTOCOL_ID,
         "status": status,
         "reviewer_count": 2,
+        "reviewer_codes": {
+            f"reviewer_{slot}": attestations[slot]["reviewer_code"]
+            for slot in (1, 2)
+        },
         "bundle_hashes": {
             slot: spec["sha256"] for slot, spec in commitment["bundles"].items()
         },
+        "mapping_commitments": {
+            slot: spec["mapping_sha256_commitment"]
+            for slot, spec in commitment["bundles"].items()
+        },
         "mapping_commitment_verified": True,
         "packet_hash_verified": True,
+        "response_completeness": 1.0,
+        "evidence_hashes": {
+            "original_packet_sha256": commitment["original_packet"]["sha256"],
+            "hidden_key_sha256": commitment["frozen_hidden_key_sha256"],
+            "original_returns": response_hashes,
+            "reviewer_attestations": attestation_hashes,
+            "aligned_reviews_sha256": _sha256_bytes(aligned_bytes),
+            "disagreements_sha256": _sha256_bytes(disagreement_bytes),
+        },
         "overall_agreement": overall_agreement,
         "overall_cohen_kappa": overall_kappa,
         "per_field_agreement": per_field_agreement,
@@ -903,43 +945,18 @@ def import_external_review_returns(root: Path = ROOT) -> dict[str, Any]:
             results / f"revealed_mapping_reviewer_{slot}.json",
             (root / PRIVATE_STATE_DIR / f"reviewer_{slot}_mapping.json").read_bytes(),
         )
-    aligned_fields = list(aligned[0])
-    disagreement_fields = [
-        "source_review_id",
-        "reviewer_1_review_id",
-        "reviewer_2_review_id",
-        "status",
-        "decoy_type",
-        "field",
-        "reviewer_1_value",
-        "reviewer_2_value",
-        "reviewer_1_notes",
-        "reviewer_2_notes",
-    ]
-    _write_atomic(results / "aligned_reviews.csv", _csv_bytes(aligned, aligned_fields))
-    _write_atomic(
-        results / "disagreements.csv", _csv_bytes(disagreements, disagreement_fields)
-    )
+    _write_atomic(results / "aligned_reviews.csv", aligned_bytes)
+    _write_atomic(results / "disagreements.csv", disagreement_bytes)
     _write_atomic(results / "field_metrics.yaml", _yaml_bytes(field_metrics))
     _write_atomic(results / "human_construct_review_metrics.yaml", _yaml_bytes(metrics))
-
-    if status == "HUMAN_CONSTRUCT_REVIEW_PASS":
-        no_inference = verify_no_construct_v2_inference()
-        candidate_files = sorted(path for path in results.iterdir() if path.is_file())
-        candidate = {
-            "schema_version": 1,
-            "protocol_id": PROTOCOL_ID,
-            "status": "PENDING_INDEPENDENT_PREREGISTRATION_AUDIT",
-            "human_construct_review_gate": status,
-            "human_metrics_sha256": _sha256(results / "human_construct_review_metrics.yaml"),
-            "files": {_relative(root, path): _sha256(path) for path in candidate_files},
-            "formal_vlm_inference_count": no_inference["formal_prediction_files"],
-            "runner_blocked": no_inference["runner_blocked"],
-            "execution_authorization_created": False,
-            "candidate_tag_created": False,
-        }
-        _write_atomic(
-            root / "artifacts/construct_v2_preregistration_candidate/manifest.yaml",
-            _yaml_bytes(candidate),
-        )
+    imported_files = sorted(path for path in results.iterdir() if path.is_file())
+    import_manifest = {
+        "schema_version": 1,
+        "protocol_id": PROTOCOL_ID,
+        "mode": "IMMUTABLE_IMPORT_EVIDENCE",
+        "files": {_relative(root, path): _sha256(path) for path in imported_files},
+        "candidate_created": False,
+        "execution_authorization_created": False,
+    }
+    _write_atomic(results / "import_manifest.yaml", _yaml_bytes(import_manifest))
     return metrics
