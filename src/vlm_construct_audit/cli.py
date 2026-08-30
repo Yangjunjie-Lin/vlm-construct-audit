@@ -38,6 +38,7 @@ from .post_stop import (
 )
 from .preregistration import (
     validate_p_mini_pilot_preregistration,
+    verify_frozen_p_mini_pilot_preregistration_read_only,
     verify_frozen_post_stop_artifacts_read_only,
     verify_no_p_mini_pilot_inference,
     verify_p_mini_pilot_preregistration,
@@ -219,6 +220,9 @@ def _command_table(config: str) -> dict[str, Callable[[], Any]]:
         "verify-post-stop-artifacts": verify_frozen_post_stop_artifacts_read_only,
         "validate-p-mini-pilot-preregistration": validate_p_mini_pilot_preregistration,
         "verify-p-mini-pilot-preregistration": verify_p_mini_pilot_preregistration,
+        "verify-frozen-p-mini-pilot-preregistration-read-only": (
+            verify_frozen_p_mini_pilot_preregistration_read_only
+        ),
         "verify-no-p-mini-pilot-inference": verify_no_p_mini_pilot_inference,
         "retire-p-mini-pilot-v1": retire_v1,
         "generate-construct-v2": generate_construct_v2,
@@ -250,6 +254,7 @@ def main(argv: list[str] | None = None) -> int:
             "seal-direction-p", "seal-direction-m", "seal-direction-u",
             "import-human-review", "adjudicate-post-stop", "verify-post-stop-artifacts",
             "validate-p-mini-pilot-preregistration", "verify-p-mini-pilot-preregistration",
+            "verify-frozen-p-mini-pilot-preregistration-read-only",
             "verify-no-p-mini-pilot-inference", "run-p-mini-pilot",
             "retire-p-mini-pilot-v1",
             "generate-construct-v2", "validate-construct-v2",
@@ -274,6 +279,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command in {
         "validate-p-mini-pilot-preregistration",
         "verify-p-mini-pilot-preregistration",
+        "verify-frozen-p-mini-pilot-preregistration-read-only",
         "verify-no-p-mini-pilot-inference",
         "validate-construct-v2",
         "audit-construct-v2-leakage",

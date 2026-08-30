@@ -23,6 +23,9 @@ jobs:
       - run: python -m vlm_construct_audit adjudicate-tier0-5
       - run: python -m vlm_construct_audit verify-artifacts
       - run: python -m vlm_construct_audit verify-post-stop-artifacts
-      - run: python -m vlm_construct_audit validate-p-mini-pilot-preregistration
-      - run: python -m vlm_construct_audit verify-p-mini-pilot-preregistration
-      - run: python -m vlm_construct_audit verify-no-p-mini-pilot-inference
+      - run: python -m vlm_construct_audit verify-frozen-p-mini-pilot-preregistration-read-only
+      - run: python -m vlm_construct_audit validate-construct-v2
+      - run: python -m vlm_construct_audit audit-construct-v2-leakage
+      - run: python -m vlm_construct_audit run-construct-v2-oracles
+      - run: python -m vlm_construct_audit verify-construct-v2-external-review-packages
+      - run: python -m vlm_construct_audit verify-no-construct-v2-inference
