@@ -1,0 +1,28 @@
+schema_version: 1
+registry_id: construct_v2_human_review_decoys_v1
+frozen_before_packet_generation: true
+genuine_scene_count: 64
+decoy_scene_count: 16
+selection_seed: 865001
+packet_shuffle_seed: 865002
+decoy_types:
+  visual_first_hop_mismatch:
+    count: 4
+    manipulation: reverse the packet's claimed visual first-hop direction without changing the image
+    expected_critical_error: true
+  ambiguous_bridge_entity:
+    count: 4
+    manipulation: make the natural-language bridge descriptor disjunctive while leaving triples unambiguous
+    expected_critical_error: true
+  second_hop_visually_represented:
+    count: 4
+    manipulation: spatially render C at the text-specified second hop
+    expected_critical_error: true
+  multi_fact_corruption:
+    count: 4
+    manipulation: change both the head entity and relation in corrupted evidence
+    expected_critical_error: true
+reviewers_blinded_to_decoy_status: true
+decoy_detection_definition: proportion of decoys marked critical_error=yes
+decoy_detection_gate: 0.90
+

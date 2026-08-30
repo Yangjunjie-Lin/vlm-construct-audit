@@ -1,0 +1,24 @@
+schema_version: 1
+packet_id: direction_p_construct_v2_blinded_review_v1
+row_count: 80
+genuine_count: 64
+decoy_count: 16
+answer_balance_genuine:
+  northeast: 16
+  northwest: 16
+  southeast: 16
+  southwest: 16
+decoy_type_counts:
+  visual_first_hop_mismatch: 4
+  ambiguous_bridge_entity: 4
+  second_hop_visually_represented: 4
+  multi_fact_corruption: 4
+reviewer_count_required: 2
+reviewer_count_completed: 0
+review_status: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+files:
+  data/construct_v2_review/review_packet.csv: fb50c9a303bf9f606669b175822f483cc3da80797a3eabc7d67c611b7887a6a3
+  data/construct_v2_review/review_instructions.md: 16431ef43a6c518f292dd43d6e5ddb62318770ae2bed7ddb84458acd96b179f2
+  data/construct_v2_review/review_template.csv: 57b6badddac3ad0438c22b591e94f4fb637bc9f66be9127bc257d350f083811c
+  artifacts/construct_v2_review/hidden_key.yaml: 8715c6568816a69299a6e48fc5bab69b24368b99025a41c17c29ce0619912779
+agent_or_author_may_serve_as_reviewer: false
