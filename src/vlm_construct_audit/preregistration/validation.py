@@ -60,8 +60,11 @@ IMPLEMENTATION_FILES = [
     "src/vlm_construct_audit/preregistration/validation.py",
     "src/vlm_construct_audit/post_stop/__init__.py",
     "src/vlm_construct_audit/cli.py",
+    "tests/integration/test_closed_loop_components.py",
+    "tests/integration/test_model_smoke.py",
     "tests/unit/test_p_mini_pilot_preregistration.py",
     "tests/unit/test_post_stop_m.py",
+    "tests/unit/test_tier0_5_manifest_isolation.py",
     "tests/regression/test_cli_contract.py",
 ]
 
@@ -123,6 +126,12 @@ def _read_jsonl(path: str) -> list[dict[str, Any]]:
 def _aggregate_hash(file_hashes: dict[str, str]) -> str:
     raw = json.dumps(file_hashes, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(raw).hexdigest()
+
+
+def _normalized_text_sha256(path: str) -> str:
+    text_value = (ROOT / path).read_text(encoding="utf-8")
+    normalized = text_value.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
 def validate_p_mini_pilot_preregistration() -> dict[str, Any]:
@@ -245,7 +254,7 @@ def validate_p_mini_pilot_preregistration() -> dict[str, Any]:
         failures.append("paired power requirement failed")
     method = _load_yaml("research/preregistration/p_mini_pilot_method_lock.yaml")
     for path, expected_hash in method.get("source_file_hashes", {}).items():
-        if _sha256(path) != expected_hash:
+        if _normalized_text_sha256(path) != expected_hash:
             failures.append(f"P3 method-lock hash mismatch: {path}")
     master = _load_yaml("research/preregistration/power_calibrated_mini_pilot.yaml")
     if master.get("scientific_inference_authorized") is not False:

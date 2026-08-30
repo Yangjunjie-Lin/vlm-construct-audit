@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import pytest
 
+from vlm_construct_audit.calibration import runner
 from vlm_construct_audit.calibration.runner import run_smoke
+
+
+@pytest.fixture(autouse=True)
+def _do_not_persist_smoke_report(monkeypatch) -> None:
+    monkeypatch.setattr(runner, "dump_yaml", lambda *_args, **_kwargs: None)
 
 
 def test_offline_tiny_random_vlm_forward_is_explicitly_non_scientific() -> None:

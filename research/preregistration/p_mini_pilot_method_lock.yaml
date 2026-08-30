@@ -9,10 +9,11 @@ source_files:
   - research/post_stop/direction_p/method_freeze.yaml
 source_commit: 8b7a6988a78fd7b0fb0c581f6c29988e63be0800
 source_state_commit: f993282e0a27b8da0ba1c239fb96715c9fc5b79a
+source_hash_policy: sha256_utf8_text_after_crlf_and_cr_normalization_to_lf
 source_file_hashes:
   src/vlm_construct_audit/post_stop/direction_p.py: 02f90b85f96a27edef5d6daf17eb835fc8edad1191043eedfdff8877050dbae3
   research/post_stop/direction_p/preregistration.yaml: d0e4cc1275f4abdff8d87b1fb77c9e195a2cd03799f598aa56ff020e844aefe3
-  research/post_stop/direction_p/power_table.yaml: 201ed208e5a43984576174fdc4915899f762829c255d690fd42dd8c803de0364
+  research/post_stop/direction_p/power_table.yaml: e49b10dad1a1a551a507cf1a1382263fa779b9401fed8986224fc48fbc54d8fc
   research/post_stop/direction_p/method_freeze.yaml: b62a24565eb6de96993d8ffb1cd4e24edb5bc9a90bc34742bf9834d133621a83
 delta0: 0.10
 delta1: 0.15

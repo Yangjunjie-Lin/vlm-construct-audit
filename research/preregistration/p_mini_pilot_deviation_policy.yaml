@@ -65,6 +65,13 @@ validation_attempt_log:
     disposition: made Post-STOP direction entry points lazy and marked Direction M model-stack tests optional when Torch, Pillow, or Transformers is absent
     scientific_output_available: false
     numerical_or_design_change: false
+  - event_id: PRETAG_VALIDATION_005
+    check: second remote fresh-clone full pytest and preregistration validation
+    result: FAIL
+    reason: the method-lock hash had captured stale CRLF working-tree bytes despite the repository LF checkout policy; three legacy tests also persisted regenerated calibration artifacts
+    disposition: normalized method-lock source hashing to UTF-8 LF and isolated all three test writers from tracked artifacts
+    scientific_output_available: false
+    numerical_or_design_change: false
 failed_scientific_runs: []
 authorization_boundary:
   authoring_agent_may_create_independent_audit_file: false
