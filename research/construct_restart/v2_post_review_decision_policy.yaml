@@ -1,0 +1,29 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+frozen_before_any_human_return: true
+input_states:
+  - RETURNS_MISSING
+  - RETURN_VALIDATION_FAILURE
+  - HUMAN_CONSTRUCT_REVIEW_PASS
+  - HUMAN_CONSTRUCT_REVIEW_FAIL
+decision_mapping:
+  RETURNS_MISSING: PENDING_EXTERNAL_CONSTRUCT_REVIEW
+  RETURN_VALIDATION_FAILURE: CONSTRUCT_V2_REVIEW_INVALID
+  HUMAN_CONSTRUCT_REVIEW_PASS: CONSTRUCT_V2_READY_FOR_INDEPENDENT_PREREGISTRATION_AUDIT
+  HUMAN_CONSTRUCT_REVIEW_FAIL: CONSTRUCT_V2_HUMAN_NO_GO
+terminal_actions:
+  CONSTRUCT_V2_HUMAN_NO_GO: TERMINATE_DIRECTION_P
+  CONSTRUCT_V2_REVIEW_INVALID: STOP_AND_PRESERVE_RETURNS
+human_pass_does_not_authorize:
+  - runner implementation
+  - formal uptake inference
+  - formal reasoning inference
+  - scientific claim
+  - final preregistration tag
+  - execution authorization
+replacement_reviewers_after_valid_failure: forbidden
+third_reviewer_rescue: forbidden
+disagreement_deletion: forbidden
+threshold_change_after_results: forbidden
+packet_regeneration_after_results: forbidden
+bundle_regeneration_after_results: forbidden
