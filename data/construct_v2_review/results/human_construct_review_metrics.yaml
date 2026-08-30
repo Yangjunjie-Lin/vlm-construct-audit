@@ -1,0 +1,107 @@
+schema_version: 1
+protocol_id: direction_p_construct_valid_mini_pilot_v2
+status: HUMAN_CONSTRUCT_REVIEW_FAIL
+reviewer_count: 2
+reviewer_codes:
+  reviewer_1: R1-HUMAN-A7K3
+  reviewer_2: R2-HUMAN-M4P9
+bundle_hashes:
+  reviewer_1: c7c1547dfff6baf016d3a9882ce252af196b165c91a0fdf58e89b7025eb3e496
+  reviewer_2: f0dd40c5eab48c4f73f6bbddde33800165c18a4792389c7ea43c223529716697
+mapping_commitments:
+  reviewer_1: 71a48a2eae3ba87ec97a7e98ffbff3c749fbcf8cf62a886ea259e75595cdb96f
+  reviewer_2: 442dd8a1e45ffd03ad7e7752a8499f8957f5885799320277b2bcf77ee450f79d
+mapping_commitment_verified: true
+packet_hash_verified: true
+response_completeness: 1.0
+evidence_hashes:
+  original_packet_sha256: fb50c9a303bf9f606669b175822f483cc3da80797a3eabc7d67c611b7887a6a3
+  hidden_key_sha256: 8715c6568816a69299a6e48fc5bab69b24368b99025a41c17c29ce0619912779
+  original_returns:
+    reviewer_1: d150c9eb71868f518f88dda5e579bad2389a50e5595924d1d63d79d46866f4d1
+    reviewer_2: 27ef3cde8f34a57b4043d0cd01d9b02d973f03b9e8c3d134c081a6fa623885d0
+  reviewer_attestations:
+    reviewer_1: af4b723ca4b0e9faca2e1030c67deeb2be903d39bc0384bd94872947fb179036
+    reviewer_2: f211fdb0a9da954b220bcd920c3436385b78247f259c3f5603b151414bf36943
+  aligned_reviews_sha256: 2ec470fca5930c1652ad6d56ea6c6afb670229b0057daf29ef31c4a311959c61
+  disagreements_sha256: ea539201c99583102902eb6f372b7b3f12baa3c20ae79e65a85fe58d8dc225e3
+overall_agreement: 1.0
+overall_cohen_kappa: 1.0
+per_field_agreement:
+  visual_first_hop_correct: 1.0
+  bridge_entity_uniquely_identifiable: 1.0
+  text_second_hop_correct: 1.0
+  text_second_hop_not_visually_represented: 1.0
+  conditions_differ_in_exactly_one_target_relation: 1.0
+  no_direct_image_text_conflict: 1.0
+  joint_answer_unique: 1.0
+  image_alone_not_uniquely_sufficient: 1.0
+  evidence_alone_not_uniquely_sufficient: 1.0
+  nl_triples_fact_equivalent: 1.0
+  critical_error: 1.0
+per_field_kappa:
+  visual_first_hop_correct: 1.0
+  bridge_entity_uniquely_identifiable: 1.0
+  text_second_hop_correct: 1.0
+  text_second_hop_not_visually_represented: null
+  conditions_differ_in_exactly_one_target_relation: 1.0
+  no_direct_image_text_conflict: 1.0
+  joint_answer_unique: 1.0
+  image_alone_not_uniquely_sufficient: null
+  evidence_alone_not_uniquely_sufficient: null
+  nl_triples_fact_equivalent: 1.0
+  critical_error: 1.0
+uncertain_count:
+  reviewer_1: 0
+  reviewer_2: 0
+  total: 0
+  per_field:
+    visual_first_hop_correct: 0
+    bridge_entity_uniquely_identifiable: 0
+    text_second_hop_correct: 0
+    text_second_hop_not_visually_represented: 0
+    conditions_differ_in_exactly_one_target_relation: 0
+    no_direct_image_text_conflict: 0
+    joint_answer_unique: 0
+    image_alone_not_uniquely_sufficient: 0
+    evidence_alone_not_uniquely_sufficient: 0
+    nl_triples_fact_equivalent: 0
+    critical_error: 0
+genuine_required_field_failures:
+  no_count: 0
+  uncertain_count: 0
+  total: 0
+  affected_item_count: 0
+genuine_critical_errors:
+  yes_count: 0
+  uncertain_count: 0
+  total: 0
+  affected_item_count: 0
+reviewer_decoy_detection:
+  reviewer_1:
+    reviewer_code: R1-HUMAN-A7K3
+    detected: 12
+    total: 16
+    rate: 0.75
+  reviewer_2:
+    reviewer_code: R2-HUMAN-M4P9
+    detected: 12
+    total: 16
+    rate: 0.75
+minimum_decoy_detection: 0.75
+disagreement_count: 0
+deleted_disagreements: 0
+agent_or_model_review_used: false
+reviewer_independence_attested: true
+gates:
+  reviewer_count_2: true
+  response_completeness_1_00: true
+  attestation_validation_pass: true
+  overall_agreement_ge_0_95: true
+  overall_nominal_cohen_kappa_ge_0_80: true
+  genuine_required_field_no_count_0: true
+  genuine_required_field_uncertain_count_0: true
+  genuine_critical_error_yes_or_uncertain_count_0: true
+  minimum_reviewer_decoy_detection_ge_0_90: false
+  deleted_disagreements_0: true
+  model_or_agent_review_used_false: true

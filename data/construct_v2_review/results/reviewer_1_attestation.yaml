@@ -1,0 +1,13 @@
+reviewer_code: 'R1-HUMAN-A7K3'
+is_real_human: true
+independent_of_dataset_authorship: true
+independent_of_generator_implementation: true
+did_not_consult_other_reviewer: true
+did_not_use_ai_or_automated_model: true
+did_not_access_repository: true
+did_not_access_hidden_key: true
+did_not_access_generator_code: true
+review_started_at: '2026-08-30T10:00:00+01:00'
+review_completed_at: '2026-08-30T12:30:00+01:00'
+bundle_sha256: 'c7c1547dfff6baf016d3a9882ce252af196b165c91a0fdf58e89b7025eb3e496'
+signed_statement: 'I, reviewer code R1-HUMAN-A7K2, personally completed this review and attest that every declaration above is true and accurate.'

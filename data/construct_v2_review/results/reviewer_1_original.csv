@@ -1,0 +1,81 @@
+review_id,visual_first_hop_correct,bridge_entity_uniquely_identifiable,text_second_hop_correct,text_second_hop_not_visually_represented,conditions_differ_in_exactly_one_target_relation,no_direct_image_text_conflict,joint_answer_unique,image_alone_not_uniquely_sufficient,evidence_alone_not_uniquely_sufficient,nl_triples_fact_equivalent,critical_error,reviewer_notes
+R1-NBBHF5,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-D693BC,no,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,Displayed first-hop direction contradicts the visual claim; the proposed answers inherit that reversal.
+R1-QMLP8W,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-SMSL9R,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-QAMVPG,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-BU7X4L,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-KYFTZY,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-LH28FT,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-VJK3YN,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-QXMCTG,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-L5B5PQ,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-MPTTT3,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-UMGFXV,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-CSY4Y3,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-769N84,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-XFGKTU,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-26M2JL,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-RGUYMD,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-VTJ3ZP,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-VBTHG6,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-2SDAKA,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-YU866S,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-V766CB,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-4YDFPW,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-KQZ5ME,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-L3BHHA,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-TV7VPG,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-HYTDXX,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-CW9QF4,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-QFFMAL,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-J9CV4G,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-D2AGJM,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-ANP3T2,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-42WGCX,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-KA4MHE,no,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,Displayed first-hop direction contradicts the visual claim; the proposed answers inherit that reversal.
+R1-KWGA4X,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-FUFME5,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-5B5GPK,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-MJ8848,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-T63EWL,yes,no,no,yes,no,yes,no,yes,yes,no,yes,"Correct-evidence NL names the bridge entity or a distractor, while the triple names only the bridge; the bridge is not unique and the serializations are not fact-equivalent."
+R1-74AABY,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-TA2H8P,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-FRFU3T,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-77FLYK,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-KTUJZA,yes,no,no,yes,no,yes,no,yes,yes,no,yes,"Correct-evidence NL names the bridge entity or a distractor, while the triple names only the bridge; the bridge is not unique and the serializations are not fact-equivalent."
+R1-K548Z9,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,yes,"Corrupted condition changes the bridge entity as well as the target relation, so the pair is not an exactly-one-relation contrast."
+R1-SKQXAH,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-RL4C8G,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-S4AQ47,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-3LYY9K,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-L7QKZD,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-TSRZXX,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-Q7H6NU,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-27LLXT,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-NLVGRE,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-A2KSZH,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,yes,"Corrupted condition changes the bridge entity as well as the target relation, so the pair is not an exactly-one-relation contrast."
+R1-KCX6BA,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-9LV4ZS,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-AT9VE4,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,yes,"Corrupted condition changes the bridge entity as well as the target relation, so the pair is not an exactly-one-relation contrast."
+R1-VCDVMD,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,yes,"Corrupted condition changes the bridge entity as well as the target relation, so the pair is not an exactly-one-relation contrast."
+R1-K5GCG4,no,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,Displayed first-hop direction contradicts the visual claim; the proposed answers inherit that reversal.
+R1-SHZ6H7,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-RNF3DL,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-F2L5C2,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-4GJGF8,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-E494TD,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-W2BAZ9,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-R7P2V9,yes,no,no,yes,no,yes,no,yes,yes,no,yes,"Correct-evidence NL names the bridge entity or a distractor, while the triple names only the bridge; the bridge is not unique and the serializations are not fact-equivalent."
+R1-TNRYU4,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-5WQAW7,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-53WR5G,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-PGXXVU,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-QYUW8S,no,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,Displayed first-hop direction contradicts the visual claim; the proposed answers inherit that reversal.
+R1-DTWSH3,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-THDQH7,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-2ZXZTM,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-CC9XVF,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-2HBUVY,yes,no,no,yes,no,yes,no,yes,yes,no,yes,"Correct-evidence NL names the bridge entity or a distractor, while the triple names only the bridge; the bridge is not unique and the serializations are not fact-equivalent."
+R1-PEYFEW,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none
+R1-5T79XT,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,no,none

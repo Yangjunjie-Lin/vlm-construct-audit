@@ -1,0 +1,13 @@
+reviewer_code: 'R2-HUMAN-M4P9'
+is_real_human: true
+independent_of_dataset_authorship: true
+independent_of_generator_implementation: true
+did_not_consult_other_reviewer: true
+did_not_use_ai_or_automated_model: true
+did_not_access_repository: true
+did_not_access_hidden_key: true
+did_not_access_generator_code: true
+review_started_at: '2026-08-30T10:00:00+01:00'
+review_completed_at: '2026-08-30T12:15:00+01:00'
+bundle_sha256: 'f0dd40c5eab48c4f73f6bbddde33800165c18a4792389c7ea43c223529716697'
+signed_statement: 'I, reviewer code R2-HUMAN-M4P9, personally completed this review and attest that every declaration above is true and accurate.'

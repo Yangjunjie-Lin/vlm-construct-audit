@@ -1,0 +1,62 @@
+schema_version: 1
+nominal_categories:
+- 'yes'
+- 'no'
+- uncertain
+uncertain_retained: true
+fields:
+  visual_first_hop_correct:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  bridge_entity_uniquely_identifiable:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  text_second_hop_correct:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  text_second_hop_not_visually_represented:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: null
+    uncertain_count: 0
+  conditions_differ_in_exactly_one_target_relation:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  no_direct_image_text_conflict:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  joint_answer_unique:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  image_alone_not_uniquely_sufficient:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: null
+    uncertain_count: 0
+  evidence_alone_not_uniquely_sufficient:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: null
+    uncertain_count: 0
+  nl_triples_fact_equivalent:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0
+  critical_error:
+    n: 80
+    agreement: 1.0
+    cohen_kappa: 1.0
+    uncertain_count: 0

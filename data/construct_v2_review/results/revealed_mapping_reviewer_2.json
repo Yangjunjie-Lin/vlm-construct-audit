@@ -1,0 +1,408 @@
+{
+  "mapping_release_condition": "after_both_complete_returns_validate",
+  "protocol_id": "direction_p_construct_valid_mini_pilot_v2",
+  "reviewer_slot": "reviewer_2",
+  "rows": [
+    {
+      "bundle_row_position": "1",
+      "opaque_review_id": "R2-G5Z2NF",
+      "source_review_id": "CVR-034"
+    },
+    {
+      "bundle_row_position": "2",
+      "opaque_review_id": "R2-SQ27EJ",
+      "source_review_id": "CVR-038"
+    },
+    {
+      "bundle_row_position": "3",
+      "opaque_review_id": "R2-GV2LBE",
+      "source_review_id": "CVR-052"
+    },
+    {
+      "bundle_row_position": "4",
+      "opaque_review_id": "R2-SPV2KJ",
+      "source_review_id": "CVR-074"
+    },
+    {
+      "bundle_row_position": "5",
+      "opaque_review_id": "R2-88HDHD",
+      "source_review_id": "CVR-004"
+    },
+    {
+      "bundle_row_position": "6",
+      "opaque_review_id": "R2-STRNU3",
+      "source_review_id": "CVR-019"
+    },
+    {
+      "bundle_row_position": "7",
+      "opaque_review_id": "R2-9KMXWZ",
+      "source_review_id": "CVR-045"
+    },
+    {
+      "bundle_row_position": "8",
+      "opaque_review_id": "R2-B23KJG",
+      "source_review_id": "CVR-056"
+    },
+    {
+      "bundle_row_position": "9",
+      "opaque_review_id": "R2-HHHZSA",
+      "source_review_id": "CVR-022"
+    },
+    {
+      "bundle_row_position": "10",
+      "opaque_review_id": "R2-ABGNM8",
+      "source_review_id": "CVR-032"
+    },
+    {
+      "bundle_row_position": "11",
+      "opaque_review_id": "R2-D9SAW9",
+      "source_review_id": "CVR-079"
+    },
+    {
+      "bundle_row_position": "12",
+      "opaque_review_id": "R2-4BG6TQ",
+      "source_review_id": "CVR-025"
+    },
+    {
+      "bundle_row_position": "13",
+      "opaque_review_id": "R2-WU2NVC",
+      "source_review_id": "CVR-030"
+    },
+    {
+      "bundle_row_position": "14",
+      "opaque_review_id": "R2-7ZMKNJ",
+      "source_review_id": "CVR-021"
+    },
+    {
+      "bundle_row_position": "15",
+      "opaque_review_id": "R2-VMTT9T",
+      "source_review_id": "CVR-049"
+    },
+    {
+      "bundle_row_position": "16",
+      "opaque_review_id": "R2-KJBP8L",
+      "source_review_id": "CVR-028"
+    },
+    {
+      "bundle_row_position": "17",
+      "opaque_review_id": "R2-V6HWYQ",
+      "source_review_id": "CVR-057"
+    },
+    {
+      "bundle_row_position": "18",
+      "opaque_review_id": "R2-4B6VH8",
+      "source_review_id": "CVR-003"
+    },
+    {
+      "bundle_row_position": "19",
+      "opaque_review_id": "R2-KDGZWQ",
+      "source_review_id": "CVR-036"
+    },
+    {
+      "bundle_row_position": "20",
+      "opaque_review_id": "R2-JW98FL",
+      "source_review_id": "CVR-054"
+    },
+    {
+      "bundle_row_position": "21",
+      "opaque_review_id": "R2-KDAF7T",
+      "source_review_id": "CVR-023"
+    },
+    {
+      "bundle_row_position": "22",
+      "opaque_review_id": "R2-AMSAGM",
+      "source_review_id": "CVR-066"
+    },
+    {
+      "bundle_row_position": "23",
+      "opaque_review_id": "R2-M4P535",
+      "source_review_id": "CVR-011"
+    },
+    {
+      "bundle_row_position": "24",
+      "opaque_review_id": "R2-K4XHHG",
+      "source_review_id": "CVR-033"
+    },
+    {
+      "bundle_row_position": "25",
+      "opaque_review_id": "R2-UAKWMY",
+      "source_review_id": "CVR-050"
+    },
+    {
+      "bundle_row_position": "26",
+      "opaque_review_id": "R2-DQHRFB",
+      "source_review_id": "CVR-071"
+    },
+    {
+      "bundle_row_position": "27",
+      "opaque_review_id": "R2-UJYR3D",
+      "source_review_id": "CVR-064"
+    },
+    {
+      "bundle_row_position": "28",
+      "opaque_review_id": "R2-E4KMAD",
+      "source_review_id": "CVR-018"
+    },
+    {
+      "bundle_row_position": "29",
+      "opaque_review_id": "R2-ERBLS3",
+      "source_review_id": "CVR-047"
+    },
+    {
+      "bundle_row_position": "30",
+      "opaque_review_id": "R2-U7GGXF",
+      "source_review_id": "CVR-048"
+    },
+    {
+      "bundle_row_position": "31",
+      "opaque_review_id": "R2-3RHUQK",
+      "source_review_id": "CVR-065"
+    },
+    {
+      "bundle_row_position": "32",
+      "opaque_review_id": "R2-NG2CV9",
+      "source_review_id": "CVR-070"
+    },
+    {
+      "bundle_row_position": "33",
+      "opaque_review_id": "R2-KXNWZE",
+      "source_review_id": "CVR-062"
+    },
+    {
+      "bundle_row_position": "34",
+      "opaque_review_id": "R2-ZEZAU3",
+      "source_review_id": "CVR-042"
+    },
+    {
+      "bundle_row_position": "35",
+      "opaque_review_id": "R2-TMFFXY",
+      "source_review_id": "CVR-060"
+    },
+    {
+      "bundle_row_position": "36",
+      "opaque_review_id": "R2-4QA2QV",
+      "source_review_id": "CVR-017"
+    },
+    {
+      "bundle_row_position": "37",
+      "opaque_review_id": "R2-JDRNL3",
+      "source_review_id": "CVR-058"
+    },
+    {
+      "bundle_row_position": "38",
+      "opaque_review_id": "R2-GK2UYJ",
+      "source_review_id": "CVR-061"
+    },
+    {
+      "bundle_row_position": "39",
+      "opaque_review_id": "R2-RFVCJB",
+      "source_review_id": "CVR-010"
+    },
+    {
+      "bundle_row_position": "40",
+      "opaque_review_id": "R2-XEN56L",
+      "source_review_id": "CVR-046"
+    },
+    {
+      "bundle_row_position": "41",
+      "opaque_review_id": "R2-ANLCPW",
+      "source_review_id": "CVR-075"
+    },
+    {
+      "bundle_row_position": "42",
+      "opaque_review_id": "R2-ELTDEK",
+      "source_review_id": "CVR-035"
+    },
+    {
+      "bundle_row_position": "43",
+      "opaque_review_id": "R2-8EJLTW",
+      "source_review_id": "CVR-027"
+    },
+    {
+      "bundle_row_position": "44",
+      "opaque_review_id": "R2-3WCZHD",
+      "source_review_id": "CVR-068"
+    },
+    {
+      "bundle_row_position": "45",
+      "opaque_review_id": "R2-BXHD28",
+      "source_review_id": "CVR-055"
+    },
+    {
+      "bundle_row_position": "46",
+      "opaque_review_id": "R2-XM4Y2Y",
+      "source_review_id": "CVR-001"
+    },
+    {
+      "bundle_row_position": "47",
+      "opaque_review_id": "R2-KYRYTZ",
+      "source_review_id": "CVR-016"
+    },
+    {
+      "bundle_row_position": "48",
+      "opaque_review_id": "R2-CR6VXC",
+      "source_review_id": "CVR-012"
+    },
+    {
+      "bundle_row_position": "49",
+      "opaque_review_id": "R2-NR5ZP9",
+      "source_review_id": "CVR-051"
+    },
+    {
+      "bundle_row_position": "50",
+      "opaque_review_id": "R2-LJWTU9",
+      "source_review_id": "CVR-043"
+    },
+    {
+      "bundle_row_position": "51",
+      "opaque_review_id": "R2-9SCNKM",
+      "source_review_id": "CVR-007"
+    },
+    {
+      "bundle_row_position": "52",
+      "opaque_review_id": "R2-8QD68D",
+      "source_review_id": "CVR-037"
+    },
+    {
+      "bundle_row_position": "53",
+      "opaque_review_id": "R2-5NU82N",
+      "source_review_id": "CVR-078"
+    },
+    {
+      "bundle_row_position": "54",
+      "opaque_review_id": "R2-Z3VZMA",
+      "source_review_id": "CVR-013"
+    },
+    {
+      "bundle_row_position": "55",
+      "opaque_review_id": "R2-YP98VG",
+      "source_review_id": "CVR-026"
+    },
+    {
+      "bundle_row_position": "56",
+      "opaque_review_id": "R2-3T5MQN",
+      "source_review_id": "CVR-073"
+    },
+    {
+      "bundle_row_position": "57",
+      "opaque_review_id": "R2-A44SSD",
+      "source_review_id": "CVR-020"
+    },
+    {
+      "bundle_row_position": "58",
+      "opaque_review_id": "R2-2MF84Y",
+      "source_review_id": "CVR-072"
+    },
+    {
+      "bundle_row_position": "59",
+      "opaque_review_id": "R2-NJXSLH",
+      "source_review_id": "CVR-077"
+    },
+    {
+      "bundle_row_position": "60",
+      "opaque_review_id": "R2-FGADSX",
+      "source_review_id": "CVR-009"
+    },
+    {
+      "bundle_row_position": "61",
+      "opaque_review_id": "R2-RNTS3A",
+      "source_review_id": "CVR-005"
+    },
+    {
+      "bundle_row_position": "62",
+      "opaque_review_id": "R2-WMWW9Z",
+      "source_review_id": "CVR-029"
+    },
+    {
+      "bundle_row_position": "63",
+      "opaque_review_id": "R2-5P4H8B",
+      "source_review_id": "CVR-031"
+    },
+    {
+      "bundle_row_position": "64",
+      "opaque_review_id": "R2-KRTCTV",
+      "source_review_id": "CVR-006"
+    },
+    {
+      "bundle_row_position": "65",
+      "opaque_review_id": "R2-SN9EMU",
+      "source_review_id": "CVR-041"
+    },
+    {
+      "bundle_row_position": "66",
+      "opaque_review_id": "R2-BDLET7",
+      "source_review_id": "CVR-040"
+    },
+    {
+      "bundle_row_position": "67",
+      "opaque_review_id": "R2-6ZEYGJ",
+      "source_review_id": "CVR-024"
+    },
+    {
+      "bundle_row_position": "68",
+      "opaque_review_id": "R2-XN5C6M",
+      "source_review_id": "CVR-015"
+    },
+    {
+      "bundle_row_position": "69",
+      "opaque_review_id": "R2-4DURHK",
+      "source_review_id": "CVR-014"
+    },
+    {
+      "bundle_row_position": "70",
+      "opaque_review_id": "R2-42CDH3",
+      "source_review_id": "CVR-008"
+    },
+    {
+      "bundle_row_position": "71",
+      "opaque_review_id": "R2-E6Q9ET",
+      "source_review_id": "CVR-053"
+    },
+    {
+      "bundle_row_position": "72",
+      "opaque_review_id": "R2-YSLVBW",
+      "source_review_id": "CVR-069"
+    },
+    {
+      "bundle_row_position": "73",
+      "opaque_review_id": "R2-KRM9Z5",
+      "source_review_id": "CVR-059"
+    },
+    {
+      "bundle_row_position": "74",
+      "opaque_review_id": "R2-T2TMHJ",
+      "source_review_id": "CVR-039"
+    },
+    {
+      "bundle_row_position": "75",
+      "opaque_review_id": "R2-WFMBGH",
+      "source_review_id": "CVR-076"
+    },
+    {
+      "bundle_row_position": "76",
+      "opaque_review_id": "R2-68NP2L",
+      "source_review_id": "CVR-067"
+    },
+    {
+      "bundle_row_position": "77",
+      "opaque_review_id": "R2-HSSY9A",
+      "source_review_id": "CVR-063"
+    },
+    {
+      "bundle_row_position": "78",
+      "opaque_review_id": "R2-DV8BCE",
+      "source_review_id": "CVR-002"
+    },
+    {
+      "bundle_row_position": "79",
+      "opaque_review_id": "R2-B9DW7P",
+      "source_review_id": "CVR-044"
+    },
+    {
+      "bundle_row_position": "80",
+      "opaque_review_id": "R2-69KNNC",
+      "source_review_id": "CVR-080"
+    }
+  ],
+  "schema_version": 1
+}
